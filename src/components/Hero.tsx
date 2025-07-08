@@ -44,7 +44,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-navy mb-6 leading-tight tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-navy mb-4 md:mb-6 leading-tight tracking-tight px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -54,7 +54,7 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -64,15 +64,15 @@ const Hero = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            <Button className="btn-primary text-lg px-8 py-4 w-full sm:w-auto">
+            <Button className="btn-primary text-base md:text-lg px-6 md:px-8 py-3 md:py-4 w-full sm:w-auto min-w-[200px]">
               Schedule a Consultation
             </Button>
-            <Button variant="outline" className="btn-secondary text-lg px-8 py-4 w-full sm:w-auto">
+            <Button variant="outline" className="btn-secondary text-base md:text-lg px-6 md:px-8 py-3 md:py-4 w-full sm:w-auto min-w-[200px]">
               Learn More
             </Button>
           </motion.div>

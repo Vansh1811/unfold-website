@@ -40,7 +40,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <img src={logo} alt="Unfold" className="h-8 w-auto" />
+            <img src={logo} alt="Unfold" className="h-8 md:h-10 w-auto" />
             <span className="text-xl font-heading font-bold text-white">
               Unfold
             </span>

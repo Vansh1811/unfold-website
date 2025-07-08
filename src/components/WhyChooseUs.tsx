@@ -30,15 +30,15 @@ const WhyChooseUs = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-navy mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-navy mb-4">
             Why Choose Unfold?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             We combine deep expertise with a human-centered approach to deliver exceptional results for our clients.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 px-4 sm:px-0">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -54,16 +54,16 @@ const WhyChooseUs = () => {
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-gold to-yellow-500 rounded-full flex items-center justify-center group-hover:shadow-gold transition-all duration-300">
-                  <feature.icon className="h-10 w-10 text-navy" />
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gold to-yellow-500 rounded-full flex items-center justify-center group-hover:shadow-gold transition-all duration-300">
+                  <feature.icon className="h-8 w-8 md:h-10 md:w-10 text-navy" />
                 </div>
               </motion.div>
 
-              <h3 className="text-xl font-heading font-semibold text-navy mb-4 group-hover:text-gold transition-colors duration-300">
+              <h3 className="text-lg md:text-xl font-heading font-semibold text-navy mb-3 md:mb-4 group-hover:text-gold transition-colors duration-300">
                 {feature.title}
               </h3>
 
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>
