@@ -4,45 +4,46 @@
 
 /* Unfold Design System - Professional consulting with warm touches */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500&display=swap');
+@import url('https://fonts.cdnfonts.com/css/nexa-bold');
 
 @layer base {
   :root {
     /* Brand Colors - HSL format */
     --background: 0 0% 100%;
-    --foreground: 213 100% 18%; /* Deep Navy #002B5B */
+    --foreground: 210 47% 12%; /* Blue #0f1b2b */
 
     --card: 0 0% 100%;
-    --card-foreground: 213 100% 18%;
+    --card-foreground: 210 47% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 213 100% 18%;
+    --popover-foreground: 210 47% 12%;
 
-    /* Primary: Deep Navy Blue (#002B5B) */
-    --primary: 213 100% 18%;
+    /* Primary: Blue (#0f1b2b) */
+    --primary: 210 47% 12%;
     --primary-foreground: 0 0% 100%;
 
     /* Secondary: Light backgrounds */
     --secondary: 0 0% 96.1%;
-    --secondary-foreground: 213 100% 18%;
+    --secondary-foreground: 210 47% 12%;
 
     --muted: 0 0% 96.1%;
-    --muted-foreground: 213 25% 45%;
+    --muted-foreground: 210 25% 45%;
 
-    /* Accent: Soft Gold (#D4AF37) */
-    --accent: 48 69% 52%;
-    --accent-foreground: 213 100% 18%;
+    /* Accent: Golden (#c59364) */
+    --accent: 30 37% 58%;
+    --accent-foreground: 210 47% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 48 69% 52%;
+    --ring: 30 37% 58%;
 
     /* Custom Design Tokens */
-    --gold: 48 69% 52%; /* Soft Gold #D4AF37 */
-    --navy: 213 100% 18%; /* Deep Navy #002B5B */
+    --gold: 30 37% 58%; /* Golden #c59364 */
+    --navy: 210 47% 12%; /* Blue #0f1b2b */
     --light-gray: 0 0% 96.1%;
     
     /* Gradients */

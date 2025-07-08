@@ -19,7 +19,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'heading': ['Poppins', 'sans-serif'],
+				'heading': ['Nexa Bold', 'sans-serif'],
 				'body': ['Lato', 'sans-serif'],
 			},
 			colors: {
