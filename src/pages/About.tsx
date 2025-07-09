@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Users, Target, Heart, Award } from 'lucide-react';
+import PortfolioSection from '@/components/PortfolioSection';
 
 const About = () => {
 
@@ -167,6 +168,9 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* Portfolio Section */}
+      <PortfolioSection />
 
       {/* CTA Section */}
       <section className="section-padding bg-navy text-white">

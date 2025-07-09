@@ -1,83 +1,30 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Shield, TrendingUp, Users, FileCheck, Scale, Target, ArrowRight, CheckCircle } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import ServiceCategoryCard from '@/components/ServiceCategoryCard';
+import SubServiceCard from '@/components/SubServiceCard';
+import { mainServiceCategories, searchServices } from '@/data/servicesData';
+import { Link } from 'react-router-dom';
+import { Plus } from 'lucide-react';
 
 const Services = () => {
-  const services = [
-    {
-      icon: Shield,
-      title: 'Compliance Advisory',
-      description: 'Navigate complex regulatory landscapes with confidence.',
-      features: [
-        'Regulatory compliance audits',
-        'Policy development and implementation',
-        'Training and education programs',
-        'Ongoing compliance monitoring',
-      ],
-      price: 'Starting at $2,500/month',
-    },
-    {
-      icon: TrendingUp,
-      title: 'Strategic Growth Planning',
-      description: 'Transform compliance requirements into strategic advantages.',
-      features: [
-        'Growth strategy development',
-        'Market expansion planning',
-        'Compliance-driven innovation',
-        'Competitive advantage identification',
-      ],
-      price: 'Starting at $3,500/month',
-    },
-    {
-      icon: Users,
-      title: 'Governance Consulting',
-      description: 'Build robust governance frameworks for your organization.',
-      features: [
-        'Board governance optimization',
-        'Risk management frameworks',
-        'Internal controls design',
-        'Performance monitoring systems',
-      ],
-      price: 'Starting at $3,000/month',
-    },
-    {
-      icon: FileCheck,
-      title: 'Risk Assessment',
-      description: 'Identify and mitigate potential risks before they impact your business.',
-      features: [
-        'Comprehensive risk audits',
-        'Risk mitigation strategies',
-        'Crisis management planning',
-        'Business continuity planning',
-      ],
-      price: 'Starting at $2,000/month',
-    },
-    {
-      icon: Scale,
-      title: 'Regulatory Framework',
-      description: 'Develop comprehensive frameworks aligned with industry standards.',
-      features: [
-        'Framework design and implementation',
-        'Industry standard alignment',
-        'Documentation and procedures',
-        'Training and adoption support',
-      ],
-      price: 'Starting at $4,000/month',
-    },
-    {
-      icon: Target,
-      title: 'Business Optimization',
-      description: 'Optimize operations through strategic compliance management.',
-      features: [
-        'Process optimization',
-        'Efficiency improvements',
-        'Cost reduction strategies',
-        'Performance enhancement',
-      ],
-      price: 'Starting at $2,800/month',
-    },
-  ];
+  const [searchParams] = useSearchParams();
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+  
+  const searchQuery = searchParams.get('search');
+
+  useEffect(() => {
+    if (searchQuery) {
+      setIsSearching(true);
+      const results = searchServices(searchQuery);
+      setSearchResults(results);
+    } else {
+      setIsSearching(false);
+      setSearchResults([]);
+    }
+  }, [searchQuery]);
 
 
   return (
@@ -105,68 +52,87 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Comprehensive solutions designed to help your business thrive in today's 
-            complex regulatory environment.
+            {isSearching 
+              ? `Search results for "${searchQuery}"`
+              : 'Comprehensive solutions designed to help your business thrive in today\'s complex regulatory environment.'
+            }
           </motion.p>
         </motion.div>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Search Results or Services Grid */}
       <section className="section-padding bg-light-gray">
         <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
-            >
-                <Card className="h-full bg-white shadow-card hover:shadow-card-hover transition-all duration-300 border-0 group">
-                  <CardContent className="p-8">
-                    <div className="mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-gold to-yellow-500 rounded-xl flex items-center justify-center mb-4 group-hover:shadow-gold transition-all duration-300">
-                        <service.icon className="h-8 w-8 text-navy" />
-                      </div>
-                    </div>
-
-                    <h3 className="text-xl font-heading font-semibold text-navy mb-3 group-hover:text-gold transition-colors duration-300">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {service.description}
-                    </p>
-
-                    <ul className="space-y-3 mb-6">
-                      {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start space-x-3">
-                          <CheckCircle className="h-5 w-5 text-gold flex-shrink-0 mt-0.5" />
-                          <span className="text-sm text-muted-foreground">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="pt-4 border-t border-gray-100">
-                      <div className="flex items-center justify-between">
-                        <span className="text-lg font-semibold text-navy">{service.price}</span>
-                        <Button
-                          size="sm"
-                          className="bg-gold hover:bg-yellow-500 text-navy font-medium"
-                        >
-                          Learn More
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-            </motion.div>
-          ))}
-        </div>
+          {isSearching ? (
+            // Search Results
+            <div>
+              {searchResults.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {searchResults.map((service, index) => (
+                    <SubServiceCard
+                      key={`${service.category}-${service.id}`}
+                      {...service}
+                      categorySlug={service.category.toLowerCase().replace(/\s+/g, '-')}
+                      index={index}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <motion.div
+                  className="text-center py-16"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <h3 className="text-2xl font-heading font-semibold text-navy mb-4">
+                    No services found for "{searchQuery}"
+                  </h3>
+                  <p className="text-muted-foreground mb-8">
+                    Try searching with different keywords or browse our service categories below.
+                  </p>
+                  <Link to="/services">
+                    <Button className="bg-gold hover:bg-yellow-500 text-navy font-medium">
+                      Browse All Services
+                    </Button>
+                  </Link>
+                </motion.div>
+              )}
+            </div>
+          ) : (
+            // Main Service Categories
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {mainServiceCategories.map((category, index) => (
+                  <ServiceCategoryCard
+                    key={category.id}
+                    title={category.name}
+                    description={category.description}
+                    icon={category.icon}
+                    slug={category.slug}
+                    subServiceCount={category.subServices.length}
+                    index={index}
+                  />
+                ))}
+              </div>
+              
+              {/* More Services Card */}
+              <motion.div
+                className="mt-12 flex justify-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <Link to="/services/more">
+                  <Button className="bg-navy hover:bg-blue-800 text-white font-medium px-8 py-4 text-lg">
+                    <Plus className="mr-2 h-5 w-5" />
+                    More Services
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
+          )}
         </div>
       </section>
 

@@ -10,11 +10,10 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import Startup from "./pages/services/Startup";
-import VirtualCFO from "./pages/services/VirtualCFO";
-import ProtectYourBusiness from "./pages/services/ProtectYourBusiness";
-import Compliance from "./pages/services/Compliance";
 import MoreServices from "./pages/services/MoreServices";
+import ServiceCategory from "./pages/services/ServiceCategory";
+import ServiceDetail from "./pages/services/ServiceDetail";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -31,14 +30,9 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/services/more" element={<MoreServices />} />
+              <Route path="/services/:categorySlug" element={<ServiceCategory />} />
+              <Route path="/services/:categorySlug/:serviceSlug" element={<ServiceDetail />} />
               <Route path="/contact" element={<Contact />} />
-                <Route path="/services/startup" element={<Startup />} />
-              <Route path="/services/virtual-cfo" element={<VirtualCFO />} />
-              <Route
-                path="/services/protect-your-business"
-                element={<ProtectYourBusiness />}
-              />
-              <Route path="/services/compliance" element={<Compliance />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import SearchBar from '@/components/SearchBar';
 import logo from '@/assets/unfold-logo.png';
 
 const Navbar = () => {
@@ -68,6 +69,9 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
+            
+            {/* Search Bar */}
+            <SearchBar className="ml-4" />
           </div>
 
           {/* Mobile Menu Button */}
@@ -108,6 +112,11 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile Search */}
+              <div className="px-4 py-2">
+                <SearchBar placeholder="Search services..." />
+              </div>
             </div>
           </motion.div>
         )}
