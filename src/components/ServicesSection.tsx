@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Shield, TrendingUp, Users, FileCheck, Scale, Target } from 'lucide-react';
 import ServiceCard from './ServiceCard';
+import { Link } from 'react-router-dom';
 
 const ServicesSection = () => {
   const services = [
@@ -8,31 +9,37 @@ const ServicesSection = () => {
       icon: Shield,
       title: 'Compliance Advisory',
       description: 'Navigate complex regulatory landscapes with confidence. We ensure your business stays compliant while maintaining operational efficiency.',
+      link: '/services/compliance'
     },
     {
       icon: TrendingUp,
       title: 'Strategic Growth Planning',
       description: 'Transform compliance requirements into strategic advantages. We help you scale sustainably while meeting all regulatory obligations.',
+      link: '/services/protect-your-business'
     },
     {
       icon: Users,
       title: 'Governance Consulting',
       description: 'Build robust governance frameworks that drive accountability and performance across your organization.',
+      link: '/services/virtual-cfo'
     },
     {
       icon: FileCheck,
       title: 'Risk Assessment',
       description: 'Identify and mitigate potential risks before they impact your business. Comprehensive analysis with actionable insights.',
+      link: '/services/startup'
     },
     {
       icon: Scale,
       title: 'Regulatory Framework',
       description: 'Develop comprehensive frameworks that align with industry standards and best practices for long-term sustainability.',
+      link: '/services/compliance'
     },
     {
       icon: Target,
       title: 'Business Optimization',
       description: 'Optimize your operations through strategic compliance management, turning regulatory requirements into competitive advantages.',
+      link: '/services/protect-your-business'
     },
   ];
 
@@ -61,13 +68,20 @@ const ServicesSection = () => {
               icon={service.icon}
               title={service.title}
               description={service.description}
+              link={service.link}
               index={index}
             />
           ))}
         </div>
-      </div>
+          <Link
+            to="/services/more"
+            className="inline-block px-6 py-3 bg-gold text-white font-medium rounded-full hover:bg-yellow-600 transition"
+          >
+            More Services
+          </Link>
+        </div>
     </section>
   );
-};
+}
 
 export default ServicesSection;
