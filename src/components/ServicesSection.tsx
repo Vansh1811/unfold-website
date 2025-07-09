@@ -45,7 +45,6 @@ const ServicesSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-        </div>
           <Link
             to="/services/more"
             className="inline-flex items-center px-6 py-3 bg-navy hover:bg-blue-800 text-white font-medium rounded-full transition-all duration-300 hover:scale-105"
@@ -53,7 +52,7 @@ const ServicesSection = () => {
             <Plus className="mr-2 h-5 w-5" />
             More Services
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
