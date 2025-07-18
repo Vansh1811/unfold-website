@@ -57,5 +57,5 @@ const ServiceCard = ({ icon: Icon, title, description, link = '#', index }: Serv
     </motion.div>
   );
 };
-
+ 
 export default ServiceCard;
