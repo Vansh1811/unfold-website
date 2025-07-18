@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 
 const ServicesSection = () => {
-
+ 
   return (
     <section className="section-padding bg-gradient-to-b from-background to-light-gray">
       <div className="container-custom">
