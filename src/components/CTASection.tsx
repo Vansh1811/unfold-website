@@ -1,118 +1,85 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Calendar, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const CTASection = () => {
-  return (
-    <section className="section-padding relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy to-blue-900">
-        <div className="absolute inset-0 opacity-10">
-          <div 
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `
-                radial-gradient(circle at 25% 25%, hsl(var(--gold)) 2px, transparent 2px),
-                radial-gradient(circle at 75% 75%, hsl(var(--gold)) 1px, transparent 1px)
-              `,
-              backgroundSize: '60px 60px, 40px 40px',
-              backgroundPosition: '0 0, 30px 30px',
-            }}
-          />
-        </div>
-      </div>
+const CTASection = () => (
+  <section className="relative overflow-hidden bg-gradient-to-r from-navy-600 via-navy-700 to-navy-800 py-20 sm:py-28 lg:py-36">
+    {/* soft pattern overlay */}
+    <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
 
-      {/* Animated Background Elements */}
+    {/* decorative blobs */}
+    <motion.div
+      animate={{ scale: [1, 1.15, 1], rotate: [0, 90, 180], opacity: [0.04, 0.06, 0.04] }}
+      transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
+      className="absolute -top-24 -left-24 h-[22rem] w-[22rem] rounded-full bg-gradient-to-br from-gold-400 to-gold-600 blur-3xl"
+    />
+    <motion.div
+      animate={{ scale: [1, 1.25, 1], rotate: [180, 90, 0], opacity: [0.03, 0.05, 0.03] }}
+      transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+      className="absolute -bottom-28 -right-28 h-[26rem] w-[26rem] rounded-full bg-gradient-to-br from-navy-400 to-navy-600 blur-3xl"
+    />
+
+    <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="mb-6 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:mb-8 lg:text-5xl"
+      >
+        Ready to take your business
+        <span className="block bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent sm:inline sm:ml-3">
+          to the next level?
+        </span>
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-blue-100"
+      >
+        Join the hundreds of companies turning regulatory challenges into competitive
+        advantages with <span className="font-semibold text-white">Unfold Finleg Solutions</span>.
+        Your first consultation is on us.
+      </motion.p>
+
+      {/* CTA buttons */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-gold/10"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full bg-gold/5"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.3, 0.1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-      />
-
-      <div className="container-custom relative z-10">
-        <motion.div
-          className="text-center max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4 }}
+        className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
+      >
+        <Button
+          asChild
+          size="lg"
+          variant="gold"
+          leftIcon={<Mail className="h-5 w-5" />}
+          rightIcon={<ArrowRight className="h-4 w-4" />}
         >
-          <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            Ready to take your business to the next level?
-          </motion.h2>
+          <Link to="/contact">Contact Our Experts</Link>
+        </Button>
 
-          <motion.p
-            className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Join hundreds of successful businesses who have transformed their compliance 
-            challenges into competitive advantages with Unfold.
-          </motion.p>
+        <Button
+          asChild
+          size="lg"
+          variant="outline"
+          className="border-white/30 text-white hover:bg-white/10"
+          leftIcon={<Calendar className="h-5 w-5" />}
+        >
+          <Link to="/contact?book=true">Schedule a Free Consultation</Link>
+        </Button>
+      </motion.div>
 
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <Button 
-              className="bg-gold hover:bg-yellow-500 text-navy font-semibold px-8 py-4 text-lg transition-all duration-300 hover:scale-105 hover:shadow-gold inline-flex items-center group"
-            >
-              Contact Our Experts
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              className="border-2 border-white text-white hover:bg-white hover:text-navy font-semibold px-8 py-4 text-lg transition-all duration-300"
-            >
-              Schedule a Free Consultation
-            </Button>
-          </motion.div>
-
-          <motion.div
-            className="mt-8 text-sm text-white/70"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <p>No obligation • Free 30-minute consultation • Expert advice</p>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+      <p className="mt-6 text-sm text-blue-200">
+        No obligation&nbsp;•&nbsp;Free 30-minute consultation&nbsp;•&nbsp;Expert advice
+      </p>
+    </div>
+  </section>
+);
 
 export default CTASection;

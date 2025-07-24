@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -6,18 +6,8 @@ import SearchBar from '@/components/SearchBar';
 import logo from '@/assets/unfold-logo.png';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -31,9 +21,8 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-navy/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{ backgroundColor: '#161E2C' }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -44,7 +33,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center space-x-2">
             <img src={logo} alt="Unfold" className="h-8 md:h-10 w-auto" />
             <span className="text-xl font-heading font-bold text-white">
-              Unfold
+              Unfold Finleg Solutions
             </span>
           </Link>
 
@@ -70,7 +59,7 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
-            
+
             {/* Search Bar */}
             <SearchBar className="ml-4" />
           </div>
@@ -92,7 +81,8 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <motion.div
-            className="lg:hidden bg-navy/95 backdrop-blur-md border-t border-gold/20"
+            className="lg:hidden border-t border-gold/20"
+            style={{ backgroundColor: '#161E2C' }}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -113,7 +103,7 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
-              
+
               {/* Mobile Search */}
               <div className="px-4 py-2">
                 <SearchBar placeholder="Search services..." />

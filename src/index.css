@@ -2,111 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Unfold Design System - Professional consulting with warm touches */
-
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500&display=swap');
+/* Import fonts */
 @import url('https://fonts.cdnfonts.com/css/nexa-bold');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* Brand Colors - HSL format */
     --background: 0 0% 100%;
-    --foreground: 210 47% 12%; /* Blue #0f1b2b */
-
+    --foreground: 210 47% 12%;
     --card: 0 0% 100%;
     --card-foreground: 210 47% 12%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 210 47% 12%;
-
-    /* Primary: Blue (#0f1b2b) */
     --primary: 210 47% 12%;
     --primary-foreground: 0 0% 100%;
-
-    /* Secondary: Light backgrounds */
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 210 47% 12%;
-
     --muted: 0 0% 96.1%;
     --muted-foreground: 210 25% 45%;
-
-    /* Accent: Golden (#c59364) */
     --accent: 30 37% 58%;
     --accent-foreground: 210 47% 12%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
     --ring: 30 37% 58%;
-
-    /* Custom Design Tokens */
-    --gold: 30 37% 58%; /* Golden #c59364 */
-    --navy: 210 47% 12%; /* Blue #0f1b2b */
-    --light-gray: 0 0% 96.1%;
-    
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--navy)) 0%, hsl(213 100% 22%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(48 75% 58%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--light-gray)) 100%);
-    
-    /* Shadows */
-    --shadow-card: 0 4px 6px -1px hsl(var(--navy) / 0.05), 0 2px 4px -1px hsl(var(--navy) / 0.03);
-    --shadow-card-hover: 0 10px 25px -3px hsl(var(--navy) / 0.1), 0 4px 6px -2px hsl(var(--navy) / 0.05);
-    --shadow-gold: 0 4px 14px 0 hsl(var(--gold) / 0.25);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 213 100% 8%;
-    --foreground: 0 0% 98%;
-
-    --card: 213 100% 10%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 213 100% 10%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 48 69% 52%;
-    --primary-foreground: 213 100% 18%;
-
-    --secondary: 213 50% 15%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 213 50% 15%;
-    --muted-foreground: 0 0% 65%;
-
-    --accent: 48 69% 52%;
-    --accent-foreground: 213 100% 18%;
-
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 213 50% 20%;
-    --input: 213 50% 20%;
-    --ring: 48 69% 52%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
 
@@ -114,96 +57,13 @@
   * {
     @apply border-border;
   }
-
+  
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
   }
-
+  
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
-  }
-}
-
-@layer components {
-  /* Hero Section Styles */
-  .hero-pattern {
-    background-image: 
-      radial-gradient(circle at 20% 50%, hsl(var(--gold) / 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, hsl(var(--navy) / 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 40% 80%, hsl(var(--gold) / 0.02) 0%, transparent 50%);
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-1;
-  }
-
-  .btn-primary {
-    @apply bg-gradient-to-r from-gold to-yellow-500 text-navy font-medium px-8 py-3 rounded-lg 
-           shadow-md hover:shadow-gold transition-all duration-300 hover:scale-105;
-  }
-
-  .btn-secondary {
-    @apply border-2 border-navy text-navy font-medium px-8 py-3 rounded-lg 
-           hover:bg-navy hover:text-white transition-all duration-300;
-  }
-
-  .section-padding {
-    @apply py-12 md:py-16 lg:py-24;
-  }
-
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  /* Blog-specific styles */
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* Responsive prose styles for blog content */
-  .prose {
-    @apply text-gray-700;
-  }
-
-  .prose h2 {
-    @apply mt-8 mb-4 text-2xl font-bold text-navy;
-  }
-
-  .prose h3 {
-    @apply mt-6 mb-3 text-xl font-semibold text-navy;
-  }
-
-  .prose p {
-    @apply mb-4 leading-relaxed;
-  }
-
-  .prose ul, .prose ol {
-    @apply mb-6;
-  }
-
-  .prose li {
-    @apply mb-2;
-  }
-
-  .prose strong {
-    @apply font-semibold text-navy;
-  }
-
-  .prose code {
-    @apply bg-gold/10 text-navy px-2 py-1 rounded text-sm font-mono;
-  }
-
-  .prose blockquote {
-    @apply border-l-4 border-gold pl-4 italic text-gray-600;
+    font-family: 'Nexa Bold', 'Inter', system-ui, sans-serif;
   }
 }

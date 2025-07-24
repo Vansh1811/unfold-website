@@ -1,162 +1,227 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import logo from '@/assets/unfold-logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const services = [
+    'Company Incorporation',
+    'Legal Compliance',
+    'Tax Consulting',
+    'HR Solutions',
+    'Business Advisory',
+    'IP Rights'
+  ];
+
+  const quickLinks = [
+    { name: 'About Us', href: '/about' },
+    { name: 'Our Services', href: '/services' },
+    { name: 'Case Studies', href: '/portfolio' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'Careers', href: '/careers' }
+  ];
+
+  const legalLinks = [
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Terms of Service', href: '/terms' },
+    { name: 'Cookie Policy', href: '/cookies' }
+  ];
+
+  const socialLinks = [
+    { name: 'LinkedIn', href: '#', icon: Linkedin, color: 'hover:text-blue-600' },
+    { name: 'Twitter', href: '#', icon: Twitter, color: 'hover:text-blue-400' },
+    { name: 'Facebook', href: '#', icon: Facebook, color: 'hover:text-blue-700' },
+    { name: 'Instagram', href: '#', icon: Instagram, color: 'hover:text-pink-600' }
+  ];
+
   return (
-    <motion.footer
-      className="bg-navy text-white relative overflow-hidden"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
-    >
-      {/* Top Border */}
-      <div className="h-1 bg-gradient-to-r from-gold to-yellow-500" />
-      
+    <footer className="relative bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 20% 20%, hsl(var(--gold)) 1px, transparent 1px),
-              radial-gradient(circle at 80% 80%, hsl(var(--gold)) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px, 60px 60px',
-          }}
-        />
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-gold-500 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-navy-400 rounded-full blur-3xl" />
       </div>
 
-      <div className="container-custom relative z-10 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      {/* Top Border Gradient */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 relative z-10">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* Company Info */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <img src={logo} alt="Unfold" className="h-8 w-auto" />
-              <span className="text-xl font-heading font-bold">Unfold</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-1"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <img src={logo} alt="Unfold" className="w-10 h-10" />
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+                Unfold
+              </h3>
             </div>
-            <p className="text-white/80 leading-relaxed">
-              Unfolding your business potential through smart compliance and strategic growth.
+            <p className="text-blue-100 leading-relaxed mb-6 text-sm sm:text-base">
+              Unfolding your business potential through smart compliance and strategic growth solutions.
             </p>
-            <div className="flex space-x-4">
-              <motion.a
-                href="#"
-                className="text-white/60 hover:text-gold transition-colors duration-300"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="LinkedIn"
-              >
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </motion.a>
-              <motion.a
-                href="#"
-                className="text-white/60 hover:text-gold transition-colors duration-300"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Twitter"
-              >
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                </svg>
-              </motion.a>
+            
+            {/* Social Links */}
+            <div className="flex gap-3">
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.name}
+                  href={social.href}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`w-10 h-10 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center transition-colors duration-300 ${social.color}`}
+                  aria-label={social.name}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-heading font-semibold text-gold">Services</h3>
-            <ul className="space-y-2">
-              {[
-                'Compliance Advisory',
-                'Strategic Growth Planning',
-                'Governance Consulting',
-                'Risk Assessment',
-              ].map((service) => (
-                <li key={service}>
-                  <a
-                    href="#"
-                    className="text-white/80 hover:text-gold transition-colors duration-300"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <h4 className="text-lg font-bold text-white mb-4">Our Services</h4>
+            <ul className="space-y-3">
+              {services.map((service, index) => (
+                <motion.li
+                  key={service}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 + index * 0.05 }}
+                >
+                  <Link
+                    to="/services"
+                    className="text-blue-100 hover:text-white transition-colors duration-200 text-sm flex items-center gap-2 group"
                   >
-                    {service}
-                  </a>
-                </li>
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-200">
+                      {service}
+                    </span>
+                  </Link>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-heading font-semibold text-gold">Quick Links</h3>
-            <ul className="space-y-2">
-              {[
-                'About Us',
-                'Our Team',
-                'Case Studies',
-                'Blog',
-                'Careers',
-              ].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    className="text-white/80 hover:text-gold transition-colors duration-300"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h4 className="text-lg font-bold text-white mb-4">Quick Links</h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link, index) => (
+                <motion.li
+                  key={link.name}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + index * 0.05 }}
+                >
+                  <Link
+                    to={link.href}
+                    className="text-blue-100 hover:text-white transition-colors duration-200 text-sm flex items-center gap-2 group"
                   >
-                    {link}
-                  </a>
-                </li>
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-200">
+                      {link.name}
+                    </span>
+                  </Link>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-heading font-semibold text-gold">Contact</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-gold flex-shrink-0" />
-                <span className="text-white/80">info@unfoldconsulting.com</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h4 className="text-lg font-bold text-white mb-4">Contact</h4>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <Mail className="w-5 h-5 text-gold-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <a
+                    href="mailto:info@unfoldfinlegsolutions.com"
+                    className="text-blue-100 hover:text-white transition-colors duration-200 text-sm break-all"
+                  >
+                    info@unfoldfinlegsolutions.com
+                  </a>
+                </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-gold flex-shrink-0" />
-                <span className="text-white/80">+1 (555) 123-4567</span>
+
+              <div className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-gold-400 mt-0.5 flex-shrink-0" />
+                <div className="text-blue-100 text-sm">
+                  <a href="tel:+919958978970" className="hover:text-white transition-colors duration-200 block">
+                    +91 995-897-8970
+                  </a>
+                  <a href="tel:+919599399662" className="hover:text-white transition-colors duration-200 block">
+                    +91 959-939-9662
+                  </a>
+                </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-gold flex-shrink-0 mt-0.5" />
-                <span className="text-white/80">
-                  123 Business District<br />
-                  Suite 400<br />
-                  New York, NY 10001
-                </span>
+
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-gold-400 mt-0.5 flex-shrink-0" />
+                <div className="text-blue-100 text-sm leading-relaxed">
+                  B-145, Ground Floor<br />
+                  Sector-51<br />
+                  Noida, Uttar Pradesh 201301
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Bottom Border */}
-        <div className="border-t border-white/20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-white/60 text-sm">
-              © {currentYear} Unfold Consulting. All rights reserved.
-            </p>
-            <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-white/60 hover:text-gold transition-colors duration-300">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-white/60 hover:text-gold transition-colors duration-300">
-                Terms of Service
-              </a>
-              <a href="#" className="text-white/60 hover:text-gold transition-colors duration-300">
-                Cookie Policy
-              </a>
+        {/* Bottom Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          {/* Bottom Border */}
+          <div className="border-t border-white/20 pt-8">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+              <p className="text-blue-100 text-sm text-center sm:text-left">
+                © {currentYear} Unfold Finleg Solutions. All rights reserved.
+              </p>
+              
+              <div className="flex flex-wrap gap-4 sm:gap-6">
+                {legalLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className="text-blue-100 hover:text-white transition-colors duration-200 text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </motion.footer>
+    </footer>
   );
 };
 

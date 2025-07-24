@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, DivideIcon as LucideIcon } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -9,9 +9,10 @@ import { SubService } from '@/data/servicesData';
 interface SubServiceCardProps extends SubService {
   categorySlug: string;
   index: number;
+  featured?: boolean;
 }
 
-const SubServiceCard = ({ 
+const SubServiceCard = ({
   name,
   slug,
   description,
@@ -20,71 +21,180 @@ const SubServiceCard = ({
   price,
   duration,
   categorySlug,
-  index
+  index,
+  featured = false
 }: SubServiceCardProps) => {
-  // Dynamically get the icon component
-  const IconComponent = (Icons as any)[icon] as LucideIcon;
+  // Dynamically get the icon component with fallback
+  const IconComponent = (Icons as any)[icon] as React.ComponentType<{ className?: string }>;
+  const FallbackIcon = Icons.Building2;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{ y: -8 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ 
+        duration: 0.6, 
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100
+      }}
+      whileHover={{ y: -8, scale: 1.02 }}
+      className="h-full"
     >
-      <Card className="h-full bg-white shadow-card hover:shadow-card-hover transition-all duration-300 border-0 group">
-        <CardContent className="p-6 md:p-8">
-          <div className="mb-6">
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-gold to-yellow-500 rounded-xl flex items-center justify-center mb-4 group-hover:shadow-gold transition-all duration-300">
-              {IconComponent && <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-navy" />}
+      <Card className={`group relative h-full overflow-hidden transition-all duration-500 cursor-pointer ${
+        featured 
+          ? 'bg-gradient-to-br from-gold-50 to-gold-100 border-2 border-gold-200 shadow-gold hover:shadow-gold-lg' 
+          : 'bg-white border border-gray-200 shadow-lg hover:shadow-xl'
+      }`}>
+        {/* Featured Badge */}
+        {featured && (
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+            className="absolute top-4 right-4 bg-gradient-to-r from-gold-600 to-gold-700 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg z-10"
+            style={{ fontFamily: 'Nexa Bold, Inter, sans-serif' }}
+          >
+            Popular
+          </motion.div>
+        )}
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-600/0 via-transparent to-gold-600/0 group-hover:from-navy-600/5 group-hover:to-gold-600/5 transition-all duration-700" />
+
+        <CardContent className="relative p-6 sm:p-8 h-full flex flex-col z-10">
+          {/* Icon Section */}
+          <motion.div
+            whileHover={{ 
+              scale: 1.1, 
+              rotate: [0, -5, 5, 0],
+              y: -4
+            }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 400,
+              rotate: { duration: 0.6 }
+            }}
+            className="mb-6"
+          >
+            <div className={`w-16 h-16 sm:w-18 sm:h-18 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500 ${
+              featured 
+                ? 'bg-gradient-to-br from-gold-600 via-gold-700 to-gold-800'
+                : 'bg-gradient-to-br from-navy-600 via-navy-700 to-navy-800'
+            }`}>
+              {IconComponent ? (
+                <IconComponent className="w-8 h-8 sm:w-9 sm:h-9 text-white drop-shadow-sm" />
+              ) : (
+                <FallbackIcon className="w-8 h-8 sm:w-9 sm:h-9 text-white drop-shadow-sm" />
+              )}
+            </div>
+          </motion.div>
+
+          {/* Content Section */}
+          <div className="flex-grow mb-6">
+            <motion.h3 
+              className={`text-xl sm:text-2xl font-bold mb-3 leading-tight tracking-tight transition-colors duration-300 ${
+                featured 
+                  ? 'text-navy-800 group-hover:text-navy-700'
+                  : 'text-navy-900 group-hover:text-navy-700'
+              }`}
+              style={{ fontFamily: 'Nexa Bold, Inter, sans-serif' }}
+              whileHover={{ x: 2 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              {name}
+            </motion.h3>
+
+            <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed text-sm sm:text-base line-clamp-3 mb-4">
+              {description}
+            </p>
+
+            {/* Features List */}
+            <div className="space-y-2 mb-4">
+              {features.slice(0, 4).map((feature, featureIndex) => (
+                <motion.div
+                  key={featureIndex}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 + featureIndex * 0.05 }}
+                  className="flex items-center gap-2 text-sm text-gray-600"
+                >
+                  <CheckCircle className={`w-4 h-4 flex-shrink-0 ${
+                    featured ? 'text-gold-600' : 'text-navy-600'
+                  }`} />
+                  <span>{feature}</span>
+                </motion.div>
+              ))}
             </div>
           </div>
 
-          <h3 className="text-lg md:text-xl font-heading font-semibold text-navy mb-3 group-hover:text-gold transition-colors duration-300">
-            {name}
-          </h3>
-
-          <p className="text-sm md:text-base text-muted-foreground mb-6 leading-relaxed">
-            {description}
-          </p>
-
-          <ul className="space-y-3 mb-6">
-            {features.slice(0, 4).map((feature, featureIndex) => (
-              <li key={featureIndex} className="flex items-start space-x-3">
-                <CheckCircle className="h-4 w-4 text-gold flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-muted-foreground">{feature}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="space-y-3 mb-6">
-            {price && (
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Price:</span>
-                <span className="font-semibold text-navy">{price}</span>
+          {/* Pricing Section */}
+          {(price || duration) && (
+            <div className="border-t border-gray-100 pt-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                {price && (
+                  <div>
+                    <span className="font-semibold text-navy-700" style={{ fontFamily: 'Nexa Bold, Inter, sans-serif' }}>
+                      Price:
+                    </span>
+                    <p className={`${featured ? 'text-gold-600' : 'text-navy-600'} font-bold`}>
+                      {price}
+                    </p>
+                  </div>
+                )}
+                {duration && (
+                  <div>
+                    <span className="font-semibold text-navy-700" style={{ fontFamily: 'Nexa Bold, Inter, sans-serif' }}>
+                      Duration:
+                    </span>
+                    <p className="text-gray-600 font-medium">{duration}</p>
+                  </div>
+                )}
               </div>
-            )}
-            {duration && (
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Duration:</span>
-                <span className="font-semibold text-navy">{duration}</span>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
 
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link to={`/services/${categorySlug}/${slug}`} className="flex-1">
-              <Button className="w-full bg-gold hover:bg-yellow-500 text-navy font-medium">
+          {/* Action Buttons */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <Link to={`/services/${categorySlug}/${slug}`}>
+              <Button
+                variant="outline"
+                size="sm"
+                className={`w-full font-semibold transition-all duration-300 ${
+                  featured
+                    ? 'border-gold-600 text-gold-600 hover:bg-gold-600 hover:text-white'
+                    : 'border-navy-600 text-navy-600 hover:bg-navy-600 hover:text-white'
+                }`}
+                style={{ fontFamily: 'Nexa Bold, Inter, sans-serif' }}
+              >
                 Learn More
-                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-            <Button variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
-              Get Quote
-            </Button>
+            
+            <Link to={`/contact?service=${slug}`}>
+              <Button
+                variant={featured ? "gold" : "default"}
+                size="sm"
+                className="w-full font-semibold group/btn"
+                style={{ fontFamily: 'Nexa Bold, Inter, sans-serif' }}
+              >
+                Get Quote
+                <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform duration-200" />
+              </Button>
+            </Link>
           </div>
         </CardContent>
+
+        {/* Bottom Accent Line */}
+        <motion.div
+          className={`absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ${
+            featured
+              ? 'bg-gradient-to-r from-gold-600 to-gold-700'
+              : 'bg-gradient-to-r from-navy-600 to-navy-700'
+          }`}
+        />
       </Card>
     </motion.div>
   );

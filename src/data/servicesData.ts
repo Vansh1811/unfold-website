@@ -10,6 +10,7 @@ export interface SubService {
 }
 
 export interface ServiceCategory {
+  [x: string]: Key;
   id: string;
   name: string;
   slug: string;
@@ -575,6 +576,7 @@ export const moreServices: MoreService[] = [
 
 // Portfolio/Client data
 export interface ClientTestimonial {
+  rating: number;
   id: string;
   clientName: string;
   company: string;
