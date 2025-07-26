@@ -24,7 +24,7 @@ const ServiceCategoryCard = ({
   featured = false
 }: ServiceCategoryCardProps) => {
   // Dynamically get the icon component with fallback
-  const IconComponent = (Icons as any)[icon] as LucideIcon;
+  const IconComponent = (Icons as unknown as Record<string, LucideIcon>)[icon] as LucideIcon;
   const FallbackIcon = Icons.Building2; // Fallback icon
 
   return (

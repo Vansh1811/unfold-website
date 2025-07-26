@@ -1,251 +1,310 @@
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { 
+  ArrowLeft, 
+  Calendar, 
+  User, 
+  Clock, 
+  Share2, 
+  BookmarkPlus,
+  Twitter,
+  Facebook,
+  Linkedin,
+  Tag,
+  ArrowRight
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
-import { blogPosts, searchBlogs } from '@/data/blogsData';
-import { Search, Calendar, User, Clock, ArrowRight } from 'lucide-react';
 
-const BlogList = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filteredBlogs, setFilteredBlogs] = useState(blogPosts);
+interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  date: string;
+  readTime: string;
+  category: string;
+  tags: string[];
+  image: string;
+}
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    const results = searchBlogs(searchQuery);
-    setFilteredBlogs(results);
-  };
+const blogPosts: Record<string, BlogPost> = {
+  'modern-web-design-trends-2024': {
+    id: 'modern-web-design-trends-2024',
+    title: 'Modern Web Design Trends That Will Dominate 2024',
+    excerpt: 'Discover the latest web design trends that are shaping the digital landscape in 2024. From minimalism to interactive experiences.',
+    content: `
+      <p>The world of web design is constantly evolving, and 2024 promises to bring some exciting new trends that will reshape how we think about digital experiences. As we move forward, designers are focusing more on user experience, accessibility, and creating meaningful connections between brands and their audiences.</p>
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-    
-    // Real-time search
-    if (query.trim() === '') {
-      setFilteredBlogs(blogPosts);
-    } else {
-      const results = searchBlogs(query);
-      setFilteredBlogs(results);
-    }
-  };
+      <h2>1. Minimalism with Purpose</h2>
+      <p>Minimalist design continues to dominate, but with a twist. In 2024, we're seeing "purposeful minimalism" where every element serves a specific function. This approach reduces cognitive load while maintaining visual appeal.</p>
 
-  const categories = [...new Set(blogPosts.map(blog => blog.category))];
+      <h2>2. Bold Typography</h2>
+      <p>Typography is taking center stage with oversized fonts, custom typefaces, and creative text treatments. Designers are using typography as a primary design element rather than just a way to convey information.</p>
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
+      <h2>3. Interactive Micro-animations</h2>
+      <p>Subtle animations and micro-interactions are becoming more sophisticated, providing feedback and guiding users through the interface in intuitive ways.</p>
+
+      <h2>4. Dark Mode Design</h2>
+      <p>Dark mode isn't just a trend anymore—it's an expectation. Modern websites are being designed with dark mode in mind from the ground up, not as an afterthought.</p>
+
+      <h2>5. Sustainable Web Design</h2>
+      <p>With growing environmental awareness, designers are focusing on creating more sustainable websites that consume less energy and resources.</p>
+
+      <h2>Conclusion</h2>
+      <p>These trends represent a shift towards more thoughtful, user-centered design approaches. By implementing these trends thoughtfully, designers can create websites that are not only visually appealing but also functional and accessible to all users.</p>
+    `,
+    author: 'Sarah Johnson',
+    date: '2024-01-15',
+    readTime: '5 min read',
+    category: 'Web Design',
+    tags: ['Design', 'Trends', 'UI/UX', 'Web Development'],
+    image: 'https://images.unsplash.com/photo-1558655146-364adaf25c78?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+  }
+};
+
+const relatedPosts = [
+  {
+    id: 'seo-guide-small-business',
+    title: 'Complete SEO Guide for Small Businesses in 2024',
+    category: 'SEO',
+    image: 'https://images.unsplash.com/photo-1553830591-fddf9c784aab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    id: 'react-vs-vue-comparison',
+    title: 'React vs Vue.js: Which Framework Should You Choose?',
+    category: 'Development',
+    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+  }
+];
+
+const BlogDetail = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const post = slug ? blogPosts[slug] : null;
+
+  if (!post) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">Article Not Found</h1>
+          <Button asChild>
+            <Link to="/blog">← Back to Blog</Link>
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  const shareUrl = `${window.location.origin}/blog/${post.id}`;
 
   return (
-    <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="section-padding hero-pattern">
-        <div className="container-custom">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-navy mb-4 md:mb-6">
-              Our <span className="text-gold">Blog</span>
-            </h1>
-            <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-              Stay updated with the latest insights, guides, and news about business compliance, 
-              registration, and growth strategies.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Search and Filter Section */}
-      <section className="py-8 md:py-12 bg-light-gray">
-        <div className="container-custom">
-          <motion.div
-            className="max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <form onSubmit={handleSearch} className="relative mb-6 md:mb-8">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder="Search blog posts..."
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  className="pl-10 pr-4 py-3 text-base bg-white border-gray-200 focus:border-gold focus:ring-gold"
-                />
-              </div>
-            </form>
-
-            {/* Category Filter */}
-            <div className="flex flex-wrap gap-2 justify-center">
-              <Button
-                variant={searchQuery === '' ? 'default' : 'outline'}
-                onClick={() => {
-                  setSearchQuery('');
-                  setFilteredBlogs(blogPosts);
-                }}
-                className="text-sm"
-              >
-                All Posts
-              </Button>
-              {categories.map((category) => (
-                <Button
-                  key={category}
-                  variant="outline"
-                  onClick={() => {
-                    setSearchQuery(category);
-                    const results = searchBlogs(category);
-                    setFilteredBlogs(results);
-                  }}
-                  className="text-sm"
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Blog Posts Grid */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          {filteredBlogs.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {filteredBlogs.map((blog, index) => (
-                <motion.div
-                  key={blog.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -8 }}
-                >
-                  <Card className="h-full bg-white shadow-card hover:shadow-card-hover transition-all duration-300 border-0 group overflow-hidden">
-                    <div className="aspect-video overflow-hidden">
-                      <img
-                        src={blog.image}
-                        alt={blog.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                    
-                    <CardContent className="p-4 md:p-6 flex flex-col h-full">
-                      {/* Category Badge */}
-                      <div className="mb-3">
-                        <span className="inline-block px-3 py-1 bg-gold/10 text-gold text-xs font-medium rounded-full">
-                          {blog.category}
-                        </span>
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="text-lg md:text-xl font-heading font-semibold text-navy mb-3 line-clamp-2 group-hover:text-gold transition-colors duration-300">
-                        {blog.title}
-                      </h3>
-
-                      {/* Summary */}
-                      <p className="text-sm md:text-base text-muted-foreground mb-4 line-clamp-3 flex-grow leading-relaxed">
-                        {blog.summary}
-                      </p>
-
-                      {/* Meta Information */}
-                      <div className="flex flex-wrap items-center gap-3 md:gap-4 text-xs md:text-sm text-muted-foreground mb-4">
-                        <div className="flex items-center gap-1">
-                          <User className="h-3 w-3 md:h-4 md:w-4" />
-                          <span>{blog.author}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3 md:h-4 md:w-4" />
-                          <span>{formatDate(blog.date)}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-3 w-3 md:h-4 md:w-4" />
-                          <span>{blog.readTime}</span>
-                        </div>
-                      </div>
-
-                      {/* Read More Button */}
-                      <Link to={`/blog/${blog.slug}`} className="mt-auto">
-                        <Button 
-                          variant="outline" 
-                          className="w-full border-navy text-navy hover:bg-navy hover:text-white group-hover:bg-gold group-hover:border-gold group-hover:text-navy transition-all duration-300"
-                        >
-                          Read More
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          ) : (
+    <div className="pt-20 bg-gray-50 min-h-screen">
+      {/* Header */}
+      <section className="bg-white border-b">
+        <div className="container mx-auto px-6 py-8">
+          <Button variant="ghost" asChild className="mb-6">
+            <Link to="/blog">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Blog
+            </Link>
+          </Button>
+          
+          <div className="max-w-4xl mx-auto">
             <motion.div
-              className="text-center py-12 md:py-16"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-xl md:text-2xl font-heading font-semibold text-navy mb-4">
-                No blog posts found
-              </h3>
-              <p className="text-muted-foreground mb-6 md:mb-8">
-                Try searching with different keywords or browse all posts.
+              <div className="flex items-center mb-4">
+                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                  {post.category}
+                </span>
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                {post.title}
+              </h1>
+              
+              <p className="text-xl text-gray-600 mb-8">
+                {post.excerpt}
               </p>
-              <Button 
-                onClick={() => {
-                  setSearchQuery('');
-                  setFilteredBlogs(blogPosts);
-                }}
-                className="bg-gold hover:bg-yellow-500 text-navy font-medium"
-              >
-                Show All Posts
-              </Button>
+              
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <div className="flex items-center space-x-6">
+                  <div className="flex items-center">
+                    <User className="h-5 w-5 text-gray-400 mr-2" />
+                    <span className="text-gray-600">{post.author}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Calendar className="h-5 w-5 text-gray-400 mr-2" />
+                    <span className="text-gray-600">
+                      {new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </span>
+                  </div>
+                  <div className="flex items-center">
+                    <Clock className="h-5 w-5 text-gray-400 mr-2" />
+                    <span className="text-gray-600">{post.readTime}</span>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <Button variant="ghost" size="sm">
+                    <BookmarkPlus className="h-4 w-4 mr-1" />
+                    Save
+                  </Button>
+                  <div className="flex items-center space-x-2">
+                    <Share2 className="h-4 w-4 text-gray-400" />
+                    <Button variant="ghost" size="sm" asChild>
+                      <a
+                        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Twitter className="h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button variant="ghost" size="sm" asChild>
+                      <a
+                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Facebook className="h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button variant="ghost" size="sm" asChild>
+                      <a
+                        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Linkedin className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </motion.div>
-          )}
+          </div>
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="section-padding bg-navy text-white">
-        <div className="container-custom">
+      {/* Featured Image */}
+      <section className="py-8">
+        <div className="container mx-auto px-6">
           <motion.div
-            className="text-center max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold mb-4 md:mb-6">
-              Stay Updated
-            </h2>
-            <p className="text-base md:text-lg text-white/90 mb-6 md:mb-8 leading-relaxed px-4">
-              Subscribe to our newsletter for the latest business insights, compliance updates, 
-              and expert tips delivered to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-gold focus:ring-gold"
-              />
-              <Button className="bg-gold hover:bg-yellow-500 text-navy font-semibold px-6 md:px-8 whitespace-nowrap">
-                Subscribe
-              </Button>
-            </div>
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full h-96 object-cover rounded-lg shadow-lg"
+            />
           </motion.div>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="py-8">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="prose prose-lg max-w-none prose-headings:text-gray-800 prose-p:text-gray-600 prose-a:text-blue-600 prose-strong:text-gray-800"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+            
+            {/* Tags */}
+            <div className="mt-12 pt-8 border-t">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Tags</h3>
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                  >
+                    <Tag className="h-3 w-3 mr-1" />
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Posts */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Related Articles</h2>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {relatedPosts.map((relatedPost, index) => (
+                <motion.div
+                  key={relatedPost.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="group"
+                >
+                  <Link to={`/blog/${relatedPost.id}`}>
+                    <div className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow overflow-hidden">
+                      <img
+                        src={relatedPost.image}
+                        alt={relatedPost.title}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="p-6">
+                        <span className="text-xs text-blue-600 font-medium uppercase tracking-wide">
+                          {relatedPost.category}
+                        </span>
+                        <h3 className="text-lg font-semibold text-gray-800 mt-2 group-hover:text-blue-600 transition-colors">
+                          {relatedPost.title}
+                        </h3>
+                        <div className="flex items-center text-blue-600 text-sm font-medium mt-4">
+                          Read Article
+                          <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Digital Presence?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Let's work together to implement these modern design trends in your next project.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild variant="secondary" size="lg">
+              <Link to="/contact">Start Your Project</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link to="/services">View Our Services</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>
   );
 };
 
-export default BlogList;
+export default BlogDetail;

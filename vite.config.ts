@@ -46,13 +46,7 @@ export default defineConfig(({ mode }) => ({
     // Enable source maps for production debugging (optional)
     sourcemap: mode === 'production' ? false : true,
     // Minification settings
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: mode === 'production',
-        drop_debugger: mode === 'production',
-      },
-    },
+    minify: 'esbuild',
   },
   
   // CSS optimizations
@@ -66,15 +60,6 @@ export default defineConfig(({ mode }) => ({
           $white: #ffffff;
         `,
       },
-    },
-    // PostCSS optimizations for production
-    postcss: {
-      plugins: mode === 'production' ? [
-        require('autoprefixer'),
-        require('cssnano')({
-          preset: 'default',
-        }),
-      ] : [],
     },
   },
   

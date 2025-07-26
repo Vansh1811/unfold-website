@@ -24,8 +24,7 @@ const SubServiceCard = ({
   index,
   featured = false
 }: SubServiceCardProps) => {
-  // Dynamically get the icon component with fallback
-  const IconComponent = (Icons as any)[icon] as React.ComponentType<{ className?: string }>;
+  const IconComponent = (Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[icon];
   const FallbackIcon = Icons.Building2;
 
   return (
@@ -47,7 +46,6 @@ const SubServiceCard = ({
           ? 'bg-gradient-to-br from-gold-50 to-gold-100 border-2 border-gold-200 shadow-gold hover:shadow-gold-lg' 
           : 'bg-white border border-gray-200 shadow-lg hover:shadow-xl'
       }`}>
-        {/* Featured Badge */}
         {featured && (
           <motion.div
             initial={{ scale: 0 }}
@@ -60,11 +58,9 @@ const SubServiceCard = ({
           </motion.div>
         )}
 
-        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-navy-600/0 via-transparent to-gold-600/0 group-hover:from-navy-600/5 group-hover:to-gold-600/5 transition-all duration-700" />
 
         <CardContent className="relative p-6 sm:p-8 h-full flex flex-col z-10">
-          {/* Icon Section */}
           <motion.div
             whileHover={{ 
               scale: 1.1, 
@@ -91,7 +87,6 @@ const SubServiceCard = ({
             </div>
           </motion.div>
 
-          {/* Content Section */}
           <div className="flex-grow mb-6">
             <motion.h3 
               className={`text-xl sm:text-2xl font-bold mb-3 leading-tight tracking-tight transition-colors duration-300 ${
@@ -110,9 +105,9 @@ const SubServiceCard = ({
               {description}
             </p>
 
-            {/* Features List */}
+            {/* ✅ Fixed Feature List */}
             <div className="space-y-2 mb-4">
-              {features.slice(0, 4).map((feature, featureIndex) => (
+              {(features?.slice(0, 4) || []).map((feature, featureIndex) => (
                 <motion.div
                   key={featureIndex}
                   initial={{ opacity: 0, x: -10 }}
@@ -130,7 +125,6 @@ const SubServiceCard = ({
             </div>
           </div>
 
-          {/* Pricing Section */}
           {(price || duration) && (
             <div className="border-t border-gray-100 pt-4 mb-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
@@ -156,7 +150,6 @@ const SubServiceCard = ({
             </div>
           )}
 
-          {/* Action Buttons */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Link to={`/services/${categorySlug}/${slug}`}>
               <Button
@@ -187,7 +180,6 @@ const SubServiceCard = ({
           </div>
         </CardContent>
 
-        {/* Bottom Accent Line */}
         <motion.div
           className={`absolute bottom-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ${
             featured

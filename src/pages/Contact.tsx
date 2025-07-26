@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle, User, Building2, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, User, Building2, MessageSquare, Star } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -69,24 +69,24 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Call Us',
-      primary: '+91 98765 43210',
-      secondary: 'Mon-Fri: 9 AM - 7 PM IST',
+      primary: '+91 995-897-8970',
+      secondary: 'Mon-Sat: 9 AM - 7 PM IST',
       gradient: 'from-green-500 to-green-600',
-      href: 'tel:+919876543210'
+      href: 'tel:+919958978970'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      primary: 'Business Hub, Mumbai',
-      secondary: 'Schedule an appointment',
+      primary: 'B-145, Ground Floor, Sector-51',
+      secondary: 'Noida, Uttar Pradesh 201301',
       gradient: 'from-purple-500 to-purple-600',
       href: '#'
     },
     {
       icon: Clock,
-      title: 'Quick Response',
-      primary: '24-hour turnaround',
-      secondary: 'For urgent consultations',
+      title: 'Business Hours',
+      primary: 'Monday - Saturday',
+      secondary: '9:00 AM - 7:00 PM IST',
       gradient: 'from-orange-500 to-orange-600',
       href: '#'
     }
@@ -104,6 +104,10 @@ const Contact = () => {
     {
       question: 'What makes your compliance approach different?',
       answer: 'We focus on turning compliance into a competitive advantage rather than just meeting minimum requirements.'
+    },
+    {
+      question: 'Do you provide ongoing support after service completion?',
+      answer: 'Yes, we offer comprehensive post-service support and annual maintenance packages for continued compliance.'
     }
   ];
 
@@ -128,7 +132,8 @@ const Contact = () => {
               Let's Connect
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-navy-900 mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-navy-900 mb-6 leading-tight"
+                style={{ fontFamily: 'Nexa Bold' }}>
               Start Your
               <span className="bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent block sm:inline sm:ml-4">
                 Success Story
@@ -150,7 +155,8 @@ const Contact = () => {
             >
               <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-sm overflow-hidden">
                 <CardHeader className="bg-gradient-to-r from-navy-600 to-navy-700 text-white pb-8">
-                  <CardTitle className="text-2xl sm:text-3xl font-bold flex items-center gap-3">
+                  <CardTitle className="text-2xl sm:text-3xl font-bold flex items-center gap-3"
+                             style={{ fontFamily: 'Nexa Bold' }}>
                     <Send className="w-7 h-7" />
                     Send us a Message
                   </CardTitle>
@@ -287,6 +293,7 @@ const Contact = () => {
                           type="submit"
                           disabled={isSubmitting}
                           className="w-full bg-gradient-to-r from-navy-600 via-navy-700 to-navy-800 hover:from-navy-700 hover:via-navy-800 hover:to-navy-900 text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed"
+                          style={{ fontFamily: 'Nexa Bold' }}
                         >
                           {isSubmitting ? (
                             <div className="flex items-center gap-3">
@@ -315,7 +322,10 @@ const Contact = () => {
                       >
                         <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-6" />
                       </motion.div>
-                      <h3 className="text-2xl sm:text-3xl font-bold text-navy-900 mb-3">Message Sent Successfully!</h3>
+                      <h3 className="text-2xl sm:text-3xl font-bold text-navy-900 mb-3"
+                          style={{ fontFamily: 'Nexa Bold' }}>
+                        Message Sent Successfully!
+                      </h3>
                       <p className="text-gray-600 text-lg mb-6">Thank you for reaching out. We'll get back to you within 24 hours.</p>
                       <Button
                         onClick={() => {
@@ -362,7 +372,8 @@ const Contact = () => {
                           <info.icon className="w-7 h-7 text-white" />
                         </motion.div>
                         <div className="flex-1">
-                          <h3 className="font-bold text-navy-900 text-lg mb-1">
+                          <h3 className="font-bold text-navy-900 text-lg mb-1"
+                              style={{ fontFamily: 'Nexa Bold' }}>
                             {info.title}
                           </h3>
                           <p className="text-navy-700 font-semibold text-base">
@@ -381,8 +392,10 @@ const Contact = () => {
               {/* FAQ Section */}
               <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="text-xl font-bold text-navy-900">
-                    Quick answers to common questions about our services.
+                  <CardTitle className="text-xl font-bold text-navy-900 flex items-center gap-2"
+                             style={{ fontFamily: 'Nexa Bold' }}>
+                    <Star className="w-5 h-5 text-gold-500" />
+                    Frequently Asked Questions
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -394,7 +407,8 @@ const Contact = () => {
                       transition={{ delay: 1 + index * 0.1 }}
                       className="border-b border-gray-100 last:border-b-0 pb-4 last:pb-0"
                     >
-                      <h4 className="font-semibold text-navy-700 mb-2 text-sm">
+                      <h4 className="font-semibold text-navy-700 mb-2 text-sm"
+                          style={{ fontFamily: 'Nexa Bold' }}>
                         {faq.question}
                       </h4>
                       <p className="text-gray-600 text-sm leading-relaxed">

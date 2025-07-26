@@ -149,11 +149,11 @@ const SearchBar = ({
               className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl border border-gray-200 shadow-xl z-50 overflow-hidden"
             >
               <div className="p-4">
-                <p className="text-sm font-medium text-navy-700 mb-2" style={{ fontFamily: 'Nexa Bold, Inter, sans-serif' }}>
+                <p className="text-sm font-medium text-navy-700" style={{ fontFamily: 'Nexa Bold, Inter, sans-serif' }}>
                   Quick Suggestions
                 </p>
                 <div className="space-y-2">
-                  {['Company Registration', 'GST Filing', 'Trademark Protection', 'Virtual CFO'].map((suggestion, index) => (
+                  {['Private Limited Company', 'GST Registration', 'Trademark Registration', 'Virtual CFO Services', 'Annual Compliance', 'Patent Registration'].map((suggestion, index) => (
                     <motion.button
                       key={suggestion}
                       initial={{ opacity: 0, x: -10 }}

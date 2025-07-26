@@ -56,7 +56,7 @@ const CardTitle = React.forwardRef<
   }
 >(({ className, as: Component = 'h3', gradient = false, children, ...props }, ref) => (
   <Component
-    ref={ref as any}
+    ref={ref as React.RefObject<HTMLHeadingElement>}
     className={cn(
       "text-xl font-bold leading-tight tracking-tight text-gray-900",
       gradient && "bg-gradient-to-r from-navy-600 to-navy-800 bg-clip-text text-transparent",

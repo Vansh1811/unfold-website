@@ -7,26 +7,26 @@ const WhyChooseUs = () => {
     {
       icon: Award,
       title: '12+ Years Excellence',
-      description: 'Proven track record of helping 200+ businesses navigate complex compliance challenges with expert guidance and innovative solutions.',
-      stat: '200+',
+      description: 'Proven track record of helping 500+ businesses navigate complex compliance challenges with expert guidance and innovative solutions.',
+      stat: '500+',
       statLabel: 'Clients Served',
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-navy to-navy-700'
     },
     {
       icon: Lightbulb,
       title: 'Tailored Solutions',
       description: 'Every business is unique. We create customized strategies that align with your specific industry requirements and business goals.',
-      stat: '15+',
+      stat: '25+',
       statLabel: 'Industries',
-      color: 'from-purple-500 to-purple-600'
+      color: 'from-gold to-gold-600'
     },
     {
       icon: Heart,
       title: 'Ethical & Transparent',
       description: 'Built on trust and integrity. We believe in honest communication and ethical practices in everything we do.',
-      stat: '98%',
+      stat: '99%',
       statLabel: 'Satisfaction',
-      color: 'from-red-500 to-red-600'
+      color: 'from-navy to-navy-700'
     },
     {
       icon: Shield,
@@ -34,14 +34,14 @@ const WhyChooseUs = () => {
       description: 'We ensure 100% regulatory compliance with continuous monitoring and proactive updates for changing requirements.',
       stat: '100%',
       statLabel: 'Compliance',
-      color: 'from-green-500 to-green-600'
+      color: 'from-gold to-gold-600'
     }
   ];
 
   const achievements = [
-    { icon: Users, number: '200+', label: 'Happy Clients' },
+    { icon: Users, number: '500+', label: 'Happy Clients' },
     { icon: Award, number: '12+', label: 'Years Experience' },
-    { icon: TrendingUp, number: '150%', label: 'Average Growth' },
+    { icon: TrendingUp, number: '99%', label: 'Success Rate' },
     { icon: Star, number: '4.9/5', label: 'Client Rating' }
   ];
 
@@ -62,7 +62,7 @@ const WhyChooseUs = () => {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 10
       }
@@ -116,7 +116,7 @@ const WhyChooseUs = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-navy-900 mb-4 sm:mb-6 leading-tight">
             Trusted by
             <span className="bg-gradient-to-r from-gold-500 via-gold-600 to-gold-500 bg-clip-text text-transparent block sm:inline sm:ml-3 relative">
-              200+ Businesses
+              500+ Businesses
               <motion.div
                 className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent"
                 animate={{ scaleX: [0, 1, 0] }}

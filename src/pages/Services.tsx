@@ -3,19 +3,24 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Search, Filter, ArrowRight, CheckCircle, Clock, Users, Award } from 'lucide-react';
+import { Search, Filter, ArrowRight, CheckCircle, Clock, Users, Award, Grid3X3, List, Star } from 'lucide-react';
+import { mainServiceCategories, searchServices } from '@/data/servicesData';
+import ServiceCategoryCard from '@/components/ServiceCategoryCard';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const serviceCategories = [
-    { id: 'all', name: 'All Services', count: 15 },
-    { id: 'incorporation', name: 'Company Formation', count: 4 },
-    { id: 'compliance', name: 'Legal Compliance', count: 3 },
-    { id: 'accounting', name: 'Accounting & Tax', count: 4 },
-    { id: 'hr', name: 'HR Solutions', count: 2 },
-    { id: 'advisory', name: 'Business Advisory', count: 2 }
+    { id: 'all', name: 'All Services', count: 50 },
+    { id: 'company-formation', name: 'Company Formation', count: 6 },
+    { id: 'legal-compliance', name: 'Legal Compliance', count: 6 },
+    { id: 'taxation-accounting', name: 'Taxation & Accounting', count: 4 },
+    { id: 'intellectual-property', name: 'IP Rights', count: 4 },
+    { id: 'hr-payroll', name: 'HR Solutions', count: 3 },
+    { id: 'business-licensing', name: 'Business Licensing', count: 4 }
   ];
 
   const processSteps = [
@@ -49,6 +54,12 @@ const Services = () => {
     }
   ];
 
+  const filteredServices = mainServiceCategories.filter(service => 
+    (selectedCategory === 'all' || service.id === selectedCategory) &&
+    (service.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+     service.description.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
       {/* Hero Section */}
@@ -70,7 +81,8 @@ const Services = () => {
               Professional Services
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-navy-900 mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-navy-900 mb-6 leading-tight"
+                style={{ fontFamily: 'Nexa Bold' }}>
               Complete Business
               <span className="bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent block sm:inline sm:ml-4">
                 Solutions
@@ -86,79 +98,108 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="max-w-2xl mx-auto"
+              className="max-w-4xl mx-auto"
             >
-              <div className="flex flex-col sm:flex-row gap-4 bg-white/80 backdrop-blur-sm p-4 rounded-2xl shadow-lg">
-                <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input
-                    type="text"
-                    placeholder="Search services..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10 border-0 bg-gray-50 focus:bg-white transition-colors h-12"
-                  />
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 p-6">
+                <div className="flex flex-col lg:flex-row gap-4 items-center">
+                  <div className="relative flex-1 max-w-md">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Input
+                      type="text"
+                      placeholder="Search services..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="pl-10 border-2 bg-white focus:bg-white border-gray-200 focus:border-navy-500 h-12 rounded-xl"
+                    />
+                  </div>
+                  
+                  <select
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    className="px-4 py-3 bg-white border-2 border-gray-200 rounded-xl font-medium text-gray-700 focus:border-navy-500 transition-colors min-w-[200px]"
+                  >
+                    {serviceCategories.map(category => (
+                      <option key={category.id} value={category.id}>
+                        {category.name} ({category.count})
+                      </option>
+                    ))}
+                  </select>
+
+                  <div className="flex items-center bg-gray-100 rounded-xl p-1">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setViewMode('grid')}
+                      className={`p-3 rounded-lg transition-all duration-200 ${
+                        viewMode === 'grid' ? 'bg-white shadow-sm text-navy-600' : 'text-gray-500'
+                      }`}
+                    >
+                      <Grid3X3 className="w-5 h-5" />
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setViewMode('list')}
+                      className={`p-3 rounded-lg transition-all duration-200 ${
+                        viewMode === 'list' ? 'bg-white shadow-sm text-navy-600' : 'text-gray-500'
+                      }`}
+                    >
+                      <List className="w-5 h-5" />
+                    </motion.button>
+                  </div>
                 </div>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="px-4 py-3 bg-gray-50 border-0 rounded-lg font-medium text-gray-700 focus:bg-white transition-colors min-w-[200px]"
-                >
-                  {serviceCategories.map(category => (
-                    <option key={category.id} value={category.id}>
-                      {category.name} ({category.count})
-                    </option>
-                  ))}
-                </select>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Service Categories Grid */}
+          {/* Services Grid */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-16"
+            className={`grid gap-6 lg:gap-8 mb-16 ${
+              viewMode === 'grid' 
+                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                : 'grid-cols-1 max-w-4xl mx-auto'
+            }`}
           >
-            {serviceCategories.slice(1).map((category, index) => (
-              <motion.button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`p-4 rounded-xl text-center transition-all duration-300 ${
-                  selectedCategory === category.id
-                    ? 'bg-navy-600 text-white shadow-lg'
-                    : 'bg-white/80 text-navy-600 hover:bg-navy-50'
-                }`}
+            {filteredServices.length > 0 ? (
+              filteredServices.map((category, index) => (
+                <motion.div
+                  key={category.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                >
+                  <ServiceCategoryCard 
+                  subServiceCount={0} {...category}
+                  index={index}
+                  featured={index === 0 || index === 3}                  />
+                </motion.div>
+              ))
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="col-span-full text-center py-16"
               >
-                <div className="font-semibold text-sm mb-1">{category.name}</div>
-                <div className="text-xs opacity-75">{category.count} services</div>
-              </motion.button>
-            ))}
-          </motion.div>
-
-          {/* No Results State */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-16"
-          >
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Search className="w-8 h-8 text-gray-400" />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-600 mb-2">No services found</h3>
-            <p className="text-gray-500 mb-6">Try searching with different keywords or browse our service categories below.</p>
-            <Button
-              onClick={() => {
-                setSearchTerm('');
-                setSelectedCategory('all');
-              }}
-              className="bg-navy-600 hover:bg-navy-700 text-white px-6 py-2 rounded-lg"
-            >
-              View All Services
-            </Button>
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Search className="w-8 h-8 text-gray-400" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-600 mb-2">No services found</h3>
+                <p className="text-gray-500 mb-6">Try searching with different keywords or browse our service categories.</p>
+                <Button
+                  onClick={() => {
+                    setSearchTerm('');
+                    setSelectedCategory('all');
+                  }}
+                  className="bg-navy-600 hover:bg-navy-700 text-white px-6 py-2 rounded-lg"
+                >
+                  View All Services
+                </Button>
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </section>
@@ -173,7 +214,8 @@ const Services = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12 sm:mb-16 lg:mb-20"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-6"
+                style={{ fontFamily: 'Nexa Bold' }}>
               Our Proven Process
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -204,7 +246,8 @@ const Services = () => {
                       </div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-navy-900 mb-3">
+                    <h3 className="text-xl font-bold text-navy-900 mb-3"
+                        style={{ fontFamily: 'Nexa Bold' }}>
                       {step.title}
                     </h3>
                     
@@ -241,7 +284,8 @@ const Services = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6"
+                style={{ fontFamily: 'Nexa Bold' }}>
               Ready to Get Started?
             </h2>
             <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -253,7 +297,8 @@ const Services = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-900 px-8 py-4 rounded-xl text-lg font-bold shadow-2xl">
+                <Button className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-900 px-8 py-4 rounded-xl text-lg font-bold shadow-2xl"
+                        style={{ fontFamily: 'Nexa Bold' }}>
                   Free Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -263,7 +308,11 @@ const Services = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-8 py-4 rounded-xl text-lg font-semibold border border-white/20">
+                <Button
+                  variant="outline"
+                  className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 rounded-xl text-lg font-semibold"
+                  style={{ fontFamily: 'Nexa Bold' }}
+                >
                   View Portfolio
                 </Button>
               </motion.div>
