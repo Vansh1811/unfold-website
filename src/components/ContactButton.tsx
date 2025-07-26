@@ -11,7 +11,7 @@ interface ContactButtonProps {
   serviceId?: string;
 }
 
-const ContactButton: React.FC<ContactButtonProps> = ({ 
+const ContactButton: React.FC<ContactButtonProps> = ({  
   text = 'Get Quote',
   variant = 'default',
   size = 'default',
