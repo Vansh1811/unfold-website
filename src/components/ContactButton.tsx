@@ -18,7 +18,7 @@ const ContactButton: React.FC<ContactButtonProps> = ({
   className = '',   
   serviceId
 }) => {
-  const contactUrl = serviceId 
+  const contactUrl = serviceId  
     ? `/contact?service=${serviceId}` 
     : '/contact';
 
