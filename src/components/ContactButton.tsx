@@ -13,7 +13,7 @@ interface ContactButtonProps {
 
 const ContactButton: React.FC<ContactButtonProps> = ({  
   text = 'Get Quote',
-  variant = 'default',
+  variant = 'default', 
   size = 'default',
   className = '',
   serviceId
