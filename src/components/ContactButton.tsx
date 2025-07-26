@@ -15,7 +15,7 @@ const ContactButton: React.FC<ContactButtonProps> = ({
   text = 'Get Quote',
   variant = 'default', 
   size = 'default',
-  className = '',  
+  className = '',   
   serviceId
 }) => {
   const contactUrl = serviceId 
