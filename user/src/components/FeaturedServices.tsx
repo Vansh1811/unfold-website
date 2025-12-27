@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Star, Building2, User, Award, Heart, CheckCircle, Clock } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ArrowRight, Star, Building2, User, Award, Heart } from 'lucide-react';
 
 const FeaturedServices = () => {
   // Top 4 trending business incorporation services
@@ -12,61 +11,29 @@ const FeaturedServices = () => {
       id: 'private-limited-company',
       name: 'Private Limited Company Incorporation',
       slug: 'private-limited-company',
-      description: 'Most popular choice for startups and growing enterprises due to its limited liability protection, ease of fundraising, and trusted status with customers and investors.',
+      description: 'Limited liability protection with ease of fundraising for startups and enterprises.',
       icon: Building2,
-      features: [
-        'Limited liability protection for shareholders',
-        'Enhanced credibility with customers and investors', 
-        'Easy fundraising through equity participation'
-      ],
-      duration: '7-15 days',
-      popular: true,
-      trending: true
     },
     {
       id: 'one-person-company',
       name: 'One Person Company (OPC) Setup',
       slug: 'one-person-company',
-      description: 'Perfect for solo entrepreneurs who want limited liability protection while maintaining complete control over their business operations.',
+      description: 'Solo entrepreneurship with limited liability and complete control over business.',
       icon: User,
-      features: [
-        'Single person ownership and complete control',
-        'Limited liability protection for the member',
-        'Easy conversion to Private Limited Company'
-      ],
-      duration: '7-12 days',
-      popular: true,
-      trending: false
     },
     {
       id: 'public-limited-company',
       name: 'Public Limited Company Formation',
       slug: 'public-limited-company',
-      description: 'Form a Public Limited Company for large-scale business operations with the ability to raise capital from the public through share offerings.',
+      description: 'Large-scale operations with unlimited fundraising potential through public offerings.',
       icon: Award,
-      features: [
-        'Unlimited fundraising potential through public offerings',
-        'Enhanced market credibility and brand value',
-        'Easier acquisition and merger opportunities'
-      ],
-      duration: '15-30 days',
-      popular: false,
-      trending: true
     },
     {
       id: 'section8-company',
       name: 'Section 8 Company (Non-Profit)',
       slug: 'section8-company',
-      description: 'Establish a Section 8 company for promoting charitable, educational, scientific, or social welfare objectives without profit distribution to members.',
+      description: 'Charitable and educational organizations with tax exemptions and credibility.',
       icon: Heart,
-      features: [
-        'Tax exemptions under Section 12A and 80G',
-        'No minimum capital requirement',
-        'Credibility for funding and grants'
-      ],
-      duration: '20-35 days',
-      popular: false,
-      trending: true
     }
   ];
 
@@ -93,85 +60,39 @@ const FeaturedServices = () => {
           </p>
         </div>
 
-        {/* Featured Services Grid - Simple and Working */}
+        {/* ✅ FIXED: Featured Services Grid with Equal Heights */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {featuredServices.map((service, index) => {
+          {featuredServices.map((service) => {
             const IconComponent = service.icon;
             
             return (
-              <div
-                key={service.id}
-                className="group"
-              >
-                <Card className="h-full border-2 border-gray-100 hover:border-gold/30 transition-all duration-300 bg-white hover:shadow-lg relative overflow-hidden">
-                  {/* Trending Badge */}
-                  {service.trending && (
-                    <div className="absolute top-4 right-4 z-10">
-                      <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-semibold">
-                        🔥 Trending
-                      </Badge>
-                    </div>
-                  )}
-
+              <div key={service.id} className="group">
+                {/* ✅ Fixed height: h-full ensures all cards match */}
+                <Card className="h-full flex flex-col border-2 border-gray-100 hover:border-navy/30 transition-all duration-300 bg-white hover:shadow-lg relative overflow-hidden">
+                  
                   <CardHeader className="pb-4">
                     {/* Icon */}
                     <div className="w-12 h-12 bg-gradient-to-br from-navy to-navy-700 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                       <IconComponent className="w-6 h-6 text-gold" />
                     </div>
                     
-                    {/* Badges Row */}
-                    <div className="flex items-center justify-between mb-3">
-                      <Badge 
-                        variant="secondary" 
-                        className={`text-xs font-semibold ${
-                          service.popular 
-                            ? 'bg-gold/10 text-gold hover:bg-gold/20' 
-                            : 'bg-blue-50 text-blue-600'
-                        }`}
-                      >
-                        {service.popular ? '⭐ Popular' : 'Featured'}
-                      </Badge>
-                      
-                      <div className="flex items-center text-xs text-gray-500">
-                        <Clock className="w-3 h-3 mr-1" />
-                        {service.duration}
-                      </div>
-                    </div>
-                    
                     {/* Title */}
-                    <CardTitle className="text-lg font-bold text-navy group-hover:text-gold transition-colors duration-300 mb-3 leading-tight min-h-[3rem]">
+                    <CardTitle className="text-lg font-bold text-navy group-hover:text-navy-700 transition-colors duration-300 mb-2 leading-tight min-h-[4rem]">
                       {service.name}
                     </CardTitle>
-                    
-                    {/* Description */}
-                    <CardDescription className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
-                      {service.description}
-                    </CardDescription>
-
-                    {/* Benefits Badge */}
-                    <div className="mb-4">
-                      <p className="text-xs font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full inline-block">
-                        {service.popular ? 'Perfect for startups seeking investment and growth' : 'Ideal for individual entrepreneurs and freelancers'}
-                      </p>
-                    </div>
                   </CardHeader>
                   
-                  <CardContent className="pt-0">
-                    {/* Features List */}
-                    <div className="space-y-2 mb-6">
-                      {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-start text-sm text-gray-700">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="leading-relaxed">{feature}</span>
-                        </div>
-                      ))}
-                      
-                      <div className="text-xs text-gold font-medium pl-6">
-                        +3 more features included
-                      </div>
-                    </div>
+                  {/* ✅ Flex-grow pushes buttons to bottom */}
+                  <CardContent className="pt-0 flex flex-col flex-grow">
+                    {/* Brief Description - Fixed height */}
+                    <p className="text-gray-600 text-sm leading-relaxed mb-6 h-[4rem] overflow-hidden">
+                      {service.description}
+                    </p>
+
+                    {/* ✅ Spacer that grows to push buttons down */}
+                    <div className="flex-grow"></div>
                     
-                    {/* Action Buttons */}
+                    {/* Action Buttons - Always at bottom */}
                     <div className="space-y-3">
                       <Link 
                         to={`/services/company-formation/${service.slug}`}
@@ -190,7 +111,7 @@ const FeaturedServices = () => {
                         <Button 
                           variant="outline" 
                           size="sm"
-                          className="w-full text-xs border-gray-300 text-gray-600 hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300"
+                          className="w-full text-xs border-navy text-navy hover:border-navy hover:bg-navy hover:text-white transition-all duration-300"
                         >
                           Get Expert Consultation
                         </Button>
