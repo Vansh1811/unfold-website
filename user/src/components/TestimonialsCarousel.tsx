@@ -257,10 +257,7 @@ const TestimonialsCarousel = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           {[
-            { number: '500+', label: 'Happy Clients' },
-            { number: '4.9/5', label: 'Average Rating' },
-            { number: '12+', label: 'Years Experience' },
-            { number: '99%', label: 'Success Rate' }
+          
           ].map((stat, index) => (
             <div key={index} className="text-center">
               <div className="text-3xl md:text-4xl font-heading font-bold text-navy mb-2">

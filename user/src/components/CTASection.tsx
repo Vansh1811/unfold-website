@@ -16,7 +16,7 @@ const CTASection = () => (
     />
     <motion.div
       animate={{ scale: [1, 1.25, 1], rotate: [180, 90, 0], opacity: [0.03, 0.05, 0.03] }}
-      transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+       transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
       className="absolute -bottom-28 -right-28 h-[26rem] w-[26rem] rounded-full bg-gradient-to-br from-navy-400 to-navy-600 blur-3xl"
     />
 

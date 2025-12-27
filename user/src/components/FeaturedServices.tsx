@@ -3,62 +3,82 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Star, Building2, Scale, Calculator, Shield } from 'lucide-react';
-import { getFeaturedServices } from '@/data/servicesData';
+import { ArrowRight, Star, Building2, User, Award, Heart, CheckCircle, Clock } from 'lucide-react';
 
 const FeaturedServices = () => {
-  const featuredServices = getFeaturedServices();
-  
-  const serviceIcons = {
-    'Company Formation & Registration': Building2,
-    'Legal Compliance & Advisory': Scale,
-    'Taxation & Accounting': Calculator,
-    'Intellectual Property Rights': Shield,
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30,
-      scale: 0.9
+  // Top 4 trending business incorporation services
+  const featuredServices = [
+    {
+      id: 'private-limited-company',
+      name: 'Private Limited Company Incorporation',
+      slug: 'private-limited-company',
+      description: 'Most popular choice for startups and growing enterprises due to its limited liability protection, ease of fundraising, and trusted status with customers and investors.',
+      icon: Building2,
+      features: [
+        'Limited liability protection for shareholders',
+        'Enhanced credibility with customers and investors', 
+        'Easy fundraising through equity participation'
+      ],
+      duration: '7-15 days',
+      popular: true,
+      trending: true
     },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
+    {
+      id: 'one-person-company',
+      name: 'One Person Company (OPC) Setup',
+      slug: 'one-person-company',
+      description: 'Perfect for solo entrepreneurs who want limited liability protection while maintaining complete control over their business operations.',
+      icon: User,
+      features: [
+        'Single person ownership and complete control',
+        'Limited liability protection for the member',
+        'Easy conversion to Private Limited Company'
+      ],
+      duration: '7-12 days',
+      popular: true,
+      trending: false
+    },
+    {
+      id: 'public-limited-company',
+      name: 'Public Limited Company Formation',
+      slug: 'public-limited-company',
+      description: 'Form a Public Limited Company for large-scale business operations with the ability to raise capital from the public through share offerings.',
+      icon: Award,
+      features: [
+        'Unlimited fundraising potential through public offerings',
+        'Enhanced market credibility and brand value',
+        'Easier acquisition and merger opportunities'
+      ],
+      duration: '15-30 days',
+      popular: false,
+      trending: true
+    },
+    {
+      id: 'section8-company',
+      name: 'Section 8 Company (Non-Profit)',
+      slug: 'section8-company',
+      description: 'Establish a Section 8 company for promoting charitable, educational, scientific, or social welfare objectives without profit distribution to members.',
+      icon: Heart,
+      features: [
+        'Tax exemptions under Section 12A and 80G',
+        'No minimum capital requirement',
+        'Credibility for funding and grants'
+      ],
+      duration: '20-35 days',
+      popular: false,
+      trending: true
     }
-  };
+  ];
 
   return (
     <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4">
         {/* Section Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
             <Star className="w-4 h-4 text-gold mr-2" />
             <span className="text-sm font-semibold text-navy">
-              Featured Services
+              Business Incorporation Services
             </span>
           </div>
           
@@ -66,127 +86,140 @@ const FeaturedServices = () => {
             Most Popular Business Services
           </h2>
           
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Discover our top-rated services that have helped thousands of entrepreneurs 
-            start and grow their businesses successfully across India.
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            End-to-end company formation services across all major business types in India. 
+            Our experts handle name approvals, document drafting, government filings, and 
+            post-incorporation compliance for a seamless business launch.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Featured Services Grid */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
+        {/* Featured Services Grid - Simple and Working */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {featuredServices.map((service, index) => {
-            const IconComponent = serviceIcons[service.category as keyof typeof serviceIcons] || Building2;
+            const IconComponent = service.icon;
             
             return (
-              <motion.div
+              <div
                 key={service.id}
-                variants={cardVariants}
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 25px 50px -12px rgba(15, 27, 43, 0.25)"
-                }}
                 className="group"
               >
-                <Card className="h-full border-2 border-gray-100 hover:border-gold/30 transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-white hover:to-gold/5 overflow-hidden">
+                <Card className="h-full border-2 border-gray-100 hover:border-gold/30 transition-all duration-300 bg-white hover:shadow-lg relative overflow-hidden">
+                  {/* Trending Badge */}
+                  {service.trending && (
+                    <div className="absolute top-4 right-4 z-10">
+                      <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-semibold">
+                        🔥 Trending
+                      </Badge>
+                    </div>
+                  )}
+
                   <CardHeader className="pb-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-navy to-navy-700 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent className="w-7 h-7 text-gold" />
+                    {/* Icon */}
+                    <div className="w-12 h-12 bg-gradient-to-br from-navy to-navy-700 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent className="w-6 h-6 text-gold" />
                     </div>
                     
-                    <div className="flex items-center justify-between mb-2">
+                    {/* Badges Row */}
+                    <div className="flex items-center justify-between mb-3">
                       <Badge 
                         variant="secondary" 
-                        className="bg-gold/10 text-gold hover:bg-gold/20 text-xs font-semibold"
+                        className={`text-xs font-semibold ${
+                          service.popular 
+                            ? 'bg-gold/10 text-gold hover:bg-gold/20' 
+                            : 'bg-blue-50 text-blue-600'
+                        }`}
                       >
-                        Popular
+                        {service.popular ? '⭐ Popular' : 'Featured'}
                       </Badge>
-                      {service.price && (
-                        <span className="text-sm font-bold text-navy">
-                          {service.price}
-                        </span>
-                      )}
+                      
+                      <div className="flex items-center text-xs text-gray-500">
+                        <Clock className="w-3 h-3 mr-1" />
+                        {service.duration}
+                      </div>
                     </div>
                     
-                    <CardTitle className="text-xl font-heading font-bold text-navy group-hover:text-gold transition-colors duration-300 line-clamp-2">
+                    {/* Title */}
+                    <CardTitle className="text-lg font-bold text-navy group-hover:text-gold transition-colors duration-300 mb-3 leading-tight min-h-[3rem]">
                       {service.name}
                     </CardTitle>
                     
-                    <CardDescription className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                    {/* Description */}
+                    <CardDescription className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
                       {service.description}
                     </CardDescription>
+
+                    {/* Benefits Badge */}
+                    <div className="mb-4">
+                      <p className="text-xs font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full inline-block">
+                        {service.popular ? 'Perfect for startups seeking investment and growth' : 'Ideal for individual entrepreneurs and freelancers'}
+                      </p>
+                    </div>
                   </CardHeader>
                   
                   <CardContent className="pt-0">
-                    <div className="space-y-3 mb-6">
-                      {service.features.slice(0, 3).map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-gray-700">
-                          <div className="w-1.5 h-1.5 bg-gold rounded-full mr-3 flex-shrink-0" />
-                          {feature}
+                    {/* Features List */}
+                    <div className="space-y-2 mb-6">
+                      {service.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start text-sm text-gray-700">
+                          <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="leading-relaxed">{feature}</span>
                         </div>
                       ))}
                       
-                      {service.features.length > 3 && (
-                        <div className="text-xs text-gray-500 font-medium">
-                          +{service.features.length - 3} more features
-                        </div>
-                      )}
+                      <div className="text-xs text-gold font-medium pl-6">
+                        +3 more features included
+                      </div>
                     </div>
                     
-                    <div className="flex items-center justify-between">
-                      {service.duration && (
-                        <span className="text-xs text-gray-500 font-medium">
-                          Duration: {service.duration}
-                        </span>
-                      )}
-                      
+                    {/* Action Buttons */}
+                    <div className="space-y-3">
                       <Link 
-                        to={`/services/${service.category.toLowerCase().replace(/\s+/g, '-').replace('&', '').replace(/\s+/g, '-')}/${service.slug}`}
-                        className="group/link"
+                        to={`/services/company-formation/${service.slug}`}
+                        className="block"
                       >
                         <Button 
-                          size="sm" 
-                          className="bg-navy hover:bg-navy-700 text-white group-hover/link:bg-gold group-hover/link:text-navy transition-all duration-300"
+                          className="w-full bg-navy hover:bg-navy-700 text-white transition-all duration-300"
+                          size="sm"
                         >
-                          Learn More
-                          <ArrowRight className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform duration-300" />
+                          Learn More & Get Started
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </Link>
+                      
+                      <Link to="/contact" className="block">
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          className="w-full text-xs border-gray-300 text-gray-600 hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300"
+                        >
+                          Get Expert Consultation
                         </Button>
                       </Link>
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* CTA Section */}
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
+        <div className="text-center">
           <div className="bg-gradient-to-r from-navy/5 to-gold/5 rounded-2xl p-8 border border-gray-100">
             <h3 className="text-2xl font-heading font-bold text-navy mb-4">
-              Need Help Choosing the Right Service?
+              Ready to Launch Your Business?
             </h3>
             
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Our business experts are ready to guide you through the perfect service 
-              combination for your specific needs and industry requirements.
+              Choose the perfect business structure for your venture with our expert guidance 
+              and comprehensive incorporation services. We handle everything from name approval 
+              to post-incorporation compliance.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/services">
+              <Link to="/services/company-formation">
                 <Button className="bg-navy hover:bg-navy-700 text-white px-8 py-3 rounded-xl font-semibold">
-                  View All Services
+                  View All Business Types
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
@@ -196,12 +229,32 @@ const FeaturedServices = () => {
                   variant="outline" 
                   className="border-2 border-gold text-gold hover:bg-gold hover:text-white px-8 py-3 rounded-xl font-semibold"
                 >
-                  Get Expert Consultation
+                  Get Free Consultation
                 </Button>
               </Link>
             </div>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-gray-200">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-navy">6</div>
+                <div className="text-sm text-gray-600">Business Types</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-navy">7-35</div>
+                <div className="text-sm text-gray-600">Days Process</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-navy">100%</div>
+                <div className="text-sm text-gray-600">Compliance</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-navy">200+</div>
+                <div className="text-sm text-gray-600">Clients Served</div>
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

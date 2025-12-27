@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Award, Heart, Lightbulb, Users, TrendingUp, Shield, CheckCircle, Star } from 'lucide-react';
+import { Award, Heart, Lightbulb, Shield } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const WhyChooseUs = () => {
@@ -38,13 +38,6 @@ const WhyChooseUs = () => {
     }
   ];
 
-  const achievements = [
-    { icon: Users, number: '500+', label: 'Happy Clients' },
-    { icon: Award, number: '12+', label: 'Years Experience' },
-    { icon: TrendingUp, number: '99%', label: 'Success Rate' },
-    { icon: Star, number: '4.9/5', label: 'Client Rating' }
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -70,104 +63,29 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-32 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
       {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-            opacity: [0.03, 0.06, 0.03]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/4 -left-20 w-80 h-80 bg-gradient-to-br from-navy-500 to-navy-700 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [360, 180, 0],
-            opacity: [0.02, 0.05, 0.02]
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full blur-3xl"
-        />
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-navy/5 to-transparent rounded-full -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-gold/5 to-transparent rounded-full translate-x-1/2 translate-y-1/2" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          className="text-center mb-16"
         >
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm text-navy-600 px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium mb-4 sm:mb-6 shadow-lg border border-navy-100"
-          >
-            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
-            <span>Why Choose Us</span>
-          </motion.div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-navy-900 mb-4 sm:mb-6 leading-tight">
-            Trusted by
-            <span className="bg-gradient-to-r from-gold-500 via-gold-600 to-gold-500 bg-clip-text text-transparent block sm:inline sm:ml-3 relative">
-              500+ Businesses
-              <motion.div
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent"
-                animate={{ scaleX: [0, 1, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </span>
+          <h2 className="text-4xl lg:text-5xl font-bold text-navy mb-4">
+            Why Choose Us
           </h2>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed"
-          >
+          <p className="text-xl text-gray-600 mb-8">
+            Trusted by <span className="font-semibold text-navy">500+ Businesses</span>
+          </p>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             We combine deep expertise with a human-centered approach to deliver exceptional results that drive real business growth.
-          </motion.p>
-        </motion.div>
-
-        {/* Achievement Stats */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 lg:mb-20"
-        >
-          {achievements.map((achievement, index) => (
-            <motion.div
-              key={achievement.label}
-              variants={itemVariants}
-              whileHover={{ y: -4, scale: 1.02 }}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-            >
-              <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r ${
-                index % 2 === 0 ? 'from-navy-500 to-navy-600' : 'from-gold-500 to-gold-600'
-              } rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg`}>
-                <achievement.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 + index * 0.1, type: "spring", stiffness: 200 }}
-                className="text-xl sm:text-2xl lg:text-3xl font-bold text-navy-900 mb-1 sm:mb-2"
-              >
-                {achievement.number}
-              </motion.div>
-              <p className="text-xs sm:text-sm text-gray-600 font-medium">{achievement.label}</p>
-            </motion.div>
-          ))}
+          </p>
         </motion.div>
 
         {/* Features Grid */}
@@ -175,55 +93,38 @@ const WhyChooseUs = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
               variants={itemVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="h-full"
+              className="group"
             >
-              <Card className="group h-full bg-white/90 backdrop-blur-sm border-0 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
-                {/* Background Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-blue-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <CardContent className="relative p-6 sm:p-8 h-full flex flex-col">
+              <Card className="h-full bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+                <CardContent className="p-8 text-center relative">
+                  {/* Background Gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-lg`} />
+                  
                   {/* Icon */}
-                  <motion.div
-                    whileHover={{ 
-                      scale: 1.1, 
-                      rotate: [0, -10, 10, 0],
-                      y: -4 
-                    }}
-                    transition={{ 
-                      type: "spring", 
-                      stiffness: 400,
-                      rotate: { duration: 0.6 }
-                    }}
-                    className="mb-6"
-                  >
-                    <div className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
-                      <feature.icon className="w-8 h-8 text-white" />
-                    </div>
-                  </motion.div>
-
+                  <div className={`w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br ${feature.color} p-4 shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                    <feature.icon className="w-full h-full text-white" />
+                  </div>
+                  
                   {/* Content */}
-                  <div className="flex-grow mb-4">
-                    <h3 className="text-xl sm:text-2xl font-bold text-navy-900 mb-3 sm:mb-4 group-hover:text-navy-700 transition-colors duration-300">
+                  <div className="relative z-10">
+                    <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-navy-700 transition-colors">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed text-sm sm:text-base">
+                    <p className="text-gray-600 leading-relaxed mb-6">
                       {feature.description}
                     </p>
-                  </div>
-
-                  {/* Stat */}
-                  <div className="border-t border-gray-100 pt-4 mt-auto">
-                    <div className="flex items-center justify-between">
-                      <span className="text-2xl sm:text-3xl font-bold text-navy-900">{feature.stat}</span>
-                      <span className="text-xs sm:text-sm text-gray-500 font-medium">{feature.statLabel}</span>
+                    
+                    {/* Stat */}
+                    <div className="border-t border-gray-200 pt-4">
+                      <div className="text-2xl font-bold text-navy mb-1">{feature.stat}</div>
+                      <div className="text-sm text-gray-500 uppercase tracking-wide">{feature.statLabel}</div>
                     </div>
                   </div>
                 </CardContent>

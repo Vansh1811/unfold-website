@@ -346,6 +346,8 @@ export const getContactStats = async (req: AuthRequest, res: Response): Promise<
         $sort: { '_id.year': 1, '_id.month': 1 }
       }
     ]);
+        
+      
 
     res.status(200).json({
       success: true,
@@ -359,6 +361,7 @@ export const getContactStats = async (req: AuthRequest, res: Response): Promise<
       }
     });
 
+     
   } catch (error: any) {
     logger.error('Get contact stats error:', error);
     res.status(500).json({
