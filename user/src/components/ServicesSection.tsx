@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Filter, Grid3X3, List, Search, Sparkles, Star, Clock, CheckCircle, Users } from 'lucide-react';
+import { ArrowRight, Filter, Grid3X3, List, Search, Sparkles, Star, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { 
@@ -22,7 +22,6 @@ const ServicesSection = () => {
   const [businessServices, setBusinessServices] = useState<any[]>([]);
 
   useEffect(() => {
-    // Load all service data
     setFeaturedServices(getFeaturedServices());
     setPopularServices(getPopularServices());
     setBusinessServices(getBusinessIncorporationServices());
@@ -113,157 +112,6 @@ const ServicesSection = () => {
                         className="text-navy-600 hover:text-navy-800 font-medium text-sm flex items-center gap-1"
                       >
                         Learn more <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* All Services */}
-        <div className="mb-16">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-            <h3 className="text-2xl font-semibold text-navy-800">All Services</h3>
-            <div className="flex items-center gap-4 w-full sm:w-auto">
-              <div className="relative flex-1 sm:min-w-[300px]">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <Input
-                  type="text"
-                  placeholder="Search services..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-full"
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <Button
-                  variant={viewMode === 'grid' ? 'default' : 'outline'}
-                  size="icon"
-                  onClick={() => setViewMode('grid')}
-                  className="h-9 w-9 p-0"
-                >
-                  <Grid3X3 className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant={viewMode === 'list' ? 'default' : 'outline'}
-                  size="icon"
-                  onClick={() => setViewMode('list')}
-                  className="h-9 w-9 p-0"
-                >
-                  <List className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          {filteredServices.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredServices.map((service, index) => (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all ${viewMode === 'list' ? 'flex flex-col md:flex-row' : ''}`}
-                >
-                  <div className={`p-6 ${viewMode === 'list' ? 'flex-1' : ''}`}>
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="p-2 bg-navy-100 rounded-lg flex-shrink-0">
-                        <service.icon className="w-6 h-6 text-navy-600" />
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-semibold text-navy-800 mb-1">{service.name}</h4>
-                        <p className="text-gray-600 text-sm">{service.subServices.length} services available</p>
-                      </div>
-                    </div>
-                    <p className="text-gray-600 mb-4 line-clamp-2">{service.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {service.subServices.slice(0, 3).map((sub: any) => (
-                        <span key={sub.id} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                          {sub.name}
-                        </span>
-                      ))}
-                      {service.subServices.length > 3 && (
-                        <span className="text-xs text-gray-500">+{service.subServices.length - 3} more</span>
-                      )}
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <Link 
-                        to={`/services/${service.slug}`}
-                        className="text-navy-600 hover:text-navy-800 font-medium text-sm flex items-center gap-1 group"
-                      >
-                        View all services
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                      {service.popular && (
-                        <span className="text-xs bg-gold-100 text-gold-800 px-2 py-1 rounded-full flex items-center gap-1">
-                          <Star className="w-3 h-3" />
-                          Popular
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12 bg-white rounded-xl shadow">
-              <Search className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-              <h4 className="text-lg font-medium text-gray-700 mb-2">No services found</h4>
-              <p className="text-gray-500 mb-6">Try adjusting your search or filter to find what you're looking for.</p>
-              <Button 
-                variant="outline"
-                onClick={() => {
-                  setSearchTerm('');
-                  setSelectedFilter('all');
-                }}
-              >
-                Clear filters
-              </Button>
-            </div>
-          )}
-        </div>
-
-        {/* Business Incorporation Services */}
-        {businessServices.length > 0 && (
-          <div>
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-semibold text-navy-800">Business Incorporation</h3>
-              <Link 
-                to="/services/company-formation" 
-                className="text-navy-600 hover:text-navy-800 font-medium text-sm flex items-center gap-1"
-              >
-                View all <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {businessServices.slice(0, 4).map((service, index) => (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all border border-gray-100"
-                >
-                  <div className="p-5">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 bg-navy-50 rounded-lg">
-                        <service.icon className="w-5 h-5 text-navy-600" />
-                      </div>
-                      <h4 className="font-medium text-navy-800">{service.name}</h4>
-                    </div>
-                    <p className="text-sm text-gray-600 mb-4 line-clamp-2">{service.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-navy-700">{service.price}</span>
-                      <Link 
-                        to={`/services/company-formation/${service.slug}`}
-                        className="text-navy-600 hover:text-navy-800 text-sm font-medium flex items-center gap-1"
-                      >
-                        Details <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
                   </div>
@@ -458,12 +306,60 @@ const ServicesSection = () => {
               }}
             >
               <ServiceCategoryCard 
-              subServiceCount={0} {...category}
-              index={index}
-              featured={index === 0 || index === 3}              />
+                subServiceCount={0}
+                {...category}
+                index={index}
+                featured={index === 0 || index === 3}
+              />
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Business Incorporation Services */}
+        {businessServices.length > 0 && (
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-semibold text-navy-800">Business Incorporation</h3>
+              <Link 
+                to="/services/company-formation" 
+                className="text-navy-600 hover:text-navy-800 font-medium text-sm flex items-center gap-1"
+              >
+                View all <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {businessServices.slice(0, 4).map((service, index) => (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all border border-gray-100"
+                >
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 bg-navy-50 rounded-lg">
+                        <service.icon className="w-5 h-5 text-navy-600" />
+                      </div>
+                      <h4 className="font-medium text-navy-800">{service.name}</h4>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4 line-clamp-2">{service.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium text-navy-700">{service.price}</span>
+                      <Link 
+                        to={`/services/company-formation/${service.slug}`}
+                        className="text-navy-600 hover:text-navy-800 text-sm font-medium flex items-center gap-1"
+                      >
+                        Details <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* CTA Section */}
         <motion.div
@@ -471,10 +367,9 @@ const ServicesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="text-center"
+          className="text-center mt-12"
         >
           <div className="bg-gradient-to-r from-navy-600 via-navy-700 to-navy-800 rounded-3xl p-8 lg:p-12 text-white relative overflow-hidden">
-            {/* Background Pattern */}
             <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
             
             <div className="relative z-10">
