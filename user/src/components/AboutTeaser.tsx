@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight, Users, Award, TrendingUp, Target } from 'lucide-react';
+import { ArrowRight, Users, Award, TrendingUp, Target, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AboutTeaser = () => {
@@ -28,26 +28,26 @@ const AboutTeaser = () => {
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-32 bg-gradient-to-br from-white via-blue-50/30 to-gray-50 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+    <section className="relative py-16 sm:py-20 lg:py-32 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 overflow-hidden">
+      {/* Animated Background Elements - Same as Services Section */}
+      <div className="absolute inset-0 -z-10">
         <motion.div
           animate={{
+            rotate: [0, 360],
             scale: [1, 1.1, 1],
-            rotate: [0, 90, 180],
-            opacity: [0.02, 0.04, 0.02]
+            opacity: [0.03, 0.06, 0.03]
           }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/3 -right-32 w-96 h-96 bg-gradient-to-br from-navy-400 to-navy-600 rounded-full blur-3xl"
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-navy-500 to-navy-700 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
+            rotate: [360, 0],
             scale: [1, 1.2, 1],
-            rotate: [180, 90, 0],
             opacity: [0.02, 0.05, 0.02]
           }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-1/4 -left-32 w-80 h-80 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full blur-3xl"
+          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full blur-3xl"
         />
       </div>
 
@@ -62,33 +62,50 @@ const AboutTeaser = () => {
             transition={{ duration: 0.8 }}
             className="space-y-6 sm:space-y-8"
           >
-            {/* Badge */}
+            {/* Animated Badge */}
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center gap-2 bg-navy-50 text-navy-600 px-4 py-2 rounded-full text-sm font-medium"
+              className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm text-navy-600 px-6 py-3 rounded-full text-sm font-medium shadow-lg border border-navy-100"
             >
-              <Award className="w-4 h-4" />
-              About Unfold
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              >
+                <Sparkles className="w-5 h-5 text-gold-500" />
+              </motion.div>
+              <span style={{ fontFamily: 'Nexa Bold' }}>About Unfold</span>
             </motion.div>
 
-            {/* Headline */}
+            {/* Headline - Matching Style */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy-900 leading-tight"
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-navy-900 mb-6 leading-tight"
+              style={{ fontFamily: 'Nexa Bold' }}
             >
               Compliance as a
-              <span className="bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent block sm:inline sm:ml-3">
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="block sm:inline bg-gradient-to-r from-gold-500 via-gold-600 to-gold-500 bg-clip-text text-transparent mx-0 sm:mx-3 relative"
+              >
                 Catalyst for Growth
-              </span>
+                <motion.div
+                  animate={{ scaleX: [0, 1, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent"
+                />
+              </motion.span>
             </motion.h2>
 
-            {/* Main Description */}
+            {/* Description */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -96,11 +113,11 @@ const AboutTeaser = () => {
               transition={{ delay: 0.4 }}
               className="space-y-4"
             >
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
                 At Unfold, we believe that compliance shouldn't be a barrier to growth—it should be a catalyst for it. With over a decade of experience, we've helped hundreds of businesses transform regulatory challenges into competitive advantages.
               </p>
               
-              <p className="text-base text-gray-600 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
                 Our mission is simple: to unfold your business potential by providing expert guidance in governance, compliance, and strategic growth. We combine deep industry expertise with a human-centered approach that puts your success at the heart of everything we do.
               </p>
             </motion.div>
@@ -122,7 +139,7 @@ const AboutTeaser = () => {
                   transition={{ delay: 0.6 + index * 0.1 }}
                   className="text-center sm:text-left"
                 >
-                  <h4 className="font-semibold text-navy-900 mb-2 text-sm sm:text-base">
+                  <h4 className="font-semibold text-navy-900 mb-2 text-sm sm:text-base" style={{ fontFamily: 'Nexa Bold' }}>
                     {value.title}
                   </h4>
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
@@ -145,7 +162,7 @@ const AboutTeaser = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <Link to="/about">
-                  <Button className="bg-gradient-to-r from-navy-600 to-navy-700 hover:from-navy-700 hover:to-navy-800 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 group">
+                  <Button className="bg-navy text-white px-8 py-4 rounded-xl text-base font-bold shadow-md hover:bg-navy-800 hover:shadow-lg transition-all" style={{ fontFamily: 'Nexa Bold' }}>
                     Learn More About Us
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                   </Button>
@@ -154,7 +171,7 @@ const AboutTeaser = () => {
             </motion.div>
           </motion.div>
 
-          {/* Stats Section */}
+          {/* Stats Section - Enhanced Cards */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -171,21 +188,25 @@ const AboutTeaser = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 + index * 0.1 }}
-                  whileHover={{ y: -4, scale: 1.02 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
                 >
-                  <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <CardContent className="p-4 sm:p-6 text-center">
-                      <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r ${
-                        index % 2 === 0 ? 'from-navy-500 to-navy-600' : 'from-gold-500 to-gold-600'
-                      } rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg`}>
-                        <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  <Card className="h-full flex flex-col border border-gray-100 bg-white/90 shadow-[0_10px_30px_rgba(15,23,42,0.04)] hover:shadow-[0_18px_45px_rgba(15,23,42,0.08)] hover:border-gold/60 transition-all duration-300 rounded-2xl overflow-hidden relative">
+                    {/* Top accent */}
+                    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gold via-gold/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    <CardContent className="p-4 sm:p-6 text-center flex-grow flex flex-col justify-center">
+                      <div className={`w-12 h-12 bg-gradient-to-br ${
+                        index % 2 === 0 ? 'from-navy to-navy-700' : 'from-gold-500 to-gold-600'
+                      } rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg`}>
+                        <stat.icon className="w-6 h-6 text-white" />
                       </div>
                       <motion.div
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.6 + index * 0.1, type: "spring", stiffness: 200 }}
-                        className="text-xl sm:text-2xl lg:text-3xl font-bold text-navy-900 mb-1 sm:mb-2"
+                        className="text-2xl sm:text-3xl font-bold text-navy-900 mb-2"
+                        style={{ fontFamily: 'Nexa Bold' }}
                       >
                         {stat.number}
                       </motion.div>
@@ -204,15 +225,17 @@ const AboutTeaser = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.8 }}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -8 }}
             >
-              <Card className="bg-gradient-to-br from-navy-50 to-blue-50 border-2 border-navy-100 shadow-lg hover:shadow-xl transition-all duration-300">
+              <Card className="border border-gray-100 bg-white/90 shadow-[0_10px_30px_rgba(15,23,42,0.04)] hover:shadow-[0_18px_45px_rgba(15,23,42,0.08)] hover:border-gold/60 transition-all duration-300 rounded-2xl overflow-hidden relative">
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gold via-gold/70 to-transparent" />
+                
                 <CardContent className="p-6 sm:p-8">
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-gold-500 to-gold-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <div className="w-16 h-16 bg-gradient-to-br from-gold-500 to-gold-600 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                       <Target className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-navy-900 mb-3">
+                    <h3 className="text-lg sm:text-xl font-bold text-navy-900 mb-3" style={{ fontFamily: 'Nexa Bold' }}>
                       Our Mission
                     </h3>
                     <p className="text-gray-600 text-sm sm:text-base leading-relaxed">

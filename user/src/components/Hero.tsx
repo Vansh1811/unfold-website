@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import unfoldLogo from '@/assets/unfold-logo.png';
 
 const Hero = () => {
   const features = [
@@ -11,40 +12,27 @@ const Hero = () => {
     'Government Recognized Consultants'
   ];
 
-  const floatingElements = Array.from({ length: 6 }, (_, i) => (
-    <motion.div
-      key={i}
-      className="absolute w-2 h-2 bg-gold/20 rounded-full"
-      style={{
-        left: `${20 + (i * 15)}%`,
-        top: `${30 + (i * 10)}%`,
-      }}
-      animate={{
-        y: [-20, 20, -20],
-        opacity: [0.3, 0.7, 0.3],
-      }}
-      transition={{
-        duration: 3 + i,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
-  ));
-
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-navy via-navy-800 to-navy-900 text-white overflow-hidden flex items-center">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-navy/90 via-navy-800/90 to-navy-900/90" />
-      
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-gold/10 to-transparent rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-navy-600/20 to-transparent rounded-full blur-3xl animate-pulse delay-1000" />
-      
-      {/* Floating Elements */}
-      {floatingElements}
-      
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20" />
+    <section className="relative min-h-screen bg-gradient-to-br from-[#0a0f1a] via-[#0f1419] to-[#0a0f1a] text-white overflow-hidden flex items-center pt-20">
+      {/* Animated Background Orbs */}
+      <motion.div
+        animate={{
+          rotate: [0, 360],
+          scale: [1, 1.1, 1],
+          opacity: [0.1, 0.18, 0.1]
+        }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        className="absolute top-1/4 -left-1/4 w-96 h-96 bg-gradient-to-r from-gold-500/25 to-transparent rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{
+          rotate: [360, 0],
+          scale: [1, 1.15, 1],
+          opacity: [0.08, 0.15, 0.08]
+        }}
+        transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+        className="absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-gradient-to-l from-navy-600/25 to-transparent rounded-full blur-3xl"
+      />
 
       {/* Content Section */}
       <div className="container mx-auto px-4 relative z-10">
@@ -55,29 +43,20 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            {/* Trust Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
-            >
-              <span className="text-sm font-medium">🌟</span>
-            </motion.div>
-
-            {/* Main Headline */}
+            {/* Main Headline - Better Visibility */}
             <div className="space-y-4">
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="text-5xl lg:text-7xl font-bold leading-tight"
+                style={{ fontFamily: 'Nexa Bold' }}
               >
-                Your Trusted Partner for{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-400">
+                <span className="text-gray-100">Your Trusted Partner for</span>{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400">
                   Business Success
                 </span>{' '}
-                in India
+                <span className="text-white">in India</span>
               </motion.h1>
               
               <motion.p
@@ -120,7 +99,7 @@ const Hero = () => {
             >
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-gold to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy font-semibold px-8 py-3 text-lg group transition-all duration-300"
+                className="bg-gradient-to-r from-gold to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-900 font-bold px-8 py-3 text-lg group transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-gold/30"
                 asChild
               >
                 <Link to="/services">
@@ -132,7 +111,7 @@ const Hero = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-8 py-3 text-lg group transition-all duration-300"
+                className="border-2 border-gold/50 bg-transparent hover:bg-gold/10 hover:border-gold text-white px-8 py-3 text-lg group transition-all duration-300"
               >
                 <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 Watch Our Story
@@ -140,9 +119,16 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right side content can be added here if needed */}
-          <div className="hidden lg:block">
-            {/* You can add an illustration or additional content here */}
+          {/* Right Side - Clean & Minimal Logo */}
+          <div className="hidden lg:flex justify-center items-center relative h-[500px]">
+            <motion.img
+              src={unfoldLogo}
+              alt="Unfold Finleg Solutions"
+              className="w-96 h-96 object-contain opacity-90 hover:opacity-100 transition-opacity duration-500"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 0.9, scale: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            />
           </div>
         </div>
       </div>
@@ -159,8 +145,8 @@ const Hero = () => {
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center space-y-2 text-gray-400"
         >
-          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce" />
+          <div className="w-6 h-10 border-2 border-gold/50 rounded-full flex justify-center hover:border-gold transition-colors">
+            <div className="w-1 h-3 bg-gold rounded-full mt-2 animate-bounce" />
           </div>
           <span className="text-sm">Scroll to explore</span>
         </motion.div>

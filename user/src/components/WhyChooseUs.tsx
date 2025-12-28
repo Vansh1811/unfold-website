@@ -62,6 +62,10 @@ const WhyChooseUs = () => {
     }
   };
 
+  // Create motion-enabled Card
+  const MotionCard = motion(Card);
+  const MotionDiv = motion.div;
+
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
       {/* Background Decorations */}
@@ -78,7 +82,11 @@ const WhyChooseUs = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-navy mb-4">
-            Why Choose Us
+            Why Choose{' '}
+            <span className="text-gold relative inline-block">
+              Us
+              <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-gold-600"></span>
+            </span>
           </h2>
           <p className="text-xl text-gray-600 mb-8">
             Trusted by <span className="font-semibold text-navy">500+ Businesses</span>
@@ -97,24 +105,43 @@ const WhyChooseUs = () => {
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {features.map((feature, index) => (
-            <motion.div
+            <MotionDiv
               key={feature.title}
               variants={itemVariants}
               className="group"
             >
-              <Card className="h-full bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+              <MotionCard 
+                className="h-full bg-white/80 backdrop-blur-sm border-0 shadow-lg transition-shadow duration-300 overflow-hidden cursor-pointer"
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
                 <CardContent className="p-8 text-center relative">
-                  {/* Background Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-lg`} />
+                  {/* Background Gradient Overlay */}
+                  <MotionDiv 
+                    className={`absolute inset-0 bg-gradient-to-br ${feature.color} rounded-lg pointer-events-none`}
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 0.05 }}
+                    transition={{ duration: 0.3 }}
+                  />
                   
                   {/* Icon */}
-                  <div className={`w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br ${feature.color} p-4 shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                  <MotionDiv 
+                    className={`w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br ${feature.color} p-4 shadow-lg`}
+                    whileHover={{ 
+                      scale: 1.1,
+                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                  >
                     <feature.icon className="w-full h-full text-white" />
-                  </div>
+                  </MotionDiv>
                   
                   {/* Content */}
                   <div className="relative z-10">
-                    <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-navy-700 transition-colors">
+                    <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-navy-700 transition-colors duration-200">
                       {feature.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed mb-6">
@@ -128,8 +155,8 @@ const WhyChooseUs = () => {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
-            </motion.div>
+              </MotionCard>
+            </MotionDiv>
           ))}
         </motion.div>
       </div>

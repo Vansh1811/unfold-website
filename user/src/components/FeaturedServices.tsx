@@ -48,11 +48,33 @@ const FeaturedServices = () => {
               Business Incorporation Services
             </span>
           </div>
-          
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-navy mb-6">
-            Most Popular Business Services
-          </h2>
-          
+
+          {/* Styled like "Our Expert Services" */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-navy mb-6 leading-tight"
+            style={{ fontFamily: 'Nexa Bold' }}
+          >
+            Most Popular
+            <motion.span
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="block sm:inline bg-gradient-to-r from-gold via-gold to-gold bg-clip-text text-transparent mx-0 sm:mx-3 relative"
+            >
+              Business Services
+              <motion.div
+                animate={{ scaleX: [0, 1, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent"
+              />
+            </motion.span>
+          </motion.h2>
+
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             End-to-end company formation services across all major business types in India. 
             Our experts handle name approvals, document drafting, government filings, and 
@@ -62,120 +84,119 @@ const FeaturedServices = () => {
 
         {/* ✅ FIXED: Featured Services Grid with Equal Heights */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {featuredServices.map((service) => {
-            const IconComponent = service.icon;
-            
-            return (
-              <div key={service.id} className="group">
-                {/* ✅ Fixed height: h-full ensures all cards match */}
-                <Card className="h-full flex flex-col border-2 border-gray-100 hover:border-navy/30 transition-all duration-300 bg-white hover:shadow-lg relative overflow-hidden">
-                  
-                  <CardHeader className="pb-4">
-                    {/* Icon */}
-                    <div className="w-12 h-12 bg-gradient-to-br from-navy to-navy-700 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent className="w-6 h-6 text-gold" />
-                    </div>
-                    
-                    {/* Title */}
-                    <CardTitle className="text-lg font-bold text-navy group-hover:text-navy-700 transition-colors duration-300 mb-2 leading-tight min-h-[4rem]">
-                      {service.name}
-                    </CardTitle>
-                  </CardHeader>
-                  
-                  {/* ✅ Flex-grow pushes buttons to bottom */}
-                  <CardContent className="pt-0 flex flex-col flex-grow">
-                    {/* Brief Description - Fixed height */}
-                    <p className="text-gray-600 text-sm leading-relaxed mb-6 h-[4rem] overflow-hidden">
-                      {service.description}
-                    </p>
+  {featuredServices.map((service) => {
+    const IconComponent = service.icon;
 
-                    {/* ✅ Spacer that grows to push buttons down */}
-                    <div className="flex-grow"></div>
-                    
-                    {/* Action Buttons - Always at bottom */}
-                    <div className="space-y-3">
-                      <Link 
-                        to={`/services/company-formation/${service.slug}`}
-                        className="block"
-                      >
-                        <Button 
-                          className="w-full bg-navy hover:bg-navy-700 text-white transition-all duration-300"
-                          size="sm"
-                        >
-                          Learn More & Get Started
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                      </Link>
-                      
-                      <Link to="/contact" className="block">
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          className="w-full text-xs border-navy text-navy hover:border-navy hover:bg-navy hover:text-white transition-all duration-300"
-                        >
-                          Get Expert Consultation
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            );
-          })}
-        </div>
+    return (
+      <div key={service.id} className="group">
+        <Card
+          className="
+            h-full flex flex-col
+            border border-gray-100
+            bg-white/90
+            shadow-[0_10px_30px_rgba(15,23,42,0.04)]
+            hover:shadow-[0_18px_45px_rgba(15,23,42,0.08)]
+            hover:border-gold/60
+            transition-all duration-300
+            rounded-2xl
+            overflow-hidden
+            relative
+          "
+        >
+          {/* subtle top accent */}
+          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gold via-gold/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-        {/* CTA Section */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-navy/5 to-gold/5 rounded-2xl p-8 border border-gray-100">
-            <h3 className="text-2xl font-heading font-bold text-navy mb-4">
-              Ready to Launch Your Business?
-            </h3>
-            
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Choose the perfect business structure for your venture with our expert guidance 
-              and comprehensive incorporation services. We handle everything from name approval 
-              to post-incorporation compliance.
+          <CardHeader className="pb-4">
+            {/* Icon */}
+            <div className="w-12 h-12 bg-gradient-to-br from-navy to-navy-700 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <IconComponent className="w-6 h-6 text-gold" />
+            </div>
+
+            {/* Title */}
+            <CardTitle
+              className="
+                text-lg font-bold text-navy
+                group-hover:text-navy-800
+                transition-colors duration-300
+                mb-2 leading-tight min-h-[4rem]
+              "
+            >
+              {service.name}
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent className="pt-0 flex flex-col flex-grow">
+            {/* Description */}
+            <p className="text-gray-600 text-sm leading-relaxed mb-6 h-[4rem] overflow-hidden">
+              {service.description}
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/services/company-formation">
-                <Button className="bg-navy hover:bg-navy-700 text-white px-8 py-3 rounded-xl font-semibold">
-                  View All Business Types
+
+            <div className="flex-grow" />
+
+            {/* Buttons */}
+            <div className="space-y-3">
+              <Link
+                to={`/services/company-formation/${service.slug}`}
+                className="block"
+              >
+                <Button
+                  className="
+                    w-full bg-navy text-white
+                    hover:bg-navy-800
+                    shadow-sm hover:shadow-md
+                    transition-all duration-300
+                    rounded-xl
+                  "
+                  size="sm"
+                >
+                  Learn More & Get Started
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              
-              <Link to="/contact">
-                <Button 
-                  variant="outline" 
-                  className="border-2 border-gold text-gold hover:bg-gold hover:text-white px-8 py-3 rounded-xl font-semibold"
-                >
-                  Get Free Consultation
-                </Button>
-              </Link>
-            </div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-gray-200">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-navy">6</div>
-                <div className="text-sm text-gray-600">Business Types</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-navy">7-35</div>
-                <div className="text-sm text-gray-600">Days Process</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-navy">100%</div>
-                <div className="text-sm text-gray-600">Compliance</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-navy">200+</div>
-                <div className="text-sm text-gray-600">Clients Served</div>
-              </div>
+             
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  })}
+</div>
+
+        
+
+        {/* CTA Section */}
+       <div className="mt-12">
+  <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-white via-[#fbfbff] to-[#fff9f0] px-6 py-10 sm:px-10 sm:py-12 border border-gray-100 shadow-[0_18px_45px_rgba(15,23,42,0.06)]">
+    {/* soft accent stripe */}
+    <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-gold via-gold/70 to-transparent" />
+
+    <div className="relative z-10 text-center max-w-3xl mx-auto">
+      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-navy mb-3">
+        Ready to Launch Your Business?
+      </h3>
+
+      <p className="text-sm sm:text-base lg:text-lg text-gray-600 mb-8 leading-relaxed">
+        Choose the perfect business structure for your venture with expert guidance and 
+        comprehensive incorporation services. Every step from name approval to 
+        post-incorporation compliance is handled with precision.
+      </p>
+
+      
+
+        <Link to="/contact">
+          <Button
+            variant="outline"
+            className="border border-gold/60 text-gold hover:bg-gold/10 px-8 py-3 rounded-xl font-semibold"
+          >
+            Get Free Consultation
+          </Button>
+        </Link>
+      
+    </div>
+  </div>
+</div>
+
       </div>
     </section>
   );

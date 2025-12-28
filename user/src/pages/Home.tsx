@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { lazy, Suspense } from 'react';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import FeaturedServices from '@/components/FeaturedServices';
+import ServicesSection from '@/components/ServicesSection';
 
 // Lazy load components for better performance
 const Hero = lazy(() => import('@/components/Hero'));
@@ -19,11 +20,11 @@ const SectionLoader = () => (
 const Home = () => {
   const sections = [
     { component: Hero, name: 'hero', priority: 'high' },
+    { component: AboutTeaser, name: 'about-teaser', priority: 'medium' },
     { component: FeaturedServices, name: 'featured-services', priority: 'high' },
     { component: ServicesSection, name: 'services', priority: 'medium' },
     { component: WhyChooseUs, name: 'why-choose-us', priority: 'medium' },
     { component: TestimonialsCarousel, name: 'testimonials', priority: 'medium' },
-    { component: AboutTeaser, name: 'about-teaser', priority: 'medium' },
     { component: CTASection, name: 'cta', priority: 'low' }
   ];
 
@@ -61,7 +62,7 @@ const Home = () => {
 
   const sectionTransition = {
     duration: 0.8,
-    ease: [0.42, 0, 0.58, 1]
+    ease: "easeInOut"
   };
 
   return (
@@ -81,8 +82,7 @@ const Home = () => {
             transition={sectionTransition}
             viewport={{ 
               once: true, 
-              margin: "-100px",
-              amount: 0.1
+              margin: "-100px"
             }}
             whileInView="visible"
             initial="hidden"
@@ -98,7 +98,7 @@ const Home = () => {
           </motion.section>
         );
       })}
-    </>
+    </motion.main>
   );
 };
 
