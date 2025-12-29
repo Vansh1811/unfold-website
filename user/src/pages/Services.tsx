@@ -8,6 +8,7 @@ import { mainServiceCategories, searchServices } from '@/data/servicesData';
 import ServiceCategoryCard from '@/components/ServiceCategoryCard';
 import { Link } from 'react-router-dom';
 
+
 const Services = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -92,64 +93,6 @@ const Services = () => {
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
               From company formation to ongoing compliance, we provide comprehensive solutions that grow with your business.
             </p>
-
-            {/* Search and Filter */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="max-w-4xl mx-auto"
-            >
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-100 p-6">
-                <div className="flex flex-col lg:flex-row gap-4 items-center">
-                  <div className="relative flex-1 max-w-md">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <Input
-                      type="text"
-                      placeholder="Search services..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-10 border-2 bg-white focus:bg-white border-gray-200 focus:border-navy-500 h-12 rounded-xl"
-                    />
-                  </div>
-                  
-                  <select
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="px-4 py-3 bg-white border-2 border-gray-200 rounded-xl font-medium text-gray-700 focus:border-navy-500 transition-colors min-w-[200px]"
-                  >
-                    {serviceCategories.map(category => (
-                      <option key={category.id} value={category.id}>
-                        {category.name} ({category.count})
-                      </option>
-                    ))}
-                  </select>
-
-                  <div className="flex items-center bg-gray-100 rounded-xl p-1">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setViewMode('grid')}
-                      className={`p-3 rounded-lg transition-all duration-200 ${
-                        viewMode === 'grid' ? 'bg-white shadow-sm text-navy-600' : 'text-gray-500'
-                      }`}
-                    >
-                      <Grid3X3 className="w-5 h-5" />
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setViewMode('list')}
-                      className={`p-3 rounded-lg transition-all duration-200 ${
-                        viewMode === 'list' ? 'bg-white shadow-sm text-navy-600' : 'text-gray-500'
-                      }`}
-                    >
-                      <List className="w-5 h-5" />
-                    </motion.button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Services Grid */}
@@ -157,49 +100,24 @@ const Services = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className={`grid gap-6 lg:gap-8 mb-16 ${
-              viewMode === 'grid' 
-                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
-                : 'grid-cols-1 max-w-4xl mx-auto'
-            }`}
+            className="grid gap-6 lg:gap-8 mb-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           >
-            {filteredServices.length > 0 ? (
-              filteredServices.map((category, index) => (
-                <motion.div
-                  key={category.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * index }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                >
-                  <ServiceCategoryCard 
-                  subServiceCount={0} {...category}
-                  index={index}
-                  featured={index === 0 || index === 3}                  />
-                </motion.div>
-              ))
-            ) : (
+            {mainServiceCategories.map((category, index) => (
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="col-span-full text-center py-16"
+                key={category.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index }}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Search className="w-8 h-8 text-gray-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-600 mb-2">No services found</h3>
-                <p className="text-gray-500 mb-6">Try searching with different keywords or browse our service categories.</p>
-                <Button
-                  onClick={() => {
-                    setSearchTerm('');
-                    setSelectedCategory('all');
-                  }}
-                  className="bg-navy-600 hover:bg-navy-700 text-white px-6 py-2 rounded-lg"
-                >
-                  View All Services
-                </Button>
+                <ServiceCategoryCard 
+                  subServiceCount={0} 
+                  {...category}
+                  index={index}
+                  featured={index === 0 || index === 3}
+                />
               </motion.div>
-            )}
+            ))}
           </motion.div>
         </div>
       </section>

@@ -22,6 +22,7 @@ import AdminBlogs from "./pages/admin/AdminBlogs";
 import AdminServices from "./pages/admin/AdminServices";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./contexts/AuthContext";
+import ScrollToTop from './components/ScrollToTop';
 
 const queryClient = new QueryClient();
 
@@ -32,43 +33,44 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-        <div className="min-h-screen bg-white flex flex-col">
-          <Navbar />
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/services/more" element={<MoreServices />} />
-              <Route path="/services/:categorySlug" element={<ServiceCategory />} />
-              <Route path="/services/:categorySlug/:serviceSlug" element={<ServiceDetail />} />
-              <Route path="/blog" element={<BlogList />} />
-              <Route path="/blog/:slug" element={<BlogDetail />} />
-              <Route path="/contact" element={<Contact />} />
-              
-              {/* Admin Routes */}
-              <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin" element={
-                <ProtectedRoute>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/blogs" element={
-                <ProtectedRoute>
-                  <AdminBlogs />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/services" element={
-                <ProtectedRoute>
-                  <AdminServices />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+          <ScrollToTop />  {/* ADD THIS LINE - MUST BE INSIDE BrowserRouter */}
+          <div className="min-h-screen bg-white flex flex-col">
+            <Navbar />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/services/more" element={<MoreServices />} />
+                <Route path="/services/:categorySlug" element={<ServiceCategory />} />
+                <Route path="/services/:categorySlug/:serviceSlug" element={<ServiceDetail />} />
+                <Route path="/blog" element={<BlogList />} />
+                <Route path="/blog/:slug" element={<BlogDetail />} />
+                <Route path="/contact" element={<Contact />} />
+                
+                {/* Admin Routes */}
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/admin" element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                } />
+                <Route path="/admin/blogs" element={
+                  <ProtectedRoute>
+                    <AdminBlogs />
+                  </ProtectedRoute>
+                } />
+                <Route path="/admin/services" element={
+                  <ProtectedRoute>
+                    <AdminServices />
+                  </ProtectedRoute>
+                } />
+                
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
         </BrowserRouter>
       </TooltipProvider>
     </AuthProvider>

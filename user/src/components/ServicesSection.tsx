@@ -187,7 +187,7 @@ const ServicesSection = () => {
               }}
             >
               <ServiceCategoryCard
-                subServiceCount={category.subServices?.length || 0}
+                title={''} subServiceCount={category.subServices?.length || 0}
                 {...category}
                 index={index}
                 featured={false} // no visual "popular" highlight
