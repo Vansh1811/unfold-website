@@ -23,6 +23,10 @@ import AdminServices from "./pages/admin/AdminServices";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./contexts/AuthContext";
 import ScrollToTop from './components/ScrollToTop';
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import CookiePolicy from "./pages/CookiePolicy";
+
 
 const queryClient = new QueryClient();
 
@@ -47,7 +51,10 @@ const App = () => (
                 <Route path="/blog" element={<BlogList />} />
                 <Route path="/blog/:slug" element={<BlogDetail />} />
                 <Route path="/contact" element={<Contact />} />
-                
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsOfService />} />
+                <Route path="/cookies" element={<CookiePolicy />} />
+
                 {/* Admin Routes */}
                 <Route path="/admin/login" element={<AdminLogin />} />
                 <Route path="/admin" element={

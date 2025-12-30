@@ -43,7 +43,7 @@ const CTASection = () => (
       >
         Join the hundreds of companies turning regulatory challenges into competitive
         advantages with <span className="font-semibold text-white">Unfold Finleg Solutions</span>.
-        Your first consultation is on us.
+      
       </motion.p>
 
       {/* CTA buttons */}
@@ -61,7 +61,7 @@ const CTASection = () => (
           leftIcon={<Mail className="h-5 w-5" />}
           rightIcon={<ArrowRight className="h-4 w-4" />}
         >
-          <Link to="/contact">Contact Our Experts</Link>
+         
         </Button>
 
         <Button
@@ -71,13 +71,10 @@ const CTASection = () => (
           className="border-white/30 text-white hover:bg-white/10"
           leftIcon={<Calendar className="h-5 w-5" />}
         >
-          <Link to="/contact?book=true">Schedule a Free Consultation</Link>
         </Button>
       </motion.div>
 
-      <p className="mt-6 text-sm text-blue-200">
-        No obligation&nbsp;•&nbsp;Free 30-minute consultation&nbsp;•&nbsp;Expert advice
-      </p>
+  
     </div>
   </section>
 );

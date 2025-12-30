@@ -955,7 +955,7 @@ export const mainServiceCategories: ServiceCategory[] = [
       duration: '15-25 days',
       rating: 4.5,
       reviews: 189
-        },
+     },
     {
       id: 'moa-aoa-alteration',
       name: 'Alteration in Memorandum & Articles of Association',
@@ -1131,7 +1131,451 @@ export const mainServiceCategories: ServiceCategory[] = [
       duration: '7-10 days',
       rating: 4.7,
       reviews: 345
-    }
+    },
+    {
+        id: 'legal-compliance-audit',
+        name: 'Legal Compliance Audit',
+        slug: 'legal-compliance-audit',
+        description: 'Comprehensive audit of legal compliance across all business areas with detailed reporting.',
+        icon: 'Search',
+        features: [
+          'Comprehensive compliance gap analysis',
+          'Risk assessment and rating methodology',
+          'Legal documentation review and verification',
+          'Regulatory requirement mapping and analysis',
+          'Detailed remediation action plan development',
+          'Ongoing monitoring system implementation',
+          'Compliance training and awareness programs',
+          'Regular compliance health check services'
+        ],
+        benefits: [
+          'Identify and fix compliance gaps before issues arise',
+          'Reduce regulatory risks and penalties',
+          'Implement proactive monitoring systems',
+          'Improve governance and compliance culture',
+          'Prepare for external audits and inspections',
+          'Strategic compliance roadmap development'
+        ],
+        procedure: [
+          {
+            step: 1,
+            title: 'Compliance Assessment',
+            description: 'Review all legal and regulatory requirements applicable to your business',
+            documents: ['Business registration', 'Industry regulations', 'Current compliance documents'],
+            timeline: '3-5 days'
+          },
+          {
+            step: 2,
+            title: 'Gap Analysis',
+            description: 'Identify gaps between current state and compliance requirements',
+            documents: ['Assessment report', 'Gap analysis', 'Risk matrix'],
+            timeline: '3-5 days'
+          },
+          {
+            step: 3,
+            title: 'Remediation Plan',
+            description: 'Develop action plan to address identified gaps',
+            documents: ['Remediation plan', 'Timeline', 'Cost estimate'],
+            timeline: '2-3 days'
+          },
+          {
+            step: 4,
+            title: 'Implementation Support',
+            description: 'Support implementation and monitoring of compliance measures',
+            documents: ['Implementation tracking', 'Monitoring reports', 'Certification'],
+            timeline: 'Ongoing'
+          }
+        ],
+        requiredDocuments: [
+          'Current business registration and licenses',
+          'List of applicable regulations',
+          'Existing compliance policies and procedures',
+          'Organizational structure and processes',
+          'Past audit reports (if any)',
+          'Current risk assessments'
+        ],
+        faqs: [
+          {
+            question: 'How long does a compliance audit take?',
+            answer: 'Usually 15-30 days depending on business size and complexity'
+          },
+          {
+            question: 'Will the audit disrupt operations?',
+            answer: 'No, we work with your team to minimize disruption'
+          },
+          {
+            question: 'What happens after gaps are identified?',
+            answer: 'We provide a detailed remediation plan with timelines and costs'
+          },
+          {
+            question: 'Is ongoing monitoring included?',
+            answer: 'Yes, we set up systems to monitor and maintain compliance'
+          }
+        ],
+        price: 'Starting at ₹35,999',
+        duration: '20-30 days',
+        rating: 4.7,
+        reviews: 123
+      },
+      {
+        id: 'business-insurance-advisory',
+        name: 'Business Insurance Advisory',
+        slug: 'business-insurance-advisory',
+        description: 'Expert guidance on business insurance needs and comprehensive risk coverage solutions.',
+        icon: 'Umbrella',
+        features: [
+          'Comprehensive insurance needs assessment',
+          'Policy comparison and optimal selection',
+          'Claims management support and assistance',
+          'Risk management strategies development',
+          'Premium optimization and cost reduction',
+          'Annual policy review and recommendations',
+          'Insurance portfolio management',
+          'Regulatory compliance and advisory services'
+        ],
+        benefits: [
+          'Identify critical insurance gaps in coverage',
+          'Optimize insurance costs and premiums',
+          'Ensure appropriate risk coverage',
+          'Simplify claims management process',
+          'Peace of mind with comprehensive protection',
+          'Expert guidance on insurance requirements'
+        ],
+        procedure: [
+          {
+            step: 1,
+            title: 'Risk Assessment',
+            description: 'Comprehensive evaluation of business risks and vulnerabilities',
+            documents: ['Business profile', 'Risk checklist', 'Industry analysis'],
+            timeline: '2-3 days'
+          },
+          {
+            step: 2,
+            title: 'Insurance Gap Analysis',
+            description: 'Identify gaps between current coverage and required protection',
+            documents: ['Current policies', 'Gap analysis', 'Coverage recommendations'],
+            timeline: '2-3 days'
+          },
+          {
+            step: 3,
+            title: 'Policy Selection & Negotiation',
+            description: 'Source optimal policies and negotiate best premiums',
+            documents: ['Policy quotes', 'Comparison analysis', 'Negotiation details'],
+            timeline: '3-5 days'
+          },
+          {
+            step: 4,
+            title: 'Implementation & Monitoring',
+            description: 'Activate policies and set up ongoing monitoring and review',
+            documents: ['Policy documents', 'Coverage summary', 'Review schedule'],
+            timeline: 'Ongoing'
+          }
+        ],
+        requiredDocuments: [
+          'Business registration and license copies',
+          'Current insurance policies (if any)',
+          'Business financial statements',
+          'List of assets and liabilities',
+          'Employee count and structure',
+          'Description of business activities and risks',
+          'Loss history (if applicable)'
+        ],
+        faqs: [
+          {
+            question: 'What types of insurance do you advise on?',
+            answer: 'General liability, professional indemnity, property, cyber, workers compensation, and more'
+          },
+          {
+            question: 'Can you help reduce insurance costs?',
+            answer: 'Yes, we negotiate with insurers and identify cost-saving opportunities'
+          },
+          {
+            question: 'How often should policies be reviewed?',
+            answer: 'Annually at minimum, or when business changes significantly'
+          },
+          {
+            question: 'Do you help with claims?',
+            answer: 'Yes, we provide end-to-end claims management support'
+          }
+        ],
+        price: 'Starting at ₹9,999',
+        duration: '7-15 days',
+        rating: 4.6,
+        reviews: 234
+      },
+      {
+        id: 'annual-filing-llp',
+        name: 'Annual Filing of LLP',
+        slug: 'annual-filing-llp',
+        description: 'Complete annual compliance filing for Limited Liability Partnerships with regulatory submissions.',
+        icon: 'FileCheck',
+        features: [
+          'Annual return (Form 11) preparation and filing',
+          'Statement of account and solvency filing',
+          'Designated Partner information updates',
+          'Changes in partners notification',
+          'Capital and liability details filing',
+          'Financial statements compilation',
+          'ROC filing and processing',
+          'Penalty avoidance and compliance',
+          'Regulatory deadline tracking',
+          'Compliance calendar management'
+        ],
+        benefits: [
+          'Maintain regulatory compliance and good standing',
+          'Avoid penalties and show-cause notices',
+          'Keep corporate records updated',
+          'Enable smooth partner additions/removals',
+          'Professional compliance documentation',
+          'Timely filing with regulatory authorities',
+          'Peace of mind with expert handling'
+        ],
+        procedure: [
+          {
+            step: 1,
+            title: 'Information Collection',
+            description: 'Collect all partner details, capital changes, and financial information',
+            documents: ['Partner list', 'Capital updates', 'Financial statements'],
+            timeline: '2-3 days'
+          },
+          {
+            step: 2,
+            title: 'Form Preparation',
+            description: 'Prepare Form 11 and Statement of Account with all details',
+            documents: ['Form 11', 'Statement of account', 'Supporting documents'],
+            timeline: '3-5 days'
+          },
+          {
+            step: 3,
+            title: 'Certification & Signing',
+            description: 'Obtain designated partner signatures and certificates',
+            documents: ['Signed forms', 'DP declarations', 'Certificates'],
+            timeline: '2-3 days'
+          },
+          {
+            step: 4,
+            title: 'ROC Filing',
+            description: 'File forms with Registrar of Companies and obtain acknowledgment',
+            documents: ['Filing receipt', 'Filing number', 'Acknowledgment'],
+            timeline: '1 day'
+          }
+        ],
+        requiredDocuments: [
+          'Current list of all partners and their details',
+          'Capital account statements for all partners',
+          'Financial statements (if required)',
+          'Details of any partner changes during the year',
+          'Designated partner contact information',
+          'PAN and address proof of designated partners',
+          'Previous year filing proof',
+          'Any amendments to LLP agreement'
+        ],
+        faqs: [
+          {
+            question: 'When is the annual return deadline?',
+            answer: 'Within 60 days of the end of the financial year'
+          },
+          {
+            question: 'What penalty applies for late filing?',
+            answer: 'Penalty from ₹5,000-25,000 depending on delay, plus possible prosecution'
+          },
+          {
+            question: 'Can we file if there are partner changes?',
+            answer: 'Yes, partner changes must be disclosed in the annual filing'
+          },
+          {
+            question: 'Is audit mandatory for LLP?',
+            answer: 'No audit required if contribution doesn\'t exceed ₹25 lakhs; otherwise required'
+          }
+        ],
+        price: 'Starting at ₹5,999',
+        duration: '7-10 days',
+        rating: 4.7,
+        reviews: 289
+      },
+      {
+        id: 'board-meetings-general-meetings',
+        name: 'Conducting of Board Meetings & General Meetings',
+        slug: 'board-meetings-general-meetings',
+        description: 'Professional conducting and documentation of board and general meetings with advisory support.',
+        icon: 'Users',
+        features: [
+          'Board meeting scheduling and coordination',
+          'General meeting (AGM/EGM) organization',
+          'Agenda preparation and distribution',
+          'Notice and call letter generation',
+          'Meeting minutes documentation',
+          'Resolution drafting and approval',
+          'Record maintenance and filing',
+          'Compliance monitoring and support',
+          'Virtual meeting coordination',
+          'Post-meeting follow-up and implementation'
+        ],
+        benefits: [
+          'Ensure proper corporate governance and compliance',
+          'Professional meeting documentation and records',
+          'Timely notice and agenda distribution',
+          'Legal validity of decisions and resolutions',
+          'Audit-ready meeting records',
+          'Reduced compliance risks and penalties',
+          'Expert guidance on meeting procedures'
+        ],
+        procedure: [
+          {
+            step: 1,
+            title: 'Meeting Planning',
+            description: 'Determine meeting type, schedule, and required participants',
+            documents: ['Meeting schedule', 'Participant list', 'Agenda items'],
+            timeline: '2-3 days'
+          },
+          {
+            step: 2,
+            title: 'Notice & Documentation Preparation',
+            description: 'Prepare and distribute official notice and agenda to all members',
+            documents: ['Meeting notice', 'Agenda', 'Supporting documents'],
+            timeline: '2-3 days'
+          },
+          {
+            step: 3,
+            title: 'Meeting Conduction',
+            description: 'Coordinate meeting execution and documentation of proceedings',
+            documents: ['Attendance register', 'Discussion notes', 'Voting records'],
+            timeline: '1 day'
+          },
+          {
+            step: 4,
+            title: 'Minutes & Records Finalization',
+            description: 'Prepare, approve, and file meeting minutes and resolutions',
+            documents: ['Meeting minutes', 'Approved resolutions', 'Filed documents'],
+            timeline: '2-3 days'
+          }
+        ],
+        requiredDocuments: [
+          'Previous meeting minutes (if amendment)',
+          'List of members/partners and contact details',
+          'Proposed agenda items',
+          'Documents to be tabled in meeting',
+          'Director/Partner approval for agenda',
+          'Any special resolutions draft',
+          'Financial statements (if AGM)',
+          'Audit reports (if AGM)'
+        ],
+        faqs: [
+          {
+            question: 'How often must AGM be held?',
+            answer: 'Mandatory once every financial year within 6 months of year-end'
+          },
+          {
+            question: 'What is the minimum notice period?',
+            answer: 'Minimum 14 days notice required before meeting date'
+          },
+          {
+            question: 'Can meetings be held virtually?',
+            answer: 'Yes, virtual/hybrid meetings are permitted with proper coordination'
+          },
+          {
+            question: 'How long must minutes be retained?',
+            answer: 'Minutes must be retained for minimum 8 years'
+          }
+        ],
+        price: 'Starting at ₹7,999 per meeting',
+        duration: '7-10 days',
+        rating: 4.6,
+        reviews: 156
+      },
+      {
+        id: 'secretarial-standard-compliance',
+        name: 'Secretarial Standard Compliances',
+        slug: 'secretarial-standard-compliance',
+        description: 'Ensure adherence to secretarial standards with expert compliance guidance and implementation.',
+        icon: 'CheckSquare',
+        features: [
+          'Secretarial standard (SS) compliance review',
+          'Meeting procedure standardization',
+          'Documentation and record maintenance',
+          'Statutory requirement alignment',
+          'Internal audit for secretarial compliance',
+          'Compliance calendar and deadline management',
+          'Staff training and awareness programs',
+          'Regular monitoring and reporting',
+          'Non-compliance remediation',
+          'Certification and attestation support'
+        ],
+        benefits: [
+          'Ensure proper corporate governance standards',
+          'Maintain audit-ready documentation',
+          'Reduce compliance gaps and risks',
+          'Professional meeting and record standards',
+          'Investor and stakeholder confidence',
+          'Enhanced compliance culture',
+          'Protection from penalties and prosecution'
+        ],
+        procedure: [
+          {
+            step: 1,
+            title: 'Compliance Assessment',
+            description: 'Review current practices against secretarial standards requirements',
+            documents: ['Policy review', 'Record audit', 'Gap analysis'],
+            timeline: '3-5 days'
+          },
+          {
+            step: 2,
+            title: 'Standard Documentation',
+            description: 'Prepare standard policies and procedures aligned with SS requirements',
+            documents: ['Policy documents', 'Process manuals', 'Template documents'],
+            timeline: '3-5 days'
+          },
+          {
+            step: 3,
+            title: 'Implementation & Training',
+            description: 'Implement standards and train staff on proper procedures',
+            documents: ['Training materials', 'Implementation checklist', 'Staff sign-offs'],
+            timeline: '2-3 days'
+          },
+          {
+            step: 4,
+            title: 'Monitoring & Certification',
+            description: 'Monitor compliance and provide periodic certification',
+            documents: ['Compliance report', 'Certification letter', 'Action items'],
+            timeline: 'Ongoing'
+          }
+        ],
+        requiredDocuments: [
+          'Current policies and procedures',
+          'Meeting minutes and records',
+          'Board resolutions and approvals',
+          'Statutory compliances documentation',
+          'Internal audit reports',
+          'Organizational structure details',
+          'Employee policies and handbook',
+          'Previous compliance reports'
+        ],
+        faqs: [
+          {
+            question: 'Which companies need secretarial audit?',
+            answer: 'Mandatory for listed companies; discretionary for private companies'
+          },
+          {
+            question: 'What are secretarial standards?',
+            answer: 'Standards issued by ICSI for secretarial practices and corporate governance'
+          },
+          {
+            question: 'How often should compliance be checked?',
+            answer: 'Recommended quarterly; mandatory annually for audit purposes'
+          },
+          {
+            question: 'What is the cost of secretarial audit?',
+            answer: 'Varies based on company size; typically ₹25,000-1,00,000+ per year'
+          }
+        ],
+        price: 'Starting at ₹12,999',
+        duration: '15-20 days',
+        rating: 4.5,
+        reviews: 123
+      },
+
+
+
     ]
   },
 
@@ -1336,8 +1780,271 @@ export const mainServiceCategories: ServiceCategory[] = [
       duration: 'Monthly service',
       rating: 4.6,
       reviews: 678
-    }
-
+     },
+    {
+          id: 'financial-planning-analysis',
+          name: 'Financial Planning & Analysis',
+          slug: 'financial-planning-analysis',
+          description: 'Strategic financial planning, budgeting, and performance analysis with expert insights.',
+          icon: 'BarChart3',
+          features: [
+            'Financial modeling and forecasting development',
+            'Budget planning and variance analysis',
+            'Cash flow management and optimization',
+            'Investment analysis and decision support',
+            'KPI development and performance monitoring',
+            'Board reporting and executive presentations',
+            'Financial risk assessment and management',
+            'Strategic financial advisory and consultation'
+          ],
+          benefits: [
+            'Data-driven financial planning and forecasting',
+            'Better budget control and variance management',
+            'Optimized cash flow and working capital',
+            'Strategic financial decision support',
+            'KPI-based performance monitoring',
+            'Executive-level financial insights'
+          ],
+          procedure: [
+            {
+              step: 1,
+              title: 'Financial Analysis',
+              description: 'Comprehensive review of current financial position and performance',
+              documents: ['Financial statements', 'Cash flow analysis', 'Performance metrics'],
+              timeline: '3-5 days'
+            },
+            {
+              step: 2,
+              title: 'Planning Framework Development',
+              description: 'Design financial model and planning framework aligned with business goals',
+              documents: ['Financial model', 'Planning framework', 'Scenario analysis'],
+              timeline: '5-7 days'
+            },
+            {
+              step: 3,
+              title: 'Budget & Forecast Preparation',
+              description: 'Prepare detailed budgets and forecasts with variance analysis',
+              documents: ['Budget templates', 'Forecasts', 'Variance reports'],
+              timeline: '3-5 days'
+            },
+            {
+              step: 4,
+              title: 'Ongoing Monitoring & Reporting',
+              description: 'Monthly/quarterly reporting, variance analysis, and strategic recommendations',
+              documents: ['Monthly reports', 'KPI dashboard', 'Strategic recommendations'],
+              timeline: 'Monthly/Quarterly'
+            }
+          ],
+          requiredDocuments: [
+            'Last 2-3 years financial statements',
+            'Current budget and forecasts',
+            'Business plan and strategic objectives',
+            'List of KPIs being tracked',
+            'Organizational structure',
+            'Major capital plans and investments',
+            'Historical performance data'
+          ],
+          faqs: [
+            {
+              question: 'What is financial planning and analysis?',
+              answer: 'FP&A is the process of planning, budgeting, forecasting, and analyzing financial performance'
+            },
+            {
+              question: 'How often should we review finances?',
+              answer: 'Monthly minimum for active monitoring; quarterly formal reviews recommended'
+            },
+            {
+              question: 'Can FP&A help improve profitability?',
+              answer: 'Yes, by identifying cost reduction opportunities and optimizing resource allocation'
+            },
+            {
+              question: 'Is FP&A suitable for small businesses?',
+              answer: 'Absolutely, especially when scaling or preparing for fundraising'
+            }
+          ],
+          price: 'Starting at ₹35,999/month',
+          duration: 'Monthly service',
+          trending: true,
+          rating: 4.9,
+          reviews: 156
+        },
+        {
+          id: 'fundraising-support',
+          name: 'Fundraising & Investment Support',
+          slug: 'fundraising-support',
+          description: 'End-to-end support for raising capital and managing investor relations with expert guidance.',
+          icon: 'DollarSign',
+          features: [
+            'Comprehensive fundraising strategy development',
+            'Investor identification and targeted outreach',
+            'Due diligence preparation and documentation',
+            'Valuation support and financial modeling',
+            'Term sheet negotiation support and guidance',
+            'Legal documentation coordination and review',
+            'Investor presentation and pitch preparation',
+            'Post-funding investor relations management'
+          ],
+          benefits: [
+            'Develop winning fundraising strategy',
+            'Access to investor networks and contacts',
+            'Professional financial preparation and documentation',
+            'Expert valuation and negotiation support',
+            'Increased chances of successful fundraising',
+            'Long-term investor relationship management'
+          ],
+          procedure: [
+            {
+              step: 1,
+              title: 'Strategy Development',
+              description: 'Define fundraising goals, investor targets, and strategy',
+              documents: ['Fundraising plan', 'Investor criteria', 'Target list'],
+              timeline: '5-7 days'
+            },
+            {
+              step: 2,
+              title: 'Financial Preparation',
+              description: 'Prepare financial models, projections, and valuation support',
+              documents: ['Financial model', 'Valuation report', 'Projections'],
+              timeline: '7-10 days'
+            },
+            {
+              step: 3,
+              title: 'Investor Engagement',
+              description: 'Conduct investor outreach, meetings, and pitch presentations',
+              documents: ['Pitch deck', 'Investor presentations', 'Meeting notes'],
+              timeline: '2-6 months'
+            },
+            {
+              step: 4,
+              title: 'Closing & Relationship Management',
+              description: 'Facilitate term sheet negotiation, due diligence, and post-funding relations',
+              documents: ['Term sheet', 'Due diligence docs', 'Investor agreements'],
+              timeline: 'Ongoing'
+            }
+          ],
+          requiredDocuments: [
+            'Business plan and executive summary',
+            'Financial projections (3-5 years)',
+            'Current financial statements',
+            'Cap table and share structure',
+            'Products/services demonstration',
+            'Market analysis and competitive positioning',
+            'Team credentials and backgrounds',
+            'Legal documents (articles, bylaws, etc.)'
+          ],
+          faqs: [
+            {
+              question: 'How much capital can we raise?',
+              answer: 'Depends on business stage, market, and investor appetite; ranges from seed to Series rounds'
+            },
+            {
+              question: 'What is a realistic fundraising timeline?',
+              answer: 'Typically 3-6 months from strategy to closing, depending on complexity'
+            },
+            {
+              question: 'How do you determine company valuation?',
+              answer: 'Using multiple methods: comparables, DCF, venture capital method based on stage'
+            },
+            {
+              question: 'What happens after we raise funds?',
+              answer: 'We provide ongoing investor relations support and performance reporting'
+            }
+          ],
+          price: 'Starting at ₹75,999',
+          duration: '2-6 months',
+          rating: 4.8,
+          reviews: 89
+        },
+        {
+          id: 'monthly-profitability-report',
+          name: 'Monthly Profitability Report & Balance Sheet',
+          slug: 'monthly-profitability-report',
+          description: 'Comprehensive monthly profitability reports and balance sheets with financial analysis.',
+          icon: 'BarChart2',
+          features: [
+            'Monthly profit and loss (P&L) statement preparation',
+            'Balance sheet compilation and analysis',
+            'Cash flow statement and analysis',
+            'Key financial ratios and metrics calculation',
+            'Variance analysis against budget/targets',
+            'Expense categorization and tracking',
+            'Revenue analysis and trends',
+            'Executive summary and insights',
+            'Customizable reporting formats',
+            'Timely delivery and accessibility'
+          ],
+          benefits: [
+            'Real-time visibility into business profitability',
+            'Quick identification of profit/loss areas',
+            'Data-driven decision making capability',
+            'Budget variance tracking and control',
+            'Early warning for financial issues',
+            'Professional financial documentation',
+            'Investor and lender reporting readiness'
+          ],
+          procedure: [
+            {
+              step: 1,
+              title: 'Data Collection',
+              description: 'Collect all financial transactions and documents for the month',
+              documents: ['Invoices', 'Receipts', 'Bank statements', 'Expense bills'],
+              timeline: '1-2 days'
+            },
+            {
+              step: 2,
+              title: 'Transaction Posting',
+              description: 'Post all transactions to respective accounts and ledgers',
+              documents: ['General ledger', 'Trial balance', 'Account statements'],
+              timeline: '2-3 days'
+            },
+            {
+              step: 3,
+              title: 'Report Compilation',
+              description: 'Prepare P&L, balance sheet, and cash flow statements',
+              documents: ['P&L statement', 'Balance sheet', 'Cash flow statement'],
+              timeline: '1-2 days'
+            },
+            {
+              step: 4,
+              title: 'Analysis & Delivery',
+              description: 'Analyze results and deliver with insights and recommendations',
+              documents: ['Financial analysis', 'Ratio analysis', 'Executive summary'],
+              timeline: '1 day'
+            }
+          ],
+          requiredDocuments: [
+            'All invoices and receipts for the month',
+            'Bank statements and reconciliation',
+            'Payroll records and salary information',
+            'Expense bills and payment proofs',
+            'Inventory records and valuations',
+            'Loan statements and interest details',
+            'Capital transactions and adjustments',
+            'Previous month closing balances'
+          ],
+          faqs: [
+            {
+              question: 'When should monthly reports be ready?',
+              answer: 'Ideally within 3-5 days of month-end for timely decision-making'
+            },
+            {
+              question: 'What if there are discrepancies?',
+              answer: 'We identify and reconcile all discrepancies before finalizing reports'
+            },
+            {
+              question: 'Can reports be customized?',
+              answer: 'Yes, reports can be customized based on specific business requirements'
+            },
+            {
+              question: 'How are reports delivered?',
+              answer: 'Reports are delivered via email in Excel/PDF format with secure access'
+            }
+          ],
+          price: 'Starting at ₹4,999/month',
+          duration: 'Monthly service',
+          rating: 4.8,
+          reviews: 234
+        },
     ]
   },
   {
@@ -1585,7 +2292,98 @@ export const mainServiceCategories: ServiceCategory[] = [
       duration: '5-10 days',
       rating: 4.8,
       reviews: 456
-    }
+    },
+          {
+        id: 'trademark-opposition',
+        name: 'Trademark Opposition',
+        slug: 'trademark-opposition',
+        description: 'Expert representation and filing of trademark opposition against similar marks.',
+        icon: 'AlertCircle',
+        features: [
+          'Comprehensive trademark search and analysis',
+          'Opposition ground assessment and strategy',
+          'Opposition application preparation and filing',
+          'Trademark similarity analysis and comparison',
+          'Evidence collection and documentation',
+          'Hearing preparation and representation',
+          'Legal arguments and submissions',
+          'Correspondence with IP office',
+          'Appeal filing if required',
+          'Complete case documentation and records'
+        ],
+        benefits: [
+          'Protect your trademark from identical/similar marks',
+          'Prevent unauthorized use of similar marks',
+          'Strengthen your brand protection',
+          'Expert legal representation before IP office',
+          'Increase success rate of opposition',
+          'Comprehensive case strategy and guidance',
+          'Post-opposition legal support'
+        ],
+        procedure: [
+          {
+            step: 1,
+            title: 'Trademark Analysis',
+            description: 'Analyze similarity and grounds for opposition against applicant mark',
+            documents: ['Trademark comparison', 'Similarity analysis', 'Grounds documentation'],
+            timeline: '2-3 days'
+          },
+          {
+            step: 2,
+            title: 'Opposition Application Filing',
+            description: 'Prepare and file formal opposition before IP office',
+            documents: ['Opposition form', 'Grounds statement', 'Evidence attachments'],
+            timeline: '2-3 days'
+          },
+          {
+            step: 3,
+            title: 'Evidence & Arguments',
+            description: 'Submit evidence and legal arguments supporting opposition',
+            documents: ['Evidence documents', 'Counsel submission', 'Comparative analysis'],
+            timeline: '3-5 days'
+          },
+          {
+            step: 4,
+            title: 'Hearing & Decision',
+            description: 'Appear in hearing before IP office and respond to applicant',
+            documents: ['Hearing notice', 'Hearing response', 'Decision and order'],
+            timeline: '2-6 months'
+          }
+        ],
+        requiredDocuments: [
+          'Your trademark registration certificate',
+          'Applicant trademark application details',
+          'Evidence of your trademark usage',
+          'Proof of prior registration date',
+          'Similarity comparison documents',
+          'Supporting documents for opposition grounds',
+          'Company registration and authorization',
+          'Power of attorney (if through agent)'
+        ],
+        faqs: [
+          {
+            question: 'What are grounds for trademark opposition?',
+            answer: 'Similarity, bad faith, prior rights, descriptive nature, family trademark, etc.'
+          },
+          {
+            question: 'How long is the opposition process?',
+            answer: 'Typically 2-6 months depending on office proceedings and hearing'
+          },
+          {
+            question: 'Can we oppose even after registration?',
+            answer: 'Yes, within 5 years of registration through revocation action'
+          },
+          {
+            question: 'What happens if opposition succeeds?',
+            answer: 'The opposing application is rejected, and your mark is protected'
+          }
+        ],
+        price: 'Starting at ₹9,999',
+        duration: '2-6 months',
+        rating: 4.6,
+        reviews: 178
+      },
+
 
 
     ]
@@ -1639,7 +2437,98 @@ export const mainServiceCategories: ServiceCategory[] = [
         duration: 'Monthly service',
         rating: 4.7,
         reviews: 789
-      }
+      },
+      {
+  id: 'epfo-esic-detailed',
+  name: 'EPFO & ESIC Compliance Details',
+  slug: 'epfo-esic-detailed',
+  description: 'Detailed EPFO and ESIC registration, filing, and compliance management for employee welfare.',
+  icon: 'Shield',
+  features: [
+    'EPFO Provident Fund registration and account setup',
+    'ESIC Social Security registration and coverage',
+    'Employee enrollment and member IDs',
+    'Monthly contribution calculations and payments',
+    'Quarterly/Annual return filings and submissions',
+    'Employee claims processing and support',
+    'Inspection handling and compliance',
+    'Penalty avoidance and dispute resolution',
+    'Compliance monitoring and alerts',
+    'Employee benefit statements and reports'
+  ],
+  benefits: [
+    'Employee social security and insurance coverage',
+    'Retirement benefits and provident fund',
+    'Medical and disability coverage for employees',
+    'Compliance with labor laws and regulations',
+    'Reduced compliance burden and penalties',
+    'Peace of mind with proper employee coverage',
+    'Enhanced employee satisfaction and retention'
+  ],
+  procedure: [
+    {
+      step: 1,
+      title: 'Eligibility Assessment',
+      description: 'Assess business eligibility and employee coverage requirements',
+      documents: ['Employee details', 'Salary information', 'Business registration'],
+      timeline: '1-2 days'
+    },
+    {
+      step: 2,
+      title: 'Registration Process',
+      description: 'Register with EPFO and ESIC, obtain account and codes',
+      documents: ['Registration applications', 'Employee list', 'Nominee details'],
+      timeline: '5-7 days'
+    },
+    {
+      step: 3,
+      title: 'Enrollment & Member IDs',
+      description: 'Enroll employees and generate EPFO and ESIC member IDs',
+      documents: ['Member cards', 'Enrollment confirmations', 'Account details'],
+      timeline: '3-5 days'
+    },
+    {
+      step: 4,
+      title: 'Contribution & Filing',
+      description: 'Calculate, pay contributions and file monthly/quarterly returns',
+      documents: ['Contribution receipts', 'Filed returns', 'Payment proofs'],
+      timeline: 'Ongoing Monthly'
+    }
+  ],
+  requiredDocuments: [
+    'Business registration and PAN certificate',
+    'Complete employee details and payroll',
+    'Bank account details for contributions',
+    'Salary structure and payment schedule',
+    'Employee addresses and contact information',
+    'Nominee details for each employee',
+    'Factory/shop registration (if applicable)',
+    'Previous EPFO/ESIC documents (if existing)'
+  ],
+  faqs: [
+    {
+      question: 'Which businesses need EPFO registration?',
+      answer: 'Businesses with 20 or more employees need mandatory EPFO registration'
+    },
+    {
+      question: 'What is the employer contribution percentage?',
+      answer: 'EPFO: 12% of basic+DA; ESIC varies from 4.75%-7.75% based on salary'
+    },
+    {
+      question: 'Can employees withdraw their provident fund?',
+      answer: 'Yes, at retirement, resignation, or in case of hardship with approval'
+    },
+    {
+      question: 'What happens if contributions are not paid on time?',
+      answer: 'Late payment penalties and interest apply; legal action may follow'
+    }
+  ],
+  price: 'Starting at ₹3,999/month',
+  duration: 'Monthly service',
+  rating: 4.7,
+  reviews: 345
+},
+
     ]
   },
   {
@@ -1757,107 +2646,559 @@ export const mainServiceCategories: ServiceCategory[] = [
         rating: 4.5,
         reviews: 3456
         },
-  {
-    id: 'day-to-day-advisory',
-    name: 'Day-to-Day Financial Advisory',
-    slug: 'day-to-day-advisory',
-    description: 'Ongoing daily financial advisory and decision support for operational and strategic needs.',
-    icon: 'MessageCircle',
-    subServices: [
-      {
-        id: 'financial-advisory-daily',
-        name: 'Daily Financial Advisory',
-        slug: 'financial-advisory-daily',
-        description: 'Daily operational financial guidance and real-time decision support.',
-        icon: 'MessageCircle',
-        features: [
-          'Daily operational financial guidance',
-          'Quick decision support for business issues',
-          'Cash flow optimization recommendations',
-          'Invoice and payment optimization',
-          'Vendor negotiation support',
-          'Expense management optimization',
-          'Real-time financial queries resolution',
-          'Strategic financial consultation'
-        ],
-        benefits: [
-          'Real-time financial guidance for business decisions',
-          'Expert advice on cash flow management',
-          'Cost optimization and expense reduction strategies',
-          'Quick resolution of financial queries',
-          'Strategic financial planning support',
-          'Improved profitability and business efficiency'
-        ],
-        procedure: [
-          {
-            step: 1,
-            title: 'Financial Analysis & Baseline',
-            description: 'Review current financial position, analyze cash flow patterns',
-            documents: ['Financial statements', 'Cash flow analysis', 'Assessment'],
-            timeline: '3-5 days'
-          },
-          {
-            step: 2,
-            title: 'Advisory Framework Setup',
-            description: 'Define scope, frequency, communication channels',
-            documents: ['Scope document', 'Communication plan', 'Timeline'],
-            timeline: '2-3 days'
-          },
-          {
-            step: 3,
-            title: 'Ongoing Daily Support',
-            description: 'Daily guidance, weekly reviews, monthly analysis',
-            documents: ['Daily notes', 'Weekly reports', 'Monthly analysis'],
-            timeline: 'Continuous'
-          },
-          {
-            step: 4,
-            title: 'Optimization & Improvement',
-            description: 'Cost-saving measures, payment cycles, working capital',
-            documents: ['Recommendations', 'Implementation plan', 'Results'],
-            timeline: 'Ongoing'
-          }
-        ],
-        requiredDocuments: [
-          'Last 3 months bank statements',
-          'Current P&L statement',
-          'Balance sheet',
-          'Accounts receivable/payable aging',
-          'Cash flow forecast',
-          'List of regular expenses',
-          'Vendor and customer payment terms',
-          'Pending financial decisions',
-          'Business growth plans'
-        ],
-        faqs: [
-          {
-            question: 'What is the scope of day-to-day advisory?',
-            answer: 'Daily financial guidance, decision support, cost optimization, query resolution'
-          },
-          {
-            question: 'How quickly are queries responded to?',
-            answer: 'Usually within 24 hours; urgent queries within 2-4 hours'
-          },
-          {
-            question: 'Can advisory help in fundraising?',
-            answer: 'Yes, we guide financial preparation and presentation for investors'
-          },
-          {
-            question: 'Is advisory suitable for small businesses?',
-            answer: 'Yes, especially helpful for startups and SMEs managing cash flow'
-          }
-        ],
-        price: 'Starting at ₹19,999/month',
-        duration: 'Monthly service',
-        rating: 4.7,
-        reviews: 234
-      }
-    ]
-  }
+        {
+  id: 'fssai-registration',
+  name: 'FSSAI Food License Registration',
+  slug: 'fssai-registration',
+  description: 'Food Safety and Standards Authority license registration for food businesses with complete compliance.',
+  icon: 'Utensils',
+  features: [
+    'FSSAI license application and processing',
+    'Food safety compliance guidance and support',
+    'Complete documentation preparation and filing',
+    'License renewal services and management',
+    'Compliance monitoring and audit support',
+    'Amendment and modification services',
+    'Food safety training and certification',
+    'Regulatory updates and advisory services'
+  ],
+  benefits: [
+    'Legal authorization to operate food business',
+    'Customer trust and brand credibility',
+    'Compliance with food safety standards',
+    'Easy license renewal and updates',
+    'Expert guidance on food safety regulations',
+    'Support for business expansion and scaling'
+  ],
+  procedure: [
+    {
+      step: 1,
+      title: 'Business Assessment',
+      description: 'Review business type, scale, and food safety requirements',
+      documents: ['Business registration', 'Food products list', 'Premises details'],
+      timeline: '1-2 days'
+    },
+    {
+      step: 2,
+      title: 'Documentation Preparation',
+      description: 'Prepare complete application documents and food safety plan',
+      documents: ['FSSAI application form', 'Food safety plan', 'Layout diagram'],
+      timeline: '2-3 days'
+    },
+    {
+      step: 3,
+      title: 'Application Filing',
+      description: 'Submit application with FSSAI portal and required documents',
+      documents: ['Submitted application', 'Receipt', 'Reference number'],
+      timeline: '1 day'
+    },
+    {
+      step: 4,
+      title: 'License Processing & Issuance',
+      description: 'FSSAI processes application and issues registration certificate',
+      documents: ['FSSAI license/certificate', 'Registration number', 'Validity period'],
+      timeline: '5-10 days'
+    }
+  ],
+  requiredDocuments: [
+    'Business registration/PAN certificate',
+    'Owner/Manager identification and address proof',
+    'Premises layout diagram and photos',
+    'Food safety plan and procedures',
+    'Proof of food storage and handling facilities',
+    'Employee details and training certificates',
+    'Previous licenses (if existing business)',
+    'Utility bills as premises proof'
+  ],
+  faqs: [
+    {
+      question: 'Is FSSAI license mandatory for all food businesses?',
+      answer: 'Yes, any business dealing with food products requires FSSAI registration or license'
+    },
+    {
+      question: 'What is the validity period of FSSAI license?',
+      answer: 'Typically 1-5 years depending on license type; can be renewed before expiry'
+    },
+    {
+      question: 'How much does FSSAI registration cost?',
+      answer: 'Government fees vary from ₹100-5000 depending on business turnover'
+    },
+    {
+      question: 'How often are food safety audits conducted?',
+      answer: 'FSSAI conducts periodic inspections; annual inspections are mandatory for licensed businesses'
+    }
+  ],
+  price: 'Starting at ₹2,999',
+  duration: '10-15 days',
+  popular: true,
+  rating: 4.8,
+  reviews: 567
+},
+
+
+    
 
     ]
-  }
+  },
+  {
+  id: 'day-to-day-advisory',
+  name: 'Day-to-Day Financial Advisory',
+  slug: 'day-to-day-advisory',
+  description: 'Ongoing daily financial advisory and decision support for operational and strategic needs.',
+  icon: 'MessageCircle',
+  subServices: [
+    {
+      id: 'financial-advisory-daily',
+      name: 'Daily Financial Advisory',
+      slug: 'financial-advisory-daily',
+      description: 'Daily operational financial guidance and real-time decision support.',
+      icon: 'MessageCircle',
+      features: [
+        'Daily operational financial guidance',
+        'Quick decision support for business issues',
+        'Cash flow optimization recommendations',
+        'Invoice and payment optimization',
+        'Vendor negotiation support',
+        'Expense management optimization',
+        'Real-time financial queries resolution',
+        'Strategic financial consultation'
+      ],
+      benefits: [
+        'Real-time financial guidance for business decisions',
+        'Expert advice on cash flow management',
+        'Cost optimization and expense reduction strategies',
+        'Quick resolution of financial queries',
+        'Strategic financial planning support',
+        'Improved profitability and business efficiency'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Financial Analysis & Baseline',
+          description: 'Review current financial position, analyze cash flow patterns',
+          documents: ['Financial statements', 'Cash flow analysis', 'Assessment'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 2,
+          title: 'Advisory Framework Setup',
+          description: 'Define scope, frequency, communication channels',
+          documents: ['Scope document', 'Communication plan', 'Timeline'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 3,
+          title: 'Ongoing Daily Support',
+          description: 'Daily guidance, weekly reviews, monthly analysis',
+          documents: ['Daily notes', 'Weekly reports', 'Monthly analysis'],
+          timeline: 'Continuous'
+        },
+        {
+          step: 4,
+          title: 'Optimization & Improvement',
+          description: 'Cost-saving measures, payment cycles, working capital',
+          documents: ['Recommendations', 'Implementation plan', 'Results'],
+          timeline: 'Ongoing'
+        }
+      ],
+      requiredDocuments: [
+        'Last 3 months bank statements',
+        'Current P&L statement',
+        'Balance sheet',
+        'Accounts receivable/payable aging',
+        'Cash flow forecast',
+        'List of regular expenses',
+        'Vendor and customer payment terms',
+        'Pending financial decisions',
+        'Business growth plans'
+      ],
+      faqs: [
+        {
+          question: 'What is the scope of day-to-day advisory?',
+          answer: 'Daily financial guidance, decision support, cost optimization, query resolution'
+        },
+        {
+          question: 'How quickly are queries responded to?',
+          answer: 'Usually within 24 hours; urgent queries within 2-4 hours'
+        },
+        {
+          question: 'Can advisory help in fundraising?',
+          answer: 'Yes, we guide financial preparation and presentation for investors'
+        },
+        {
+          question: 'Is advisory suitable for small businesses?',
+          answer: 'Yes, especially helpful for startups and SMEs managing cash flow'
+        }
+      ],
+      price: 'Starting at ₹19,999/month',
+      duration: 'Monthly service',
+      rating: 4.7,
+      reviews: 234
+    }
+    ]
+  },
+  {
+  id: 'investor-fundraising',
+  name: 'Investor & Fundraising Services',
+  slug: 'investor-fundraising',
+  description: 'Complete fundraising support, investor relations, and capital raising solutions for business growth.',
+  icon: 'DollarSign',
+  subServices: [
+    {
+      id: 'business-plan-development',
+      name: 'Business Plan Development',
+      slug: 'business-plan-development',
+      description: 'Professional business plan creation for funding and strategic growth with comprehensive market analysis.',
+      icon: 'FileText',
+      features: [
+        'Comprehensive market research and competitive analysis',
+        'Detailed financial projections and revenue modeling',
+        'Investor-ready presentation and pitch deck',
+        'Go-to-market strategy development',
+        'Risk assessment and mitigation planning',
+        'Funding strategy development and recommendations',
+        'Business model validation and optimization',
+        'Executive summary and detailed documentation'
+      ],
+      benefits: [
+        'Comprehensive roadmap for business success',
+        'Professional document for investor presentations',
+        'Market-validated business strategy',
+        'Clear financial projections and targets',
+        'Risk mitigation planning',
+        'Go-to-market strategy guidance'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Business Concept Review',
+          description: 'Understand your business idea, market, and goals',
+          documents: ['Business concept', 'Initial research', 'Market overview'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 2,
+          title: 'Market & Competitive Analysis',
+          description: 'Research market size, trends, and competitive landscape',
+          documents: ['Market analysis', 'Competitor analysis', 'Industry report'],
+          timeline: '5-7 days'
+        },
+        {
+          step: 3,
+          title: 'Financial Modeling',
+          description: 'Develop detailed financial projections and revenue model',
+          documents: ['Financial model', 'Profit projections', 'Cash flow forecast'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 4,
+          title: 'Plan Finalization',
+          description: 'Compile comprehensive business plan with all documentation',
+          documents: ['Complete business plan', 'Executive summary', 'All supporting docs'],
+          timeline: '2-3 days'
+        }
+      ],
+      requiredDocuments: [
+        'Business concept and description',
+        'Founder background and experience',
+        'Market research data',
+        'Financial assumptions and projections',
+        'Marketing and sales strategy',
+        'Organizational structure',
+        'Risk assessment document',
+        'Funding requirements breakdown'
+      ],
+      faqs: [
+        {
+          question: 'How detailed should the business plan be?',
+          answer: 'Typically 20-30 pages for investors; we provide comprehensive but concise documentation'
+        },
+        {
+          question: 'Can we update the plan later?',
+          answer: 'Yes, business plans should be reviewed and updated annually or when major changes occur'
+        },
+        {
+          question: 'Do you help with investor presentations?',
+          answer: 'Yes, we prepare investor-ready pitch decks and presentation materials'
+        },
+        {
+          question: 'What is included in financial projections?',
+          answer: 'Income statement, cash flow, balance sheet projections for 3-5 years'
+        }
+      ],
+      price: 'Starting at ₹25,999',
+      duration: '15-20 days',
+      popular: true,
+      rating: 4.8,
+      reviews: 345
+    },
+    {
+      id: 'pitch-deck-creation',
+      name: 'Investor Pitch Deck Creation',
+      slug: 'pitch-deck-creation',
+      description: 'Compelling pitch decks that attract investors and secure funding with professional design.',
+      icon: 'Presentation',
+      features: [
+        'Professional design and compelling content creation',
+        'Compelling storytelling and narrative development',
+        'Detailed financial projections and modeling',
+        'Market opportunity analysis and sizing',
+        'Competitive landscape analysis and positioning',
+        'Funding requirements and use of funds breakdown',
+        'Team presentation and capability showcase',
+        'Multiple format delivery (PPT, PDF, interactive)'
+      ],
+      benefits: [
+        'Professional presentation that impresses investors',
+        'Clear articulation of business opportunity',
+        'Compelling storytelling that engages audiences',
+        'Visual design that stands out from competitors',
+        'Data-backed projections and financials',
+        'Multiple format options for different audiences'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Strategy & Content Planning',
+          description: 'Define key messages, narrative flow, and investor interests',
+          documents: ['Content outline', 'Key messages', 'Story arc'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 2,
+          title: 'Slide Development',
+          description: 'Create slides with compelling visuals and data',
+          documents: ['Slide deck', 'Design mockups', 'Content drafts'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 3,
+          title: 'Design & Refinement',
+          description: 'Professional design, branding, and visual optimization',
+          documents: ['Final deck', 'Design assets', 'Brand guidelines'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 4,
+          title: 'Delivery & Training',
+          description: 'Multiple format delivery and presentation training',
+          documents: ['PPT version', 'PDF version', 'Video presentation guide'],
+          timeline: '2-3 days'
+        }
+      ],
+      requiredDocuments: [
+        'Business overview and value proposition',
+        'Financial projections and key metrics',
+        'Market size and opportunity data',
+        'Competitive analysis',
+        'Go-to-market strategy',
+        'Team credentials and photos',
+        'Product/service demonstrations',
+        'Logo and brand assets'
+      ],
+      faqs: [
+        {
+          question: 'How many slides should the pitch deck have?',
+          answer: 'Typically 12-15 slides; we optimize for investor attention spans'
+        },
+        {
+          question: 'Can we customize the deck for different investors?',
+          answer: 'Yes, we create templates allowing easy customization for different investor types'
+        },
+        {
+          question: 'Do you help with pitch practice?',
+          answer: 'Yes, we provide presentation coaching and feedback'
+        },
+        {
+          question: 'What formats do you deliver?',
+          answer: 'PowerPoint, PDF, Google Slides, and animated video presentations'
+        }
+      ],
+      price: 'Starting at ₹15,999',
+      duration: '7-10 days',
+      rating: 4.7,
+      reviews: 234
+    },
+    {
+      id: 'financial-planning-analysis',
+      name: 'Financial Planning & Analysis',
+      slug: 'financial-planning-analysis',
+      description: 'Strategic financial planning, budgeting, and performance analysis with expert insights.',
+      icon: 'BarChart3',
+      features: [
+        'Financial modeling and forecasting development',
+        'Budget planning and variance analysis',
+        'Cash flow management and optimization',
+        'Investment analysis and decision support',
+        'KPI development and performance monitoring',
+        'Board reporting and executive presentations',
+        'Financial risk assessment and management',
+        'Strategic financial advisory and consultation'
+      ],
+      benefits: [
+        'Data-driven financial planning and forecasting',
+        'Better budget control and variance management',
+        'Optimized cash flow and working capital',
+        'Strategic financial decision support',
+        'KPI-based performance monitoring',
+        'Executive-level financial insights'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Financial Analysis',
+          description: 'Comprehensive review of current financial position and performance',
+          documents: ['Financial statements', 'Cash flow analysis', 'Performance metrics'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 2,
+          title: 'Planning Framework Development',
+          description: 'Design financial model and planning framework aligned with business goals',
+          documents: ['Financial model', 'Planning framework', 'Scenario analysis'],
+          timeline: '5-7 days'
+        },
+        {
+          step: 3,
+          title: 'Budget & Forecast Preparation',
+          description: 'Prepare detailed budgets and forecasts with variance analysis',
+          documents: ['Budget templates', 'Forecasts', 'Variance reports'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 4,
+          title: 'Ongoing Monitoring & Reporting',
+          description: 'Monthly/quarterly reporting, variance analysis, and strategic recommendations',
+          documents: ['Monthly reports', 'KPI dashboard', 'Strategic recommendations'],
+          timeline: 'Monthly/Quarterly'
+        }
+      ],
+      requiredDocuments: [
+        'Last 2-3 years financial statements',
+        'Current budget and forecasts',
+        'Business plan and strategic objectives',
+        'List of KPIs being tracked',
+        'Organizational structure',
+        'Major capital plans and investments',
+        'Historical performance data'
+      ],
+      faqs: [
+        {
+          question: 'What is financial planning and analysis?',
+          answer: 'FP&A is the process of planning, budgeting, forecasting, and analyzing financial performance'
+        },
+        {
+          question: 'How often should we review finances?',
+          answer: 'Monthly minimum for active monitoring; quarterly formal reviews recommended'
+        },
+        {
+          question: 'Can FP&A help improve profitability?',
+          answer: 'Yes, by identifying cost reduction opportunities and optimizing resource allocation'
+        },
+        {
+          question: 'Is FP&A suitable for small businesses?',
+          answer: 'Absolutely, especially when scaling or preparing for fundraising'
+        }
+      ],
+      price: 'Starting at ₹35,999/month',
+      duration: 'Monthly service',
+      trending: true,
+      rating: 4.9,
+      reviews: 156
+    },
+    {
+      id: 'fundraising-support',
+      name: 'Fundraising & Investment Support',
+      slug: 'fundraising-support',
+      description: 'End-to-end support for raising capital and managing investor relations with expert guidance.',
+      icon: 'TrendingUp',
+      features: [
+        'Comprehensive fundraising strategy development',
+        'Investor identification and targeted outreach',
+        'Due diligence preparation and documentation',
+        'Valuation support and financial modeling',
+        'Term sheet negotiation support and guidance',
+        'Legal documentation coordination and review',
+        'Investor presentation and pitch preparation',
+        'Post-funding investor relations management'
+      ],
+      benefits: [
+        'Develop winning fundraising strategy',
+        'Access to investor networks and contacts',
+        'Professional financial preparation and documentation',
+        'Expert valuation and negotiation support',
+        'Increased chances of successful fundraising',
+        'Long-term investor relationship management'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Strategy Development',
+          description: 'Define fundraising goals, investor targets, and strategy',
+          documents: ['Fundraising plan', 'Investor criteria', 'Target list'],
+          timeline: '5-7 days'
+        },
+        {
+          step: 2,
+          title: 'Financial Preparation',
+          description: 'Prepare financial models, projections, and valuation support',
+          documents: ['Financial model', 'Valuation report', 'Projections'],
+          timeline: '7-10 days'
+        },
+        {
+          step: 3,
+          title: 'Investor Engagement',
+          description: 'Conduct investor outreach, meetings, and pitch presentations',
+          documents: ['Pitch deck', 'Investor presentations', 'Meeting notes'],
+          timeline: '2-6 months'
+        },
+        {
+          step: 4,
+          title: 'Closing & Relationship Management',
+          description: 'Facilitate term sheet negotiation, due diligence, and post-funding relations',
+          documents: ['Term sheet', 'Due diligence docs', 'Investor agreements'],
+          timeline: 'Ongoing'
+        }
+      ],
+      requiredDocuments: [
+        'Business plan and executive summary',
+        'Financial projections (3-5 years)',
+        'Current financial statements',
+        'Cap table and share structure',
+        'Products/services demonstration',
+        'Market analysis and competitive positioning',
+        'Team credentials and backgrounds',
+        'Legal documents (articles, bylaws, etc.)'
+      ],
+      faqs: [
+        {
+          question: 'How much capital can we raise?',
+          answer: 'Depends on business stage, market, and investor appetite; ranges from seed to Series rounds'
+        },
+        {
+          question: 'What is a realistic fundraising timeline?',
+          answer: 'Typically 3-6 months from strategy to closing, depending on complexity'
+        },
+        {
+          question: 'How do you determine company valuation?',
+          answer: 'Using multiple methods: comparables, DCF, venture capital method based on stage'
+        },
+        {
+          question: 'What happens after we raise funds?',
+          answer: 'We provide ongoing investor relations support and performance reporting'
+        }
+      ],
+      price: 'Starting at ₹75,999',
+      duration: '2-6 months',
+      rating: 4.8,
+      reviews: 89
+    }
+  ]
+},
+
+
 ];
+
 
 export const moreServices: MoreService[] = [
   {

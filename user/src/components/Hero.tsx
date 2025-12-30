@@ -126,7 +126,7 @@ const Hero = () => {
                 className="border-2 border-gold/50 bg-transparent hover:bg-gold/10 hover:border-gold text-white px-8 py-3 text-lg group transition-all duration-300"
               >
                 <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                <Link to="/contact">Start Your Business Journey</Link>
+                <Link to="/services">Start Your Business Journey</Link>
               </Button>
 
               <Button

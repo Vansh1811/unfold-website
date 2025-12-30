@@ -13,15 +13,18 @@ const Services = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  const serviceCategories = [
-    { id: 'all', name: 'All Services', count: 50 },
-    { id: 'company-formation', name: 'Company Formation', count: 6 },
-    { id: 'legal-compliance', name: 'Legal Compliance', count: 6 },
-    { id: 'taxation-accounting', name: 'Taxation & Accounting', count: 4 },
-    { id: 'intellectual-property', name: 'IP Rights', count: 4 },
-    { id: 'hr-payroll', name: 'HR Solutions', count: 3 },
-    { id: 'business-licensing', name: 'Business Licensing', count: 4 }
-  ];
+const serviceCategories = [
+  { id: 'all', name: 'All Services', count: 50 },
+  { id: 'company-formation', name: 'Company Formation', count: 7 },
+  { id: 'legal-compliance', name: 'Legal Compliance', count: 12 }, // +2 (was 10)
+  { id: 'taxation-accounting', name: 'Taxation & Accounting', count: 7 }, // +1 (was 6)
+  { id: 'intellectual-property', name: 'IP Rights', count: 6 }, // +1 (was 5)
+  { id: 'hr-payroll', name: 'HR Solutions', count: 3 }, // +1 (was 2)
+  { id: 'business-licensing', name: 'Business Licensing', count: 6 }, // +1 (was 5)
+  { id: 'day-to-day-advisory', name: 'Day-to-Day Financial Advisory', count: 1 },
+  { id: 'investor-fundraising', name: 'Investor & Fundraising Services', count: 4 }
+];
+
 
   const processSteps = [
     {

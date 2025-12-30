@@ -359,7 +359,7 @@ const TestimonialsCarousel = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           {[
-            { number: '500+', label: 'Happy Clients' },
+            { number: '50+', label: 'Happy Clients' },
             { number: '99%', label: 'Satisfaction Rate' },
             { number: '15+', label: 'Industries Served' },
             { number: '12+', label: 'Years Experience' }

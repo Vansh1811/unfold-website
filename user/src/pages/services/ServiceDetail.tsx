@@ -112,30 +112,35 @@ const ServiceDetail = () => {
                 </div>
               </div>
             </div>
-            
-            <Card className="bg-gradient-to-br from-blue-600 to-purple-600 text-white">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-4">Ready to Start Your Project?</h3>
-                <p className="mb-6">Get a free consultation and detailed quote for your requirements.</p>
-                <div className="space-y-3">
-                  <Button asChild variant="secondary" className="w-full">
-                    <a href="/contact">
-                      Get Free Quote
-                    </a>
-                  </Button>
-                  <div className="flex items-center justify-center space-x-4 text-sm">
-                    <div className="flex items-center">
-                      <Phone className="h-4 w-4 mr-1" />
-                      {contactInfo.phone}
-                    </div>
-                    <div className="flex items-center">
-                      <Mail className="h-4 w-4 mr-1" />
-                      {contactInfo.email}
-                    </div>
+
+         <Card className="relative bg-gradient-to-br from-navy-800 to-navy-700 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 border-2 border-[#D4AF37] rounded-2xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/10 via-transparent to-[#D4AF37]/5 pointer-events-none"></div>
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent"></div>
+            <CardContent className="p-8 relative z-10">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-1 h-8 bg-[#D4AF37] rounded-full"></div>
+                <h3 className="text-2xl font-bold text-white">Ready to Start Your Project?</h3>
+              </div>
+              <p className="mb-6 text-gray-100">Get a free consultation and detailed quote for your requirements.</p>
+              <div className="space-y-3">
+                <Button asChild className="w-full bg-gradient-to-r from-[#D4AF37] via-[#F5D76E] to-[#D4AF37] text-navy font-semibold px-6 rounded-full py-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                  <a href="/contact">
+                    Get Free Quote
+                  </a>
+                </Button>
+                <div className="flex items-center justify-center space-x-4 text-sm text-gray-300 border-t border-[#D4AF37]/30 pt-4 mt-4">
+                  <div className="flex items-center">
+                    <Phone className="h-4 w-4 mr-1 text-[#D4AF37]" />
+                    {contactInfo.phone}
+                  </div>
+                  <div className="flex items-center">
+                    <Mail className="h-4 w-4 mr-1 text-[#D4AF37]" />
+                    {contactInfo.email}
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </CardContent>
+          </Card>
           </div>
         </div>
       </section>
@@ -166,124 +171,173 @@ const ServiceDetail = () => {
       </section>
 
       {/* Content */}
-      <section className="py-12">
-        <div className="container mx-auto px-6">
-          {activeTab === 'overview' && (
-            <div className="grid lg:grid-cols-2 gap-12">
-              <div>
-                <h2 className="text-2xl font-bold mb-6">Key Features</h2>
-                <div className="space-y-4">
-                  {service.features.map((feature, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="flex items-start"
-                    >
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5" />
-                      <span>{feature}</span>
-                    </motion.div>
-                  ))}
+<section className="py-16 bg-gradient-to-b from-white via-gray-50/50 to-white">
+  <div className="container mx-auto px-6">
+    {activeTab === 'overview' && (
+      <div className="grid lg:grid-cols-2 gap-12">
+        {/* Key Features */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="mb-8 flex items-center gap-3">
+            <div className="w-1.5 h-10 bg-gradient-to-b from-[#D4AF37] to-[#F5D76E] rounded-full"></div>
+            <h2 className="text-3xl font-bold text-gray-900">Key Features</h2>
+          </div>
+          <div className="space-y-4">
+            {service.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative bg-white rounded-xl p-5 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#D4AF37]/40 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative flex items-start gap-4">
+                 <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-navy-700 to-navy-800 rounded-lg flex items-center justify-center mt-0.5">
+                  <CheckCircle className="h-5 w-5 text-[#D4AF37]" />
                 </div>
-              </div>
-              
-              <div>
-                <h2 className="text-2xl font-bold mb-6">Service Benefits</h2>
-                <div className="space-y-4">
-                  {serviceDetails.benefits.map((benefit, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="flex items-start"
-                    >
-                      <Award className="h-5 w-5 text-blue-600 mr-3 mt-0.5" />
-                      <span>{benefit}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
 
-          {activeTab === 'process' && (
-            <div>
-              <h2 className="text-2xl font-bold text-center mb-12">Our Process</h2>
-              <div className="max-w-4xl mx-auto">
-                {serviceDetails.process.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex items-start mb-8 last:mb-0"
-                  >
-                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mr-6">
+
+                  <span className="text-gray-700 font-medium leading-relaxed group-hover:text-gray-900 transition-colors">{feature}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Service Benefits */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <div className="mb-8 flex items-center gap-3">
+            <div className="w-1.5 h-10 bg-gradient-to-b from-[#D4AF37] to-[#F5D76E] rounded-full"></div>
+            <h2 className="text-3xl font-bold text-gray-900">Service Benefits</h2>
+          </div>
+          <div className="space-y-4">
+            {serviceDetails.benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative bg-white rounded-xl p-5 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#D4AF37]/40 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-navy-600 to-navy-800 rounded-lg flex items-center justify-center mt-0.5">
+                    <Award className="h-5 w-5 text-[#D4AF37]" />
+                  </div>
+                  <span className="text-gray-700 font-medium leading-relaxed group-hover:text-gray-900 transition-colors">{benefit}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    )}
+
+    {activeTab === 'process' && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-12 h-1 bg-gradient-to-r from-transparent to-[#D4AF37] rounded-full"></div>
+            <h2 className="text-3xl font-bold text-gray-900">Our Process</h2>
+            <div className="w-12 h-1 bg-gradient-to-l from-transparent to-[#D4AF37] rounded-full"></div>
+          </div>
+          <p className="text-gray-600 text-lg">Step-by-step guidance to success</p>
+        </div>
+        <div className="max-w-4xl mx-auto">
+          {serviceDetails.process.map((step, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative mb-8 last:mb-0"
+            >
+              <div className="flex items-start gap-6">
+                {/* Step Circle */}
+                <div className="flex-shrink-0">
+                  <div className="relative">
+                    <div className="w-16 h-16 bg-gradient-to-br from-navy-700 to-navy-800 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg group-hover:shadow-xl group-hover:from-[#D4AF37] group-hover:to-[#F5D76E] group-hover:text-navy-900 transition-all duration-300">
                       {step.step}
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-                      <p className="text-gray-600 mb-2">{step.description}</p>
-                      <p className="text-sm text-blue-600 font-medium">Timeline: {step.timeline}</p>
+                    {index < serviceDetails.process.length - 1 && (
+                      <div className="absolute left-1/2 top-full w-1 h-12 bg-gradient-to-b from-[#D4AF37]/40 to-transparent transform -translate-x-1/2"></div>
+                    )}
+                  </div>
+                </div>
+                {/* Content */}
+                <div className="flex-1 bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#D4AF37]/40">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                  <div className="relative">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+                    <p className="text-gray-600 mb-3 leading-relaxed">{step.description}</p>
+                    <div className="flex items-center gap-2 text-sm">
+                      <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full"></div>
+                      <span className="font-semibold text-navy-700">Timeline: {step.timeline}</span>
                     </div>
-                  </motion.div>
-                ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
-
-          {activeTab === 'faqs' && (
-            <div>
-              <h2 className="text-2xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-              <div className="max-w-3xl mx-auto space-y-6">
-                {serviceDetails.faqs.map((faq, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-white rounded-lg shadow p-6"
-                  >
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                      {faq.question}
-                    </h3>
-                    <p className="text-gray-600">{faq.answer}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          )}
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </motion.div>
+    )}
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let our experts handle your {service.name.toLowerCase()} requirements 
-            while you focus on growing your business.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild variant="secondary" size="lg">
-              <a href="/contact">
-                <Calendar className="h-5 w-5 mr-2" />
-                Schedule Consultation
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href={`tel:${contactInfo.phone.replace(/[^0-9]/g, '')}`}>
-                <Phone className="h-5 w-5 mr-2" />
-                Call Now
-              </a>
-            </Button>
+    {activeTab === 'faqs' && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-12 h-1 bg-gradient-to-r from-transparent to-[#D4AF37] rounded-full"></div>
+            <h2 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+            <div className="w-12 h-1 bg-gradient-to-l from-transparent to-[#D4AF37] rounded-full"></div>
           </div>
+          <p className="text-gray-600 text-lg">Find answers to common questions</p>
         </div>
-      </section>
+        <div className="max-w-3xl mx-auto space-y-5">
+          {serviceDetails.faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#D4AF37]/40 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative p-7">
+                <div className="flex items-start gap-4 mb-3">
+                  <div className="w-1.5 h-6 bg-gradient-to-b from-[#D4AF37] to-[#F5D76E] rounded-full flex-shrink-0 mt-1"></div>
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-navy-700 transition-colors">
+                    {faq.question}
+                  </h3>
+                </div>
+                <p className="text-gray-600 leading-relaxed ml-5.5">{faq.answer}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    )}
+  </div>
+</section>
+
+
     </div>
   );
 };
-
 export default ServiceDetail;
