@@ -8,14 +8,9 @@ import dotenv from 'dotenv';
 import config, { isProduction } from './config';
 import { connectDB } from './config/database';
 import logger, { httpLogStream } from './utils/logger';
-import { globalErrorHandler } from './middleware/errorMiddleware';
-
-// Import routes
-import adminRoutes from './routes/adminRoutes';
-import blogRoutes from './routes/blog.routes';
+//import blogRoutes from './routes/blog.routes';
 import contactRoutes from './routes/contact.routes';
-import servicesRoutes from './routes/services.routes';
-import teamRoutes from './routes/teamRoutes';
+//import servicesRoutes from './routes/services.routes';
 
 // Load environment variables
 dotenv.config();
@@ -56,7 +51,7 @@ logger.info('🔐 Setting up CORS middleware...');
 app.use(
   cors({
     origin: [
-      'http://localhost:8080',   // ✅ Your frontend
+      'http://localhost:8080',
       'http://localhost:5173',
       'http://localhost:3000',
       'https://unfoldfinlegsolutions.com'
@@ -65,7 +60,6 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
-
 
 // Rate limiters
 const generalLimiter = rateLimit({
@@ -82,18 +76,6 @@ const generalLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 5,
-  message: {
-    success: false,
-    error: {
-      message: 'Too many authentication attempts, try again later.',
-      code: 429,
-    },
-  },
-});
-
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 3,
@@ -107,9 +89,7 @@ const contactLimiter = rateLimit({
 });
 
 app.use('/api', generalLimiter);
-app.use('/api/v1/admin/login', authLimiter);
-app.use('/api/v1/admin/register', authLimiter);
-app.use('/api/v1/contact/submit', contactLimiter);
+app.use('/api/v1/contact', contactLimiter);
 
 // Parsers
 app.use(express.json({ limit: '10mb', strict: true }));
@@ -150,11 +130,9 @@ app.get('/api/v1/docs', (_req: Request, res: Response) => {
       version: config.app.version,
       description: config.app.description,
       endpoints: {
-        admin: '/api/v1/admin',
         blogs: '/api/v1/blog',
         contact: '/api/v1/contact',
         services: '/api/v1/services',
-        team: '/api/v1/team',
       },
       authentication: 'JWT Bearer Token',
       rateLimit: `${config.rateLimit.max} requests per ${config.rateLimit.windowMs / 60000} minutes`,
@@ -162,14 +140,10 @@ app.get('/api/v1/docs', (_req: Request, res: Response) => {
   });
 });
 
-// Routes
+// Routes - ONLY WHAT YOU NEED
 logger.info('🔍 Loading API routes...');
 console.log('🔍 Loading API routes...');
-app.use('/api/v1/admin', adminRoutes);
-app.use('/api/v1/blog', blogRoutes);
 app.use('/api/v1/contact', contactRoutes);
-app.use('/api/v1/services', servicesRoutes);
-app.use('/api/v1/team', teamRoutes);
 logger.info('✅ All API routes loaded');
 console.log('✅ All API routes loaded');
 
@@ -206,7 +180,17 @@ app.use((req: Request, res: Response) => {
   });
 });
 
-app.use(globalErrorHandler);
+// Error handler middleware
+app.use((err: any, req: Request, res: Response, next: any) => {
+  logger.error('Server error:', err);
+  res.status(err.status || 500).json({
+    success: false,
+    error: {
+      message: err.message || 'Internal server error',
+      code: err.status || 500,
+    },
+  });
+});
 
 // Start server
 const startServer = async (): Promise<void> => {
@@ -260,4 +244,3 @@ process.on('uncaughtException', (err: Error) => {
 startServer();
 
 export default app;
- 

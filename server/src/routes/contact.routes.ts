@@ -1,20 +1,6 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import rateLimit from 'express-rate-limit';
-import {
-  submitContactForm,
-  getContacts,
-  getContact,
-  updateContact,
-  deleteContact,
-  getContactStats
-} from '../controllers/contact.controller';
-import { authMiddleware } from '../middleware/authMiddleware';
-import {
-  validateContactCreate,
-  validateContactUpdate,
-  validateContactId,
-  validatePagination
-} from '../middleware/validation';
+import { submitContactForm } from '../controllers/contact.controller';
 
 const router = Router();
 
@@ -27,14 +13,12 @@ const contactLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-// Public route
-router.post('/', contactLimiter, validateContactCreate, submitContactForm);
+// Public route - Submit contact form
+router.post('/submit', contactLimiter, submitContactForm);
 
-// Admin routes
-router.get('/stats', authMiddleware(['admin']), getContactStats);
-router.get('/', validatePagination, authMiddleware(['admin']), getContacts);
-router.get('/:id', validateContactId, authMiddleware(['admin']), getContact);
-router.put('/:id', validateContactUpdate, authMiddleware(['admin']), updateContact);
-router.delete('/:id', validateContactId, authMiddleware(['admin']), deleteContact);
+// Health check
+router.get('/health', (req: Request, res: Response) => {
+  res.json({ success: true, message: 'Contact service is running' });
+});
 
 export default router;
