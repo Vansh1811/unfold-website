@@ -12,15 +12,9 @@ import {
   TrendingUp, 
   Phone, 
   Mail, 
-  Building, 
   FileText, 
-  Scale, 
-  Shield, 
-  BarChart3, 
   Search, 
-  DollarSign,
   Clock,
-  Calendar,
   ExternalLink,
   MessageCircle
 } from 'lucide-react';
@@ -29,7 +23,6 @@ import * as Icons from 'lucide-react';
 const ServiceCategory: React.FC = () => {
   const { categorySlug } = useParams<{ categorySlug: string }>();
   
-  // Find category in main services or more services
   const category = mainServiceCategories.find(cat => cat.slug === categorySlug) || 
                    moreServices.find(cat => cat.slug === categorySlug);
 
@@ -47,10 +40,8 @@ const ServiceCategory: React.FC = () => {
     );
   }
 
-  // Get the icon component
   const IconComponent = (Icons as any)[category.icon];
 
-  // Category stats (you can make these dynamic based on actual data)
   const categoryStats = {
     clients: '500+',
     projects: '1,200+',
@@ -106,7 +97,7 @@ const ServiceCategory: React.FC = () => {
       {/* Breadcrumbs */}
       <div className="container mx-auto px-4 sm:px-6 py-4">
         <nav className="flex items-center space-x-2 text-sm text-gray-600">
-          <Link to="/services" className="hover:text-blue-600 transition-colors">
+          <Link to="/services" className="hover:text-navy-600 transition-colors">
             Services
           </Link>
           <span>/</span>
@@ -114,78 +105,102 @@ const ServiceCategory: React.FC = () => {
         </nav>
       </div>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white py-16 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6">
+          {/* Hero Section - DARK NAVY WITH GOLDEN ACCENTS */}
+      <section className="bg-gradient-to-br from-navy-900 via-[#0f1729] to-black text-white py-20 lg:py-32 relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,<svg width=60 height=60 xmlns=%22http://www.w3.org/2000/svg%22><g fill=%22white%22><path d=%22M0 0h60v60H0z%22 fill=%22none%22 stroke=%22white%22 stroke-width=%220.5%22/></g></svg>')] "/>
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <div className="bg-white bg-opacity-10 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-              {IconComponent && <IconComponent className="h-10 w-10" />}
-            </div>
+            {/* Icon with golden glow */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="relative mb-8"
+            >
+              <div className="absolute inset-0 bg-gold-500/20 blur-2xl rounded-full w-24 h-24 mx-auto" />
+              <div className="bg-gradient-to-br from-navy-700 to-navy-800 rounded-full w-24 h-24 flex items-center justify-center mx-auto relative border border-gold-400/30">
+                {IconComponent && <IconComponent className="h-12 w-12 text-gold-400" />}
+              </div>
+            </motion.div>
             
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white">
+            {/* Title with gradient accent */}
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight"
+            >
               {category.name}
-            </h1>
-            <p className="text-lg sm:text-xl mb-8 text-blue-100">
-              {category.description}
-            </p>
-            
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-8 max-w-3xl mx-auto">
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-yellow-400">{categoryStats.clients}</div>
-                <div className="text-sm sm:text-base text-blue-200">Happy Clients</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-yellow-400">{categoryStats.projects}</div>
-                <div className="text-sm sm:text-base text-blue-200">Projects Done</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-yellow-400">{categoryStats.satisfaction}</div>
-                <div className="text-sm sm:text-base text-blue-200">Satisfaction Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-yellow-400">{categoryStats.experience}</div>
-                <div className="text-sm sm:text-base text-blue-200">Years Experience</div>
-              </div>
-            </div>
+              <motion.span 
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="block h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent mt-4 origin-left"
+              />
+            </motion.h1>
 
-            {/* Quick Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <Button asChild size="lg" className="bg-yellow-500 text-gray-900 hover:bg-yellow-400">
-                <Link to="/contact">
-                  <Calendar className="h-5 w-5 mr-2" />
-                  Free Consultation
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-blue-900">
-                <a href={`tel:${ctaContent.phone}`}>
-                  <Phone className="h-5 w-5 mr-2" />
-                  Call Now
-                </a>
-              </Button>
-            </div>
+            {/* Description with enhanced styling */}
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-lg sm:text-xl lg:text-2xl mb-12 text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            >
+              {category.description}
+            </motion.p>
+            
+            {/* Stats with golden accents */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 max-w-3xl mx-auto"
+            >
+              {[
+                { label: 'Happy Clients', value: categoryStats.clients },
+                { label: 'Projects Done', value: categoryStats.projects },
+                { label: 'Satisfaction Rate', value: categoryStats.satisfaction },
+                { label: 'Years Experience', value: categoryStats.experience }
+              ].map((stat, index) => (
+                <motion.div 
+                  key={index}
+                  whileHover={{ scale: 1.05, translateY: -4 }}
+                  className="relative group"
+                >
+                  {/* Hover background */}
+                  <div className="absolute inset-0 bg-gold-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
+                  
+                  <div className="relative bg-gradient-to-br from-navy-700/40 to-navy-800/40 backdrop-blur-sm p-4 rounded-lg border border-gold-400/20 hover:border-gold-400/50 transition-all duration-300">
+                    <div className="text-3xl sm:text-4xl font-bold text-gold-400 mb-2">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm sm:text-base text-gray-300">
+                      {stat.label}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
+
+        {/* Decorative bottom border */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/50 to-transparent" />
       </section>
 
-      {/* Services Grid */}
-      <section className="py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
-              Our {category.name} Services
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose from our comprehensive range of {category.name.toLowerCase()} services 
-              designed to meet your specific business needs and goals.
-            </p>
-          </div>
 
+            {/* Services Grid */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6">
           {category.subServices && category.subServices.length > 0 ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {category.subServices.map((service, index) => {
@@ -195,85 +210,74 @@ const ServiceCategory: React.FC = () => {
                   <motion.div
                     key={service.id}
                     initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className={`bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 relative transform hover:-translate-y-1 ${
-                      service.popular ? 'ring-2 ring-blue-500' : ''
-                    }`}
+                    className="group"
                   >
-                    {service.popular && (
-                      <div className="absolute -top-3 left-6">
-                        <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                          Most Popular
-                        </span>
-                      </div>
-                    )}
-
-                    {service.trending && !service.popular && (
-                      <div className="absolute -top-3 right-6">
-                        <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                          Trending
-                        </span>
-                      </div>
-                    )}
-                    
-                    <div className="flex items-center mb-4">
-                      <div className="bg-blue-100 text-blue-600 p-3 rounded-lg mr-4">
-                        <ServiceIcon className="h-6 w-6" />
-                      </div>
-                      <div className="flex-1">
-                        {service.rating && (
-                          <div className="flex items-center mb-1">
-                            <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                            <span className="ml-1 text-sm font-medium text-gray-700">{service.rating}</span>
-                            {service.reviews && (
-                              <span className="ml-1 text-sm text-gray-500">({service.reviews})</span>
+                    <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200 h-full flex flex-col">
+                      {/* Top accent bar */}
+                      <div className="h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400" />
+                      
+                      <div className="p-6 sm:p-8 flex flex-col h-full">
+                        {/* Header with icon and price */}
+                        <div className="flex items-start justify-between mb-6">
+                          <div className="bg-gradient-to-br from-navy-100 to-navy-50 text-navy-700 p-4 rounded-xl">
+                            <ServiceIcon className="h-6 w-6" />
+                          </div>
+                          <div className="text-right">
+                            {service.price && (
+                              <div className="text-2xl font-bold text-navy-900">{service.price}</div>
+                            )}
+                            {service.duration && (
+                              <div className="text-xs text-gray-500 flex items-center justify-end gap-1 mt-2">
+                                <Clock className="h-3 w-3" />
+                                {service.duration}
+                              </div>
                             )}
                           </div>
-                        )}
-                        <div className="text-right">
-                          {service.price && (
-                            <div className="text-lg font-bold text-blue-600">{service.price}</div>
-                          )}
-                          {service.duration && (
-                            <div className="text-sm text-gray-500 flex items-center justify-end">
-                              <Clock className="h-4 w-4 mr-1" />
-                              {service.duration}
+                        </div>
+                        
+                        {/* Title */}
+                        <h3 className="text-xl font-bold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors duration-300">
+                          {service.name}
+                        </h3>
+                        
+                        {/* Description */}
+                        <p className="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">
+                          {service.description}
+                        </p>
+                        
+                        {/* Features */}
+                        <div className="space-y-2 mb-8 py-4 border-t border-b border-gray-200">
+                          {service.features.slice(0, 3).map((feature, idx) => (
+                            <div key={idx} className="flex items-start gap-3">
+                              <CheckCircle className="h-4 w-4 text-navy-600 flex-shrink-0 mt-0.5" />
+                              <span className="text-sm text-gray-700">{feature}</span>
+                            </div>
+                          ))}
+                          {service.features.length > 3 && (
+                            <div className="text-sm text-navy-600 font-semibold pt-2">
+                              +{service.features.length - 3} more features
                             </div>
                           )}
                         </div>
+                        
+                        {/* Buttons */}
+                        <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+                          <Button asChild className="flex-1 bg-navy-700 hover:bg-navy-800 text-white font-semibold rounded-lg transition-all" size="sm">
+                            <Link to={`/services/${categorySlug}/${service.slug}`} className="flex items-center justify-center gap-2">
+                              View Details
+                              <ExternalLink className="h-4 w-4" />
+                            </Link>
+                          </Button>
+                          <Button asChild variant="outline" className="flex-1 border-2 border-gold-400 text-navy-600 hover:bg-gold-50 font-semibold rounded-lg transition-all" size="sm">
+                            <Link to="/contact">
+                              Get Quote
+                            </Link>
+                          </Button>
+                        </div>
                       </div>
-                    </div>
-                    
-                    <h3 className="text-lg sm:text-xl font-semibold mb-3 text-gray-800">{service.name}</h3>
-                    <p className="text-gray-600 mb-4 text-sm sm:text-base">{service.description}</p>
-                    
-                    <div className="space-y-2 mb-6">
-                      {service.features.slice(0, 4).map((feature, idx) => (
-                        <div key={idx} className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{feature}</span>
-                        </div>
-                      ))}
-                      {service.features.length > 4 && (
-                        <div className="text-sm text-blue-600 font-medium">
-                          +{service.features.length - 4} more features
-                        </div>
-                      )}
-                    </div>
-                    
-                    <div className="flex flex-col sm:flex-row gap-2">
-                      <Button asChild className="flex-1" size="sm">
-                        <Link to={`/services/${categorySlug}/${service.slug}`}>
-                          View Details
-                          <ExternalLink className="h-4 w-4 ml-1" />
-                        </Link>
-                      </Button>
-                      <Button asChild variant="outline" className="flex-1" size="sm">
-                        <Link to={`/contact?service=${service.id}`}>
-                          Get Quote
-                        </Link>
-                      </Button>
                     </div>
                   </motion.div>
                 );
@@ -288,18 +292,24 @@ const ServiceCategory: React.FC = () => {
             </div>
           )}
 
-          {/* View More Services Button */}
-          <div className="text-center mt-12">
-            <Button asChild size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
-              <Link to="/advanced-services">
-                <TrendingUp className="h-5 w-5 mr-2" />
-                Explore Advanced Services
-                <ArrowRight className="h-5 w-5 ml-2" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="text-center mt-16"
+          >
+            <Button asChild size="lg" className="bg-navy-700 hover:bg-navy-800 text-white font-bold px-8 py-3 rounded-lg">
+              <Link to="/services" className="flex items-center gap-2">
+                <TrendingUp className="h-5 w-5" />
+                Explore All Services
+                <ArrowRight className="h-5 w-5" />
               </Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
+
 
       {/* Why Choose Us Section */}
       <section className="py-16 lg:py-20 bg-white">
@@ -321,10 +331,10 @@ const ServiceCategory: React.FC = () => {
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex items-start bg-gray-50 p-6 rounded-xl hover:bg-blue-50 transition-colors"
+                  className="flex items-start bg-gray-50 p-6 rounded-xl hover:bg-navy-50 transition-colors"
                 >
-                  <div className="bg-blue-100 rounded-full p-2 mr-4 mt-1">
-                    <CheckCircle className="h-5 w-5 text-blue-600" />
+                  <div className="bg-navy-100 rounded-full p-2 mr-4 mt-1">
+                    <CheckCircle className="h-5 w-5 text-navy-600" />
                   </div>
                   <div>
                     <p className="text-base sm:text-lg text-gray-700">{benefit}</p>
@@ -355,10 +365,10 @@ const ServiceCategory: React.FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white rounded-lg p-6 text-center shadow-lg hover:shadow-xl transition-shadow"
               >
-                <div className="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-navy-100 text-navy-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   {process.icon}
                 </div>
-                <div className="text-sm font-bold text-blue-600 mb-2">{process.step}</div>
+                <div className="text-sm font-bold text-navy-600 mb-2">{process.step}</div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-3">{process.title}</h3>
                 <p className="text-gray-600 text-sm">{process.description}</p>
               </motion.div>
@@ -366,9 +376,8 @@ const ServiceCategory: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Contact CTA Section */}
-      <section className="py-16 lg:py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white">
+            {/* Contact CTA Section */}
+      <section className="py-16 lg:py-20 bg-gradient-to-r from-navy-800 via-navy-900 to-navy-950 text-white">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -379,55 +388,48 @@ const ServiceCategory: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-white">{ctaContent.title}</h2>
-                <p className="text-lg sm:text-xl mb-8 text-blue-100">
+                <p className="text-lg sm:text-xl mb-8 text-navy-200">
                   {ctaContent.description}
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button asChild size="lg" variant="secondary">
+                  <Button asChild size="lg" className="bg-gold-500 text-navy-900 hover:bg-gold-600">
                     <Link to="/contact">
                       <MessageCircle className="h-5 w-5 mr-2" />
-                      Get Free Consultation
+                      Get In Touch
                     </Link>
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-                    <Link to="/portfolio">
+                  <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                    <Link to="/services">
                       <Users className="h-5 w-5 mr-2" />
-                      View Our Work
+                      View All Services
                     </Link>
                   </Button>
                 </div>
               </div>
               
               <div className="text-center md:text-right">
-                <div className="bg-white bg-opacity-10 rounded-lg p-6 lg:p-8">
+                <div className="bg-white bg-opacity-10 rounded-lg p-6 lg:p-8 backdrop-blur-sm border border-white/20">
                   <h3 className="text-xl font-bold mb-4 text-white">Get In Touch</h3>
                   <div className="space-y-4">
                     <div className="flex items-center justify-center md:justify-end">
-                      <Phone className="h-5 w-5 mr-3" />
+                      <Phone className="h-5 w-5 mr-3 text-gold-400" />
                       <div>
-                        <div className="text-sm text-blue-200">Call Us</div>
-                        <a href={`tel:${ctaContent.phone}`} className="font-semibold hover:underline">
+                        <div className="text-sm text-navy-200">Call Us</div>
+                        <a href={`tel:${ctaContent.phone}`} className="font-semibold hover:text-gold-400 transition-colors">
                           {ctaContent.phone}
                         </a>
                       </div>
                     </div>
                     <div className="flex items-center justify-center md:justify-end">
-                      <Mail className="h-5 w-5 mr-3" />
+                      <Mail className="h-5 w-5 mr-3 text-gold-400" />
                       <div>
-                        <div className="text-sm text-blue-200">Email Us</div>
-                        <a href={`mailto:${ctaContent.email}`} className="font-semibold hover:underline">
+                        <div className="text-sm text-navy-200">Email Us</div>
+                        <a href={`mailto:${ctaContent.email}`} className="font-semibold hover:text-gold-400 transition-colors">
                           {ctaContent.email}
                         </a>
                       </div>
                     </div>
-                  </div>
-                  <div className="mt-6">
-                    <Button asChild variant="secondary" className="w-full">
-                      <Link to="/contact">
-                        Get expert advice tailored to your business needs. Our consultation is completely free with no obligations.
-                      </Link>
-                    </Button>
                   </div>
                 </div>
               </div>
@@ -440,3 +442,6 @@ const ServiceCategory: React.FC = () => {
 };
 
 export default ServiceCategory;
+
+
+     

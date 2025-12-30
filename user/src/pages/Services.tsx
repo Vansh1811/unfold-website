@@ -8,7 +8,6 @@ import { mainServiceCategories, searchServices } from '@/data/servicesData';
 import ServiceCategoryCard from '@/components/ServiceCategoryCard';
 import { Link } from 'react-router-dom';
 
-
 const Services = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -111,8 +110,11 @@ const Services = () => {
                 whileHover={{ y: -8, scale: 1.02 }}
               >
                 <ServiceCategoryCard 
-                  subServiceCount={0} 
-                  {...category}
+                  title={category.name}
+                  description={category.description}
+                  icon={category.icon}
+                  slug={category.slug}
+                  subServiceCount={category.subServices.length}
                   index={index}
                   featured={index === 0 || index === 3}
                 />

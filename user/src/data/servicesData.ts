@@ -599,7 +599,95 @@ export const mainServiceCategories: ServiceCategory[] = [
         duration: '20-30 days',
         rating: 4.3,
         reviews: 134
-      }
+          },
+    {
+      id: 'llp-formation',
+      name: 'Limited Liability Partnership (LLP) Formation',
+      slug: 'llp-formation',
+      description: 'Form a Limited Liability Partnership combining advantages of partnership and company structure with professional management and limited liability benefits.',
+      icon: 'Building',
+      features: [
+        'Limited liability protection for partners',
+        'Partnership structure with corporate benefits',
+        'Separate legal entity from partners',
+        'Flexible profit sharing arrangement',
+        'Easy governance and management structure',
+        'Perpetual succession',
+        'Tax-efficient structure for professionals',
+        'Complete LLP Agreement and filing'
+      ],
+      benefits: [
+        'Limited liability protection for all partners',
+        'Flexible profit sharing and management',
+        'Professional credibility and brand value',
+        'Separate legal entity status',
+        'Easier compliance compared to private company',
+        'Suitable for professional services firms'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Partner Consultation & Planning',
+          description: 'Determine partner structure, profit sharing, and LLP objectives',
+          documents: ['Partner details', 'Profit sharing plan', 'Business objectives'],
+          timeline: '1-2 days'
+        },
+        {
+          step: 2,
+          title: 'DSC & DIN Acquisition',
+          description: 'Obtain Digital Signature Certificates and Designation Identification Numbers',
+          documents: ['PAN of all partners', 'Aadhaar cards', 'Passport photographs'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 3,
+          title: 'LLP Agreement Drafting',
+          description: 'Draft comprehensive LLP Agreement and initial filing documents',
+          documents: ['LLP Agreement', 'Initial filing forms (Form 1, 2)'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 4,
+          title: 'Registration & Certificate',
+          description: 'File with ROC and obtain LLP Registration Certificate',
+          documents: ['Registration certificate', 'LLP identification number'],
+          timeline: '3-5 days'
+        }
+      ],
+      requiredDocuments: [
+        'PAN, Aadhaar, and address proof of all designated partners',
+        'Passport size photographs of all partners',
+        'Consent of partners to be registered',
+        'Registered office address proof (rent agreement/ownership)',
+        'NOC from property owner',
+        'Utility bill (not older than 2 months)'
+      ],
+      faqs: [
+        {
+          question: 'What is the minimum number of partners required in LLP?',
+          answer: 'Minimum 2 partners are required for LLP formation, with at least 1 Indian resident.'
+        },
+        {
+          question: 'Is LLP suitable for professionals?',
+          answer: 'Yes, LLP is ideal for professional service firms like law, consulting, and accounting practices.'
+        },
+        {
+          question: 'What are the compliance requirements for LLP?',
+          answer: 'Annual returns filing, maintaining statutory registers, LLP Agreement compliance, and periodic ROC submissions.'
+        }
+      ],
+      pricing: {
+        governmentFees: '₹5,000-7,000',
+        professionalFees: '₹10,000+',
+        totalEstimate: '₹15,000-25,000'
+      },
+      price: 'Starting at ₹14,999',
+      duration: '10-15 days',
+      rating: 4.7,
+      reviews: 567
+    }
+
+
     ]
   },
   {
@@ -693,9 +781,361 @@ export const mainServiceCategories: ServiceCategory[] = [
         duration: '10-15 days',
         rating: 4.5,
         reviews: 432
-      }
+          },
+    {
+      id: 'share-transfers',
+      name: 'Share Transfers & Transmissions',
+      slug: 'share-transfers',
+      description: 'Complete share transfer and transmission services with regulatory compliance and documentation.',
+      icon: 'ArrowRight',
+      features: [
+        'Share transfer deed preparation and filing',
+        'Transmission of shares (inheritance)',
+        'Regulatory filing with ROC',
+        'Share certificate issuance',
+        'NSDL/CDSL updates for listed companies',
+        'Stamp duty and legal compliance',
+        'Transfer registration processing',
+        'Dividend and bonus adjustments'
+      ],
+      benefits: [
+        'Smooth transfer of ownership with legal compliance',
+        'Expert handling of both voluntary and involuntary transfers',
+        'Ensures proper documentation and NOC from company',
+        'Protects rights of both transferor and transferee',
+        'Minimal delays in transfer registration',
+        'Professional guidance throughout the process'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Transfer Assessment',
+          description: 'Review share transfer deed and documents, verify shareholding pattern, check company bylaws for restrictions',
+          documents: ['Share transfer deed', 'Shareholder documents', 'Company bylaws'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 2,
+          title: 'Documentation Preparation',
+          description: 'Prepare share transfer deed, draft board resolutions, prepare stamp duty calculation',
+          documents: ['Transfer deed', 'Board resolutions', 'Stamp duty calculation'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 3,
+          title: 'Regulatory Filing',
+          description: 'Submit with company registrar, file with ROC if applicable, update NSDL/CDSL',
+          documents: ['ROC filing', 'NSDL/CDSL submission', 'Filing acknowledgment'],
+          timeline: '5-7 days'
+        },
+        {
+          step: 4,
+          title: 'Certificate Issuance',
+          description: 'Issue new share certificates, provide transfer completion document, update shareholder register',
+          documents: ['New share certificates', 'Transfer completion letter', 'Updated register'],
+          timeline: '2-3 days'
+        }
+      ],
+      requiredDocuments: [
+        'Existing share certificates',
+        'Share transfer deed (signed by both parties)',
+        'Board resolution approving transfer',
+        'PAN and ID proof of transferee',
+        'No objection certificate from transferor',
+        'Proof of funds for transfer consideration',
+        'Share valuation certificate (if applicable)'
+      ],
+      faqs: [
+        {
+          question: 'What is the timeline for share transfer?',
+          answer: 'Usually 10-15 days from submission of complete documents'
+        },
+        {
+          question: 'Are there any stamp duties involved?',
+          answer: 'Yes, stamp duty is calculated based on share value and state regulations'
+        },
+        {
+          question: 'Can shares be partially transferred?',
+          answer: 'Yes, but minimum holding requirements must be met'
+        },
+        {
+          question: 'What happens to dividends during transfer?',
+          answer: 'Dividends are credited to transferee if registered before record date'
+        }
+      ],
+      price: 'Starting at ₹3,999 per transfer',
+      duration: '10-15 days',
+      rating: 4.6,
+      reviews: 234
+        },
+    {
+      id: 'name-office-change',
+      name: 'Change in Company Name, Registered Office & Capital',
+      slug: 'name-office-change',
+      description: 'Facilitate changes in company name, registered office address, or share capital with full compliance.',
+      icon: 'Edit',
+      features: [
+        'Company name change application and approval',
+        'Registered office change with landlord NOC',
+        'Share capital increase or decrease',
+        'Board resolution preparation',
+        'ROC filing and processing',
+        'Certificate of change issuance',
+        'Regulatory notification updates',
+        'Stakeholder communication support'
+      ],
+      benefits: [
+        'Rebrand and reposition your company',
+        'Update registered office to reflect new location',
+        'Increase capital for expansion or meet regulatory requirements',
+        'Maintain regulatory compliance throughout changes',
+        'Minimize business disruption during transitions',
+        'Professional handling of all stakeholder communications'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Board Resolution & Planning',
+          description: 'Obtain board approval for change, define new name/office/capital structure, prepare board resolutions',
+          documents: ['Board resolution', 'Change proposal', 'Supporting documents'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 2,
+          title: 'Regulatory Approvals',
+          description: 'Apply for name availability with MCA, obtain NOC from property owner, get landlord consent and rent agreement',
+          documents: ['Name availability application', 'Property NOC', 'Rent agreement'],
+          timeline: '5-10 days'
+        },
+        {
+          step: 3,
+          title: 'Shareholder Approval',
+          description: 'Conduct EGM or pass resolutions, obtain shareholder approvals, maintain meeting minutes',
+          documents: ['EGM notice', 'Meeting minutes', 'Shareholder resolutions'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 4,
+          title: 'ROC Filing & Certificate',
+          description: 'File with Registrar of Companies, obtain certificate of change, update all statutory documents',
+          documents: ['ROC filing', 'Certificate of change', 'Updated documents'],
+          timeline: '7-15 days'
+        }
+      ],
+      requiredDocuments: [
+        'Board resolution for change',
+        'Shareholder resolution/EGM minutes',
+        'Draft amended MOA/AOA',
+        'NOC from property owner (office change)',
+        'Utility bill for new office (proof)',
+        'PAN and Identity proof of authorized signatories',
+        'Copy of current incorporation certificate',
+        'Valuation report (for capital increase)',
+        'Bank certificate for capital deposit'
+      ],
+      faqs: [
+        {
+          question: 'Can I change company name multiple times?',
+          answer: 'Yes, but there\'s a 5-year gap requirement between name changes'
+        },
+        {
+          question: 'What happens to existing contracts after name change?',
+          answer: 'They remain valid; you should update creditors and debtors about the change'
+        },
+        {
+          question: 'Is there a maximum office changes allowed?',
+          answer: 'You can change office, but frequent changes may raise compliance questions'
+        },
+        {
+          question: 'How long does capital increase take?',
+          answer: 'Usually 15-25 days depending on amount and complexity'
+        }
+      ],
+      price: 'Starting at ₹7,999',
+      duration: '15-25 days',
+      rating: 4.5,
+      reviews: 189
+        },
+    {
+      id: 'moa-aoa-alteration',
+      name: 'Alteration in Memorandum & Articles of Association',
+      slug: 'moa-aoa-alteration',
+      description: 'Professional services for amending company constitutional documents (MOA/AOA).',
+      icon: 'FileText',
+      features: [
+        'MOA/AOA amendment drafting',
+        'Board resolution and member approval',
+        'Shareholder approval process coordination',
+        'ROC filing and e-filing support',
+        'Amendment certificate processing',
+        'Compliance with Companies Act requirements',
+        'Regulatory filing documentation',
+        'Post-amendment compliance setup'
+      ],
+      benefits: [
+        'Update company constitution to reflect new business objectives',
+        'Modify management structure and governance rules',
+        'Implement better compliance frameworks',
+        'Expand or restrict business scope',
+        'Modernize outdated provisions',
+        'Ensure compliance with latest regulations'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Amendment Planning',
+          description: 'Identify required amendments, draft new MOA/AOA clauses, review existing provisions',
+          documents: ['Amendment proposal', 'Clause drafts', 'Review notes'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 2,
+          title: 'Legal Drafting',
+          description: 'Prepare comprehensive amended MOA/AOA, ensure statutory compliance, cross-check with Companies Act',
+          documents: ['Amended MOA/AOA', 'Legal opinion', 'Compliance checklist'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 3,
+          title: 'Board & Shareholder Approval',
+          description: 'Obtain board approval, conduct general meeting for shareholder approval, pass special resolution if required',
+          documents: ['Board approval', 'Meeting minutes', 'Special resolution'],
+          timeline: '3-7 days'
+        },
+        {
+          step: 4,
+          title: 'ROC Filing',
+          description: 'File amended MOA/AOA with ROC, obtain e-stamping if required, receive filing certificate',
+          documents: ['ROC filing', 'E-stamp certificate', 'Filing acknowledgment'],
+          timeline: '5-10 days'
+        }
+      ],
+      requiredDocuments: [
+        'Board resolution for amendment',
+        'Shareholder meeting notice and minutes',
+        'Draft amended MOA/AOA',
+        'Legal expert opinion (if complex changes)',
+        'Current MOA/AOA certified copy',
+        'Supporting resolutions and documents',
+        'Authorized signatory proof',
+        'Form INC-22 (if applicable)'
+      ],
+      faqs: [
+        {
+          question: 'Which amendments require special resolution?',
+          answer: 'Changes in objectives, capital structure, and major governance rules require special resolution'
+        },
+        {
+          question: 'Can we amend MOA and AOA separately?',
+          answer: 'Yes, both can be amended independently based on requirements'
+        },
+        {
+          question: 'How often can we amend MOA/AOA?',
+          answer: 'As often as needed, but frequent changes may require explanations'
+        },
+        {
+          question: 'What if shareholders don\'t approve amendment?',
+          answer: 'The amendment cannot proceed; alternative clauses must be proposed'
+        }
+      ],
+      price: 'Starting at ₹5,999',
+      duration: '12-20 days',
+      rating: 4.6,
+      reviews: 156
+        
+       },
+    {
+      id: 'auditor-appointment',
+      name: 'Auditor Appointment (ADT-1 Filing)',
+      slug: 'auditor-appointment',
+      description: 'Complete auditor appointment compliance with form ADT-1 filing and regulatory requirements.',
+      icon: 'CheckCircle',
+      features: [
+        'Auditor selection and eligibility verification',
+        'Form ADT-1 filing with ROC',
+        'Remuneration determination and approval',
+        'Board resolution preparation',
+        'Shareholder communication and consent',
+        'Auditor agreement documentation',
+        'Compliance with Auditor rotation rules',
+        'Annual audit coordination support'
+      ],
+      benefits: [
+        'Ensure proper statutory audit compliance',
+        'Expert guidance on auditor selection criteria',
+        'Proper remuneration determination and approval',
+        'Timely filing with regulatory authorities',
+        'Audit rotation compliance',
+        'Professional documentation and coordination'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Auditor Selection & Eligibility Check',
+          description: 'Identify eligible auditors, verify CA registration and qualifications, check independence requirements',
+          documents: ['Auditor list', 'CA registration', 'Independence declaration'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 2,
+          title: 'Remuneration Determination',
+          description: 'Determine reasonable audit fees, prepare fee justification, board approval for remuneration',
+          documents: ['Fee proposal', 'Justification document', 'Board resolution'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 3,
+          title: 'Shareholder Approval',
+          description: 'Conduct AGM or EGM, pass resolution for auditor appointment, obtain shareholder consent',
+          documents: ['AGM/EGM notice', 'Meeting minutes', 'Shareholder resolution'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 4,
+          title: 'Form ADT-1 Filing',
+          description: 'Prepare Form ADT-1, file with ROC, obtain filing acknowledgment, share with appointed auditor',
+          documents: ['Form ADT-1', 'ROC filing receipt', 'Auditor acknowledgment'],
+          timeline: '3-5 days'
+        }
+      ],
+      requiredDocuments: [
+        'Board resolution for auditor proposal',
+        'Shareholder meeting minutes (AGM/EGM)',
+        'Auditor consent letter',
+        'Auditor declaration of independence',
+        'CA registration certificate',
+        'Form ADT-1 completed and signed',
+        'Proof of remuneration approval',
+        'Certificate of incorporation',
+        'List of current directors and shareholders'
+      ],
+      faqs: [
+        {
+          question: 'Can the same auditor be appointed for multiple years?',
+          answer: 'Yes, up to 5 consecutive years (or 2 terms), after which rotation is required'
+        },
+        {
+          question: 'What if auditor resigns during tenure?',
+          answer: 'Replacement auditor can be appointed through EGM; Form ADT-1 must be refiled'
+        },
+        {
+          question: 'Are there minimum qualifications for auditors?',
+          answer: 'Yes, must be a practicing chartered accountant with valid registration'
+        },
+        {
+          question: 'Can we appoint a firm as auditor?',
+          answer: 'Yes, both individual CAs and CA firms can be appointed as auditors'
+        }
+      ],
+      price: 'Starting at ₹2,999',
+      duration: '7-10 days',
+      rating: 4.7,
+      reviews: 345
+    }
     ]
   },
+
+  
   {
     id: 'taxation-accounting',
     name: 'Taxation & Accounting',
@@ -809,7 +1249,95 @@ export const mainServiceCategories: ServiceCategory[] = [
         duration: '7-15 days',
         rating: 4.5,
         reviews: 456
-      }
+          },
+    {
+      id: 'professional-tax',
+      name: 'Professional Tax Services',
+      slug: 'professional-tax',
+      description: 'Professional tax registration, filing, and compliance management for all states.',
+      icon: 'Calculator',
+      features: [
+        'Professional tax registration in applicable states',
+        'Monthly/Quarterly PT return filing',
+        'Employee PT deduction management',
+        'PT certificate generation and distribution',
+        'Non-resident PT compliance',
+        'PT refund processing and follow-up',
+        'State-wise compliance management',
+        'PT audit and assessment support'
+      ],
+      benefits: [
+        'Ensure compliance with state professional tax regulations',
+        'Manage employee PT deductions properly',
+        'Avoid penalties and prosecution',
+        'Timely filing and certificate generation',
+        'Expert guidance on exemptions and relief',
+        'Year-round compliance support'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'PT Registration',
+          description: 'Identify applicable states, apply for PT registration, obtain registration certificate',
+          documents: ['PT application', 'PAN certificate', 'Business registration'],
+          timeline: '5-7 days'
+        },
+        {
+          step: 2,
+          title: 'Compliance Setup',
+          description: 'Classify employees for PT purposes, set up PT deduction mechanism, prepare employee communication',
+          documents: ['Employee list', 'Salary structure', 'PT classification'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 3,
+          title: 'Monthly/Quarterly Filing',
+          description: 'Calculate PT liability, file PT returns, process employee receipts',
+          documents: ['PT returns', 'Employee receipts', 'Payment proof'],
+          timeline: 'Ongoing monthly/quarterly'
+        },
+        {
+          step: 4,
+          title: 'Annual Reconciliation',
+          description: 'Verify annual PT paid vs liability, claim refunds if applicable, maintain records for audit',
+          documents: ['Annual statement', 'Refund claim', 'Audit trail'],
+          timeline: '2-3 days'
+        }
+      ],
+      requiredDocuments: [
+        'PAN of company',
+        'Employee PT details (salary slips)',
+        'State-wise PT liability calculation',
+        'Bank statements showing PT payments',
+        'Employee attendance records',
+        'Salary registers and documents',
+        'Previous PT compliance records',
+        'Board resolution for PT compliance'
+      ],
+      faqs: [
+        {
+          question: 'Which states levy professional tax?',
+          answer: 'Maharashtra, Delhi, Karnataka, Tamil Nadu, and a few others; rates vary by state'
+        },
+        {
+          question: 'Is PT applicable on all employees?',
+          answer: 'No, exemptions apply based on salary and designation; rates vary by state'
+        },
+        {
+          question: 'Can we claim PT refund?',
+          answer: 'Yes, if PT paid exceeds actual liability; refund process takes 30-45 days'
+        },
+        {
+          question: 'What penalty applies for non-filing?',
+          answer: 'Penalties range from ₹100 to ₹1,000 depending on state; prosecution risk exists'
+        }
+      ],
+      price: 'Starting at ₹1,999/month',
+      duration: 'Monthly service',
+      rating: 4.6,
+      reviews: 678
+    }
+
     ]
   },
   {
@@ -882,7 +1410,184 @@ export const mainServiceCategories: ServiceCategory[] = [
         duration: '18-36 months',
         rating: 4.6,
         reviews: 234
-      }
+          },
+    {
+      id: 'copyright-registration',
+      name: 'Copyright Registration',
+      slug: 'copyright-registration',
+      description: 'Protect your creative works with comprehensive copyright registration and legal protection.',
+      icon: 'FileText',
+      features: [
+        'Copyright application preparation and filing',
+        'Work originality assessment and documentation',
+        'Registration with Copyright Board',
+        'Copyright certificate issuance',
+        'Copyright infringement protection services',
+        'Multiple work registration support',
+        'International copyright protection guidance',
+        'Legal representation for disputes'
+      ],
+      benefits: [
+        'Legal protection for creative works',
+        'Exclusive rights to reproduce, distribute, and display work',
+        'Protection against infringement and unauthorized use',
+        'Public record of ownership and creation date',
+        'Eligibility for statutory damages in litigation',
+        'International protection opportunities'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Work Originality Assessment',
+          description: 'Review work for originality, document creation process, verify ownership claims',
+          documents: ['Original work copy', 'Creation evidence', 'Ownership proof'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 2,
+          title: 'Application Preparation',
+          description: 'Prepare copyright application, compile required documentation, prepare work samples/proofs',
+          documents: ['Copyright application form', 'Work samples', 'Supporting documents'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 3,
+          title: 'Copyright Office Submission',
+          description: 'File application with Copyright Board, pay registration fees, receive acknowledgment',
+          documents: ['Filing acknowledgment', 'Receipt', 'Reference number'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 4,
+          title: 'Examination & Issuance',
+          description: 'Copyright office examines application, issue copyright certificate, publish in gazette',
+          documents: ['Copyright certificate', 'Gazette publication', 'Registration proof'],
+          timeline: '5-10 days'
+        }
+      ],
+      requiredDocuments: [
+        'Identity proof of author/owner',
+        'Proof of ownership (if not author)',
+        'Copy of the copyrighted work (manuscript, code, design, etc.)',
+        'Work creation date proof (emails, drafts, dates)',
+        'Assignment deed (if registered owner is different from creator)',
+        'Affidavit regarding originality',
+        'Application form duly filled',
+        'Power of attorney (if filed through agent)',
+        'Copyright registration fee payment proof'
+      ],
+      faqs: [
+        {
+          question: 'How long does copyright registration take?',
+          answer: 'Usually 10-15 days from complete application submission'
+        },
+        {
+          question: 'Is copyright automatic or must it be registered?',
+          answer: 'Copyright is automatic on creation; registration provides legal evidence and public record'
+        },
+        {
+          question: 'What works can be copyrighted?',
+          answer: 'Literary works, software, music, films, artistic works, compilations, databases, and other original works'
+        },
+        {
+          question: 'How long does copyright protection last?',
+          answer: 'Generally for author\'s lifetime plus 60 years after death'
+        }
+      ],
+      price: 'Starting at ₹4,999',
+      duration: '10-15 days',
+      rating: 4.5,
+      reviews: 289
+        },
+    {
+      id: 'trademark-renewal',
+      name: 'Trademark Renewal',
+      slug: 'trademark-renewal',
+      description: 'Timely renewal of trademark registration to maintain continuous brand protection.',
+      icon: 'RefreshCw',
+      features: [
+        'Trademark renewal eligibility verification',
+        'Renewal application preparation and filing',
+        'ROT filing and processing',
+        'Renewal fee management and payment',
+        'Extended protection period (10 years)',
+        'Renewal status monitoring and updates',
+        'Multiple trademark renewal management',
+        'Deadline reminder and compliance tracking'
+      ],
+      benefits: [
+        'Maintain continuous brand protection',
+        'Extend trademark validity for 10 more years',
+        'Prevent anyone else from using the brand',
+        'Strengthen brand value and market position',
+        'Legal recourse against counterfeiters',
+        'Renewal on or before expiry prevents loss of rights'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Renewal Eligibility Check',
+          description: 'Verify trademark status and expiry date, check if trademark is in use, confirm no oppositions pending',
+          documents: ['Trademark certificate', 'Status report', 'Usage records'],
+          timeline: '1-2 days'
+        },
+        {
+          step: 2,
+          title: 'Renewal Application Preparation',
+          description: 'Prepare Form TM-R (Renewal Form), compile supporting documents, verify usage declaration',
+          documents: ['Form TM-R', 'Usage proof', 'Supporting documents'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 3,
+          title: 'Filing with IP Office',
+          description: 'File renewal application, pay renewal fees, receive filing acknowledgment',
+          documents: ['Filing receipt', 'Acknowledgment letter', 'Payment proof'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 4,
+          title: 'Processing & Certificate',
+          description: 'IP office processes application, issue renewed trademark certificate, updated validity period reflected',
+          documents: ['Renewed certificate', 'Updated validity', 'Registration proof'],
+          timeline: '3-5 days'
+        }
+      ],
+      requiredDocuments: [
+        'Existing trademark certificate',
+        'Form TM-R completed',
+        'Proof of trademark usage (ads, labels, invoices)',
+        'Renewal fee payment proof',
+        'Power of attorney (if through agent)',
+        'Declaration of use affidavit',
+        'Copy of business registration',
+        'ID proof of authorized signatory'
+      ],
+      faqs: [
+        {
+          question: 'When should I renew my trademark?',
+          answer: 'Six months before expiry; can renew up to 6 months after expiry with late fee penalty'
+        },
+        {
+          question: 'What is the renewal validity period?',
+          answer: 'Ten years from the date of renewal'
+        },
+        {
+          question: 'Can I renew if trademark is not in use?',
+          answer: 'Yes, but if someone challenges, you must prove usage within past 5 years'
+        },
+        {
+          question: 'Can I change the trademark during renewal?',
+          answer: 'No, renewal is for the registered mark; changes require new application'
+        }
+      ],
+      price: 'Starting at ₹3,999',
+      duration: '5-10 days',
+      rating: 4.8,
+      reviews: 456
+    }
+
+
     ]
   },
   {
@@ -1051,7 +1756,105 @@ export const mainServiceCategories: ServiceCategory[] = [
         duration: '1-3 days',
         rating: 4.5,
         reviews: 3456
+        },
+  {
+    id: 'day-to-day-advisory',
+    name: 'Day-to-Day Financial Advisory',
+    slug: 'day-to-day-advisory',
+    description: 'Ongoing daily financial advisory and decision support for operational and strategic needs.',
+    icon: 'MessageCircle',
+    subServices: [
+      {
+        id: 'financial-advisory-daily',
+        name: 'Daily Financial Advisory',
+        slug: 'financial-advisory-daily',
+        description: 'Daily operational financial guidance and real-time decision support.',
+        icon: 'MessageCircle',
+        features: [
+          'Daily operational financial guidance',
+          'Quick decision support for business issues',
+          'Cash flow optimization recommendations',
+          'Invoice and payment optimization',
+          'Vendor negotiation support',
+          'Expense management optimization',
+          'Real-time financial queries resolution',
+          'Strategic financial consultation'
+        ],
+        benefits: [
+          'Real-time financial guidance for business decisions',
+          'Expert advice on cash flow management',
+          'Cost optimization and expense reduction strategies',
+          'Quick resolution of financial queries',
+          'Strategic financial planning support',
+          'Improved profitability and business efficiency'
+        ],
+        procedure: [
+          {
+            step: 1,
+            title: 'Financial Analysis & Baseline',
+            description: 'Review current financial position, analyze cash flow patterns',
+            documents: ['Financial statements', 'Cash flow analysis', 'Assessment'],
+            timeline: '3-5 days'
+          },
+          {
+            step: 2,
+            title: 'Advisory Framework Setup',
+            description: 'Define scope, frequency, communication channels',
+            documents: ['Scope document', 'Communication plan', 'Timeline'],
+            timeline: '2-3 days'
+          },
+          {
+            step: 3,
+            title: 'Ongoing Daily Support',
+            description: 'Daily guidance, weekly reviews, monthly analysis',
+            documents: ['Daily notes', 'Weekly reports', 'Monthly analysis'],
+            timeline: 'Continuous'
+          },
+          {
+            step: 4,
+            title: 'Optimization & Improvement',
+            description: 'Cost-saving measures, payment cycles, working capital',
+            documents: ['Recommendations', 'Implementation plan', 'Results'],
+            timeline: 'Ongoing'
+          }
+        ],
+        requiredDocuments: [
+          'Last 3 months bank statements',
+          'Current P&L statement',
+          'Balance sheet',
+          'Accounts receivable/payable aging',
+          'Cash flow forecast',
+          'List of regular expenses',
+          'Vendor and customer payment terms',
+          'Pending financial decisions',
+          'Business growth plans'
+        ],
+        faqs: [
+          {
+            question: 'What is the scope of day-to-day advisory?',
+            answer: 'Daily financial guidance, decision support, cost optimization, query resolution'
+          },
+          {
+            question: 'How quickly are queries responded to?',
+            answer: 'Usually within 24 hours; urgent queries within 2-4 hours'
+          },
+          {
+            question: 'Can advisory help in fundraising?',
+            answer: 'Yes, we guide financial preparation and presentation for investors'
+          },
+          {
+            question: 'Is advisory suitable for small businesses?',
+            answer: 'Yes, especially helpful for startups and SMEs managing cash flow'
+          }
+        ],
+        price: 'Starting at ₹19,999/month',
+        duration: 'Monthly service',
+        rating: 4.7,
+        reviews: 234
       }
+    ]
+  }
+
     ]
   }
 ];

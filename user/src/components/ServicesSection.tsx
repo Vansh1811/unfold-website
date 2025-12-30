@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Filter, Grid3X3, List, Search, Sparkles, Star } from 'lucide-react';
+import { ArrowRight, Sparkles, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { 
   mainServiceCategories, 
   getFeaturedServices, 
@@ -12,30 +11,16 @@ import {
 } from '@/data/servicesData';
 import ServiceCategoryCard from './ServiceCategoryCard';
 
-
 const ServicesSection = () => {
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedFilter, setSelectedFilter] = useState('all');
-  const [services, setServices] = useState(mainServiceCategories);
   const [featuredServices, setFeaturedServices] = useState<any[]>([]);
   const [popularServices, setPopularServices] = useState<any[]>([]);
   const [businessServices, setBusinessServices] = useState<any[]>([]);
-
 
   useEffect(() => {
     setFeaturedServices(getFeaturedServices());
     setPopularServices(getPopularServices());
     setBusinessServices(getBusinessIncorporationServices());
   }, []);
-
-
-  const filteredServices = services.filter(service => 
-    (selectedFilter === 'all' || service.id === selectedFilter) &&
-    (service.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-     service.description.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
-
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -47,7 +32,6 @@ const ServicesSection = () => {
       }
     }
   };
-
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30, scale: 0.9 },
@@ -62,7 +46,6 @@ const ServicesSection = () => {
       }
     }
   };
-
 
   return (
     <section
@@ -90,7 +73,6 @@ const ServicesSection = () => {
           className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full blur-3xl"
         />
       </div>
-
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
@@ -124,7 +106,6 @@ const ServicesSection = () => {
             </motion.div>
           </motion.div>
 
-
           {/* Main Heading with Gold Animation */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -149,7 +130,7 @@ const ServicesSection = () => {
                 className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent"
               />
             </motion.span>
-              </motion.h2>
+          </motion.h2>
 
           {/* Description */}
           <motion.p
@@ -164,20 +145,15 @@ const ServicesSection = () => {
           </motion.p>
         </motion.div>
 
-
-        {/* Services Grid – cards already updated to elegant style elsewhere, no gold "Popular" tags */}
+        {/* Services Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className={`grid gap-6 lg:gap-8 mb-12 lg:mb-20 ${
-            viewMode === 'grid'
-              ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-              : 'grid-cols-1 max-w-4xl mx-auto'
-          }`}
+          className="grid gap-6 lg:gap-8 mb-12 lg:mb-20 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {filteredServices.map((category, index) => (
+          {mainServiceCategories.map((category, index) => (
             <motion.div
               key={category.id}
               variants={itemVariants}
@@ -187,17 +163,19 @@ const ServicesSection = () => {
               }}
             >
               <ServiceCategoryCard
-                title={''} subServiceCount={category.subServices?.length || 0}
-                {...category}
+                title={category.name}
+                description={category.description}
+                icon={category.icon}
+                slug={category.slug}
+                subServiceCount={category.subServices?.length || 0}
                 index={index}
-                featured={false} // no visual "popular" highlight
+                featured={index === 0 || index === 3}
               />
             </motion.div>
           ))}
         </motion.div>
 
-
-        {/* CTA Section – same elegant light touch as FeaturedServices */}
+        {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -207,7 +185,6 @@ const ServicesSection = () => {
         >
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-white via-[#fbfbff] to-[#fff9f0] px-6 py-10 lg:px-12 lg:py-12 border border-gray-100 shadow-[0_18px_45px_rgba(15,23,42,0.06)]">
             <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-gold via-gold/70 to-transparent" />
-
 
             <div className="relative z-10 text-center max-w-3xl mx-auto">
               <motion.h3
@@ -220,7 +197,6 @@ const ServicesSection = () => {
                 Ready to Transform Your Business?
               </motion.h3>
 
-
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -231,7 +207,6 @@ const ServicesSection = () => {
                 Get expert guidance and comprehensive solutions tailored to your business
                 needs, from incorporation to ongoing compliance and strategic growth.
               </motion.p>
-
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
@@ -247,7 +222,6 @@ const ServicesSection = () => {
                     </Link>
                   </Button>
                 </motion.div>
-
 
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                   <Button
@@ -268,6 +242,5 @@ const ServicesSection = () => {
     </section>
   );
 };
-
 
 export default ServicesSection;
