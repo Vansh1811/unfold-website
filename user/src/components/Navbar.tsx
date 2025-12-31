@@ -64,9 +64,7 @@ const Navbar = () => {
             ))}
             
             <SearchBar className="max-w-xs" />
-            <Button className="bg-gold hover:bg-gold-600 text-navy font-semibold px-6 py-2">
-              Get Quote
-            </Button>
+           
           </div>
 
           {/* Mobile Menu Button */}
@@ -114,17 +112,7 @@ const Navbar = () => {
                   </Link>
                 ))}
 
-                {/* Mobile CTA */}
-                <div className="px-4 pt-4">
-                  <Button className="w-full bg-gold hover:bg-gold-600 text-navy font-semibold py-3">
-                    Get Quote
-                  </Button>
-                </div>
-
-                {/* Mobile Search */}
-                <div className="px-4">
-                  <SearchBar placeholder="Search services..." />
-                </div>
+            
               </div>
             </motion.div>
           )}

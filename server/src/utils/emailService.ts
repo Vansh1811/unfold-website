@@ -1,13 +1,20 @@
 import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT || '465'),
-  secure: process.env.SMTP_SECURE === 'true',
+  host: process.env.SMTP_HOST || 'smtp.zoho.in',
+  port: Number(process.env.SMTP_PORT) || 465,
+  secure: (process.env.SMTP_SECURE || 'true') === 'true',
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    user: process.env.SMTP_USER || 'aryan@unfoldfinlegsolutions.com',
+    pass: process.env.SMTP_PASS as string, // ZOHO password in .env
   },
+});
+
+// optional: check once at startup
+transporter.verify().then(() => {
+  console.log('✅ SMTP server is ready to take messages');
+}).catch((err) => {
+  console.error('❌ SMTP configuration error:', err);
 });
 
 export const sendContactEmail = async (contactData: {
@@ -32,8 +39,8 @@ export const sendContactEmail = async (contactData: {
   `;
 
   return transporter.sendMail({
-    from: process.env.SMTP_FROM,
-    to: process.env.ADMIN_EMAIL,
+    from: process.env.SMTP_FROM || '"Unfold Finleg Solutions" <aryan@unfoldfinlegsolutions.com>',
+    to: process.env.ADMIN_EMAIL || 'aryan@unfoldfinlegsolutions.com',
     subject: `New Contact Request from ${contactData.name}`,
     html: emailContent,
     replyTo: contactData.email,

@@ -6,11 +6,11 @@ import rateLimit from 'express-rate-limit';
 import compression from 'compression';
 import dotenv from 'dotenv';
 import config, { isProduction } from './config';
-import { connectDB } from './config/database';
+// import { connectDB } from './config/database';
 import logger, { httpLogStream } from './utils/logger';
-//import blogRoutes from './routes/blog.routes';
+// import blogRoutes from './routes/blog.routes';
 import contactRoutes from './routes/contact.routes';
-//import servicesRoutes from './routes/services.routes';
+// import servicesRoutes from './routes/services.routes';
 
 // Load environment variables
 dotenv.config();
@@ -30,9 +30,9 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-        fontSrc: ["'self'", "https://fonts.gstatic.com"],
-        imgSrc: ["'self'", "data:", "https:"],
+        styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+        imgSrc: ["'self'", 'data:', 'https:'],
         scriptSrc: ["'self'"],
         connectSrc: ["'self'"],
       },
@@ -54,7 +54,7 @@ app.use(
       'http://localhost:8080',
       'http://localhost:5173',
       'http://localhost:3000',
-      'https://unfoldfinlegsolutions.com'
+      'https://unfoldfinlegsolutions.com',
     ],
     credentials: true,
     optionsSuccessStatus: 200,
@@ -135,7 +135,9 @@ app.get('/api/v1/docs', (_req: Request, res: Response) => {
         services: '/api/v1/services',
       },
       authentication: 'JWT Bearer Token',
-      rateLimit: `${config.rateLimit.max} requests per ${config.rateLimit.windowMs / 60000} minutes`,
+      rateLimit: `${config.rateLimit.max} requests per ${
+        config.rateLimit.windowMs / 60000
+      } minutes`,
     },
   });
 });
@@ -192,43 +194,31 @@ app.use((err: any, req: Request, res: Response, next: any) => {
   });
 });
 
-// Start server
+// Start server WITHOUT MongoDB
 const startServer = async (): Promise<void> => {
-  try {
-    logger.info('🔌 Connecting to MongoDB...');
-    console.log('🔌 Connecting to MongoDB...');
+  const server = app.listen(PORT, () => {
+    logger.info(`✅ Server started on port ${PORT} in ${config.nodeEnv} mode`);
+    console.log(`✅ Server started on port ${PORT} in ${config.nodeEnv} mode`);
+  });
 
-    await connectDB();
-
-    const server = app.listen(PORT, () => {
-      logger.info(`✅ Server started on port ${PORT} in ${config.nodeEnv} mode`);
-      console.log(`✅ Server started on port ${PORT} in ${config.nodeEnv} mode`);
-    });
-
-    const gracefulShutdown = (signal: string) => {
-      logger.info(`🔄 Received ${signal}, shutting down gracefully...`);
-      server.close((err) => {
-        if (err) {
-          logger.error('❌ Error during shutdown:', { error: err.message });
-          process.exit(1);
-        }
-        logger.info('✅ Server closed successfully');
-        process.exit(0);
-      });
-      setTimeout(() => {
-        logger.error('❌ Forced shutdown after timeout');
+  const gracefulShutdown = (signal: string) => {
+    logger.info(`🔄 Received ${signal}, shutting down gracefully...`);
+    server.close((err) => {
+      if (err) {
+        logger.error('❌ Error during shutdown:', { error: err.message });
         process.exit(1);
-      }, 10000);
-    };
+      }
+      logger.info('✅ Server closed successfully');
+      process.exit(0);
+    });
+    setTimeout(() => {
+      logger.error('❌ Forced shutdown after timeout');
+      process.exit(1);
+    }, 10000);
+  };
 
-    process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
-    process.on('SIGINT', () => gracefulShutdown('SIGINT'));
-
-  } catch (error) {
-    logger.error('❌ Failed to start server:', error);
-    console.error('❌ Failed to start server:', error);
-    process.exit(1);
-  }
+  process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+  process.on('SIGINT', () => gracefulShutdown('SIGINT'));
 };
 
 process.on('unhandledRejection', (err: Error) => {
