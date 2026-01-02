@@ -1,4 +1,5 @@
 // src/data/blogData.ts
+// at the top
 
 export interface BlogPost {
   id: string;

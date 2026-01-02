@@ -13,18 +13,19 @@ const BlogDetail = () => {
   const blog = getBlogBySlug(slug || '');
   const recentBlogs = getRecentBlogs(3);
 
-  // Scroll to top on page load
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [slug]);
 
   if (!blog) {
     return (
-      <div className="min-h-screen pt-20 flex items-center justify-center">
+      <div className="min-h-screen pt-20 flex items-center justify-center bg-slate-50">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-navy mb-4">Blog Post Not Found</h1>
-          <p className="text-muted-foreground mb-8">The blog post you're looking for doesn't exist.</p>
-          <Button 
+          <p className="text-muted-foreground mb-8">
+            The blog post you're looking for doesn't exist.
+          </p>
+          <Button
             onClick={() => navigate('/blog')}
             className="bg-gold hover:bg-yellow-500 text-navy"
           >
@@ -35,13 +36,12 @@ const BlogDetail = () => {
     );
   }
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+  const formatDate = (dateString: string) =>
+    new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     });
-  };
 
   const handleShare = () => {
     if (navigator.share) {
@@ -51,163 +51,169 @@ const BlogDetail = () => {
         url: window.location.href,
       });
     } else {
-      // Fallback: copy to clipboard
       navigator.clipboard.writeText(window.location.href);
-      // You could add a toast notification here
+      // plug in your toast here
     }
   };
 
   const breadcrumbItems = [
     { label: 'Blog', href: '/blog' },
-    { label: blog.title }
+    { label: blog.title },
   ];
 
   return (
-    <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="section-padding hero-pattern">
+    <div className="min-h-screen bg-slate-50 pt-20">
+      {/* Hero */}
+      <section className="hero-pattern pb-6 pt-10 md:pt-12">
         <div className="container-custom">
-          <Breadcrumbs items={breadcrumbItems} />
-          
-          <motion.div
-            className="max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            {/* Category Badge */}
-            <div className="mb-4 md:mb-6">
-              <span className="inline-block px-4 py-2 bg-gold/10 text-gold text-sm font-medium rounded-full">
-                {blog.category}
-              </span>
-            </div>
+          <div className="max-w-3xl mx-auto">
+            <Breadcrumbs items={breadcrumbItems} />
 
-            {/* Title */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-navy mb-4 md:mb-6 leading-tight">
-              {blog.title}
-            </h1>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="mb-4 md:mb-5">
+                <span className="inline-flex items-center rounded-full bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+                  {blog.category}
+                </span>
+              </div>
 
-            {/* Meta Information */}
-            <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm md:text-base text-muted-foreground mb-6 md:mb-8">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4 md:h-5 md:w-5" />
-                <span>{blog.author}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4 md:h-5 md:w-5" />
-                <span>{formatDate(blog.date)}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 md:h-5 md:w-5" />
-                <span>{blog.readTime}</span>
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleShare}
-                className="ml-auto"
-              >
-                <Share2 className="h-4 w-4 mr-2" />
-                Share
-              </Button>
-            </div>
+              <h1 className="text-3xl sm:text-4xl md:text-[2.6rem] font-heading font-semibold text-navy leading-tight mb-3 md:mb-4">
+                {blog.title}
+              </h1>
 
-            {/* Summary */}
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 md:mb-12">
-              {blog.summary}
-            </p>
-          </motion.div>
+              <div className="flex flex-wrap items-center gap-3 md:gap-5 text-xs md:text-sm text-slate-500 mb-5 md:mb-6">
+                <div className="flex items-center gap-1.5">
+                  <User className="h-4 w-4" />
+                  <span>{blog.author}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Calendar className="h-4 w-4" />
+                  <span>{formatDate(blog.date)}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Clock className="h-4 w-4" />
+                  <span>{blog.readTime}</span>
+                </div>
+
+                <div className="hidden h-4 w-px bg-slate-200 md:block" />
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleShare}
+                  className="ml-auto flex items-center gap-1.5 rounded-full border-slate-200 bg-white/70 text-xs font-medium text-slate-700 hover:border-gold/60 hover:text-navy"
+                >
+                  <Share2 className="h-3.5 w-3.5" />
+                  Share
+                </Button>
+              </div>
+
+              <p className="max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed mb-4 md:mb-6">
+                {blog.summary}
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Blog Content */}
-      <section className="py-8 md:py-12 bg-white">
+      {/* Body + sidebar */}
+      <section className="pb-18 md:pb-20">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 md:gap-12">
-            {/* Main Content */}
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(260px,1fr)]">
+            {/* Article */}
             <motion.div
-              className="lg:col-span-3"
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -24 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
-              {/* Featured Image */}
-              <div className="aspect-video md:aspect-[16/9] overflow-hidden rounded-xl mb-8 md:mb-12">
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <Card className="border border-slate-100 bg-white shadow-[0_18px_40px_rgba(15,23,42,0.04)] rounded-2xl overflow-hidden">
+                <CardContent className="p-5 md:p-7 lg:p-8">
+                  {blog.image && (
+                    <div className="mb-6 md:mb-7 overflow-hidden rounded-xl -mx-1">
+                      <img
+                        src={blog.image}
+                        alt={blog.title}
+                        className="w-full h-auto object-cover transition-transform duration-500 hover:scale-[1.03]"
+                      />
+                    </div>
+                  )}
 
-              {/* Blog Content */}
-              <div 
-                className="prose prose-sm md:prose-lg max-w-none prose-headings:text-navy prose-headings:font-heading prose-a:text-gold hover:prose-a:text-yellow-600 prose-strong:text-navy prose-code:text-navy prose-code:bg-gold/10 prose-code:px-2 prose-code:py-1 prose-code:rounded"
-                dangerouslySetInnerHTML={{ __html: blog.content }}
-              />
+                  <div
+                    className="prose prose-sm md:prose-base lg:prose-lg max-w-none prose-headings:text-navy prose-headings:font-heading prose-a:text-gold hover:prose-a:text-yellow-600 prose-strong:text-navy prose-code:text-navy prose-code:bg-gold/10 prose-code:px-2 prose-code:py-1 prose-code:rounded"
+                    dangerouslySetInnerHTML={{ __html: blog.content }}
+                  />
 
-              {/* Navigation */}
-              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-12 md:mt-16 pt-8 border-t border-gray-200">
-                <Link to="/blog">
-                  <Button variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    Back to Blog
-                  </Button>
-                </Link>
-                
-                <Button className="bg-gold hover:bg-yellow-500 text-navy font-semibold">
-                  Contact Our Experts
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
+                  <div className="mt-10 md:mt-12 pt-6 border-t border-slate-200 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <Link to="/blog">
+                      <Button
+                        variant="outline"
+                        className="border-navy text-navy hover:bg-navy hover:text-white"
+                      >
+                        <ArrowLeft className="mr-2 h-4 w-4" />
+                        Back to Blog
+                      </Button>
+                    </Link>
+
+                    <Button className="bg-gold hover:bg-yellow-500 text-navy font-semibold">
+                      Contact Our Experts
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             </motion.div>
 
             {/* Sidebar */}
-            <motion.div
-              className="lg:col-span-1"
-              initial={{ opacity: 0, x: 30 }}
+            <motion.aside
+              initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
             >
-              <div className="sticky top-24 space-y-6 md:space-y-8">
-                {/* Recent Posts */}
-                <Card className="shadow-card border-0">
+              <div className="sticky top-28 space-y-6 md:space-y-8">
+                <Card className="shadow-card border border-slate-100 bg-white/95 rounded-2xl">
                   <CardContent className="p-4 md:p-6">
-                    <h3 className="text-lg md:text-xl font-heading font-semibold text-navy mb-4 md:mb-6">
+                    <h3 className="text-lg md:text-xl font-heading font-semibold text-navy mb-4 md:mb-5">
                       Recent Posts
                     </h3>
                     <div className="space-y-4">
-                      {recentBlogs.filter(recentBlog => recentBlog.id !== blog.id).slice(0, 3).map((recentBlog) => (
-                        <Link
-                          key={recentBlog.id}
-                          to={`/blog/${recentBlog.slug}`}
-                          className="block group"
-                        >
-                          <div className="flex gap-3">
-                            <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 overflow-hidden rounded-lg">
-                              <img
-                                src={recentBlog.image}
-                                alt={recentBlog.title}
-                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                              />
+                      {recentBlogs
+                        .filter((recentBlog) => recentBlog.id !== blog.id)
+                        .slice(0, 3)
+                        .map((recentBlog) => (
+                          <Link
+                            key={recentBlog.id}
+                            to={`/blog/${recentBlog.slug}`}
+                            className="block group"
+                          >
+                            <div className="flex gap-3">
+                              <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 overflow-hidden rounded-lg bg-slate-100">
+                                {recentBlog.image && (
+                                  <img
+                                    src={recentBlog.image}
+                                    alt={recentBlog.title}
+                                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                  />
+                                )}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h4 className="text-sm md:text-base font-medium text-navy group-hover:text-gold transition-colors duration-300 line-clamp-2 mb-1">
+                                  {recentBlog.title}
+                                </h4>
+                                <p className="text-xs md:text-sm text-muted-foreground">
+                                  {formatDate(recentBlog.date)}
+                                </p>
+                              </div>
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <h4 className="text-sm md:text-base font-medium text-navy group-hover:text-gold transition-colors duration-300 line-clamp-2 mb-1">
-                                {recentBlog.title}
-                              </h4>
-                              <p className="text-xs md:text-sm text-muted-foreground">
-                                {formatDate(recentBlog.date)}
-                              </p>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
+                          </Link>
+                        ))}
                     </div>
                   </CardContent>
                 </Card>
 
-                {/* CTA Card */}
-                <Card className="bg-navy text-white shadow-card border-0">
+                <Card className="bg-navy text-white shadow-card border-0 rounded-2xl">
                   <CardContent className="p-4 md:p-6 text-center">
                     <h3 className="text-lg md:text-xl font-heading font-semibold text-gold mb-3 md:mb-4">
                       Need Expert Help?
@@ -221,7 +227,7 @@ const BlogDetail = () => {
                   </CardContent>
                 </Card>
               </div>
-            </motion.div>
+            </motion.aside>
           </div>
         </div>
       </section>
