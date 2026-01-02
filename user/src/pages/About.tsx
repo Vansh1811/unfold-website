@@ -65,6 +65,15 @@ const About = () => {
       education: 'CA, CS, MBA',
       email: 'amit@unfoldfinlegsolutions.com',
       linkedin: '#'
+    },
+      {
+      name: 'Amit Patel',
+      position: 'Head of Operations',
+      experience: '10+ Years',
+      specialization: 'Tax Consulting & GST',
+      education: 'CA, CS, MBA',
+      email: 'amit@unfoldfinlegsolutions.com',
+      linkedin: '#'
     }
   ];
 

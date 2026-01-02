@@ -222,7 +222,7 @@ const serviceCategories = [
               >
                 <Button className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-900 px-8 py-4 rounded-xl text-lg font-bold shadow-2xl"
                         style={{ fontFamily: 'Nexa Bold' }}>
-                  Free Consultation
+                  <Link to="/contact">Get Consultation</Link>
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </motion.div>
@@ -231,13 +231,7 @@ const serviceCategories = [
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button
-                  variant="outline"
-                  className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 rounded-xl text-lg font-semibold"
-                  style={{ fontFamily: 'Nexa Bold' }}
-                >
-                  View Portfolio
-                </Button>
+          
               </motion.div>
             </div>
           </motion.div>

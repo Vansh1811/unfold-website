@@ -231,7 +231,7 @@ const ServicesSection = () => {
                     className="border border-gold/70 text-gold hover:bg-gold/10 px-8 py-4 rounded-xl text-lg font-semibold"
                     style={{ fontFamily: 'Nexa Bold' }}
                   >
-                    <Link to="/contact">Get Free Consultation</Link>
+                    <Link to="/contact">Get Consultation</Link>
                   </Button>
                 </motion.div>
               </div>

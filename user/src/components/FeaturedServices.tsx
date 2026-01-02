@@ -189,7 +189,7 @@ const FeaturedServices = () => {
             variant="outline"
             className="border border-gold/60 text-gold hover:bg-gold/10 px-8 py-3 rounded-xl font-semibold"
           >
-            Get Free Consultation
+            Get Consultation
           </Button>
         </Link>
       

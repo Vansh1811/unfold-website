@@ -5,7 +5,25 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { getBlogBySlug, getRecentBlogs } from '@/data/blogsData';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { Calendar, User, Clock, ArrowLeft, ArrowRight, Share2 } from 'lucide-react';
+import {
+  Calendar,
+  User,
+  Clock,
+  ArrowLeft,
+  ArrowRight,
+  Share2,
+  Contact,
+} from 'lucide-react';
+
+// Custom teaser copy per blog id
+const blogTeaserById: Record<string, string> = {
+  'us-incorp-part-1-c-corp':
+    'Learn how to choose and register a Delaware C‑Corp, then unlock S‑Corp tax treatment so you protect your startup, stay investor‑ready, and avoid double taxation traps.',
+  'us-incorp-part-2-llc':
+    'Curious if an LLC is better than a C‑Corp for your US startup? This part breaks down when founders should prefer an LLC, key registration steps, and how to avoid costly compliance mistakes.',
+  'us-incorp-part-3':
+    'Not ready for a full‑fledged company yet? Explore how sole proprietorships, partnerships, and LLPs actually work in practice, and when they make sense for early‑stage founders.',
+};
 
 const BlogDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -52,7 +70,7 @@ const BlogDetail = () => {
       });
     } else {
       navigator.clipboard.writeText(window.location.href);
-      // plug in your toast here
+      // plug your toast here if needed
     }
   };
 
@@ -60,6 +78,8 @@ const BlogDetail = () => {
     { label: 'Blog', href: '/blog' },
     { label: blog.title },
   ];
+
+  const teaserText = blogTeaserById[blog.id] ?? blog.summary;
 
   return (
     <div className="min-h-screen bg-slate-50 pt-20">
@@ -131,22 +151,37 @@ const BlogDetail = () => {
             >
               <Card className="border border-slate-100 bg-white shadow-[0_18px_40px_rgba(15,23,42,0.04)] rounded-2xl overflow-hidden">
                 <CardContent className="p-5 md:p-7 lg:p-8">
+                  {/* Smaller image + teaser */}
                   {blog.image && (
-                    <div className="mb-6 md:mb-7 overflow-hidden rounded-xl -mx-1">
-                      <img
-                        src={blog.image}
-                        alt={blog.title}
-                        className="w-full h-auto object-cover transition-transform duration-500 hover:scale-[1.03]"
-                      />
+                    <div className="mb-5 flex flex-col sm:flex-row gap-4 items-start">
+                      <div className="w-full sm:w-52 md:w-60 rounded-xl overflow-hidden shadow-sm bg-slate-100 flex-shrink-0">
+                        <img
+                          src={blog.image}
+                          alt={blog.title}
+                          className="w-full h-40 sm:h-44 md:h-52 object-cover transition-transform duration-500 hover:scale-[1.03]"
+                        />
+                      </div>
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                        {teaserText}
+                      </p>
                     </div>
                   )}
 
-                  <div
-                    className="prose prose-sm md:prose-base lg:prose-lg max-w-none prose-headings:text-navy prose-headings:font-heading prose-a:text-gold hover:prose-a:text-yellow-600 prose-strong:text-navy prose-code:text-navy prose-code:bg-gold/10 prose-code:px-2 prose-code:py-1 prose-code:rounded"
-                    dangerouslySetInnerHTML={{ __html: blog.content }}
-                  />
+                  {!blog.image && (
+                    <p className="mb-5 text-sm md:text-base text-muted-foreground leading-relaxed">
+                      {teaserText}
+                    </p>
+                  )}
 
-                  <div className="mt-10 md:mt-12 pt-6 border-t border-slate-200 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  {/* If you keep some HTML content, it appears under the teaser */}
+                  {blog.content && (
+                    <div
+                      className="prose prose-sm md:prose-base max-w-none prose-headings:text-navy prose-headings:font-heading prose-a:text-gold hover:prose-a:text-yellow-600 prose-strong:text-navy"
+                      dangerouslySetInnerHTML={{ __html: blog.content }}
+                    />
+                  )}
+
+                  <div className="mt-8 md:mt-10 pt-6 border-t border-slate-200 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <Link to="/blog">
                       <Button
                         variant="outline"
@@ -157,9 +192,14 @@ const BlogDetail = () => {
                       </Button>
                     </Link>
 
-                    <Button className="bg-gold hover:bg-yellow-500 text-navy font-semibold">
-                      Contact Our Experts
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                    <Button className="bg-gold hover:bg-yellow-500 text-gold font-semibold">
+                      <Link
+                        to={blog.externalUrl || '#'}
+                        className="flex items-center gap-2"
+                      >
+                        Go to full article
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
                     </Button>
                   </div>
                 </CardContent>
@@ -219,10 +259,17 @@ const BlogDetail = () => {
                       Need Expert Help?
                     </h3>
                     <p className="text-sm md:text-base text-white/90 mb-4 md:mb-6">
-                      Our experts are ready to help you with your business compliance needs.
+                      Our experts are ready to help you with your business compliance
+                      needs.
                     </p>
                     <Button className="bg-gold hover:bg-yellow-500 text-navy font-semibold w-full">
-                      Get Free Consultation
+                      <Link
+                        to="/contact"
+                        className="flex items-center justify-center gap-2"
+                      >
+                        Contact Us
+                        <Contact className="h-4 w-4" />
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>

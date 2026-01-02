@@ -5,7 +5,6 @@ export interface SubService {
   description: string;
   icon: string;
   features: string[];
-  price?: string;
   duration?: string;
   popular?: boolean;
   trending?: boolean;
@@ -163,8 +162,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           professionalFees: '₹10,000+',
           totalEstimate: '₹15,000-25,000'
         },
-        price: 'Starting at ₹15,999',
-        duration: '7-15 days',
+        
         popular: true,
         rating: 4.9,
         reviews: 1250
@@ -250,8 +248,6 @@ export const mainServiceCategories: ServiceCategory[] = [
           professionalFees: '₹8,000+',
           totalEstimate: '₹12,000-20,000'
         },
-        price: 'Starting at ₹12,999',
-        duration: '7-12 days',
         popular: true,
         rating: 4.8,
         reviews: 890
@@ -337,8 +333,6 @@ export const mainServiceCategories: ServiceCategory[] = [
           professionalFees: '₹30,000+',
           totalEstimate: '₹40,000-80,000'
         },
-        price: 'Starting at ₹45,999',
-        duration: '15-30 days',
         rating: 4.7,
         reviews: 345
       },
@@ -423,8 +417,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           professionalFees: '₹12,000+',
           totalEstimate: '₹15,000-30,000'
         },
-        price: 'Starting at ₹18,999',
-        duration: '20-35 days',
+       
         rating: 4.5,
         reviews: 178
       },
@@ -509,8 +502,6 @@ export const mainServiceCategories: ServiceCategory[] = [
           professionalFees: '₹15,000+',
           totalEstimate: '₹25,000-40,000'
         },
-        price: 'Starting at ₹28,999',
-        duration: '15-25 days',
         rating: 4.4,
         reviews: 156
       },
@@ -595,8 +586,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           professionalFees: '₹20,000+',
           totalEstimate: '₹30,000-50,000'
         },
-        price: 'Starting at ₹35,999',
-        duration: '20-30 days',
+
         rating: 4.3,
         reviews: 134
           },
@@ -681,8 +671,7 @@ export const mainServiceCategories: ServiceCategory[] = [
         professionalFees: '₹10,000+',
         totalEstimate: '₹15,000-25,000'
       },
-      price: 'Starting at ₹14,999',
-      duration: '10-15 days',
+
       rating: 4.7,
       reviews: 567
     }
@@ -713,8 +702,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Compliance calendar maintenance',
           'Regulatory updates and advisory'
         ],
-        price: 'Starting at ₹4,999/year',
-        duration: 'Annual service',
+       
         popular: true,
         rating: 4.8,
         reviews: 2100
@@ -735,8 +723,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Shareholder communication and meetings',
           'Compliance reporting and documentation'
         ],
-        price: 'Starting at ₹8,999/month',
-        duration: 'Monthly service',
+      
         rating: 4.7,
         reviews: 567
       },
@@ -756,8 +743,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Follow-up on compliance improvements',
           'Annual audit planning and scheduling'
         ],
-        price: 'Starting at ₹15,999',
-        duration: '15-30 days',
+      
         rating: 4.6,
         reviews: 345
       },
@@ -777,8 +763,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Labour law audit and assessment',
           'Penalty avoidance and dispute resolution'
         ],
-        price: 'Starting at ₹5,999',
-        duration: '10-15 days',
+        
         rating: 4.5,
         reviews: 432
           },
@@ -863,8 +848,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'Dividends are credited to transferee if registered before record date'
         }
       ],
-      price: 'Starting at ₹3,999 per transfer',
-      duration: '10-15 days',
+      
       rating: 4.6,
       reviews: 234
         },
@@ -951,8 +935,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'Usually 15-25 days depending on amount and complexity'
         }
       ],
-      price: 'Starting at ₹7,999',
-      duration: '15-25 days',
+      
       rating: 4.5,
       reviews: 189
      },
@@ -1038,8 +1021,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'The amendment cannot proceed; alternative clauses must be proposed'
         }
       ],
-      price: 'Starting at ₹5,999',
-      duration: '12-20 days',
+     
       rating: 4.6,
       reviews: 156
         
@@ -1127,8 +1109,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'Yes, both individual CAs and CA firms can be appointed as auditors'
         }
       ],
-      price: 'Starting at ₹2,999',
-      duration: '7-10 days',
+     
       rating: 4.7,
       reviews: 345
     },
@@ -1212,8 +1193,7 @@ export const mainServiceCategories: ServiceCategory[] = [
             answer: 'Yes, we set up systems to monitor and maintain compliance'
           }
         ],
-        price: 'Starting at ₹35,999',
-        duration: '20-30 days',
+        
         rating: 4.7,
         reviews: 123
       },
@@ -1298,8 +1278,7 @@ export const mainServiceCategories: ServiceCategory[] = [
             answer: 'Yes, we provide end-to-end claims management support'
           }
         ],
-        price: 'Starting at ₹9,999',
-        duration: '7-15 days',
+        
         rating: 4.6,
         reviews: 234
       },
@@ -1388,8 +1367,7 @@ export const mainServiceCategories: ServiceCategory[] = [
             answer: 'No audit required if contribution doesn\'t exceed ₹25 lakhs; otherwise required'
           }
         ],
-        price: 'Starting at ₹5,999',
-        duration: '7-10 days',
+        
         rating: 4.7,
         reviews: 289
       },
@@ -1478,8 +1456,7 @@ export const mainServiceCategories: ServiceCategory[] = [
             answer: 'Minutes must be retained for minimum 8 years'
           }
         ],
-        price: 'Starting at ₹7,999 per meeting',
-        duration: '7-10 days',
+ 
         rating: 4.6,
         reviews: 156
       },
@@ -1568,8 +1545,7 @@ export const mainServiceCategories: ServiceCategory[] = [
             answer: 'Varies based on company size; typically ₹25,000-1,00,000+ per year'
           }
         ],
-        price: 'Starting at ₹12,999',
-        duration: '15-20 days',
+        
         rating: 4.5,
         reviews: 123
       },
@@ -1603,8 +1579,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Compliance monitoring and alerts',
           'GST litigation support and representation'
         ],
-        price: 'Starting at ₹2,999/month',
-        duration: 'Monthly service',
+    
         popular: true,
         rating: 4.9,
         reviews: 3200
@@ -1625,8 +1600,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'TDS/TCS management and reconciliation',
           'Assessment proceedings representation'
         ],
-        price: 'Starting at ₹1,999',
-        duration: '7-15 days',
+      
         popular: true,
         rating: 4.8,
         reviews: 4500
@@ -1647,8 +1621,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Compliance monitoring and penalty avoidance',
           'TDS audit support and representation'
         ],
-        price: 'Starting at ₹2,499/month',
-        duration: 'Monthly service',
+   
         rating: 4.7,
         reviews: 1890
       },
@@ -1668,8 +1641,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Budget preparation and variance analysis',
           'Financial advisory and business insights'
         ],
-        price: 'Starting at ₹4,999/month',
-        duration: 'Monthly service',
+       
         rating: 4.6,
         reviews: 1200
       },
@@ -1689,8 +1661,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Ongoing technical support and maintenance',
           'Software optimization and customization'
         ],
-        price: 'Starting at ₹9,999',
-        duration: '7-15 days',
+      
         rating: 4.5,
         reviews: 456
           },
@@ -1776,8 +1747,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'Penalties range from ₹100 to ₹1,000 depending on state; prosecution risk exists'
         }
       ],
-      price: 'Starting at ₹1,999/month',
-      duration: 'Monthly service',
+    
       rating: 4.6,
       reviews: 678
      },
@@ -1862,8 +1832,7 @@ export const mainServiceCategories: ServiceCategory[] = [
               answer: 'Absolutely, especially when scaling or preparing for fundraising'
             }
           ],
-          price: 'Starting at ₹35,999/month',
-          duration: 'Monthly service',
+      
           trending: true,
           rating: 4.9,
           reviews: 156
@@ -1950,8 +1919,7 @@ export const mainServiceCategories: ServiceCategory[] = [
               answer: 'We provide ongoing investor relations support and performance reporting'
             }
           ],
-          price: 'Starting at ₹75,999',
-          duration: '2-6 months',
+    
           rating: 4.8,
           reviews: 89
         },
@@ -2040,8 +2008,7 @@ export const mainServiceCategories: ServiceCategory[] = [
               answer: 'Reports are delivered via email in Excel/PDF format with secure access'
             }
           ],
-          price: 'Starting at ₹4,999/month',
-          duration: 'Monthly service',
+  
           rating: 4.8,
           reviews: 234
         },
@@ -2070,8 +2037,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Trademark portfolio management',
           'International trademark registration support'
         ],
-        price: 'Starting at ₹6,999',
-        duration: '12-18 months',
+
         popular: true,
         rating: 4.8,
         reviews: 890
@@ -2092,8 +2058,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Appeal handling and higher authority representation',
           'Trademark maintenance and protection advice'
         ],
-        price: 'Starting at ₹8,999',
-        duration: '3-6 months',
+       
         rating: 4.7,
         reviews: 456
       },
@@ -2113,8 +2078,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'International patent filing (PCT) support',
           'Patent commercialization and licensing advice'
         ],
-        price: 'Starting at ₹35,999',
-        duration: '18-36 months',
+     
         rating: 4.6,
         reviews: 234
           },
@@ -2201,8 +2165,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'Generally for author\'s lifetime plus 60 years after death'
         }
       ],
-      price: 'Starting at ₹4,999',
-      duration: '10-15 days',
+    
       rating: 4.5,
       reviews: 289
         },
@@ -2288,8 +2251,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'No, renewal is for the registered mark; changes require new application'
         }
       ],
-      price: 'Starting at ₹3,999',
-      duration: '5-10 days',
+   
       rating: 4.8,
       reviews: 456
     },
@@ -2378,8 +2340,7 @@ export const mainServiceCategories: ServiceCategory[] = [
             answer: 'The opposing application is rejected, and your mark is protected'
           }
         ],
-        price: 'Starting at ₹9,999',
-        duration: '2-6 months',
+ 
         rating: 4.6,
         reviews: 178
       },
@@ -2411,8 +2372,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Leave and attendance management integration',
           'Salary structure optimization and advisory'
         ],
-        price: 'Starting at ₹199/employee/month',
-        duration: 'Monthly service',
+     
         popular: true,
         rating: 4.8,
         reviews: 1567
@@ -2433,8 +2393,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Employee welfare compliance monitoring',
           'Statutory audit support and documentation'
         ],
-        price: 'Starting at ₹2,999/month',
-        duration: 'Monthly service',
+     
         rating: 4.7,
         reviews: 789
       },
@@ -2523,8 +2482,7 @@ export const mainServiceCategories: ServiceCategory[] = [
       answer: 'Late payment penalties and interest apply; legal action may follow'
     }
   ],
-  price: 'Starting at ₹3,999/month',
-  duration: 'Monthly service',
+ 
   rating: 4.7,
   reviews: 345
 },
@@ -2554,8 +2512,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Food safety training and certification',
           'Regulatory updates and advisory services'
         ],
-        price: 'Starting at ₹2,999',
-        duration: '7-15 days',
+     
         popular: true,
         rating: 4.8,
         reviews: 1234
@@ -2576,8 +2533,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Customs clearance support and assistance',
           'International trade compliance advisory'
         ],
-        price: 'Starting at ₹3,999',
-        duration: '7-10 days',
+   
         rating: 4.7,
         reviews: 567
       },
@@ -2597,8 +2553,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Startup ecosystem networking support',
           'Government scheme access and advisory'
         ],
-        price: 'Starting at ₹4,999',
-        duration: '15-20 days',
+   
         trending: true,
         popular: true,
         rating: 4.9,
@@ -2620,8 +2575,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'MSME scheme advisory and guidance',
           'Annual compliance and renewal support'
         ],
-        price: 'Starting at ₹1,999',
-        duration: '3-7 days',
+      
         rating: 4.6,
         reviews: 2100
       },
@@ -2641,8 +2595,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           'Multiple validity period options',
           'Secure delivery and documentation'
         ],
-        price: 'Starting at ₹899',
-        duration: '1-3 days',
+   
         rating: 4.5,
         reviews: 3456
         },
@@ -2728,8 +2681,7 @@ export const mainServiceCategories: ServiceCategory[] = [
       answer: 'FSSAI conducts periodic inspections; annual inspections are mandatory for licensed businesses'
     }
   ],
-  price: 'Starting at ₹2,999',
-  duration: '10-15 days',
+
   popular: true,
   rating: 4.8,
   reviews: 567
@@ -2830,8 +2782,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'Yes, especially helpful for startups and SMEs managing cash flow'
         }
       ],
-      price: 'Starting at ₹19,999/month',
-      duration: 'Monthly service',
+   
       rating: 4.7,
       reviews: 234
     }
@@ -2926,8 +2877,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'Income statement, cash flow, balance sheet projections for 3-5 years'
         }
       ],
-      price: 'Starting at ₹25,999',
-      duration: '15-20 days',
+   
       popular: true,
       rating: 4.8,
       reviews: 345
@@ -3014,8 +2964,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'PowerPoint, PDF, Google Slides, and animated video presentations'
         }
       ],
-      price: 'Starting at ₹15,999',
-      duration: '7-10 days',
+    
       rating: 4.7,
       reviews: 234
     },
@@ -3100,8 +3049,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'Absolutely, especially when scaling or preparing for fundraising'
         }
       ],
-      price: 'Starting at ₹35,999/month',
-      duration: 'Monthly service',
+ 
       trending: true,
       rating: 4.9,
       reviews: 156
@@ -3188,8 +3136,7 @@ export const mainServiceCategories: ServiceCategory[] = [
           answer: 'We provide ongoing investor relations support and performance reporting'
         }
       ],
-      price: 'Starting at ₹75,999',
-      duration: '2-6 months',
+    
       rating: 4.8,
       reviews: 89
     }
@@ -3224,8 +3171,7 @@ export const moreServices: MoreService[] = [
           'Business model validation and optimization',
           'Executive summary and detailed documentation'
         ],
-        price: 'Starting at ₹25,999',
-        duration: '15-20 days',
+      
         popular: true,
         rating: 4.8,
         reviews: 345
@@ -3246,8 +3192,7 @@ export const moreServices: MoreService[] = [
           'Team presentation and capability showcase',
           'Multiple format delivery (PPT, PDF, interactive)'
         ],
-        price: 'Starting at ₹15,999',
-        duration: '7-10 days',
+     
         rating: 4.7,
         reviews: 234
       }
@@ -3276,8 +3221,7 @@ export const moreServices: MoreService[] = [
           'Financial risk assessment and management',
           'Strategic financial advisory and consultation'
         ],
-        price: 'Starting at ₹35,999/month',
-        duration: 'Monthly service',
+     
         trending: true,
         rating: 4.9,
         reviews: 156
@@ -3298,8 +3242,7 @@ export const moreServices: MoreService[] = [
           'Investor presentation and pitch preparation',
           'Post-funding investor relations management'
         ],
-        price: 'Starting at ₹75,999',
-        duration: '2-6 months',
+     
         rating: 4.8,
         reviews: 89
       }
@@ -3328,8 +3271,7 @@ export const moreServices: MoreService[] = [
           'Compliance training and awareness programs',
           'Regular compliance health check services'
         ],
-        price: 'Starting at ₹35,999',
-        duration: '20-30 days',
+      
         rating: 4.7,
         reviews: 123
       },
@@ -3349,8 +3291,7 @@ export const moreServices: MoreService[] = [
           'Insurance portfolio management',
           'Regulatory compliance and advisory services'
         ],
-        price: 'Starting at ₹9,999',
-        duration: '7-15 days',
+      
         rating: 4.6,
         reviews: 234
       }

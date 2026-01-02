@@ -1,39 +1,79 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, ArrowRight, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '@/assets/unfold-logo.png';
+
+// Parent service categories used in the footer
+const serviceCategories = [
+  {
+    label: 'Company Formation & Registration',
+    slug: 'company-formation-registration',
+    to: '/services/company-formation-registration',
+  },
+  {
+    label: 'Legal Compliance & Advisory',
+    slug: 'legal-compliance-advisory',
+    to: '/services/legal-compliance-advisory',
+  },
+  {
+    label: 'Taxation & Accounting',
+    slug: 'taxation-accounting',
+    to: '/services/taxation-accounting',
+  },
+  {
+    label: 'Intellectual Property Rights',
+    slug: 'intellectual-property-rights',
+    to: '/services/intellectual-property-rights',
+  },
+  {
+    label: 'HR & Payroll Services',
+    slug: 'hr-payroll-services',
+    to: '/services/hr-payroll-services',
+  },
+  {
+    label: 'Business Licensing & Registration',
+    slug: 'business-licensing-registration',
+    to: '/services/business-licensing-registration',
+  },
+];
+
+const services = serviceCategories.map((category) => category.label);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const services = [
-    'Company Incorporation',
-    'Legal Compliance',
-    'Tax Consulting',
-    'HR Solutions',
-    'Business Advisory',
-    'IP Rights'
-  ];
-
   const quickLinks = [
     { name: 'About Us', href: '/about' },
     { name: 'Our Services', href: '/services' },
-    { name: 'Case Studies', href: '/portfolio' },
+    { name: 'Blogs', href: '/blog' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Careers', href: '/careers' }
   ];
 
   const legalLinks = [
     { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Service', href: '/terms' },
-    { name: 'Cookie Policy', href: '/cookies' }
+    { name: 'Cookie Policy', href: '/cookies' },
   ];
 
   const socialLinks = [
-    { name: 'LinkedIn', href: '#', icon: Linkedin, color: 'hover:text-blue-600' },
+    {
+      name: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/unfold-finleg-solutions/posts/?feedView=all',
+      icon: Linkedin,
+      color: 'hover:text-blue-600',
+    },
     { name: 'Twitter', href: '#', icon: Twitter, color: 'hover:text-blue-400' },
     { name: 'Facebook', href: '#', icon: Facebook, color: 'hover:text-blue-700' },
-    { name: 'Instagram', href: '#', icon: Instagram, color: 'hover:text-pink-600' }
+    { name: 'Instagram', href: '#', icon: Instagram, color: 'hover:text-pink-600' },
   ];
 
   return (
@@ -65,15 +105,18 @@ const Footer = () => {
               </h3>
             </div>
             <p className="text-blue-100 leading-relaxed mb-6 text-sm sm:text-base">
-              Unfolding your business potential through smart compliance and strategic growth solutions.
+              Unfolding your business potential through smart compliance and strategic
+              growth solutions.
             </p>
-            
+
             {/* Social Links */}
             <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.name}
                   href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className={`w-10 h-10 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center transition-colors duration-300 ${social.color}`}
@@ -171,10 +214,16 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-gold-400 mt-0.5 flex-shrink-0" />
                 <div className="text-blue-100 text-sm">
-                  <a href="tel:+919958978970" className="hover:text-white transition-colors duration-200 block">
+                  <a
+                    href="tel:+919958978970"
+                    className="hover:text-white transition-colors duration-200 block"
+                  >
                     +91 995-897-8970
                   </a>
-                  <a href="tel:+919599399662" className="hover:text-white transition-colors duration-200 block">
+                  <a
+                    href="tel:+919599399662"
+                    className="hover:text-white transition-colors duration-200 block"
+                  >
                     +91 959-939-9662
                   </a>
                 </div>
@@ -183,8 +232,10 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold-400 mt-0.5 flex-shrink-0" />
                 <div className="text-blue-100 text-sm leading-relaxed">
-                  B-145, Ground Floor<br />
-                  Sector-51<br />
+                  B-145, Ground Floor
+                  <br />
+                  Sector-51
+                  <br />
                   Noida, Uttar Pradesh 201301
                 </div>
               </div>
@@ -199,13 +250,12 @@ const Footer = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          {/* Bottom Border */}
           <div className="border-t border-white/20 pt-8">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
               <p className="text-blue-100 text-sm text-center sm:text-left">
                 © {currentYear} Unfold Finleg Solutions. All rights reserved.
               </p>
-              
+
               <div className="flex flex-wrap gap-4 sm:gap-6">
                 {legalLinks.map((link) => (
                   <Link
