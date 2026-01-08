@@ -5,6 +5,8 @@ import { mainServiceCategories, moreServices } from '@/data/servicesData';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
+
 import { 
   CheckCircle, 
   Clock, 
@@ -55,7 +57,6 @@ const ServiceDetail = () => {
   // Use real data from servicesData.ts
   const serviceDetails = {
     rating: service.rating || 4.8,
-    reviews: service.reviews || 1000,
     completedProjects: 200,
     process: service.procedure || [],
     faqs: service.faqs || [],
@@ -121,13 +122,17 @@ const ServiceDetail = () => {
                 <div className="w-1 h-8 bg-[#D4AF37] rounded-full"></div>
                 <h3 className="text-2xl font-bold text-white">Ready to Start Your Project?</h3>
               </div>
-              <p className="mb-6 text-gray-100">Get a free consultation and detailed quote for your requirements.</p>
+              <p className="mb-6 text-gray-100">Get consultation and detailed quote for your requirements.</p>
               <div className="space-y-3">
-                <Button asChild className="w-full bg-gradient-to-r from-[#D4AF37] via-[#F5D76E] to-[#D4AF37] text-navy font-semibold px-6 rounded-full py-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
-                  <a href="/contact">
-                    Get Free Quote
-                  </a>
+               <Button
+                  asChild
+                  className="w-full bg-gradient-to-r from-[#D4AF37] via-[#F5D76E] to-[#D4AF37] text-navy font-semibold px-6 rounded-full py-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                >
+                  <Link to="/contact">
+                    Get Quote
+                  </Link>
                 </Button>
+
                 <div className="flex items-center justify-center space-x-4 text-sm text-gray-300 border-t border-[#D4AF37]/30 pt-4 mt-4">
                   <div className="flex items-center">
                     <Phone className="h-4 w-4 mr-1 text-[#D4AF37]" />
