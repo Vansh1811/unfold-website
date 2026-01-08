@@ -212,7 +212,7 @@ const serviceCategories = [
               Ready to Get Started?
             </h2>
             <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Schedule a free consultation to discuss how our services can benefit your business.
+              Schedule a consultation to discuss how our services can benefit your business.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

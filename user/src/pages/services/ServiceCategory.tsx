@@ -44,7 +44,7 @@ const ServiceCategory: React.FC = () => {
 
   const categoryStats = {
     clients: '200+',
-    projects: '1,200+',
+    projects: '200+',
     satisfaction: '99%',
     experience: '10+'
   };

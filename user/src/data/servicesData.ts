@@ -3013,205 +3013,408 @@ export const mainServiceCategories: ServiceCategory[] = [
 },
   //5. Taxation & Accounting Services
   {
-    id: 'taxation-accounting',
-    name: 'Taxation & Accounting',
-    slug: 'taxation-accounting',
-    description: 'Complete taxation and accounting services for individuals and businesses with expert guidance.',
-    icon: 'Calculator',
-    subServices: [
-      {
-        id: 'gst-registration-accounting',
-        name: 'GST Registration & Accounting',
-        slug: 'gst-registration-accounting',
-        description: 'Complete GST registration and ongoing compliance management with expert support.',
-        icon: 'Receipt',
-        features: [
-          'GST registration process and documentation',
-          'Monthly GSTR filing (GSTR-1, GSTR-3B)',
-          'Input tax credit optimization strategies',
-          'GST audit and advisory services',
-          'E-way bill generation and management',
-          'GST refund processing and follow-up',
-          'Compliance monitoring and alerts',
-          'GST litigation support and representation'
-        ],
-    
-        popular: true,
-        rating: 4.9,
-       
-      },
-      {
-        id: 'income-tax-services',
-        name: 'Income Tax Return Filing',
-        slug: 'income-tax-services',
-        description: 'Professional income tax return filing for individuals and businesses with tax optimization.',
-        icon: 'FileText',
-        features: [
-          'ITR preparation and e-filing services',
-          'Tax planning strategies and advisory',
-          'Refund claim processing and follow-up',
-          'Income tax notice handling and support',
-          'Tax computation optimization techniques',
-          'Investment advisory for tax saving benefits',
-          'TDS/TCS management and reconciliation',
-          'Assessment proceedings representation'
-        ],
-      
-        popular: true,
-        rating: 4.8,
-      
-      },
-      {
-        id: 'tds-return-filing',
-        name: 'TDS Return Filing',
-        slug: 'tds-return-filing',
-        description: 'Accurate TDS return filing and certificate generation services with compliance management.',
-        icon: 'FileCheck',
-        features: [
-          'Monthly/Quarterly TDS return preparation',
-          'TDS certificate generation (Form 16/16A)',
-          'Form 16/16A preparation and dispatch',
-          'TDS reconciliation and correction services',
-          'Lower deduction certificate applications',
-          'TDS refund claim assistance and follow-up',
-          'Compliance monitoring and penalty avoidance',
-          'TDS audit support and representation'
-        ],
-   
-        rating: 4.7,
-        
-      },
-      {
-        id: 'virtual-accounting',
-        name: 'Virtual Accounting Services',
-        slug: 'virtual-accounting',
-        description: 'Complete bookkeeping and accounting services with digital convenience and expert management.',
-        icon: 'BookOpen',
-        features: [
-          'Daily transaction recording and categorization',
-          'Financial statements preparation (P&L, Balance Sheet)',
-          'Bank reconciliation and cash flow management',
-          'Expense management and tracking systems',
-          'Accounts payable and receivable management',
-          'Management Information System (MIS) reporting',
-          'Budget preparation and variance analysis',
-          'Financial advisory and business insights'
-        ],
-       
-        rating: 4.6,
-      
-      },
-      {
-        id: 'accounting-software-setup',
-        name: 'Accounting Software Setup & Training',
-        slug: 'accounting-software-setup',
-        description: 'Professional setup and training for accounting software with ongoing support.',
-        icon: 'Monitor',
-        features: [
-          'Software selection and procurement assistance',
-          'Complete software setup and configuration',
-          'Chart of accounts creation and customization',
-          'Data migration from existing systems',
-          'User training and documentation',
-          'Integration with banking and payment systems',
-          'Ongoing technical support and maintenance',
-          'Software optimization and customization'
-        ],
-      
-        rating: 4.5,
-       
-          },
+  id: 'taxation-accounting',
+  name: 'Taxation & Accounting',
+  slug: 'taxation-accounting',
+  description: 'Complete taxation and accounting services for individuals and businesses with expert guidance.',
+  icon: 'Calculator',
+  subServices: [
     {
-      id: 'professional-tax',
-      name: 'Professional Tax Services',
-      slug: 'professional-tax',
-      description: 'Professional tax registration, filing, and compliance management for all states.',
-      icon: 'Calculator',
+      id: 'gst-registration-accounting',
+      name: 'GST Registration & Accounting',
+      slug: 'gst-registration-accounting',
+      description: 'Complete GST registration and ongoing compliance management with expert support.',
+      icon: 'Receipt',
       features: [
-        'Professional tax registration in applicable states',
-        'Monthly/Quarterly PT return filing',
-        'Employee PT deduction management',
-        'PT certificate generation and distribution',
-        'Non-resident PT compliance',
-        'PT refund processing and follow-up',
-        'State-wise compliance management',
-        'PT audit and assessment support'
+        'GST registration process and documentation',
+        'Monthly GSTR filing (GSTR-1, GSTR-3B)',
+        'Input tax credit optimization strategies',
+        'GST audit and advisory services',
+        'E-way bill generation and management',
+        'GST refund processing and follow-up',
+        'Compliance monitoring and alerts',
+        'GST litigation support and representation'
       ],
       benefits: [
-        'Ensure compliance with state professional tax regulations',
-        'Manage employee PT deductions properly',
-        'Avoid penalties and prosecution',
-        'Timely filing and certificate generation',
-        'Expert guidance on exemptions and relief',
-        'Year-round compliance support'
+        'Ensure GST compliance and avoid penalties',
+        'Optimize input tax credit and reduce tax burden',
+        'Streamline filing with timely submissions',
+        'Professional representation in GST disputes',
+        'Real-time compliance monitoring and alerts',
+        'Comprehensive GST audit support'
       ],
       procedure: [
         {
           step: 1,
-          title: 'PT Registration',
-          description: 'Identify applicable states, apply for PT registration, obtain registration certificate',
-          documents: ['PT application', 'PAN certificate', 'Business registration'],
-          timeline: '5-7 days'
-        },
-        {
-          step: 2,
-          title: 'Compliance Setup',
-          description: 'Classify employees for PT purposes, set up PT deduction mechanism, prepare employee communication',
-          documents: ['Employee list', 'Salary structure', 'PT classification'],
+          title: 'GST Registration Assessment',
+          description: 'Evaluate business turnover, assess GST applicability, determine registration requirements',
+          documents: ['Business registration', 'PAN certificate', 'Turnover details'],
           timeline: '2-3 days'
         },
         {
+          step: 2,
+          title: 'GST Registration Filing',
+          description: 'Complete GSTIN application (Form REG-01), upload required documents, obtain registration certificate',
+          documents: ['GST application', 'Identity proof', 'Address proof', 'Bank details'],
+          timeline: '3-5 days'
+        },
+        {
           step: 3,
-          title: 'Monthly/Quarterly Filing',
-          description: 'Calculate PT liability, file PT returns, process employee receipts',
-          documents: ['PT returns', 'Employee receipts', 'Payment proof'],
+          title: 'Monthly/Quarterly Compliance',
+          description: 'File GSTR-1, GSTR-3B, generate e-way bills, manage ITC reconciliation',
+          documents: ['Invoice records', 'Purchase documents', 'Payment proofs'],
           timeline: 'Ongoing monthly/quarterly'
         },
         {
           step: 4,
-          title: 'Annual Reconciliation',
-          description: 'Verify annual PT paid vs liability, claim refunds if applicable, maintain records for audit',
-          documents: ['Annual statement', 'Refund claim', 'Audit trail'],
-          timeline: '2-3 days'
+          title: 'Annual Reconciliation & Planning',
+          description: 'Verify annual GST paid, claim refunds, plan for next year compliance',
+          documents: ['Annual statement', 'Refund claims', 'Planning documents'],
+          timeline: '3-5 days'
         }
-      ],
-      requiredDocuments: [
-        'PAN of company',
-        'Employee PT details (salary slips)',
-        'State-wise PT liability calculation',
-        'Bank statements showing PT payments',
-        'Employee attendance records',
-        'Salary registers and documents',
-        'Previous PT compliance records',
-        'Board resolution for PT compliance'
       ],
       faqs: [
         {
-          question: 'Which states levy professional tax?',
-          answer: 'Maharashtra, Delhi, Karnataka, Tamil Nadu, and a few others; rates vary by state'
+          question: 'When is GST registration mandatory?',
+          answer: 'GST registration is mandatory if annual turnover exceeds ₹40 lakh (₹20 lakh for service providers in special states)'
         },
         {
-          question: 'Is PT applicable on all employees?',
-          answer: 'No, exemptions apply based on salary and designation; rates vary by state'
+          question: 'What documents are needed for GST registration?',
+          answer: 'PAN, Aadhaar, business registration, bank details, premises proof, and authorized signatory details'
         },
         {
-          question: 'Can we claim PT refund?',
-          answer: 'Yes, if PT paid exceeds actual liability; refund process takes 30-45 days'
+          question: 'How long does GST registration take?',
+          answer: 'Usually 3-5 days after document submission; can extend to 7-10 days for verification'
         },
         {
-          question: 'What penalty applies for non-filing?',
-          answer: 'Penalties range from ₹100 to ₹1,000 depending on state; prosecution risk exists'
+          question: 'Can we claim input tax credit on all purchases?',
+          answer: 'No, ITC is restricted on personal items, food, fuel, vehicles, and specific categories; professional guidance required'
+        },
+        {
+          question: 'What happens if we file GSTR late?',
+          answer: 'GSTR-1 filing gets blocked after 12 days; penalties apply; professional support can help with late filing'
         }
       ],
-    
+      popular: true,
+      rating: 4.9,
+    },
+    {
+      id: 'income-tax-services',
+      name: 'Income Tax Return Filing',
+      slug: 'income-tax-services',
+      description: 'Professional income tax return filing for individuals and businesses with tax optimization.',
+      icon: 'FileText',
+      features: [
+        'ITR preparation and e-filing services',
+        'Tax planning strategies and advisory',
+        'Refund claim processing and follow-up',
+        'Income tax notice handling and support',
+        'Tax computation optimization techniques',
+        'Investment advisory for tax saving benefits',
+        'TDS/TCS management and reconciliation',
+        'Assessment proceedings representation'
+      ],
+      benefits: [
+        'Maximize tax savings through planning strategies',
+        'Ensure accurate ITR filing and avoid penalties',
+        'Fast refund processing with expert follow-up',
+        'Professional representation in tax notices',
+        'Optimize investment for tax benefits',
+        'Year-round tax advisory support'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Income & Deduction Assessment',
+          description: 'Gather income documents, identify deductions, assess tax bracket and applicable rates',
+          documents: ['Salary slips', 'Investment documents', 'Bank statements', 'Expense receipts'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 2,
+          title: 'ITR Preparation & Optimization',
+          description: 'Prepare ITR with tax-saving strategies, claim eligible deductions, finalize tax liability',
+          documents: ['ITR form', 'Supporting schedules', 'Tax computation'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 3,
+          title: 'E-filing & Verification',
+          description: 'E-file ITR with digital signature, complete Aadhaar/OTP verification',
+          documents: ['Digital signature', 'ITR-V form'],
+          timeline: '1-2 days'
+        },
+        {
+          step: 4,
+          title: 'Refund Tracking & Support',
+          description: 'Track refund status, handle tax notices if any, provide follow-up support',
+          documents: ['Refund claims', 'Notice responses'],
+          timeline: 'Ongoing (refund: 30-45 days)'
+        }
+      ],
+      faqs: [
+        {
+          question: 'Who needs to file income tax return?',
+          answer: 'Individuals with income above ₹2.5-5 lakh (depending on age and income type) must file ITR'
+        },
+        {
+          question: 'What ITR form should I file?',
+          answer: 'It depends on income type: ITR-1 for salary/house rent, ITR-2 for capital gains, ITR-3 for business income, etc.'
+        },
+        {
+          question: 'Can we claim deductions on home loan?',
+          answer: 'Yes, principal repayment under 80C (₹1.5 lakh limit) and interest under 24(b) (unlimited for first-time home buyers)'
+        },
+        {
+          question: 'How long does refund take?',
+          answer: 'Typically 30-45 days for regular refunds; super-quick refund (within 7 days) available for certain cases'
+        },
+        {
+          question: 'What if I receive an income tax notice?',
+          answer: 'Respond within specified timeline with supporting documents; professional representation ensures compliance and favorable outcome'
+        }
+      ],
+      popular: true,
+      rating: 4.8,
+    },
+    {
+      id: 'tds-return-filing',
+      name: 'TDS Return Filing',
+      slug: 'tds-return-filing',
+      description: 'Accurate TDS return filing and certificate generation services with compliance management.',
+      icon: 'FileCheck',
+      features: [
+        'Monthly/Quarterly TDS return preparation',
+        'TDS certificate generation (Form 16/16A)',
+        'Form 16/16A preparation and dispatch',
+        'TDS reconciliation and correction services',
+        'Lower deduction certificate applications',
+        'TDS refund claim assistance and follow-up',
+        'Compliance monitoring and penalty avoidance',
+        'TDS audit support and representation'
+      ],
+      benefits: [
+        'Ensure timely and accurate TDS filing',
+        'Generate and distribute TDS certificates on time',
+        'Avoid penalties for non-filing or late filing',
+        'Optimize TDS claims and refunds',
+        'Maintain audit-ready TDS compliance records',
+        'Professional support for TDS disputes'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'TDS Applicability Assessment',
+          description: 'Identify TDS applicable transactions, determine rates, calculate TDS liability',
+          documents: ['Transaction records', 'Invoices', 'Payment details'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 2,
+          title: 'Monthly/Quarterly TDS Filing',
+          description: 'Prepare TDS return (Form 24Q/27Q), deposit TDS amount, file electronically',
+          documents: ['TDS return', 'Deductee details', 'Payment proof'],
+          timeline: 'Monthly/Quarterly (before due date)'
+        },
+        {
+          step: 3,
+          title: 'TDS Certificate Generation',
+          description: 'Generate Form 16 (salary TDS) or Form 16A (non-salary TDS), dispatch to deductees',
+          documents: ['TDS payment proof', 'Employee/vendor details'],
+          timeline: '2-3 days before year-end'
+        },
+        {
+          step: 4,
+          title: 'Annual Reconciliation & Refunds',
+          description: 'Verify annual TDS paid vs ITR TDS claimed, file refund claims, maintain records',
+          documents: ['Annual TDS statement', 'Refund claims', 'Reconciliation'],
+          timeline: '3-5 days'
+        }
+      ],
+      faqs: [
+        {
+          question: 'What is TDS and when is it applicable?',
+          answer: 'TDS (Tax Deducted at Source) is tax collected by payer from payee; applicable on salary, professional fees, commission, rent, interest, etc.'
+        },
+        {
+          question: 'What is the TDS rate for different transactions?',
+          answer: 'Rates vary: 5-10% on salary, 10% on professional fees, 2% on rent, 10% on commission, etc.; rates differ for resident and non-resident'
+        },
+        {
+          question: 'When should Form 16 be issued?',
+          answer: 'Form 16 should be issued by 31st May following the financial year or by last date of employment, whichever is earlier'
+        },
+        {
+          question: 'Can we claim TDS refund?',
+          answer: 'Yes, if TDS paid is more than actual income tax liability; refund is claimed through ITR filing'
+        },
+        {
+          question: 'What penalty applies for late TDS filing?',
+          answer: 'Penalty ranges from ₹100 to ₹10,000 depending on delay period and amount involved'
+        }
+      ],
+      rating: 4.7,
+    },
+    {
+      id: 'virtual-accounting',
+      name: 'Virtual Accounting Services',
+      slug: 'virtual-accounting',
+      description: 'Complete bookkeeping and accounting services with digital convenience and expert management.',
+      icon: 'BookOpen',
+      features: [
+        'Daily transaction recording and categorization',
+        'Financial statements preparation (P&L, Balance Sheet)',
+        'Bank reconciliation and cash flow management',
+        'Expense management and tracking systems',
+        'Accounts payable and receivable management',
+        'Management Information System (MIS) reporting',
+        'Budget preparation and variance analysis',
+        'Financial advisory and business insights'
+      ],
+      benefits: [
+        'Professional accounting without in-house team burden',
+        'Real-time financial visibility and reporting',
+        'Accurate and audit-ready books of accounts',
+        'Strategic financial insights for business growth',
+        'Cost-effective alternative to full-time accountant',
+        'Year-round financial advisory support'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Accounting System Setup',
+          description: 'Configure accounting software, design chart of accounts, set up GL structure, import historical data',
+          documents: ['Bank statements', 'Previous ledgers', 'Chart of accounts'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 2,
+          title: 'Daily Transaction Processing',
+          description: 'Record daily transactions, reconcile bank statements, categorize expenses, maintain audit trail',
+          documents: ['Daily invoices', 'Bank statements', 'Expense receipts'],
+          timeline: 'Ongoing daily/weekly'
+        },
+        {
+          step: 3,
+          title: 'Monthly Financial Reporting',
+          description: 'Prepare monthly P&L, Balance Sheet, cash flow statement, send MIS reports to management',
+          documents: ['Trial balance', 'Financial statements', 'MIS reports'],
+          timeline: 'Monthly (within 5-7 days of month-end)'
+        },
+        {
+          step: 4,
+          title: 'Year-End Closure & Planning',
+          description: 'Complete year-end reconciliation, prepare final accounts, plan next year budget',
+          documents: ['Final accounts', 'Audit schedules', 'Budget documents'],
+          timeline: '5-7 days'
+        }
+      ],
+      faqs: [
+        {
+          question: 'What is virtual accounting and how does it work?',
+          answer: 'Virtual accounting is outsourced bookkeeping using cloud-based software; accountant records transactions remotely with real-time access'
+        },
+        {
+          question: 'Is virtual accounting secure?',
+          answer: 'Yes, cloud platforms use bank-level encryption and security; data is backed up and accessible anytime, anywhere'
+        },
+        {
+          question: 'How often should we reconcile bank statements?',
+          answer: 'Bank reconciliation should be done monthly to identify discrepancies early and maintain accurate records'
+        },
+        {
+          question: 'Can we integrate virtual accounting with our billing system?',
+          answer: 'Yes, most accounting software integrates with billing, payment gateways, and banking systems for automated data sync'
+        },
+        {
+          question: 'What MIS reports can we get?',
+          answer: 'Profit & Loss, Balance Sheet, Cash Flow, Receivables Aging, Payables Aging, Budget vs Actual, and custom reports as needed'
+        }
+      ],
       rating: 4.6,
-    
-     },
-   
-    ]
+    },
+    {
+  id: 'accounting-software-setup',
+  name: 'Accounting Software Setup & Training',
+  slug: 'accounting-software-setup',
+  description: 'Professional setup and training for accounting software with ongoing support.',
+  icon: 'Monitor',
+  features: [
+    'Software selection and procurement assistance',
+    'Complete software setup and configuration',
+    'Chart of accounts creation and customization',
+    'Data migration from existing systems',
+    'User training and documentation',
+    'Integration with banking and payment systems',
+    'Ongoing technical support and maintenance',
+    'Software optimization and customization'
+  ],
+  benefits: [
+    'Streamline accounting processes with automation',
+    'Reduce manual errors and save time',
+    'Real-time financial visibility and reporting',
+    'Improved compliance and audit readiness',
+    'Scalable system for business growth',
+    'Ongoing technical support and updates'
+  ],
+  procedure: [
+    {
+      step: 1,
+      title: 'Requirement Analysis & Software Selection',
+      description: 'Assess business needs, evaluate software options (Tally, SAP, QuickBooks, etc.), recommend best fit',
+      documents: ['Business requirements', 'Current accounting process', 'Budget'],
+      timeline: '2-3 days'
+    },
+    {
+      step: 2,
+      title: 'Software Setup & Configuration',
+      description: 'Install software, configure system parameters, design chart of accounts, set user permissions',
+      documents: ['System configuration', 'Chart of accounts', 'User access levels'],
+      timeline: '3-5 days'
+    },
+    {
+      step: 3,
+      title: 'Data Migration & Integration',
+      description: 'Migrate historical data, integrate with banking systems, payment gateways, and inventory systems',
+      documents: ['Data files', 'Bank integration credentials', 'API keys'],
+      timeline: '2-3 days'
+    },
+    {
+      step: 4,
+      title: 'User Training & Documentation',
+      description: 'Conduct training sessions, create user manuals, provide ongoing support for staff',
+      documents: ['Training materials', 'User documentation', 'Video tutorials'],
+      timeline: '2-3 days'
+    }
+  ],
+  faqs: [
+    {
+      question: 'Which accounting software is best for our business?',
+      answer: 'It depends on business size and requirements; Tally for SMEs, SAP for large enterprises, QuickBooks for small business, or cloud-based options for flexibility'
+    },
+    {
+      question: 'How long does software setup take?',
+      answer: 'Typically 5-10 days depending on complexity, existing data volume, and system integrations required'
+    },
+    {
+      question: 'Can we migrate data from old system to new software?',
+      answer: 'Yes, historical data can be migrated; our team handles data validation, reconciliation, and verification to ensure accuracy'
+    },
+    {
+      question: 'What training is provided?',
+      answer: 'Comprehensive training includes software navigation, daily transaction recording, report generation, user access management, and troubleshooting'
+    },
+    {
+      question: 'Is ongoing support available after setup?',
+      answer: 'Yes, we provide post-setup support, technical assistance, customization, and periodic system optimization'
+    }
+  ],
+  rating: 4.5,
+},
+]
   },
 //6. Auditing Services
-  {
+ {
   id: 'auditing-services',
   name: 'Auditing Services',
   slug: 'auditing-services',
@@ -3301,7 +3504,33 @@ export const mainServiceCategories: ServiceCategory[] = [
         'Key agreements, invoices, and supporting documents',
         'Fixed asset, inventory, and investments registers'
       ],
-      faqs: [],
+      faqs: [
+        {
+          question: 'Is statutory audit mandatory for all companies?',
+          answer:
+            'Yes, statutory audit is compulsory for all companies registered under the Companies Act, irrespective of size or turnover, unless specifically exempted.'
+        },
+        {
+          question: 'How often is a statutory audit conducted?',
+          answer:
+            'Statutory audit is generally conducted annually for each financial year to report on the company’s financial statements.'
+        },
+        {
+          question: 'Who can be appointed as statutory auditor?',
+          answer:
+            'Only a qualified Chartered Accountant or a firm/LLP of Chartered Accountants holding a valid certificate of practice can be appointed as statutory auditor.'
+        },
+        {
+          question: 'What is the main outcome of a statutory audit?',
+          answer:
+            'The main outcome is an independent audit report expressing an opinion on whether the financial statements present a true and fair view as per applicable laws and standards.'
+        },
+        {
+          question: 'Does statutory audit detect all frauds?',
+          answer:
+            'Statutory audit is designed to provide reasonable assurance, not absolute guarantee, so it may not detect all frauds but can highlight red flags and control weaknesses.'
+        }
+      ],
       rating: 4.8
     },
 
@@ -3386,7 +3615,33 @@ export const mainServiceCategories: ServiceCategory[] = [
         'Previous years’ tax returns and assessments',
         'Relevant agreements and statutory registers'
       ],
-      faqs: [],
+      faqs: [
+        {
+          question: 'When is tax audit under Section 44AB applicable?',
+          answer:
+            'Tax audit is applicable when turnover, gross receipts, or professional income crosses the thresholds prescribed under Section 44AB for the relevant financial year.'
+        },
+        {
+          question: 'What is the due date for completing tax audit?',
+          answer:
+            'The tax audit report is generally required to be furnished by the due date of filing the income tax return for the relevant assessee category.'
+        },
+        {
+          question: 'Can the same auditor do both statutory and tax audit?',
+          answer:
+            'Yes, the same Chartered Accountant or firm can conduct both statutory and tax audits, subject to independence and eligibility conditions.'
+        },
+        {
+          question: 'What happens if tax audit is not done when required?',
+          answer:
+            'Non-compliance may attract penalties and can increase the chances of detailed scrutiny or disallowances during assessment.'
+        },
+        {
+          question: 'Are presumptive taxation cases also covered under tax audit?',
+          answer:
+            'Presumptive taxation cases may require tax audit if certain conditions such as lower declared income or turnover thresholds are not met.'
+        }
+      ],
       rating: 4.7
     },
 
@@ -3460,7 +3715,33 @@ export const mainServiceCategories: ServiceCategory[] = [
         'Disclosures and declarations by directors/KMP',
         'Previous secretarial audit reports, if any'
       ],
-      faqs: [],
+      faqs: [
+        {
+          question: 'Which companies are required to undergo secretarial audit?',
+          answer:
+            'Certain classes of companies such as listed entities and prescribed public companies must obtain a secretarial audit as per the Companies Act and related rules.'
+        },
+        {
+          question: 'Who can conduct secretarial audit?',
+          answer:
+            'Only a practicing Company Secretary holding a valid certificate of practice is authorised to conduct secretarial audit and issue Form MR-3.'
+        },
+        {
+          question: 'Is secretarial audit only about ROC filings?',
+          answer:
+            'No, it also covers board processes, corporate governance, SEBI and listing compliances, and other allied laws applicable to the company.'
+        },
+        {
+          question: 'How often is secretarial audit done?',
+          answer:
+            'Secretarial audit is usually carried out annually for the financial year and reported in Form MR-3 attached to the Board’s report.'
+        },
+        {
+          question: 'Can non-compliances found in secretarial audit be rectified later?',
+          answer:
+            'Yes, most procedural non-compliances can be regularised, and the audit report usually includes recommendations and an action plan for rectification.'
+        }
+      ],
       rating: 4.8
     },
 
@@ -3533,92 +3814,130 @@ export const mainServiceCategories: ServiceCategory[] = [
         'Statements from CDSL/NSDL and RTA',
         'Corporate action documents and board/shareholder approvals'
       ],
-      faqs: [],
+      faqs: [
+        {
+          question: 'Is reconciliation of share capital audit mandatory for all listed companies?',
+          answer:
+            'Yes, listed companies are typically required to get periodic reconciliation of share capital done in the format prescribed by the stock exchanges and SEBI.'
+        },
+        {
+          question: 'How frequently is the share capital reconciliation audit conducted?',
+          answer:
+            'It is usually conducted on a quarterly or half-yearly basis as per the relevant regulatory requirements and exchange circulars.'
+        },
+        {
+          question: 'What happens if mismatches are found during reconciliation?',
+          answer:
+            'Mismatches are reported in the audit report and the company, RTA, and depositories are expected to resolve them within defined timelines.'
+        },
+        {
+          question: 'Who can certify the reconciliation of share capital?',
+          answer:
+            'A practicing Company Secretary or other specified professional authorised under the applicable regulations can certify the reconciliation.'
+        },
+        {
+          question: 'Does this audit cover physical share certificates also?',
+          answer:
+            'Yes, the reconciliation covers both dematerialised and any remaining physical shareholdings to ensure totals match issued and listed capital.'
+        }
+      ],
       rating: 4.7
     },
+
+    // Legal Compliance Audit
     {
-        id: 'legal-compliance-audit',
-        name: 'Legal Compliance Audit',
-        slug: 'legal-compliance-audit',
-        description: 'Comprehensive audit of legal compliance across all business areas with detailed reporting.',
-        icon: 'Search',
-        features: [
-          'Comprehensive compliance gap analysis',
-          'Risk assessment and rating methodology',
-          'Legal documentation review and verification',
-          'Regulatory requirement mapping and analysis',
-          'Detailed remediation action plan development',
-          'Ongoing monitoring system implementation',
-          'Compliance training and awareness programs',
-          'Regular compliance health check services'
-        ],
-        benefits: [
-          'Identify and fix compliance gaps before issues arise',
-          'Reduce regulatory risks and penalties',
-          'Implement proactive monitoring systems',
-          'Improve governance and compliance culture',
-          'Prepare for external audits and inspections',
-          'Strategic compliance roadmap development'
-        ],
-        procedure: [
-          {
-            step: 1,
-            title: 'Compliance Assessment',
-            description: 'Review all legal and regulatory requirements applicable to your business',
-            documents: ['Business registration', 'Industry regulations', 'Current compliance documents'],
-            timeline: '3-5 days'
-          },
-          {
-            step: 2,
-            title: 'Gap Analysis',
-            description: 'Identify gaps between current state and compliance requirements',
-            documents: ['Assessment report', 'Gap analysis', 'Risk matrix'],
-            timeline: '3-5 days'
-          },
-          {
-            step: 3,
-            title: 'Remediation Plan',
-            description: 'Develop action plan to address identified gaps',
-            documents: ['Remediation plan', 'Timeline', 'Cost estimate'],
-            timeline: '2-3 days'
-          },
-          {
-            step: 4,
-            title: 'Implementation Support',
-            description: 'Support implementation and monitoring of compliance measures',
-            documents: ['Implementation tracking', 'Monitoring reports', 'Certification'],
-            timeline: 'Ongoing'
-          }
-        ],
-        requiredDocuments: [
-          'Current business registration and licenses',
-          'List of applicable regulations',
-          'Existing compliance policies and procedures',
-          'Organizational structure and processes',
-          'Past audit reports (if any)',
-          'Current risk assessments'
-        ],
-        faqs: [
-          {
-            question: 'How long does a compliance audit take?',
-            answer: 'Usually 15-30 days depending on business size and complexity'
-          },
-          {
-            question: 'Will the audit disrupt operations?',
-            answer: 'No, we work with your team to minimize disruption'
-          },
-          {
-            question: 'What happens after gaps are identified?',
-            answer: 'We provide a detailed remediation plan with timelines and costs'
-          },
-          {
-            question: 'Is ongoing monitoring included?',
-            answer: 'Yes, we set up systems to monitor and maintain compliance'
-          }
-        ],
-        
-        rating: 4.7,
-      },
+      id: 'legal-compliance-audit',
+      name: 'Legal Compliance Audit',
+      slug: 'legal-compliance-audit',
+      description:
+        'Comprehensive audit of legal compliance across all business areas with detailed reporting.',
+      icon: 'Search',
+      features: [
+        'Comprehensive compliance gap analysis',
+        'Risk assessment and rating methodology',
+        'Legal documentation review and verification',
+        'Regulatory requirement mapping and analysis',
+        'Detailed remediation action plan development',
+        'Ongoing monitoring system implementation',
+        'Compliance training and awareness programs',
+        'Regular compliance health check services'
+      ],
+      benefits: [
+        'Identify and fix compliance gaps before issues arise',
+        'Reduce regulatory risks and penalties',
+        'Implement proactive monitoring systems',
+        'Improve governance and compliance culture',
+        'Prepare for external audits and inspections',
+        'Strategic compliance roadmap development'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Compliance Assessment',
+          description:
+            'Review all legal and regulatory requirements applicable to your business',
+          documents: ['Business registration', 'Industry regulations', 'Current compliance documents'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 2,
+          title: 'Gap Analysis',
+          description: 'Identify gaps between current state and compliance requirements',
+          documents: ['Assessment report', 'Gap analysis', 'Risk matrix'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 3,
+          title: 'Remediation Plan',
+          description: 'Develop action plan to address identified gaps',
+          documents: ['Remediation plan', 'Timeline', 'Cost estimate'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 4,
+          title: 'Implementation Support',
+          description: 'Support implementation and monitoring of compliance measures',
+          documents: ['Implementation tracking', 'Monitoring reports', 'Certification'],
+          timeline: 'Ongoing'
+        }
+      ],
+      requiredDocuments: [
+        'Current business registration and licenses',
+        'List of applicable regulations',
+        'Existing compliance policies and procedures',
+        'Organizational structure and processes',
+        'Past audit reports (if any)',
+        'Current risk assessments'
+      ],
+      faqs: [
+        {
+          question: 'What is covered in a legal compliance audit?',
+          answer:
+            'A legal compliance audit reviews applicable laws, licenses, registrations, contracts, and internal policies to check whether the organisation meets all regulatory requirements.'
+        },
+        {
+          question: 'Is a legal compliance audit only for large companies?',
+          answer:
+            'No, businesses of any size can benefit, especially those in regulated sectors or planning fundraising, mergers, or investor due diligence.'
+        },
+        {
+          question: 'How often should a legal compliance audit be done?',
+          answer:
+            'Many organisations opt for an annual audit, with more frequent reviews in high-risk or highly regulated industries.'
+        },
+        {
+          question: 'Will the audit identify potential penalties and risks?',
+          answer:
+            'Yes, the audit typically highlights non-compliances, quantifies potential exposure where possible, and suggests remedial actions.'
+        },
+        {
+          question: 'Can you help implement the recommended changes?',
+          answer:
+            'Yes, implementation support and ongoing monitoring can be provided to ensure gaps are closed and compliance is sustained.'
+        }
+      ],
+      rating: 4.7
+    },
 
     // 7.5 GST Audit
     {
@@ -3689,7 +4008,33 @@ export const mainServiceCategories: ServiceCategory[] = [
         'E-way bill data and tax payment challans',
         'ITC ledgers and supporting invoices'
       ],
-      faqs: [],
+      faqs: [
+        {
+          question: 'Who is required to get a GST audit done?',
+          answer:
+            'GST audit or detailed GST reconciliation is generally required for taxpayers crossing specified turnover limits or when mandated by law or departmental notices.'
+        },
+        {
+          question: 'Is GST audit only about matching GSTR-1 and GSTR-3B?',
+          answer:
+            'No, it also covers reconciliation with books of account, ITC eligibility, rate applicability, place of supply, and documentation checks.'
+        },
+        {
+          question: 'What if differences are found during GST reconciliation?',
+          answer:
+            'Differences are analysed, and wherever required, corrective actions such as amendments, payment of tax, or disclosure in annual returns are recommended.'
+        },
+        {
+          question: 'Does GST audit help in departmental audits later?',
+          answer:
+            'Yes, a robust GST audit improves documentation and reduces exposure during any future departmental audit or investigation.'
+        },
+        {
+          question: 'Can past GST periods be audited voluntarily?',
+          answer:
+            'Yes, businesses often undertake voluntary GST audits for past periods to identify and fix issues before any departmental scrutiny.'
+        }
+      ],
       rating: 4.7
     },
 
@@ -3762,10 +4107,36 @@ export const mainServiceCategories: ServiceCategory[] = [
         'Employee master and attendance registers',
         'Leave, overtime, bonus, and gratuity records'
       ],
-      faqs: [],
+      faqs: [
+        {
+          question: 'Why is a labour law audit important?',
+          answer:
+            'It helps ensure compliance with employment and welfare laws, reducing the risk of penalties, back wages, and employee disputes.'
+        },
+        {
+          question: 'Does a labour law audit cover contractors and outsourced staff?',
+          answer:
+            'Yes, compliances related to contract labour, vendors, and outsourced manpower are typically reviewed to check principal employer obligations.'
+        },
+        {
+          question: 'Will employee salaries and benefits be reviewed?',
+          answer:
+            'Yes, wage structures, overtime, bonus, gratuity, leave encashment, and other benefits are examined against statutory requirements.'
+        },
+        {
+          question: 'Can labour law non-compliances be corrected retroactively?',
+          answer:
+            'Many non-compliances can be regularised by making differential payments, filing pending returns, and updating records as per legal provisions.'
+        },
+        {
+          question: 'How often should a labour law audit be done?',
+          answer:
+            'An annual audit is common, but high headcount or multi-location organisations may prefer more frequent reviews.'
+        }
+      ],
       rating: 4.6
     },
-    
+
     // 7.7 Specialized Audits
     {
       id: 'specialized-regulatory-audits',
@@ -3835,78 +4206,383 @@ export const mainServiceCategories: ServiceCategory[] = [
         'Internal guidelines, circulars, and SOPs',
         'Relevant statutory registers and prior audit reports'
       ],
-      faqs: [],
+      faqs: [
+        {
+          question: 'What are specialized regulatory audits?',
+          answer:
+            'These are focused audits required under specific laws or by sectoral regulators such as SEBI, RBI, FEMA, IRDA, or other authorities.'
+        },
+        {
+          question: 'When does a company need a SEBI or listing-related audit?',
+          answer:
+            'Listed companies and intermediaries may need such audits periodically or when mandated by SEBI, stock exchanges, or listing regulations.'
+        },
+        {
+          question: 'What is covered in a FEMA compliance review?',
+          answer:
+            'It examines foreign investment, borrowings, remittances, export/import transactions, and related filings for compliance with FEMA and RBI guidelines.'
+        },
+        {
+          question: 'Can specialized audits be done proactively?',
+          answer:
+            'Yes, many entities undertake voluntary regulatory audits to prepare for inspections and reduce the risk of future non-compliance.'
+        },
+        {
+          question: 'Do specialized audits result in certificates for regulators?',
+          answer:
+            'Often yes, the outcome includes detailed reports or certificates in prescribed formats for submission to the concerned regulator or authority.'
+        }
+      ],
       rating: 4.7
     }
   ]
 },
 //7. Intellectual Property Rights Services
-  {
-    id: 'intellectual-property',
-    name: 'Intellectual Property Rights',
-    slug: 'intellectual-property',
-    description: 'Protect your innovations and brand with comprehensive IP services and expert legal support.',
-    icon: 'Shield',
-    subServices: [
-      {
-        id: 'trademark-registration',
-        name: 'Trademark Registration',
-        slug: 'trademark-registration',
-        description: 'Complete trademark registration and brand protection services with expert guidance.',
-        icon: 'Award',
-        features: [
-          'Comprehensive trademark search and clearance',
-          'Application filing and prosecution support',
-          'Opposition handling and legal representation',
-          'Registration certificate processing',
-          'Renewal management and monitoring',
-          'Brand protection strategy development',
-          'Trademark portfolio management',
-          'International trademark registration support'
-        ],
+{
+  id: 'intellectual-property',
+  name: 'Intellectual Property Rights',
+  slug: 'intellectual-property',
+  description: 'Protect your innovations and brand with comprehensive IP services and expert legal support.',
+  icon: 'Shield',
+  subServices: [
+    {
+      id: 'trademark-registration',
+      name: 'Trademark Registration',
+      slug: 'trademark-registration',
+      description: 'Complete trademark registration and brand protection services with expert guidance.',
+      icon: 'Award',
+      features: [
+        'Comprehensive trademark search and clearance',
+        'Application filing and prosecution support',
+        'Opposition handling and legal representation',
+        'Registration certificate processing',
+        'Renewal management and monitoring',
+        'Brand protection strategy development',
+        'Trademark portfolio management',
+        'International trademark registration support'
+      ],
+      benefits: [
+        'Legal protection for your brand name, logo, and tagline',
+        'Exclusive rights to use the trademark for specified goods/services',
+        'Prevention of misuse and unauthorized use by competitors',
+        'Enhanced brand value and recognition in the market',
+        'Public record of ownership and priority date',
+        'Stronger position in infringement and passing-off actions',
+        'Ease of brand licensing, franchising, and assignment',
+        'Foundation for international brand expansion and protection'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Pre-Filing Trademark Search',
+          description:
+            'Conduct a comprehensive search to check availability and identify conflicting marks in relevant classes.',
+          documents: ['Proposed brand name/logo', 'Business activity details'],
+          timeline: '2–3 days'
+        },
+        {
+          step: 2,
+          title: 'Application Drafting & Filing',
+          description:
+            'Draft trademark description, select appropriate classes, and file application with IP Office.',
+          documents: [
+            'Applicant KYC and business proof',
+            'Logo/device in required format',
+            'Power of attorney/authorisation (if filed through agent)'
+          ],
+          timeline: '3–5 days'
+        },
+        {
+          step: 3,
+          title: 'Examination & Response',
+          description:
+            'Track examination, respond to any examination report/objections, and attend hearing if required.',
+          documents: [
+            'Examination report copy',
+            'Usage evidence and supporting arguments',
+            'Reply to examination report'
+          ],
+          timeline: '1–6 months (depending on IP office)'
+        },
+        {
+          step: 4,
+          title: 'Publication & Registration',
+          description:
+            'On acceptance, ensure publication in Trademark Journal, monitor opposition period, and obtain registration certificate.',
+          documents: [
+            'Journal publication details',
+            'Registration certificate',
+            'Updated IP records'
+          ],
+          timeline: '3–12 months (case-dependent)'
+        }
+      ],
+      requiredDocuments: [
+        'Applicant identity proof (PAN, Aadhaar, Passport, etc.) [web:19][web:22]',
+        'Address proof of applicant/authorized signatory [web:19][web:22]',
+        'Business proof (GST registration, MSME/Udyam, incorporation certificate, partnership deed, etc.) [web:19][web:22]',
+        'Brand name/logo/device in JPEG or prescribed format [web:19][web:22]',
+        'Signed authorisation/power of attorney (Form TM-48 or equivalent) if filed through agent [web:22]',
+        'Description of goods/services and relevant trademark class(es) [web:18]',
+        'User affidavit and proof of use (if claiming prior use)',
+        'Board resolution/authorization letter for company/LLP'
+      ],
+      faqs: [
+        {
+          question: 'How long does it take to register a trademark?',
+          answer:
+            'If there are no major objections or oppositions, registration can typically take 8–18 months from filing, depending on IP office workload.'
+        },
+        {
+          question: 'Is my trademark protected immediately after filing?',
+          answer:
+            'You can use the ™ symbol after filing and enjoy certain priority, but full statutory protection with ® comes only after registration.'
+        },
+        {
+          question: 'For how many years is a trademark valid?',
+          answer:
+            'A registered trademark is generally valid for 10 years from the filing/registration date and can be renewed indefinitely for further 10-year periods.'
+        },
+        {
+          question: 'Can I file one trademark for multiple classes?',
+          answer:
+            'Yes, a multi-class application can be filed covering different goods and services, subject to payment of class-wise fees.'
+        },
+        {
+          question: 'Can foreign owners register a trademark in India?',
+          answer:
+            'Yes, foreign individuals and entities can register trademarks in India, usually through an authorised agent or attorney.'
+        }
+      ],
+      popular: true,
+      rating: 4.8
+    },
 
-        popular: true,
-        rating: 4.8,
-       
-      },
-      {
-        id: 'trademark-objection-hearing',
-        name: 'Trademark Objection & Hearing',
-        slug: 'trademark-objection-hearing',
-        description: 'Expert handling of trademark objections and hearing representation with legal expertise.',
-        icon: 'Gavel',
-        features: [
-          'Detailed objection analysis and response preparation',
-          'Hearing preparation and legal representation',
-          'Legal documentation support and filing',
-          'Follow-up proceedings and status monitoring',
-          'Trademark status monitoring and updates',
-          'Registration facilitation and certificate processing',
-          'Appeal handling and higher authority representation',
-          'Trademark maintenance and protection advice'
-        ],
-       
-        rating: 4.7,
-      },
-      {
-        id: 'patent-registration',
-        name: 'Patent Registration',
-        slug: 'patent-registration',
-        description: 'Protect your innovations with comprehensive patent registration services and expert guidance.',
-        icon: 'Lightbulb',
-        features: [
-          'Comprehensive patent search and prior art analysis',
-          'Patent application drafting and technical writing',
-          'Patent prosecution support and examination handling',
-          'Opposition and examination response preparation',
-          'Patent grant facilitation and processing',
-          'Patent portfolio management and strategy',
-          'International patent filing (PCT) support',
-          'Patent commercialization and licensing advice'
-        ],
-     
-        rating: 4.6,
-          },
+    {
+      id: 'trademark-objection-hearing',
+      name: 'Trademark Objection & Hearing',
+      slug: 'trademark-objection-hearing',
+      description: 'Expert handling of trademark objections and hearing representation with legal expertise.',
+      icon: 'Gavel',
+      features: [
+        'Detailed objection analysis and response preparation',
+        'Hearing preparation and legal representation',
+        'Legal documentation support and filing',
+        'Follow-up proceedings and status monitoring',
+        'Trademark status monitoring and updates',
+        'Registration facilitation and certificate processing',
+        'Appeal handling and higher authority representation',
+        'Trademark maintenance and protection advice'
+      ],
+      benefits: [
+        'Higher chances of overcoming examination objections and securing registration [web:20][web:23]',
+        'Professionally drafted responses addressing legal and technical grounds [web:20]',
+        'Experienced representation during hearings before the Trademark Office [web:20]',
+        'Reduced risk of application rejection and need for refiling [web:23]',
+        'Clear strategy for handling complex absolute and relative grounds of refusal [web:20]',
+        'End‑to‑end support from objection notice till final decision',
+        'Better documentation and evidence to support distinctiveness and prior use'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Examination Report Review',
+          description:
+            'Obtain and review the examination report, identify grounds of objection, and evaluate chances of success. [web:20][web:23]',
+          documents: ['Examination report', 'Filed trademark application', 'Current status report'],
+          timeline: '2–3 days'
+        },
+        {
+          step: 2,
+          title: 'Response Drafting & Filing',
+          description:
+            'Draft detailed reply addressing each objection with legal precedents, usage evidence, and clarifications, then file within the prescribed time. [web:20][web:23]',
+          documents: [
+            'Draft reply to examination report',
+            'Usage evidence (invoices, ads, website screenshots)',
+            'Supporting legal documents/case references'
+          ],
+          timeline: '5–10 days (well before deadline)'
+        },
+        {
+          step: 3,
+          title: 'Hearing Preparation & Representation',
+          description:
+            'Prepare hearing notes, arguments, and documents, attend hearing before Registrar, and present oral submissions if called. [web:20]',
+          documents: [
+            'Hearing notice',
+            'Written submissions',
+            'Compiled evidence and case bundle'
+          ],
+          timeline: 'Hearing date–dependent (usually scheduled in 1–6 months)'
+        },
+        {
+          step: 4,
+          title: 'Post‑Hearing Follow‑up & Appeal',
+          description:
+            'Track order status, comply with any conditions, and where required, file review/appeal before higher forums.',
+          documents: [
+            'Registrar’s order',
+            'Appeal memorandum (if required)',
+            'Updated status and registration certificate (if allowed)'
+          ],
+          timeline: '1–6 months depending on order and appeal process'
+        }
+      ],
+      requiredDocuments: [
+        'Copy of filed trademark application and acknowledgment',
+        'Examination report/objection notice issued by Registrar [web:20][web:23]',
+        'Applicant identity and business documents',
+        'Proof of prior use (invoices, advertisements, packaging, website, social media, etc.) [web:20][web:23]',
+        'Copies of similar registered marks (if relying on brand family/series)',
+        'Power of attorney/authorisation for legal representative',
+        'Any previous correspondence or orders related to the mark'
+      ],
+      faqs: [
+        {
+          question: 'What is a trademark objection?',
+          answer:
+            'It is an initial refusal raised by the Trademark Office in the examination report, usually for reasons like similarity, descriptiveness, or incorrect details.'
+        },
+        {
+          question: 'What is the time limit to reply to an objection?',
+          answer:
+            'The reply generally must be filed within 30 days from receipt/publication of the examination report, failing which the application may be abandoned. [web:20][web:23]'
+        },
+        {
+          question: 'Is personal appearance at hearing mandatory?',
+          answer:
+            'Not necessarily; an authorised attorney or agent can appear and argue on your behalf during the hearing.'
+        },
+        {
+          question: 'What if the objection reply is not accepted?',
+          answer:
+            'The Registrar may schedule a hearing, maintain the refusal, or you may need to file an appeal before the High Court or appropriate appellate forum. [web:23]'
+        },
+        {
+          question: 'Can a rejected trademark be filed again?',
+          answer:
+            'Yes, in many cases a fresh application with improved strategy, modified mark, or narrowed specification can be filed.'
+        }
+      ],
+      rating: 4.7
+    },
+
+    {
+      id: 'patent-registration',
+      name: 'Patent Registration',
+      slug: 'patent-registration',
+      description: 'Protect your innovations with comprehensive patent registration services and expert guidance.',
+      icon: 'Lightbulb',
+      features: [
+        'Comprehensive patent search and prior art analysis',
+        'Patent application drafting and technical writing',
+        'Patent prosecution support and examination handling',
+        'Opposition and examination response preparation',
+        'Patent grant facilitation and processing',
+        'Patent portfolio management and strategy',
+        'International patent filing (PCT) support',
+        'Patent commercialization and licensing advice'
+      ],
+      benefits: [
+        'Exclusive rights to make, use, and commercialize your invention',
+        'Strong deterrent against competitors copying your innovation',
+        'Enhanced valuation of business and technology assets',
+        'Licensing and royalty income opportunities',
+        'Stronger negotiating power in collaborations and funding rounds',
+        'Priority protection in key markets through PCT and foreign filings',
+        'Creation of defensible technology moat and competitive advantage'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Patentability & Prior Art Search',
+          description:
+            'Evaluate novelty, inventive step, and industrial applicability of the invention by searching existing patents and literature. [web:21][web:24]',
+          documents: ['Invention disclosure note', 'Technical drawings/diagrams', 'Search reports (if any)'],
+          timeline: '1–3 weeks'
+        },
+        {
+          step: 2,
+          title: 'Drafting & Filing Application',
+          description:
+            'Draft provisional or complete specification, prepare forms, and file patent application with the Patent Office. [web:21][web:24]',
+          documents: [
+            'Application Form (Form 1) [web:21][web:24]',
+            'Provisional/Complete Specification (Form 2) [web:21][web:24]',
+            'Statement & Undertaking (Form 3, if applicable) [web:21][web:24]',
+            'Declaration of Inventorship (Form 5) [web:24]',
+            'Power of attorney/authorisation (if filed through agent) [web:21]'
+          ],
+          timeline: '2–4 weeks'
+        },
+        {
+          step: 3,
+          title: 'Examination & Office Actions',
+          description:
+            'Request examination, respond to FER/office actions, and amend claims/specifications as needed. [web:21]',
+          documents: [
+            'Request for Examination (RFE)',
+            'First Examination Report (FER)',
+            'Response to FER with amended claims and arguments'
+          ],
+          timeline: '6–24 months (subject to Patent Office)'
+        },
+        {
+          step: 4,
+          title: 'Grant, Publication & Maintenance',
+          description:
+            'On acceptance, secure patent grant, ensure final publication, and manage annuity/renewal payments.',
+          documents: [
+            'Patent grant certificate',
+            'Updated register extracts',
+            'Renewal/annuity payment proofs'
+          ],
+          timeline: 'Varies; typically 2–4 years from filing depending on case'
+        }
+      ],
+      requiredDocuments: [
+        'Detailed invention disclosure with problem, solution, and technical details',
+        'Drawings, diagrams, flowcharts, or prototypes descriptions',
+        'Applicant and inventor identity/address proofs',
+        'Application Form 1 for patent registration [web:21][web:24]',
+        'Provisional or complete specification in Form 2 [web:21][web:24]',
+        'Statement & Undertaking in Form 3 (if applicable) [web:21][web:24]',
+        'Declaration as to inventorship in Form 5 [web:24]',
+        'Proof of right to apply if applicant is different from inventor [web:21][web:24]',
+        'Priority documents for foreign priority claims (if any) [web:21]',
+        'Power of attorney/authorisation (Form 26 or equivalent) [web:21]'
+      ],
+      faqs: [
+        {
+          question: 'What can be patented?',
+          answer:
+            'A new product or process involving an inventive step and capable of industrial application, which is not excluded under patent law, can generally be patented.'
+        },
+        {
+          question: 'How long does patent protection last?',
+          answer:
+            'Patent protection usually lasts for 20 years from the filing date of the application, subject to timely renewal/annuity payments.'
+        },
+        {
+          question: 'Should I file a provisional or complete specification?',
+          answer:
+            'A provisional filing secures an early priority date with less detail, while a complete specification is needed within 12 months to fully protect the invention. [web:21][web:24]'
+        },
+        {
+          question: 'Is my patent valid worldwide?',
+          answer:
+            'No, patents are territorial; separate or PCT-based filings are required in each country or region where protection is sought.'
+        },
+        {
+          question: 'Can I publicly disclose my invention before filing?',
+          answer:
+            'Public disclosure before filing may destroy novelty, so filing should ideally be done before publishing, selling, or showcasing the invention.'
+        }
+      ],
+      rating: 4.6
+    },
+
     {
       id: 'copyright-registration',
       name: 'Copyright Registration',
@@ -3935,28 +4611,32 @@ export const mainServiceCategories: ServiceCategory[] = [
         {
           step: 1,
           title: 'Work Originality Assessment',
-          description: 'Review work for originality, document creation process, verify ownership claims',
+          description:
+            'Review work for originality, document creation process, verify ownership claims',
           documents: ['Original work copy', 'Creation evidence', 'Ownership proof'],
           timeline: '3-5 days'
         },
         {
           step: 2,
           title: 'Application Preparation',
-          description: 'Prepare copyright application, compile required documentation, prepare work samples/proofs',
+          description:
+            'Prepare copyright application, compile required documentation, prepare work samples/proofs',
           documents: ['Copyright application form', 'Work samples', 'Supporting documents'],
           timeline: '3-5 days'
         },
         {
           step: 3,
           title: 'Copyright Office Submission',
-          description: 'File application with Copyright Board, pay registration fees, receive acknowledgment',
+          description:
+            'File application with Copyright Board, pay registration fees, receive acknowledgment',
           documents: ['Filing acknowledgment', 'Receipt', 'Reference number'],
           timeline: '2-3 days'
         },
         {
           step: 4,
           title: 'Examination & Issuance',
-          description: 'Copyright office examines application, issue copyright certificate, publish in gazette',
+          description:
+            'Copyright office examines application, issue copyright certificate, publish in gazette',
           documents: ['Copyright certificate', 'Gazette publication', 'Registration proof'],
           timeline: '5-10 days'
         }
@@ -3979,20 +4659,22 @@ export const mainServiceCategories: ServiceCategory[] = [
         },
         {
           question: 'Is copyright automatic or must it be registered?',
-          answer: 'Copyright is automatic on creation; registration provides legal evidence and public record'
+          answer:
+            'Copyright is automatic on creation; registration provides legal evidence and public record'
         },
         {
           question: 'What works can be copyrighted?',
-          answer: 'Literary works, software, music, films, artistic works, compilations, databases, and other original works'
+          answer:
+            'Literary works, software, music, films, artistic works, compilations, databases, and other original works'
         },
         {
           question: 'How long does copyright protection last?',
-          answer: 'Generally for author\'s lifetime plus 60 years after death'
+          answer: "Generally for author's lifetime plus 60 years after death"
         }
       ],
-    
-      rating: 4.5,
-        },
+      rating: 4.5
+    },
+
     {
       id: 'trademark-renewal',
       name: 'Trademark Renewal',
@@ -4021,28 +4703,32 @@ export const mainServiceCategories: ServiceCategory[] = [
         {
           step: 1,
           title: 'Renewal Eligibility Check',
-          description: 'Verify trademark status and expiry date, check if trademark is in use, confirm no oppositions pending',
+          description:
+            'Verify trademark status and expiry date, check if trademark is in use, confirm no oppositions pending',
           documents: ['Trademark certificate', 'Status report', 'Usage records'],
           timeline: '1-2 days'
         },
         {
           step: 2,
           title: 'Renewal Application Preparation',
-          description: 'Prepare Form TM-R (Renewal Form), compile supporting documents, verify usage declaration',
+          description:
+            'Prepare Form TM-R (Renewal Form), compile supporting documents, verify usage declaration',
           documents: ['Form TM-R', 'Usage proof', 'Supporting documents'],
           timeline: '2-3 days'
         },
         {
           step: 3,
           title: 'Filing with IP Office',
-          description: 'File renewal application, pay renewal fees, receive filing acknowledgment',
+          description:
+            'File renewal application, pay renewal fees, receive filing acknowledgment',
           documents: ['Filing receipt', 'Acknowledgment letter', 'Payment proof'],
           timeline: '2-3 days'
         },
         {
           step: 4,
           title: 'Processing & Certificate',
-          description: 'IP office processes application, issue renewed trademark certificate, updated validity period reflected',
+          description:
+            'IP office processes application, issue renewed trademark certificate, updated validity period reflected',
           documents: ['Renewed certificate', 'Updated validity', 'Registration proof'],
           timeline: '3-5 days'
         }
@@ -4060,7 +4746,8 @@ export const mainServiceCategories: ServiceCategory[] = [
       faqs: [
         {
           question: 'When should I renew my trademark?',
-          answer: 'Six months before expiry; can renew up to 6 months after expiry with late fee penalty'
+          answer:
+            'Six months before expiry; can renew up to 6 months after expiry with late fee penalty'
         },
         {
           question: 'What is the renewal validity period?',
@@ -4068,247 +4755,443 @@ export const mainServiceCategories: ServiceCategory[] = [
         },
         {
           question: 'Can I renew if trademark is not in use?',
-          answer: 'Yes, but if someone challenges, you must prove usage within past 5 years'
+          answer:
+            'Yes, but if someone challenges, you must prove usage within past 5 years'
         },
         {
           question: 'Can I change the trademark during renewal?',
-          answer: 'No, renewal is for the registered mark; changes require new application'
+          answer:
+            'No, renewal is for the registered mark; changes require new application'
         }
       ],
-   
-      rating: 4.8,
+      rating: 4.8
     },
-          {
-        id: 'trademark-opposition',
-        name: 'Trademark Opposition',
-        slug: 'trademark-opposition',
-        description: 'Expert representation and filing of trademark opposition against similar marks.',
-        icon: 'AlertCircle',
-        features: [
-          'Comprehensive trademark search and analysis',
-          'Opposition ground assessment and strategy',
-          'Opposition application preparation and filing',
-          'Trademark similarity analysis and comparison',
-          'Evidence collection and documentation',
-          'Hearing preparation and representation',
-          'Legal arguments and submissions',
-          'Correspondence with IP office',
-          'Appeal filing if required',
-          'Complete case documentation and records'
-        ],
-        benefits: [
-          'Protect your trademark from identical/similar marks',
-          'Prevent unauthorized use of similar marks',
-          'Strengthen your brand protection',
-          'Expert legal representation before IP office',
-          'Increase success rate of opposition',
-          'Comprehensive case strategy and guidance',
-          'Post-opposition legal support'
-        ],
-        procedure: [
-          {
-            step: 1,
-            title: 'Trademark Analysis',
-            description: 'Analyze similarity and grounds for opposition against applicant mark',
-            documents: ['Trademark comparison', 'Similarity analysis', 'Grounds documentation'],
-            timeline: '2-3 days'
-          },
-          {
-            step: 2,
-            title: 'Opposition Application Filing',
-            description: 'Prepare and file formal opposition before IP office',
-            documents: ['Opposition form', 'Grounds statement', 'Evidence attachments'],
-            timeline: '2-3 days'
-          },
-          {
-            step: 3,
-            title: 'Evidence & Arguments',
-            description: 'Submit evidence and legal arguments supporting opposition',
-            documents: ['Evidence documents', 'Counsel submission', 'Comparative analysis'],
-            timeline: '3-5 days'
-          },
-          {
-            step: 4,
-            title: 'Hearing & Decision',
-            description: 'Appear in hearing before IP office and respond to applicant',
-            documents: ['Hearing notice', 'Hearing response', 'Decision and order'],
-            timeline: '2-6 months'
-          }
-        ],
-        requiredDocuments: [
-          'Your trademark registration certificate',
-          'Applicant trademark application details',
-          'Evidence of your trademark usage',
-          'Proof of prior registration date',
-          'Similarity comparison documents',
-          'Supporting documents for opposition grounds',
-          'Company registration and authorization',
-          'Power of attorney (if through agent)'
-        ],
-        faqs: [
-          {
-            question: 'What are grounds for trademark opposition?',
-            answer: 'Similarity, bad faith, prior rights, descriptive nature, family trademark, etc.'
-          },
-          {
-            question: 'How long is the opposition process?',
-            answer: 'Typically 2-6 months depending on office proceedings and hearing'
-          },
-          {
-            question: 'Can we oppose even after registration?',
-            answer: 'Yes, within 5 years of registration through revocation action'
-          },
-          {
-            question: 'What happens if opposition succeeds?',
-            answer: 'The opposing application is rejected, and your mark is protected'
-          }
-        ],
- 
-        rating: 4.6,
-      },
 
-
-
-    ]
-  },
+    {
+      id: 'trademark-opposition',
+      name: 'Trademark Opposition',
+      slug: 'trademark-opposition',
+      description: 'Expert representation and filing of trademark opposition against similar marks.',
+      icon: 'AlertCircle',
+      features: [
+        'Comprehensive trademark search and analysis',
+        'Opposition ground assessment and strategy',
+        'Opposition application preparation and filing',
+        'Trademark similarity analysis and comparison',
+        'Evidence collection and documentation',
+        'Hearing preparation and representation',
+        'Legal arguments and submissions',
+        'Correspondence with IP office',
+        'Appeal filing if required',
+        'Complete case documentation and records'
+      ],
+      benefits: [
+        'Protect your trademark from identical/similar marks',
+        'Prevent unauthorized use of similar marks',
+        'Strengthen your brand protection',
+        'Expert legal representation before IP office',
+        'Increase success rate of opposition',
+        'Comprehensive case strategy and guidance',
+        'Post-opposition legal support'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Trademark Analysis',
+          description:
+            'Analyze similarity and grounds for opposition against applicant mark',
+          documents: ['Trademark comparison', 'Similarity analysis', 'Grounds documentation'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 2,
+          title: 'Opposition Application Filing',
+          description:
+            'Prepare and file formal opposition before IP office',
+          documents: ['Opposition form', 'Grounds statement', 'Evidence attachments'],
+          timeline: '2-3 days'
+        },
+        {
+          step: 3,
+          title: 'Evidence & Arguments',
+          description:
+            'Submit evidence and legal arguments supporting opposition',
+          documents: ['Evidence documents', 'Counsel submission', 'Comparative analysis'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 4,
+          title: 'Hearing & Decision',
+          description:
+            'Appear in hearing before IP office and respond to applicant',
+          documents: ['Hearing notice', 'Hearing response', 'Decision and order'],
+          timeline: '2-6 months'
+        }
+      ],
+      requiredDocuments: [
+        'Your trademark registration certificate',
+        'Applicant trademark application details',
+        'Evidence of your trademark usage',
+        'Proof of prior registration date',
+        'Similarity comparison documents',
+        'Supporting documents for opposition grounds',
+        'Company registration and authorization',
+        'Power of attorney (if through agent)'
+      ],
+      faqs: [
+        {
+          question: 'What are grounds for trademark opposition?',
+          answer:
+            'Similarity, bad faith, prior rights, descriptive nature, family trademark, etc.'
+        },
+        {
+          question: 'How long is the opposition process?',
+          answer:
+            'Typically 2-6 months depending on office proceedings and hearing'
+        },
+        {
+          question: 'Can we oppose even after registration?',
+          answer:
+            'Yes, within 5 years of registration through revocation action'
+        },
+        {
+          question: 'What happens if opposition succeeds?',
+          answer:
+            'The opposing application is rejected, and your mark is protected'
+        }
+      ],
+      rating: 4.6
+    }
+  ]
+},
 //8. HR & Payroll Services
   {
-    id: 'hr-payroll',
-    name: 'HR & Payroll Services',
-    slug: 'hr-payroll',
-    description: 'Complete HR management and payroll processing solutions with statutory compliance.',
-    icon: 'Users2',
-    subServices: [
-      {
-        id: 'payroll-management',
-        name: 'Payroll Management Services',
-        slug: 'payroll-management',
-        description: 'End-to-end payroll processing with statutory compliance and employee management.',
-        icon: 'CreditCard',
-        features: [
-          'Monthly salary processing and calculations',
-          'Statutory deductions management (PF, ESI, TDS)',
-          'Form 16 generation and employee dispatch',
-          'Comprehensive payroll reports and analytics',
-          'Employee self-service portal access',
-          'Complete compliance management and monitoring',
-          'Leave and attendance management integration',
-          'Salary structure optimization and advisory'
-        ],
-     
-        popular: true,
-        rating: 4.8,
-      },
-      {
-        id: 'esic-pf-compliance',
-        name: 'ESIC & PF Registration & Filing',
-        slug: 'esic-pf-compliance',
-        description: 'Complete ESIC and PF registration with ongoing compliance management and support.',
-        icon: 'Shield',
-        features: [
-          'ESIC and PF registration process completion',
-          'Monthly return filing and compliance management',
-          'Employee enrollment and exit procedures',
-          'Claim processing assistance and support',
-          'Inspection handling and compliance representation',
-          'Penalty avoidance strategies and planning',
-          'Employee welfare compliance monitoring',
-          'Statutory audit support and documentation'
-        ],
-     
-        rating: 4.7,
-      },
-      {
-  id: 'epfo-esic-detailed',
-  name: 'EPFO & ESIC Compliance Details',
-  slug: 'epfo-esic-detailed',
-  description: 'Detailed EPFO and ESIC registration, filing, and compliance management for employee welfare.',
-  icon: 'Shield',
-  features: [
-    'EPFO Provident Fund registration and account setup',
-    'ESIC Social Security registration and coverage',
-    'Employee enrollment and member IDs',
-    'Monthly contribution calculations and payments',
-    'Quarterly/Annual return filings and submissions',
-    'Employee claims processing and support',
-    'Inspection handling and compliance',
-    'Penalty avoidance and dispute resolution',
-    'Compliance monitoring and alerts',
-    'Employee benefit statements and reports'
-  ],
-  benefits: [
-    'Employee social security and insurance coverage',
-    'Retirement benefits and provident fund',
-    'Medical and disability coverage for employees',
-    'Compliance with labor laws and regulations',
-    'Reduced compliance burden and penalties',
-    'Peace of mind with proper employee coverage',
-    'Enhanced employee satisfaction and retention'
-  ],
-  procedure: [
+  id: 'hr-payroll',
+  name: 'HR & Payroll Services',
+  slug: 'hr-payroll',
+  description: 'Complete HR management and payroll processing solutions with statutory compliance.',
+  icon: 'Users2',
+  subServices: [
     {
-      step: 1,
-      title: 'Eligibility Assessment',
-      description: 'Assess business eligibility and employee coverage requirements',
-      documents: ['Employee details', 'Salary information', 'Business registration'],
-      timeline: '1-2 days'
+      id: 'payroll-management',
+      name: 'Payroll Management Services',
+      slug: 'payroll-management',
+      description: 'End-to-end payroll processing with statutory compliance and employee management.',
+      icon: 'CreditCard',
+      features: [
+        'Monthly salary processing and calculations',
+        'Statutory deductions management (PF, ESI, TDS)',
+        'Form 16 generation and employee dispatch',
+        'Comprehensive payroll reports and analytics',
+        'Employee self-service portal access',
+        'Complete compliance management and monitoring',
+        'Leave and attendance management integration',
+        'Salary structure optimization and advisory'
+      ],
+      benefits: [
+        'Accurate and timely salary processing with reduced manual errors [web:25][web:29]',
+        'Full statutory compliance for PF, ESIC, TDS and other deductions [web:25][web:29][web:30][web:31]',
+        'Improved employee satisfaction through transparent payslips and on‑time payments [web:25][web:32]',
+        'Centralized payroll data, analytics, and MIS reports for management decisions [web:25][web:29]',
+        'Reduced administrative burden on HR and accounts teams [web:25][web:32]',
+        'Lower risk of interest, penalties, and notices due to missed filings [web:25][web:30][web:33]',
+        'Better integration between attendance, leave, and payroll systems [web:25][web:29][web:32]',
+        'Scalable payroll processes that support business growth and workforce expansion [web:25][web:29]'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Onboarding & Data Collection',
+          description:
+            'Collect employee master data, salary structures, attendance and leave rules, and existing compliance details for system setup. [web:25][web:29]',
+          documents: [
+            'Employee master list and KYC',
+            'Salary structure and CTC break‑up',
+            'Leave and attendance policies',
+            'Existing PF/ESIC/TDS registration details'
+          ],
+          timeline: '3–7 days'
+        },
+        {
+          step: 2,
+          title: 'Payroll Configuration',
+          description:
+            'Configure payroll cycles, earnings and deductions, statutory parameters, and approval workflows in the payroll system. [web:25][web:29]',
+          documents: [
+            'Company payroll policy',
+            'Approval matrix',
+            'Statutory registration numbers (TAN, PF, ESIC, etc.)'
+          ],
+          timeline: '2–5 days'
+        },
+        {
+          step: 3,
+          title: 'Monthly Payroll Processing',
+          description:
+            'Import attendance, process salaries, calculate taxes and statutory contributions, generate payslips and payroll reports. [web:25][web:29][web:32]',
+          documents: [
+            'Monthly attendance and leave data',
+            'Variable pay inputs (incentives, OT, reimbursement)',
+            'Payroll calculation sheets and payslips'
+          ],
+          timeline: '2–4 days every month'
+        },
+        {
+          step: 4,
+          title: 'Statutory Filing & Disbursement',
+          description:
+            'Disburse net salaries, deposit PF/ESIC/TDS, and file applicable returns and challans within due dates. [web:25][web:29][web:30][web:31][web:34]',
+          documents: [
+            'Bank payment files/NEFT sheets',
+            'PF, ESIC, TDS challans',
+            'Monthly/quarterly/annual statutory returns and reports'
+          ],
+          timeline: 'As per statutory due dates (monthly/quarterly/annual)'
+        }
+      ],
+      requiredDocuments: [
+        'Company registration documents and PAN/TAN',
+        'PF, ESIC, Professional Tax and other registration details (if available)',
+        'Employee master data (name, DOB, designation, DOJ, bank details, KYC)',
+        'Salary structure/CTC break‑up for each employee',
+        'Attendance and leave records (manual or from system)',
+        'Details of variable components (incentives, overtime, arrears, reimbursements)',
+        'Existing payroll reports and statutory filings (if migrating from old system)'
+      ],
+      faqs: [
+        {
+          question: 'How long does it take to implement payroll outsourcing?',
+          answer:
+            'For a typical small or mid‑sized organisation, implementation and first payroll run can usually be completed within 1–3 weeks depending on data readiness. [web:25][web:29]'
+        },
+        {
+          question: 'Will employees get online payslips?',
+          answer:
+            'Yes, an employee self‑service portal or digital distribution can provide secure access to payslips and tax sheets each month. [web:25][web:32]'
+        },
+        {
+          question: 'Can payroll handle variable pay and arrears?',
+          answer:
+            'Yes, variable components like incentives, overtime, arrears, and reimbursements can be configured and processed as part of monthly payroll. [web:25][web:29]'
+        },
+        {
+          question: 'Does this service include statutory filings?',
+          answer:
+            'Yes, it typically includes calculation, challan preparation, and filing for PF, ESIC, TDS and other applicable compliances as per scope. [web:25][web:29][web:30]'
+        },
+        {
+          question: 'Can we migrate mid‑year from our existing payroll?',
+          answer:
+            'Yes, mid‑year migration is possible by importing opening balances, YTD figures, and historical compliance data.'
+        }
+      ],
+      popular: true,
+      rating: 4.8
     },
-    {
-      step: 2,
-      title: 'Registration Process',
-      description: 'Register with EPFO and ESIC, obtain account and codes',
-      documents: ['Registration applications', 'Employee list', 'Nominee details'],
-      timeline: '5-7 days'
-    },
-    {
-      step: 3,
-      title: 'Enrollment & Member IDs',
-      description: 'Enroll employees and generate EPFO and ESIC member IDs',
-      documents: ['Member cards', 'Enrollment confirmations', 'Account details'],
-      timeline: '3-5 days'
-    },
-    {
-      step: 4,
-      title: 'Contribution & Filing',
-      description: 'Calculate, pay contributions and file monthly/quarterly returns',
-      documents: ['Contribution receipts', 'Filed returns', 'Payment proofs'],
-      timeline: 'Ongoing Monthly'
-    }
-  ],
-  requiredDocuments: [
-    'Business registration and PAN certificate',
-    'Complete employee details and payroll',
-    'Bank account details for contributions',
-    'Salary structure and payment schedule',
-    'Employee addresses and contact information',
-    'Nominee details for each employee',
-    'Factory/shop registration (if applicable)',
-    'Previous EPFO/ESIC documents (if existing)'
-  ],
-  faqs: [
-    {
-      question: 'Which businesses need EPFO registration?',
-      answer: 'Businesses with 20 or more employees need mandatory EPFO registration'
-    },
-    {
-      question: 'What is the employer contribution percentage?',
-      answer: 'EPFO: 12% of basic+DA; ESIC varies from 4.75%-7.75% based on salary'
-    },
-    {
-      question: 'Can employees withdraw their provident fund?',
-      answer: 'Yes, at retirement, resignation, or in case of hardship with approval'
-    },
-    {
-      question: 'What happens if contributions are not paid on time?',
-      answer: 'Late payment penalties and interest apply; legal action may follow'
-    }
-  ],
- 
-  rating: 4.7,
-},
 
-    ]
-  },
+    {
+      id: 'esic-pf-compliance',
+      name: 'ESIC & PF Registration & Filing',
+      slug: 'esic-pf-compliance',
+      description: 'Complete ESIC and PF registration with ongoing compliance management and support.',
+      icon: 'Shield',
+      features: [
+        'ESIC and PF registration process completion',
+        'Monthly return filing and compliance management',
+        'Employee enrollment and exit procedures',
+        'Claim processing assistance and support',
+        'Inspection handling and compliance representation',
+        'Penalty avoidance strategies and planning',
+        'Employee welfare compliance monitoring',
+        'Statutory audit support and documentation'
+      ],
+      benefits: [
+        'Ensure full compliance with EPFO and ESIC laws for eligible establishments [web:30][web:33][web:34]',
+        'Provide social security and medical benefits to employees and their families [web:31][web:34]',
+        'Reduce risk of interest, damages, and prosecution for non‑registration or delayed payments [web:30][web:33]',
+        'Smooth handling of inspections, notices, and statutory audits with proper documentation [web:30][web:33]',
+        'Improved employee trust through transparent PF and ESIC benefits',
+        'Lower internal admin effort by outsourcing filings and calculations',
+        'Centralised tracking of enrolments, exits, and contributions'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Eligibility & Coverage Check',
+          description:
+            'Assess whether the establishment meets employee count and wage thresholds for PF and ESIC registration. [web:30][web:33]',
+          documents: [
+            'Employee strength details',
+            'Salary and wage structure',
+            'Nature of business and establishment details'
+          ],
+          timeline: '1–2 days'
+        },
+        {
+          step: 2,
+          title: 'Online Registration on Portals',
+          description:
+            'Register the establishment on EPFO and ESIC portals/Unified Shram Suvidha Portal and obtain registration codes. [web:30][web:33]',
+          documents: [
+            'Company incorporation/registration certificates',
+            'PAN, GST, and address proof of establishment',
+            'Authorised signatory KYC and contact details'
+          ],
+          timeline: '3–7 days'
+        },
+        {
+          step: 3,
+          title: 'Employee Onboarding & UAN/IP Creation',
+          description:
+            'Enroll eligible employees, generate EPF UANs and ESIC insurance numbers, and update member details. [web:30][web:33]',
+          documents: [
+            'Employee KYC (PAN/Aadhaar/bank details)',
+            'Nominee details',
+            'Existing UAN/ESIC numbers (if any)'
+          ],
+          timeline: '3–5 days'
+        },
+        {
+          step: 4,
+          title: 'Monthly Contributions & Returns',
+          description:
+            'Calculate monthly contributions, deposit amounts within due dates, and file relevant returns and challans. [web:30][web:31][web:34]',
+          documents: [
+            'Monthly wage and salary data',
+            'Contribution challans and payment proofs',
+            'Filed monthly/half‑yearly returns'
+          ],
+          timeline: 'Ongoing monthly/periodic'
+        }
+      ],
+      requiredDocuments: [
+        'Certificate of incorporation/registration, PAN and address proof of establishment [web:30][web:33]',
+        'GST registration certificate (if applicable) [web:30]',
+        'List of employees with joining dates, salaries, and designations [web:30][web:33]',
+        'Employee KYC (Aadhaar, PAN, bank details) and nominee information [web:33]',
+        'Board resolution/authorisation for registration',
+        'Factory/Shop & Establishment registration (if applicable) [web:30]',
+        'Any previous EPFO/ESIC registration details or codes (for migration)'
+      ],
+      faqs: [
+        {
+          question: 'When is PF registration mandatory?',
+          answer:
+            'PF registration is generally mandatory for establishments employing 20 or more persons, with optional voluntary coverage for smaller units. [web:30][web:33]'
+        },
+        {
+          question: 'Which employees are covered under ESIC?',
+          answer:
+            'ESIC typically covers employees earning wages up to the prescribed limit (for example ₹21,000 per month in many cases) in eligible establishments. [web:31][web:33]'
+        },
+        {
+          question: 'What are the PF and ESIC contribution rates?',
+          answer:
+            'PF usually involves 12% of eligible wages from employer and employee each, while current notified ESIC rates are 3.25% employer and 0.75% employee of wages. [web:31][web:34]'
+        },
+        {
+          question: 'What is the due date for PF and ESIC payments?',
+          answer:
+            'Contributions must generally be deposited within 15 days of the close of the wage month, along with timely filing of returns. [web:30][web:33]'
+        },
+        {
+          question: 'What are the consequences of delayed PF/ESIC payments?',
+          answer:
+            'Delayed payments can attract interest, damages/penalties, and in serious cases, prosecution under the respective Acts. [web:30][web:33]'
+        }
+      ],
+      rating: 4.7
+    },
+
+    {
+      id: 'epfo-esic-detailed',
+      name: 'EPFO & ESIC Compliance Details',
+      slug: 'epfo-esic-detailed',
+      description: 'Detailed EPFO and ESIC registration, filing, and compliance management for employee welfare.',
+      icon: 'Shield',
+      features: [
+        'EPFO Provident Fund registration and account setup',
+        'ESIC Social Security registration and coverage',
+        'Employee enrollment and member IDs',
+        'Monthly contribution calculations and payments',
+        'Quarterly/Annual return filings and submissions',
+        'Employee claims processing and support',
+        'Inspection handling and compliance',
+        'Penalty avoidance and dispute resolution',
+        'Compliance monitoring and alerts',
+        'Employee benefit statements and reports'
+      ],
+      benefits: [
+        'Employee social security and insurance coverage',
+        'Retirement benefits and provident fund',
+        'Medical and disability coverage for employees',
+        'Compliance with labor laws and regulations',
+        'Reduced compliance burden and penalties',
+        'Peace of mind with proper employee coverage',
+        'Enhanced employee satisfaction and retention'
+      ],
+      procedure: [
+        {
+          step: 1,
+          title: 'Eligibility Assessment',
+          description: 'Assess business eligibility and employee coverage requirements',
+          documents: ['Employee details', 'Salary information', 'Business registration'],
+          timeline: '1-2 days'
+        },
+        {
+          step: 2,
+          title: 'Registration Process',
+          description: 'Register with EPFO and ESIC, obtain account and codes',
+          documents: ['Registration applications', 'Employee list', 'Nominee details'],
+          timeline: '5-7 days'
+        },
+        {
+          step: 3,
+          title: 'Enrollment & Member IDs',
+          description: 'Enroll employees and generate EPFO and ESIC member IDs',
+          documents: ['Member cards', 'Enrollment confirmations', 'Account details'],
+          timeline: '3-5 days'
+        },
+        {
+          step: 4,
+          title: 'Contribution & Filing',
+          description: 'Calculate, pay contributions and file monthly/quarterly returns',
+          documents: ['Contribution receipts', 'Filed returns', 'Payment proofs'],
+          timeline: 'Ongoing Monthly'
+        }
+      ],
+      requiredDocuments: [
+        'Business registration and PAN certificate',
+        'Complete employee details and payroll',
+        'Bank account details for contributions',
+        'Salary structure and payment schedule',
+        'Employee addresses and contact information',
+        'Nominee details for each employee',
+        'Factory/shop registration (if applicable)',
+        'Previous EPFO/ESIC documents (if existing)'
+      ],
+      faqs: [
+        {
+          question: 'Which businesses need EPFO registration?',
+          answer: 'Businesses with 20 or more employees need mandatory EPFO registration'
+        },
+        {
+          question: 'What is the employer contribution percentage?',
+          answer: 'EPFO: 12% of basic+DA; ESIC varies from 4.75%-7.75% based on salary'
+        },
+        {
+          question: 'Can employees withdraw their provident fund?',
+          answer: 'Yes, at retirement, resignation, or in case of hardship with approval'
+        },
+        {
+          question: 'What happens if contributions are not paid on time?',
+          answer: 'Late payment penalties and interest apply; legal action may follow'
+        }
+      ],
+      rating: 4.7
+    }
+  ]
+},
   //9. Business Licensing & Registration Services
 {
   id: 'business-licensing',
@@ -7209,9 +8092,6 @@ export const mainServiceCategories: ServiceCategory[] = [
     }
   ]
 }
-
-
-
 
 
 ];

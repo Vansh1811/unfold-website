@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { clientTestimonials } from '@/data/servicesData';
+import { ClientTestimonial } from '@/data/servicesData';
 import { Star, Users, Award, TrendingUp, Clock } from 'lucide-react';
+import { clientTestimonials } from '@/data/clientTestimonials';
 
 const stats = [
   { icon: Users, number: '200+', label: 'Happy Clients' },

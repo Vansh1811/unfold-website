@@ -45,34 +45,12 @@ const CTASection = () => (
         advantages with <span className="font-semibold text-white">Unfold Finleg Solutions</span>.
       
       </motion.p>
-
-      {/* CTA buttons */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.4 }}
-        className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
-      >
-        <Button
-          asChild
-          size="lg"
-          variant="gold"
-          leftIcon={<Mail className="h-5 w-5" />}
-          rightIcon={<ArrowRight className="h-4 w-4" />}
-        >
-         
-        </Button>
-
-        <Button
-          asChild
-          size="lg"
-          variant="outline"
-          className="border-white/30 text-white hover:bg-white/10"
-          leftIcon={<Calendar className="h-5 w-5" />}
-        >
-        </Button>
-      </motion.div>
+      <Button className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-900 px-8 py-4 rounded-xl text-lg font-bold shadow-2xl"
+                              style={{ fontFamily: 'Nexa Bold' }}>
+            <Link to="/contact">Get Consultation</Link>
+            <ArrowRight className="w-5 h-5 ml-2" />
+      </Button>
+            
 
   
     </div>
