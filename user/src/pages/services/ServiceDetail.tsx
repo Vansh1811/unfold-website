@@ -58,6 +58,7 @@ const ServiceDetail = () => {
   const serviceDetails = {
     rating: service.rating || 4.8,
     completedProjects: 200,
+    reviews: 150,
     process: service.procedure || [],
     faqs: service.faqs || [],
     benefits: service.benefits || []

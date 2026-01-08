@@ -62,14 +62,14 @@ const BlogDetail = () => {
     });
 
   const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
+    if (navigator && 'share' in navigator) {
+      (navigator as any).share({
         title: blog.title,
         text: blog.summary,
         url: window.location.href,
       });
     } else {
-      navigator.clipboard.writeText(window.location.href);
+      (navigator as any).clipboard.writeText(window.location.href);
       // plug your toast here if needed
     }
   };
