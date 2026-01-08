@@ -12,116 +12,65 @@ export interface ClientTestimonial {
 }
 
 export const clientTestimonials: ClientTestimonial[] = [
-  {
-    id: '1',
-    clientName: 'Rajesh Kumar',
-    company: 'TechStart Solutions',
-    industry: 'Technology',
-    location: 'Bangalore',
-    serviceUsed: 'Company Incorporation',
-    testimonial: 'Unfold helped us navigate complex compliance requirements seamlessly. Their expertise saved us months of work and ensured we started on the right legal foundation.',
-    rating: 5,
-    initials: 'RK'
+ {
+  id: '1',
+  clientName: 'Arpit Pathak',
+  company: 'TechStart Solutions',
+  industry: 'Technology',
+  location: 'Bangalore',
+  serviceUsed: 'Company Incorporation',
+  testimonial:
+    'I’ve had an amazing experience with Unfold Finleg Solutions LLP. The team is highly professional, responsive, and genuinely supportive. Their guidance has been clear, timely, and incredibly helpful. I truly appreciate their dedication and would highly recommend their services to anyone seeking reliable legal support!',
+  rating: 5,
+  initials: 'AP',
   },
+
   {
     id: '2',
-    clientName: 'Priya Sharma',
+    clientName: 'Divyansh Kauts',
     company: 'Green Earth Foods',
     industry: 'Food & Beverage',
     location: 'Mumbai',
     serviceUsed: 'FSSAI Registration',
-    testimonial: 'The FSSAI registration process was handled professionally with excellent attention to detail. Their team made the entire licensing process smooth and efficient.',
+    testimonial: 'I highly recommend UNFOLD FINLEG SOLUTIONS for its exceptional services and expertise. They provide invaluable guidance with tailored solutions and a proactive approach that keeps us well-informed and empowered to make decisions confidently. Their dedication to precision and efficiency streamlines our financial processes, ensuring compliance and clarity in complex concepts. UNFOLD FINLEG SOLUTIONS is an indispensable partner for anyone seeking reliable and knowledgeable financial services.',
     rating: 5,
-    initials: 'PS'
+    initials: 'DK'
   },
   {
     id: '3',
-    clientName: 'Amit Patel',
+    clientName: 'Dev Rathor',
     company: 'Digital Marketing Pro',
     industry: 'Marketing',
     location: 'Ahmedabad',
     serviceUsed: 'Trademark Registration',
-    testimonial: 'Their trademark services protected our brand effectively with comprehensive legal support. Highly recommend their expertise for intellectual property matters.',
+    testimonial: 'We took services from Unfold finleg solutions LLP since 4 years we did not face any problems with unfold they are doing their job very professionally and too much cooperative I know the owner of unfold\'s personally.\nI highly recommend unfold for all professional needs they are very professional.',
     rating: 5,
-    initials: 'AP'
+    initials: 'DV'
   },
   {
     id: '4',
-    clientName: 'Sunita Reddy',
+    clientName: 'Preeti Kotiya',
     company: 'Healthcare Plus',
     industry: 'Healthcare',
     location: 'Hyderabad',
     serviceUsed: 'Virtual CFO Services',
-    testimonial: 'Virtual CFO services transformed our financial management completely. The strategic insights and professional guidance have been invaluable for our growth.',
+    testimonial: 'I had a great experience registering my trademark with India filing. The entire process was very easy and helpful. Anbuselvi Mam handled my trademark and she was extremely professional and helpful. She patiently answered all my queries and doubts and was very attentive. I would definitely recommend this service to everyone.',
     rating: 5,
-    initials: 'SR'
+    initials: 'RS'
   },
   {
     id: '5',
-    clientName: 'Vikram Singh',
+    clientName: 'Karan Arora',
     company: 'Manufacturing Hub',
     industry: 'Manufacturing',
     location: 'Delhi',
     serviceUsed: 'Complete Incorporation',
-    testimonial: 'Complete incorporation support with ongoing compliance management. They made the complex business setup process effortless and stress-free.',
+    testimonial: 'Professional Lawyers Who Care About Your Finances - Unfoldfinlegsolutions. As someone who values financial stability as much as legal protection, choosing ABC Unfoldfinlegsolutions has been nothing short of excellent. Their team of skilled lawyers combines comprehensive understanding of finance and exceptional attention to detail, ensuring your case receives proper care. What sets them apart though, is their genuine concern towards clients welfare during stressful time',
     rating: 5,
     initials: 'VS'
   },
-  {
-    id: '6',
-    clientName: 'Neha Gupta',
-    company: 'Fashion Forward',
-    industry: 'Fashion & Retail',
-    location: 'Jaipur',
-    serviceUsed: 'GST Registration',
-    testimonial: 'GST registration and accounting services are absolutely top-notch. Their team is always available for support and handles everything with precision.',
-    rating: 5,
-    initials: 'NG'
-  },
-  {
-    id: '7',
-    clientName: 'Arjun Mehta',
-    company: 'EduTech Innovations',
-    industry: 'Education Technology',
-    location: 'Pune',
-    serviceUsed: 'Startup Registration',
-    testimonial: 'Exceptional support for our startup registration and DPIIT recognition. Their guidance was crucial in setting up our education technology venture.',
-    rating: 5,
-    initials: 'AM'
-  },
-  {
-    id: '8',
-    clientName: 'Kavita Joshi',
-    company: 'Organic Farms Ltd',
-    industry: 'Agriculture',
-    location: 'Nashik',
-    serviceUsed: 'Producer Company',
-    testimonial: 'Producer company registration was handled expertly with complete understanding of agricultural business needs. Excellent service for farming enterprises.',
-    rating: 5,
-    initials: 'KJ'
-  },
-  {
-    id: '9',
-    clientName: 'Rohit Agarwal',
-    company: 'FinTech Solutions',
-    industry: 'Financial Technology',
-    location: 'Gurgaon',
-    serviceUsed: 'Compliance Management',
-    testimonial: 'Comprehensive compliance management has kept our FinTech operations smooth and regulatory-compliant. Their proactive approach is remarkable.',
-    rating: 5,
-    initials: 'RA'
-  },
-  {
-    id: '10',
-    clientName: 'Deepika Nair',
-    company: 'Wellness Retreat',
-    industry: 'Wellness & Tourism',
-    location: 'Kerala',
-    serviceUsed: 'Section 8 Company',
-    testimonial: 'Section 8 company registration for our wellness NGO was seamless. Their expertise in non-profit regulations saved us significant time and effort.',
-    rating: 5,
-    initials: 'DN'
-  }
+
+
 ];
 
 // Utility functions for testimonials

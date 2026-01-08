@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { ChevronLeft, ChevronRight, Star, Quote, MapPin, Building, Sparkles } from 'lucide-react';
-import { clientTestimonials } from '@/data/servicesData';
+import { clientTestimonials } from '@/data/clientTestimonials';
 
 const TestimonialsCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -139,7 +139,7 @@ const TestimonialsCarousel = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="text-lg sm:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4 sm:px-6"
           >
-            Discover why hundreds of businesses trust
+            Discover why  businesses trust 
             <span className="text-navy-700 font-semibold"> Unfold Finleg Solutions</span> for their compliance and growth needs.
           </motion.p>
         </motion.div>
@@ -359,7 +359,7 @@ const TestimonialsCarousel = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           {[
-            { number: '50+', label: 'Happy Clients' },
+            { number: '200+', label: 'Happy Clients' },
             { number: '99%', label: 'Satisfaction Rate' },
             { number: '15+', label: 'Industries Served' },
             { number: '12+', label: 'Years Experience' }

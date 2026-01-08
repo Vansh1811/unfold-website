@@ -43,7 +43,7 @@ const ServiceCategory: React.FC = () => {
   const IconComponent = (Icons as any)[category.icon];
 
   const categoryStats = {
-    clients: '500+',
+    clients: '200+',
     projects: '1,200+',
     satisfaction: '99%',
     experience: '10+'

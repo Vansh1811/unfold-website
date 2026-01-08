@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, Target, Heart, Award, ArrowRight, CheckCircle, Building2, TrendingUp, Mail, Linkedin, Sparkles, Star } from 'lucide-react';
-
+import { Users, Target, Heart, Award, ArrowRight, CheckCircle, Building2, TrendingUp, Mail, Linkedin, Sparkles, Star, Image} from 'lucide-react';
+import Founder from '@/assets/about_us/Founder.png';
+import aryan from '@/assets/about_us/aryan.jpeg';
+import sapna from '@/assets/about_us/sapna.png';
 const About = () => {
   const values = [
     {
@@ -40,41 +42,49 @@ const About = () => {
 
   const team = [
     {
-      name: 'Aryan Kumar',
-      position: 'Founder & Managing Director',
-      experience: '15+ Years',
-      specialization: 'Corporate Law & Compliance',
+      name: 'Aryan Vashisth',
+      position: 'Founder – Corporate & Legal Advisory',
+      experience: 'Company Secretary with deep expertise in Companies Act, FEMA, SEBI, IRDA & NBFC compliances, FCRA and U.S. corporate law structuring. He has advised 100+ startups and enterprises on FDI, VC funding, cross-border and transaction structuring in India and the U.S.',
+      specialization:
+        'Leads the Corporate & International Desk, focusing on India–U.S. entity structuring, BOI compliance, IRS filings, strategic legal advisory and Indian regulatory compliances & advisory.',
       education: 'LLB, Company Secretary',
       email: 'aryan@unfoldfinlegsolutions.com',
-      linkedin: '#'
+      linkedin: 'https://www.linkedin.com/in/cs-aryan-v-241952a7/',
+      image: aryan,
     },
     {
-      name: 'Priya Sharma',
-      position: 'Senior Legal Consultant',
-      experience: '12+ Years',
-      specialization: 'Business Registration & IP Rights',
-      education: 'LLM, Chartered Accountant',
-      email: 'priya@unfoldfinlegsolutions.com',
-      linkedin: '#'
+      name: 'Divya Sharma',
+      position: 'Co-Founder – Secretarial & Compliance',
+      experience:
+        'Dynamic professional specializing in corporate compliance, foreign exchange laws advisory and entity structuring, with 100+ incorporations across private companies, LLPs, Section 8 companies and foreign subsidiaries.',
+      specialization:
+        'Leads the regulatory & secretarial practice, advising on Companies Act, FCRA, RBI filings, FEMA compliance, due diligence and board governance for startups, NGOs and global clients expanding into India.',
+      education: 'Company Secretary',
+      email: 'divya@unfoldfinlegsolutions.com',
+      linkedin: 'https://www.linkedin.com/in/divya-sharma-7a3313200?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
     },
     {
-      name: 'Amit Patel',
-      position: 'Head of Operations',
-      experience: '10+ Years',
-      specialization: 'Tax Consulting & GST',
-      education: 'CA, CS, MBA',
-      email: 'amit@unfoldfinlegsolutions.com',
-      linkedin: '#'
+      name: 'Mahesh Mishra',
+      position: 'Partner – Risk, Controls & International Audit Advisory',
+      experience:
+        'Seasoned Chartered Accountant with 11+ years of international audit and compliance experience at Deloitte and EY, specializing in US GAAP, UK GAAP, IFRS, ICFR, SOX and internal audit remediation.',
+      specialization:
+        'Leads the global risk advisory vertical at Unfold, driving robust controls, governance and international regulatory alignment for clients, with experience serving Fortune 500 and global automotive clients and executing onsite international assignments.',
+      education: 'Chartered Accountant',
+      linkedin: 'www.linkedin.com/in/mishramaheshCA',
     },
-      {
-      name: 'Amit Patel',
-      position: 'Head of Operations',
-      experience: '10+ Years',
-      specialization: 'Tax Consulting & GST',
-      education: 'CA, CS, MBA',
-      email: 'amit@unfoldfinlegsolutions.com',
-      linkedin: '#'
+    {
+      name: 'Sapna Sharma',
+      position: 'Senior Advisor – Assurance & Advisory',
+      experience:
+        'Seasoned Chartered Accountant with 10+ years of audit experience across multiple industries and geographies, having worked with Deloitte and Ernst & Young (E&Y) on UK GAAP, IFRS and Indian GAAP engagements.',
+      specialization:
+        'Supports Unfold’s audit and reporting team with strategic review, technical training and process development, drawing on leadership training from ISB Bangalore and experience leading complex audits in construction, real estate, services, telecom, manufacturing and banking.',
+      education: 'Chartered Accountant, ISB Bangalore – Leadership Development', 
+      linkedin: 'https://www.linkedin.com/in/ca-sapna-sharma-15866299?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
+      image: sapna,
     }
+
   ];
 
   const milestones = [
@@ -115,7 +125,7 @@ const About = () => {
       {/* Hero Section */}
         <section className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50/50 via-white to-gray-50/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end">
+            <div className="grid lg:grid-cols-[1.2fr_0.9fr] gap-12 lg:gap-16 items-end">
               
               {/* Content Column */}
               <motion.div
@@ -131,7 +141,7 @@ const About = () => {
                   className="inline-flex items-center gap-2 bg-[#1a2332] text-white px-5 py-2.5 rounded-full text-sm font-medium"
                 >
                   <Award className="w-3.5 h-3.5" />
-                  Established 2013
+                  Established 
                 </motion.div>
 
                 <div>
@@ -168,7 +178,8 @@ const About = () => {
                   transition={{ delay: 0.5, duration: 0.6 }}
                   className="text-base text-gray-700 leading-relaxed"
                 >
-                  Founded in 2013, Unfold emerged from a simple yet powerful vision: compliance shouldn't be a barrier to business growth—it should be a catalyst for it.
+                  Unfold Finleg Solutions LLP (UFS) was created with a clear belief: when handled strategically, compliance unlocks growth instead of limiting it.
+​                  Led by professionals with 10+ years of Big 4 and international experience across law, tax, audit, and risk, Unfold helps businesses turn complex regulations into confident, sustainable expansion.
                 </motion.p>
 
                 <motion.p 
@@ -208,52 +219,50 @@ const About = () => {
                 </motion.div>
               </motion.div>
 
-            {/* Right visual */}
-            <motion.div
+            {/* Right visual – light glass stats */}
+              <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="space-y-3 w-full max-w-sm ml-auto"
+                className="w-full max-w-sm ml-auto space-y-3"
               >
-                <div className="mb-1 text-[11px] font-semibold tracking-[0.2em] text-[#9AA4B2] uppercase text-right">
+                <div className="mb-1 text-[11px] font-semibold tracking-[0.25em] text-[#9AA4B2] uppercase text-right">
                   
                 </div>
 
-                {[
-                  '200+ Businesses Served',
-                  '15+ Industries',
-                  '12+ Years Experience',
-                  '98% Client Satisfaction',
-                ].map((item) => (
-                  <motion.div
-                    key={item}
-                    whileHover={{ y: -4, scale: 1.02 }}
-                    transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                    className="group relative flex items-center gap-3 rounded-2xl border border-[#E2E8F0] bg-white/90 px-4 py-4 shadow-[0_10px_30px_rgba(10,18,30,0.06)] overflow-hidden"
-                  >
-                    {/* gold glow on hover */}
-                    <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-[#C8965D]/8 via-transparent to-[#C8965D]/8" />
+                <div className="relative rounded-3xl bg-white/70 backdrop-blur-xl border border-[#E2E8F0] shadow-[0_18px_45px_rgba(15,22,33,0.08)] p-7">
+                  {/* soft gold tint */}
+                  <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_top,_rgba(200,150,93,0.10),_transparent_55%)]" />
 
-                    {/* animated gold border */}
-                    <div className="pointer-events-none absolute inset-0 rounded-2xl border border-transparent group-hover:border-[#C8965D]/60 transition-colors duration-300" />
+                  <div className="relative grid gap-3">
+                    {[
+                      { label: '200+ Businesses Served', icon: Building2 },
+                      { label: '15+ Industries', icon: TrendingUp },
+                      { label: '12+ Years Experience', icon: Award },
+                      { label: '98% Client Satisfaction', icon: CheckCircle },
+                    ].map((stat) => (
+                      <motion.div
+                        key={stat.label}
+                        whileHover={{ y: -3, scale: 1.02 }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                        className="group relative flex items-center gap-3 rounded-2xl border border-[#E2E8F0]/70 bg-white/90 px- py-3 overflow-hidden"
+                      >
+                        {/* subtle hover glow */}
+                        <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-[#C8965D]/10 via-transparent to-[#C8965D]/10" />
 
-                    <span className="relative flex h-7 w-7 items-center justify-center rounded-full bg-[#3B5A7A]/10">
-                      <span className="h-2 w-2 rounded-full bg-[#C8965D]" />
-                    </span>
+                        <div className="relative flex h-9 w-9 items-center justify-center rounded-2xl bg-[#3B5A7A]/8">
+                          <stat.icon className="w-4 h-4 text-[#C8965D]" />
+                        </div>
 
-                    <span className="relative text-sm font-medium text-[#1a2332]">
-                      {item}
-                    </span>
-                  </motion.div>
-                ))}
-            </motion.div>    
-
-
-
-
-
-
-
+                        <span className="relative text-sm font-semibold text-[#1a2332]">
+                          {stat.label}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+ 
             </div>
           </div>
         </section>
@@ -464,14 +473,29 @@ const About = () => {
               >
                 <Card className="bg-white shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-0">
                   <div className="relative aspect-square bg-gradient-to-br from-[#3B5A7A]/10 via-gray-50 to-[#C8965D]/10 flex items-center justify-center">
-                    <motion.div 
-                      className="w-40 h-40 bg-gradient-to-br from-[#3B5A7A] to-[#1a2332] rounded-full flex items-center justify-center shadow-2xl"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <span className="text-5xl font-bold text-[#C8965D]" style={{ fontFamily: 'Nexa Bold' }}>
-                        {member.name.split(' ').map(n => n[0]).join('')}
+                  <motion.div
+                  className="w-100 h-70 overflow-hidden shadow-2xl border-2 border-white rounded-3xl"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[#3B5A7A] to-[#1a2332] flex items-center justify-center">
+                      <span className="text-5xl font-bold text-[#C8965D]">
+                        {member.name
+                          .split(' ')
+                          .map((n) => n[0])
+                          .join('')}
                       </span>
-                    </motion.div>
+                    </div>
+                  )}
+                </motion.div>
+
+
                   </div>
                   
                   <CardContent className="p-6">

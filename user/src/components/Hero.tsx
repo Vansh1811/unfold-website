@@ -86,9 +86,7 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-xl text-gray-300 max-w-2xl leading-relaxed"
               >
-                From company incorporation to ongoing compliance, we transform
-                regulatory challenges into competitive advantages for growing
-                businesses.
+                Unfold Finleg Solutions LLP (UFS) is a one‑stop solution for corporate governance, auditing, accounting, taxation and international advisory, helping businesses from incorporation to cross‑border expansion with integrated, high‑integrity solutions
               </motion.p>
             </div>
 

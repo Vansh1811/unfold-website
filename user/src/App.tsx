@@ -16,10 +16,6 @@ import NotFound from "./pages/NotFound";
 import MoreServices from "./pages/services/MoreServices";
 import ServiceCategory from "./pages/services/ServiceCategory";
 import ServiceDetail from "./pages/services/ServiceDetail";
-import AdminLogin from "./pages/admin/AdminLogin";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminBlogs from "./pages/admin/AdminBlogs";
-import AdminServices from "./pages/admin/AdminServices";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./contexts/AuthContext";
 import ScrollToTop from './components/ScrollToTop';
@@ -54,25 +50,7 @@ const App = () => (
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsOfService />} />
                 <Route path="/cookies" element={<CookiePolicy />} />
-
-                {/* Admin Routes */}
-                <Route path="/admin/login" element={<AdminLogin />} />
-                <Route path="/admin" element={
-                  <ProtectedRoute>
-                    <AdminDashboard />
-                  </ProtectedRoute>
-                } />
-                <Route path="/admin/blogs" element={
-                  <ProtectedRoute>
-                    <AdminBlogs />
-                  </ProtectedRoute>
-                } />
-                <Route path="/admin/services" element={
-                  <ProtectedRoute>
-                    <AdminServices />
-                  </ProtectedRoute>
-                } />
-                
+            
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

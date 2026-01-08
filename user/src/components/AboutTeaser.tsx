@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Users, Award, TrendingUp, Target, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+
 const AboutTeaser = () => {
   const stats = [
     { icon: Users, number: '200+', label: 'Businesses Served' },
@@ -15,15 +16,15 @@ const AboutTeaser = () => {
   const values = [
     {
       title: 'Expert Guidance',
-      description: 'Deep industry expertise combined with practical, real-world solutions.'
+      description: 'Deep expertise in corporate governance, auditing, accounting and taxation, combined with practical, real‑world solutions'
     },
     {
       title: 'Human-Centered',
-      description: 'Your success is at the heart of everything we do, with personalized attention.'
+      description: 'Your success is at the heart of everything we do, with personalized attention and long‑term partnerships and support'
     },
     {
       title: 'Proven Results',
-      description: 'Track record of transforming compliance challenges into growth opportunities.'
+      description: 'Strong track record of turning complex regulatory and compliance challenges into strategic growth opportunities'
     }
   ];
 
@@ -114,11 +115,11 @@ const AboutTeaser = () => {
               className="space-y-4"
             >
               <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-                At Unfold, we believe that compliance shouldn't be a barrier to growth—it should be a catalyst for it. With over a decade of experience, we've helped hundreds of businesses transform regulatory challenges into competitive advantages.
+              At Unfold, compliance is not a barrier to growth—it is a catalyst for it. We help businesses transform regulatory challenges across governance, auditing, accounting and taxation into competitive advantages.
               </p>
-              
+
               <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-                Our mission is simple: to unfold your business potential by providing expert guidance in governance, compliance, and strategic growth. We combine deep industry expertise with a human-centered approach that puts your success at the heart of everything we do.
+                Our mission is simple: to unfold your business potential by providing expert guidance in corporate governance, compliance and strategic growth, both in India and internationally. We combine deep industry expertise with a human‑centered approach that puts your success at the heart of everything we do.
               </p>
             </motion.div>
 

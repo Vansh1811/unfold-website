@@ -4,39 +4,44 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const WhyChooseUs = () => {
   const features = [
-    {
-      icon: Award,
-      title: '12+ Years Excellence',
-      description: 'Proven track record of helping 500+ businesses navigate complex compliance challenges with expert guidance and innovative solutions.',
-      stat: '500+',
-      statLabel: 'CLIENTS SERVED',
-      color: 'bg-navy'
-    },
-    {
-      icon: Lightbulb,
-      title: 'Tailored Solutions',
-      description: 'Every business is unique. We create customized strategies that align with your specific industry requirements and business goals.',
-      stat: '25+',
-      statLabel: 'INDUSTRIES',
-      color: 'bg-gold'
-    },
-    {
-      icon: Heart,
-      title: 'Ethical & Transparent',
-      description: 'Built on trust and integrity. We believe in honest communication and ethical practices in everything we do.',
-      stat: '99%',
-      statLabel: 'SATISFACTION',
-      color: 'bg-navy'
-    },
-    {
-      icon: Shield,
-      title: 'Compliance Guarantee',
-      description: 'We ensure 100% regulatory compliance with continuous monitoring and proactive updates for changing requirements.',
-      stat: '100%',
-      statLabel: 'COMPLIANCE',
-      color: 'bg-gold'
-    }
-  ];
+  {
+    icon: Award,
+    title: 'Tailored Solutions',
+    description:
+      'Your unique challenges deserve customized approaches. We design legal and financial strategies that align with your business goals and long-term vision.',
+    stat: '500+',
+    statLabel: 'BUSINESSES SERVED',
+    color: 'bg-navy',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Multidisciplinary Expertise',
+    description:
+      'Our leadership spans corporate law, tax, audit, risk and US compliance, ensuring you receive well-rounded, actionable advice at every stage.',
+    stat: '25+',
+    statLabel: 'INDUSTRIES',
+    color: 'bg-gold',
+  },
+  {
+    icon: Heart,
+    title: 'Ethical Backbone',
+    description:
+      'Transparency, professionalism and accountability form the foundation of our work. We do not just ensure compliance — we build long-term trust.',
+    stat: '99%',
+    statLabel: 'SATISFACTION',
+    color: 'bg-navy',
+  },
+  {
+    icon: Shield,
+    title: 'Compliance Guarantee',
+    description:
+      'We ensure regulatory compliance with continuous monitoring and proactive updates for changing requirements.',
+    stat: '100%',
+    statLabel: 'COMPLIANCE',
+    color: 'bg-gold',
+  },
+];
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -153,7 +158,7 @@ const WhyChooseUs = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-xl text-gray-600 mb-8"
           >
-            Trusted by <span className="font-semibold text-navy">500+ Businesses</span>
+            Trusted by <span className="font-semibold text-navy">200+ Businesses</span>
           </motion.p>
 
           {/* Description */}

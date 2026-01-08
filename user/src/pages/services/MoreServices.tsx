@@ -360,7 +360,7 @@ const MoreServices = () => {
                 <div className="text-blue-200">Expert Professionals</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-yellow-400">500+</div>
+                <div className="text-3xl font-bold text-yellow-400">200+</div>
                 <div className="text-blue-200">Complex Projects</div>
               </div>
               <div className="text-center">
