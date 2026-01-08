@@ -9,7 +9,7 @@ const WhyChooseUs = () => {
     title: 'Tailored Solutions',
     description:
       'Your unique challenges deserve customized approaches. We design legal and financial strategies that align with your business goals and long-term vision.',
-    stat: '500+',
+    stat: '200+',
     statLabel: 'BUSINESSES SERVED',
     color: 'bg-navy',
   },
