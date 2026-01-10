@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Users, Target, Heart, Award, ArrowRight, CheckCircle, Building2, TrendingUp, Mail, Linkedin, Sparkles, Star, Image} from 'lucide-react';
-import mahesh from '@/assets/about_us/mahesh.jpg';
+import mahesh from '@/assets/about_us/mahesh.JPG';
 import aryan from '@/assets/about_us/aryan.jpeg';
 import sapna from '@/assets/about_us/sapna.png';
 const About = () => {

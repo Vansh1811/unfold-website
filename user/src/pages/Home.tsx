@@ -86,10 +86,6 @@ const Home = () => {
             }}
             whileInView="visible"
             initial="hidden"
-            viewport={{
-              once: true,
-              margin: '-100px'
-            }}
             amount={0.1}
           >
             <Suspense fallback={<SectionLoader />}>
