@@ -66,7 +66,7 @@ const ServiceDetail = () => {
 
   // Contact information for Unfold Finleg
   const contactInfo = {
-    phone: '+91-8076543210',
+    phone: '+91 995-389-7897',
     email: 'info@unfoldfinleg.com'
   };
 

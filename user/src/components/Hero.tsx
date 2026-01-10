@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Play, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import unfoldLogo from '@/assets/unfold-logo.png';
+import About from '@/pages/About';
 
 const Hero = () => {
   const features = [
@@ -133,7 +134,7 @@ const Hero = () => {
                 className="border-2 border-gold/50 bg-transparent hover:bg-gold/10 hover:border-gold text-white px-8 py-3 text-lg group transition-all duration-300"
               >
                 <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                Watch Our Story
+                <Link to="/About">Know About Us</Link>
               </Button>
             </motion.div>
           </motion.div>

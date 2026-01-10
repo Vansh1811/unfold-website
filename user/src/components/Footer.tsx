@@ -20,40 +20,28 @@ const serviceCategories = [
     to: '/services/company-formation-registration',
   },
   {
-    label: 'Legal Compliance & Advisory',
-    slug: 'legal-compliance-advisory',
-    to: '/services/legal-compliance-advisory',
+    label: 'Virtual CFO (vCFO) Services',
+    slug: 'Virtual CFO (vCFO) Services',
+    to: '/services/virtual-cfo-services',
   },
   {
-    label: 'Taxation & Accounting',
-    slug: 'taxation-accounting',
-    to: '/services/taxation-accounting',
+    label: 'FEMA & Foreign Investment Advisory',
+    slug: 'FEMA & Foreign Investment Advisory',
+    to: '/services/foreign-investment-fcra',
   },
   {
-    label: 'Intellectual Property Rights',
-    slug: 'intellectual-property-rights',
-    to: '/services/intellectual-property-rights',
+    label: 'US Incorporation, Compliance & Advisory',
+    slug: 'US Incorporation, Compliance & Advisory',
+    to: '/services/us-incorporation-compliance',
   },
-  {
-    label: 'HR & Payroll Services',
-    slug: 'hr-payroll-services',
-    to: '/services/hr-payroll-services',
-  },
-  {
-    label: 'Business Licensing & Registration',
-    slug: 'business-licensing-registration',
-    to: '/services/business-licensing-registration',
-  },
+  
 ];
-
-const services = serviceCategories.map((category) => category.label);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
     { name: 'About Us', href: '/about' },
-    { name: 'Our Services', href: '/services' },
     { name: 'Blogs', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -73,7 +61,11 @@ const Footer = () => {
     },
     { name: 'Twitter', href: '#', icon: Twitter, color: 'hover:text-blue-400' },
     { name: 'Facebook', href: '#', icon: Facebook, color: 'hover:text-blue-700' },
-    { name: 'Instagram', href: '#', icon: Instagram, color: 'hover:text-pink-600' },
+    {  
+      name: 'Instagram',
+      href: 'https://www.instagram.com/unfoldfinlegsolutions/',
+      icon: Instagram,
+      color: 'hover:text-pink-600' },
   ];
 
   return (
@@ -136,27 +128,43 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h4 className="text-lg font-bold text-white mb-4">Our Services</h4>
-            <ul className="space-y-3">
-              {services.map((service, index) => (
+            <ul className="space-y-3 mb-6">
+              {serviceCategories.map((service, index) => (
                 <motion.li
-                  key={service}
+                  key={service.slug}
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 + index * 0.05 }}
                 >
                   <Link
-                    to="/services"
+                    to={service.to}
                     className="text-blue-100 hover:text-white transition-colors duration-200 text-sm flex items-center gap-2 group"
                   >
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                     <span className="group-hover:translate-x-1 transition-transform duration-200">
-                      {service}
+                      {service.label}
                     </span>
                   </Link>
                 </motion.li>
               ))}
             </ul>
+
+            {/* More Services Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-0.5 px-4 py-2.5 bg-white/20 hover:bg-gold/30 text-navy-800 hover:text-navy-900 rounded-lg transition-all duration-300 group font-medium text-sm"
+              >
+                <span>MORE SERVICES</span>
+                <ArrowRight className="w-5 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
+            </motion.div>
           </motion.div>
 
           {/* Quick Links */}
@@ -218,13 +226,13 @@ const Footer = () => {
                     href="tel:+919958978970"
                     className="hover:text-white transition-colors duration-200 block"
                   >
-                    +91 995-897-8970
+                    +91 999-966-7207
                   </a>
                   <a
                     href="tel:+919599399662"
                     className="hover:text-white transition-colors duration-200 block"
                   >
-                    +91 959-939-9662
+                    +91 995-389-7897
                   </a>
                 </div>
               </div>
@@ -253,7 +261,7 @@ const Footer = () => {
           <div className="border-t border-white/20 pt-8">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
               <p className="text-blue-100 text-sm text-center sm:text-left">
-                © {currentYear} Unfold Finleg Solutions. All rights reserved.
+                © {currentYear} Unfold Finleg Solutions LLP. All rights reserved.
               </p>
 
               <div className="flex flex-wrap gap-4 sm:gap-6">

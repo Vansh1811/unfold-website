@@ -248,7 +248,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Call Us',
-      primary: '+91 995-897-8970',
+      primary: '+91 995-389-7897',
       secondary: 'Mon-Sat: 9 AM - 7 PM IST',
       href: 'tel:+919958978970',
     },

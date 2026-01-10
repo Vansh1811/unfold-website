@@ -1,4 +1,6 @@
-const API_BASE_URL = 'http://localhost:5000/api/v1';
+// Prefer env variable, fall back to localhost for local development
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api/v1';
 
 interface ApiResponse<T> {
   success: boolean;
@@ -25,7 +27,7 @@ const makeRequest = async <T>(
 ): Promise<T> => {
   const token = getToken();
   const url = `${API_BASE_URL}${endpoint}`;
-  
+
   const config: RequestInit = {
     headers: {
       'Content-Type': 'application/json',
@@ -58,7 +60,10 @@ const makeRequest = async <T>(
     if (error instanceof ApiError) {
       throw error;
     }
-    throw new ApiError(500, error instanceof Error ? error.message : 'Network error');
+    throw new ApiError(
+      500,
+      error instanceof Error ? error.message : 'Network error'
+    );
   }
 };
 
@@ -75,7 +80,7 @@ export const blogApi = {
     if (params?.limit) searchParams.append('limit', params.limit.toString());
     if (params?.status) searchParams.append('status', params.status);
     if (params?.search) searchParams.append('search', params.search);
-    
+
     return makeRequest<{
       blogs: any[];
       pagination: {
@@ -122,7 +127,7 @@ export const serviceApi = {
     if (params?.status) searchParams.append('status', params.status);
     if (params?.category) searchParams.append('category', params.category);
     if (params?.search) searchParams.append('search', params.search);
-    
+
     return makeRequest<{
       services: any[];
       pagination: {

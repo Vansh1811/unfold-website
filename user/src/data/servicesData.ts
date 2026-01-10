@@ -1,6 +1,4 @@
 export interface SubService {
-  price: ReactNode;
-  price: any;
   id: string;
   name: string;
   slug: string;

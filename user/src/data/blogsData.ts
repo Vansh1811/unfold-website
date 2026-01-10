@@ -3,6 +3,7 @@
 import usIncorp1 from '@/assets/blogs/us-incorporation-part-1.jpg';
 import usIncorp2 from '@/assets/blogs/us-incorporation-part-2.webp';
 import usIncorp3 from '@/assets/blogs/us-incorporation-part-3.jpg';
+import businessModel from '@/assets/blogs/business-model-startup.jpg';  // Add this import after uploading image.jpg
 
 export interface BlogPost {
   id: string;
@@ -70,6 +71,22 @@ export const blogPosts: BlogPost[] = [
     isExternal: true,
     externalUrl:
       'https://www.linkedin.com/pulse/us-startup-incorporation-made-simple-part-3-sole-rjcdc/',
+  },
+  {
+    id: 'us-incorp-part-4-business-model',
+    title: 'Choosing the Right Business Model for Your US Startup',
+    slug: 'choosing-right-business-model-us-startup',
+    summary:
+      'Beyond entity structure, discover how to select the optimal business model that aligns with your funding goals, growth trajectory, and investor expectations.',
+    author: 'Unfold Finleg Solutions LLP',
+    date: '2026-01-10',
+    content: '',
+    image: businessModel,
+    category: 'US Incorporation',
+    readTime: '5 min',
+    isExternal: true,
+    externalUrl:
+      'https://www.linkedin.com/pulse/choosing-right-business-model-your-us-startup-s2trc/?trackingId=HZAuNYc1KyzxIxIcrW01Aw%3D%3D',
   },
 ];
 

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Users, Target, Heart, Award, ArrowRight, CheckCircle, Building2, TrendingUp, Mail, Linkedin, Sparkles, Star, Image} from 'lucide-react';
-import Founder from '@/assets/about_us/Founder.png';
+import mahesh from '@/assets/about_us/mahesh.jpg';
 import aryan from '@/assets/about_us/aryan.jpeg';
 import sapna from '@/assets/about_us/sapna.png';
 const About = () => {
@@ -72,6 +72,7 @@ const About = () => {
         'Leads the global risk advisory vertical at Unfold, driving robust controls, governance and international regulatory alignment for clients, with experience serving Fortune 500 and global automotive clients and executing onsite international assignments.',
       education: 'Chartered Accountant',
       linkedin: 'www.linkedin.com/in/mishramaheshCA',
+      image : mahesh
     },
     {
       name: 'Sapna Sharma',
@@ -141,7 +142,7 @@ const About = () => {
                   className="inline-flex items-center gap-2 bg-[#1a2332] text-white px-5 py-2.5 rounded-full text-sm font-medium"
                 >
                   <Award className="w-3.5 h-3.5" />
-                  Established 
+                  Established in 2021
                 </motion.div>
 
                 <div>
@@ -211,11 +212,7 @@ const About = () => {
                   whileTap={{ scale: 0.98 }}
                   className="pt-4"
                 >
-                  <Button className="bg-[#1a2332] hover:bg-[#0f1621] text-white px-7 py-5 rounded-xl text-sm font-semibold transition-all duration-200"
-                          style={{ fontFamily: 'Nexa Bold' }}>
-                    Our Story
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                
                 </motion.div>
               </motion.div>
 
