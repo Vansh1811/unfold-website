@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
 import { lazy, Suspense } from 'react';
-import TestimonialsCarousel from '@/components/TestimonialsCarousel';
-import FeaturedServices from '@/components/FeaturedServices';
-import ServicesSection from '@/components/ServicesSection';
+import TestimonialsCarousel from '@/components/Home/TestimonialsCarousel';
+import FeaturedServices from '@/components/Home/FeaturedServices';
+import ServicesSection from '@/components/Home/ServicesSection';
 
 // Lazy load components for better performance
-const Hero = lazy(() => import('@/components/Hero'));
-const WhyChooseUs = lazy(() => import('@/components/WhyChooseUs'));
-const AboutTeaser = lazy(() => import('@/components/AboutTeaser'));
-const CTASection = lazy(() => import('@/components/CTASection'));
+const Hero = lazy(() => import('@/components/Home/Hero'));
+const WhyChooseUs = lazy(() => import('@/components/Home/WhyChooseUs'));
+const AboutTeaser = lazy(() => import('@/components/Home/AboutTeaser'));
+const CTASection = lazy(() => import('@/components/Home/CTASection'));
 
 // Loading component
 const SectionLoader = () => (

@@ -4,31 +4,27 @@ import { Toaster as Sonner } from "./components/ui/sonner";
 import { TooltipProvider } from "./components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/ui/Navbar";
+import Footer from "./components/ui/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Services from "./pages/Services";
-import BlogList from "./pages/BlogList";
-import BlogDetail from "./pages/BlogDetail";
+import Services from "./pages/Services/1_Services";
+import BlogList from "./pages/Blogs/1_BlogList";
+import BlogDetail from "./pages/Blogs/2_BlogDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import MoreServices from "./pages/services/MoreServices";
-import ServiceCategory from "./pages/services/ServiceCategory";
-import ServiceDetail from "./pages/services/ServiceDetail";
-import ProtectedRoute from "./components/ProtectedRoute";
-import { AuthProvider } from "./contexts/AuthContext";
-import ScrollToTop from './components/ScrollToTop';
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsOfService from "./pages/TermsOfService";
-import CookiePolicy from "./pages/CookiePolicy";
+import ServiceCategory from "./pages/Services/2_ServiceCategory";
+import ServiceDetail from "./pages/Services/3_ServiceDetail";
+import ScrollToTop from './components/ui/ScrollToTop';
+import PrivacyPolicy from "./pages/Legal/x_PrivacyPolicy";
+import TermsOfService from "./pages/Legal/x_TermsOfService";
+import CookiePolicy from "./pages/Legal/x_CookiePolicy";
 
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -41,7 +37,6 @@ const App = () => (
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/services/more" element={<MoreServices />} />
                 <Route path="/services/:categorySlug" element={<ServiceCategory />} />
                 <Route path="/services/:categorySlug/:serviceSlug" element={<ServiceDetail />} />
                 <Route path="/blog" element={<BlogList />} />
@@ -58,7 +53,6 @@ const App = () => (
           </div>
         </BrowserRouter>
       </TooltipProvider>
-    </AuthProvider>
   </QueryClientProvider>
 );
 

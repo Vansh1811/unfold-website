@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { blogPosts } from '@/data/blogsData';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 const BlogList = () => {
   const breadcrumbItems = [{ label: 'Blog' }];

@@ -1,40 +1,45 @@
 import { Request, Response } from 'express';
 import { sendContactEmail } from '../utils/emailService';
-
 export const submitContactForm = async (req: Request, res: Response) => {
   try {
+    console.log('contact body:', req.body); // debug
+
     const { name, email, phone, company, service, serviceSubcategory, message } = req.body;
 
-    // Validate required fields
     if (!name || !email || !phone || !message) {
       return res.status(400).json({
         success: false,
-        error: { message: 'Missing required fields', code: 400 }
+        error: { message: 'Missing required fields', code: 400 },
       });
     }
 
-    // Send email
-    await sendContactEmail({
-      name,
-      email,
-      phone,
-      company: company || 'N/A',
-      service: service || 'N/A',
-      serviceSubcategory: serviceSubcategory || 'N/A',
-      message,
-    });
+    try {
+      await sendContactEmail({
+        name,
+        email,
+        phone,
+        company: company || 'N/A',
+        service: service || 'N/A',
+        serviceSubcategory: serviceSubcategory || 'N/A',
+        message,
+      });
+    } catch (err) {
+      console.error('sendContactEmail failed:', err);
+      return res.status(500).json({
+        success: false,
+        error: { message: 'Email service error', code: 500 },
+      });
+    }
 
     return res.status(200).json({
       success: true,
-      message: 'Email sent successfully'
+      message: 'Email sent successfully',
     });
-
   } catch (error) {
-    console.error('Contact form error:', error);
+    console.error('Contact form error (outer):', error);
     return res.status(500).json({
       success: false,
-      error: { message: 'Failed to send email', code: 500 }
+      error: { message: 'Failed to send email', code: 500 },
     });
   }
 };
-

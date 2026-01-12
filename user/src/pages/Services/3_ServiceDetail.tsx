@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { mainServiceCategories, moreServices } from '@/data/servicesData';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import { mainServiceCategories } from '@/data/servicesData';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
@@ -29,8 +29,7 @@ const ServiceDetail = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'process' | 'faqs'>('overview');
 
   // Find category and service
-  const category = mainServiceCategories.find(cat => cat.slug === categorySlug) || 
-    moreServices.find(cat => cat.slug === categorySlug);
+  const category = mainServiceCategories.find(cat => cat.slug === categorySlug) ;
   
   const service = category?.subServices.find(svc => svc.slug === serviceSlug);
 

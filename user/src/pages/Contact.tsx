@@ -1,10 +1,13 @@
-import { FormEvent, ChangeEvent } from 'react';
+import React, { FormEvent, ChangeEvent ,useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { mainServiceCategories } from '@/data/servicesData';
+
+
 import {
   Mail,
   Phone,
@@ -23,8 +26,8 @@ type ContactFormData = {
   email: string;
   phone: string;
   company: string;
-  service: string;
-  serviceSubcategory: string;
+  service: string;            // category id
+  serviceSubcategory: string; // sub-service slug
   message: string;
 };
 
@@ -41,113 +44,6 @@ type FAQItem = {
   answer: string;
 };
 
-type ServiceCategory = {
-  id: string;
-  label: string;
-  subServices: string[];
-};
-
-const serviceCategories: ServiceCategory[] = [
-  {
-    id: 'incorporation',
-    label: 'Company Incorporation',
-    subServices: [
-      'Private Limited Company',
-      'Public Limited Company',
-      'LLP Registration',
-      'One Person Company',
-      'Section 8 Company',
-      'Nidhi Company',
-      'Producer Company',
-      'Partnership Firm Registration',
-      'Sole Proprietorship Registration',
-      'Startup India Registration',
-      'MSME / Udyam Registration',
-      'Import Export Code (IEC)',
-    ],
-  },
-  {
-    id: 'registrationLicensing',
-    label: 'Registration & Licensing',
-    subServices: [
-      'GST Registration',
-      'Professional Tax Registration',
-      'Shop & Establishment Registration',
-      'FSSAI Registration',
-      'PF & ESI Registration',
-      'Trade License',
-      'Trademark Registration',
-      'PAN & TAN Application',
-    ],
-  },
-  {
-    id: 'accounting',
-    label: 'Accounting & Tax Services',
-    subServices: [
-      'Monthly Accounting & Bookkeeping',
-      'Virtual CFO Services',
-      'GST Return Filing',
-      'TDS Return Filing',
-      'Income Tax Return Filing',
-      'Tax Planning & Advisory',
-      'Financial Statements & Reporting',
-      'Payroll Accounting',
-    ],
-  },
-  {
-    id: 'compliance',
-    label: 'Corporate & Secretarial Compliance',
-    subServices: [
-      'ROC Annual Filings',
-      'Event Based Compliances',
-      'Secretarial Audit',
-      'Maintenance of Statutory Registers',
-      'Board & General Meeting Support',
-      'Change in Directors / Partners',
-      'Change in Capital Structure',
-      'Charge Creation & Modification Filings',
-      'Secretarial Standard Compliances',
-    ],
-  },
-  {
-    id: 'hr',
-    label: 'HR & Payroll Solutions',
-    subServices: [
-      'Payroll Processing',
-      'PF & ESI Compliances',
-      'Labour Law Advisory',
-      'Drafting HR Policies & Handbooks',
-      'Employee Onboarding & Exit Formalities',
-      'Attendance & Leave Management Support',
-    ],
-  },
-  {
-    id: 'protectBusiness',
-    label: 'Protect Your Business',
-    subServices: [
-      'Trademark Registration',
-      'Trademark Objection & Opposition Handling',
-      'Legal Drafting of Agreements & Contracts',
-      'Vendor & Service Agreements',
-      'Founders’ Agreement / Shareholders’ Agreement',
-      'Non-Disclosure Agreements (NDA)',
-      'Employment & Consultancy Agreements',
-    ],
-  },
-  {
-    id: 'advisory',
-    label: 'Business Advisory',
-    subServices: [
-      'Fundraising & Valuation Support',
-      'Due Diligence & Transaction Advisory',
-      'Strategic Business Consulting',
-      'Startup Compliance Roadmap',
-      'Entity Structure Advisory',
-      'Process & Governance Advisory',
-    ],
-  },
-];
-
 const Contact = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
@@ -162,6 +58,22 @@ const Contact = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  // Build simple category options from mainServiceCategories
+  const serviceCategories = useMemo(
+    () =>
+      mainServiceCategories.map(cat => ({
+        id: cat.id,
+        label: cat.name,
+      })),
+    []
+  );
+
+  // Currently selected category object
+  const currentCategory = useMemo(
+    () => mainServiceCategories.find(c => c.id === formData.service) || null,
+    [formData.service]
+  );
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -219,17 +131,17 @@ const Contact = () => {
   };
 
   const handleChange = (field: keyof ContactFormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData(prev => ({ ...prev, [field]: value }));
     if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: '' }));
+      setErrors(prev => ({ ...prev, [field]: '' }));
     }
   };
 
   const onInputChange =
-    (field: keyof ContactFormData) =>
-    (e: ChangeEvent<HTMLInputElement>) => {
-      handleChange(field, e.target.value);
-    };
+  (field: keyof ContactFormData) =>
+  (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleChange(field, e.target.value);
+  };
 
   const onTextareaChange =
     (field: keyof ContactFormData) =>
@@ -288,10 +200,6 @@ const Contact = () => {
         'Yes, we offer comprehensive post-service support and annual maintenance packages for continued compliance.',
     },
   ];
-
-  const currentCategory = serviceCategories.find(
-    (c) => c.id === formData.service
-  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/40 relative">
@@ -450,11 +358,12 @@ const Contact = () => {
                           </span>
                         </div>
 
+                        {/* Category select */}
                         <select
                           value={formData.service}
-                          onChange={(e) => {
+                          onChange={e => {
                             const newCat = e.target.value;
-                            setFormData((prev) => ({
+                            setFormData(prev => ({
                               ...prev,
                               service: newCat,
                               serviceSubcategory: '',
@@ -463,17 +372,18 @@ const Contact = () => {
                           className="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm bg-white focus:border-gold-500 focus:ring-gold-500 transition-all duration-300"
                         >
                           <option value="">Select a service category</option>
-                          {serviceCategories.map((cat) => (
+                          {serviceCategories.map(cat => (
                             <option key={cat.id} value={cat.id}>
                               {cat.label}
                             </option>
                           ))}
                         </select>
 
+                        {/* Sub‑service select */}
                         <select
                           value={formData.serviceSubcategory}
-                          onChange={(e) =>
-                            setFormData((prev) => ({
+                          onChange={e =>
+                            setFormData(prev => ({
                               ...prev,
                               serviceSubcategory: e.target.value,
                             }))
@@ -486,9 +396,9 @@ const Contact = () => {
                               ? 'Select a specific service'
                               : 'Choose a category first'}
                           </option>
-                          {currentCategory?.subServices.map((sub) => (
-                            <option key={sub} value={sub}>
-                              {sub}
+                          {currentCategory?.subServices.map(sub => (
+                            <option key={sub.slug} value={sub.slug}>
+                              {sub.name}
                             </option>
                           ))}
                         </select>
@@ -604,22 +514,21 @@ const Contact = () => {
                 {/* thin top accent */}
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gold-500 via-gold-600 to-gold-500" />
 
-              {/* navy header bar – taller like form header */}
-              <motion.div
-                initial={{ opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.05 }}
-                className="px-6 py-8 sm:py-9 bg-navy-900 flex items-center justify-between gap-4"
-              >
-                <div className="inline-flex items-center gap-2 bg-navy-800 px-4 py-2 rounded-full text-[12px] font-medium text-gold-300 shadow-sm">
-                  <Phone className="w-4 h-4" />
-                  Prefer a quick call?
-                </div>
-                <span className="text-[12px] text-blue-100 whitespace-nowrap">
-                  Mon–Sat · 9:00 AM – 7:00 PM IST
-                </span>
-              </motion.div>
-
+                {/* navy header bar */}
+                <motion.div
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.05 }}
+                  className="px-6 py-8 sm:py-9 bg-navy-900 flex items-center justify-between gap-4"
+                >
+                  <div className="inline-flex items-center gap-2 bg-navy-800 px-4 py-2 rounded-full text-[12px] font-medium text-gold-300 shadow-sm">
+                    <Phone className="w-4 h-4" />
+                    Prefer a quick call?
+                  </div>
+                  <span className="text-[12px] text-blue-100 whitespace-nowrap">
+                    Mon–Sat · 9:00 AM – 7:00 PM IST
+                  </span>
+                </motion.div>
 
                 {/* heading block */}
                 <CardHeader className="pb-3 pt-4 px-5 bg-gradient-to-br from-gold-50 via-white to-blue-50/60">
@@ -627,7 +536,7 @@ const Contact = () => {
                     className="text-base font-bold text-white inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-navy-900 shadow-sm"
                     style={{ fontFamily: 'Nexa Bold' }}
                   >
-                    
+                    {/* Intentionally blank text pill, matches your original */}
                   </CardTitle>
                   <p className="text-xs text-gray-600 mt-3 max-w-sm">
                     Reach our team via email, phone, or visit us during business
@@ -672,104 +581,95 @@ const Contact = () => {
                     </motion.a>
                   ))}
 
-                {/* RATED CARD – light inline badge */}
-               {/* RATED CARD – matches other cards, with gold accent */}
-                <motion.div
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.25, delay: 0.4 }}
-                  className="mt-2 block rounded-xl border border-gold-300/70 bg-white px-4 py-3.5 shadow-[0_8px_20px_rgba(15,23,42,0.04)]"
-                >
-                  <div className="flex items-center gap-3.5">
-                    {/* make icon match others */}
-                    <div className="w-10 h-10 rounded-xl bg-navy-900 flex items-center justify-center shadow-sm">
-                      <Star className="w-4 h-4 text-gold-400" />
+                  {/* RATED CARD */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.25, delay: 0.4 }}
+                    className="mt-2 block rounded-xl border border-gold-300/70 bg-white px-4 py-3.5 shadow-[0_8px_20px_rgba(15,23,42,0.04)]"
+                  >
+                    <div className="flex items-center gap-3.5">
+                      <div className="w-10 h-10 rounded-xl bg-navy-900 flex items-center justify-center shadow-sm">
+                        <Star className="w-4 h-4 text-gold-400" />
+                      </div>
+                      <div className="flex-1">
+                        <span
+                          className="block text-xs font-semibold text-navy-900 mb-0.5"
+                          style={{ fontFamily: 'Nexa Bold' }}
+                        >
+                          Trusted by 100+ businesses
+                        </span>
+                        <span className="text-[11px] text-gray-700">
+                          Rated 4.9/5 for responsiveness and compliance expertise.
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <span
-                        className="block text-xs font-semibold text-navy-900 mb-0.5"
-                        style={{ fontFamily: 'Nexa Bold' }}
-                      >
-                        Trusted by 100+ businesses
-                      </span>
-                      <span className="text-[11px] text-gray-700">
-                        Rated 4.9/5 for responsiveness and compliance expertise.
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-
-
-
-
+                  </motion.div>
                 </CardContent>
               </Card>
             </motion.div>
           </div>
 
-          {/* FAQ FULL-WIDTH BELOW, styled to match */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="mt-16 max-w-6xl mx-auto"
-              >
-                <Card className="border border-slate-100 bg-white rounded-2xl shadow-[0_18px_45px_rgba(15,23,42,0.08)] overflow-hidden">
-                  {/* lighter header so title reads clearly */}
-                  <CardHeader className="pb-4 pt-5 px-6 bg-gradient-to-r from-navy-900/95 via-navy-800 to-navy-900/95 text-white">
-                    <div className="flex items-center justify-between gap-3 mb-3">
-                      <div className="inline-flex items-center gap-2 bg-white/10 text-gold-300 px-3 py-1 rounded-full text-[11px] font-medium">
-                        <Star className="w-3 h-3" />
-                        Helpful answers
-                      </div>
-                      <span className="hidden sm:inline text-[11px] text-blue-100">
-                        Updated regularly as we work with more founders.
-                      </span>
-                    </div>
+          {/* FAQ */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-16 max-w-6xl mx-auto"
+          >
+            <Card className="border border-slate-100 bg-white rounded-2xl shadow-[0_18px_45px_rgba(15,23,42,0.08)] overflow-hidden">
+              <CardHeader className="pb-4 pt-5 px-6 bg-gradient-to-r from-navy-900/95 via-navy-800 to-navy-900/95 text-white">
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <div className="inline-flex items-center gap-2 bg-white/10 text-gold-300 px-3 py-1 rounded-full text-[11px] font-medium">
+                    <Star className="w-3 h-3" />
+                    Helpful answers
+                  </div>
+                  <span className="hidden sm:inline text-[11px] text-blue-100">
+                    Updated regularly as we work with more founders.
+                  </span>
+                </div>
 
-                    {/* title in its own navy pill */}
-                    <div className="inline-flex items-center gap-2 bg-navy-950/70 px-4 py-2 rounded-xl shadow-sm">
-                      <span
-                        className="text-sm sm:text-base font-bold"
+                <div className="inline-flex items-center gap-2 bg-navy-950/70 px-4 py-2 rounded-xl shadow-sm">
+                  <span
+                    className="text-sm sm:text-base font-bold"
+                    style={{ fontFamily: 'Nexa Bold' }}
+                  >
+                    Frequently Asked Questions
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-blue-100 mt-3 max-w-xl">
+                  Find quick answers to what most founders and finance teams ask before
+                  getting started with Unfold Finleg.
+                </p>
+              </CardHeader>
+
+              <CardContent className="p-6 sm:p-7 bg-gradient-to-br from-white via-white to-blue-50/40">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {faqItems.map((faq, index) => (
+                    <motion.div
+                      key={faq.question}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      className="rounded-xl border border-slate-100 bg-white/85 backdrop-blur-sm p-4 shadow-[0_8px_20px_rgba(15,23,42,0.04)]"
+                    >
+                      <h4
+                        className="font-semibold text-navy-900 mb-1.5 text-sm"
                         style={{ fontFamily: 'Nexa Bold' }}
                       >
-                        Frequently Asked Questions
-                      </span>
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-blue-100 mt-3 max-w-xl">
-                      Find quick answers to what most founders and finance teams ask before
-                      getting started with Unfold Finleg.
-                    </p>
-                  </CardHeader>
-
-                  <CardContent className="p-6 sm:p-7 bg-gradient-to-br from-white via-white to-blue-50/40">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      {faqItems.map((faq, index) => (
-                        <motion.div
-                          key={faq.question}
-                          initial={{ opacity: 0, y: 10 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, amount: 0.3 }}
-                          transition={{ duration: 0.3, delay: index * 0.05 }}
-                          className="rounded-xl border border-slate-100 bg-white/85 backdrop-blur-sm p-4 shadow-[0_8px_20px_rgba(15,23,42,0.04)]"
-                        >
-                          <h4
-                            className="font-semibold text-navy-900 mb-1.5 text-sm"
-                            style={{ fontFamily: 'Nexa Bold' }}
-                          >
-                            {faq.question}
-                          </h4>
-                          <p className="text-gray-600 leading-snug text-xs">
-                            {faq.answer}
-                          </p>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
+                        {faq.question}
+                      </h4>
+                      <p className="text-gray-600 leading-snug text-xs">
+                        {faq.answer}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </section>
     </div>

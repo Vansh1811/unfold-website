@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { mainServiceCategories, moreServices } from '@/data/servicesData';
+import { mainServiceCategories} from '@/data/servicesData';
 import { Button } from '@/components/ui/button';
 import { 
   ArrowRight, 
@@ -23,8 +23,7 @@ import * as Icons from 'lucide-react';
 const ServiceCategory: React.FC = () => {
   const { categorySlug } = useParams<{ categorySlug: string }>();
   
-  const category = mainServiceCategories.find(cat => cat.slug === categorySlug) || 
-                   moreServices.find(cat => cat.slug === categorySlug);
+  const category = mainServiceCategories.find(cat => cat.slug === categorySlug) ;
 
   if (!category) {
     return (

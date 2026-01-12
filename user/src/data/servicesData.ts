@@ -8097,151 +8097,7 @@ export const mainServiceCategories: ServiceCategory[] = [
 ];
 
 
-export const moreServices: MoreService[] = [
-  {
-    id: 'startup-services',
-    name: 'Startup Ecosystem',
-    slug: 'startup-services',
-    description: 'Complete startup ecosystem support from ideation to scaling with expert guidance.',
-    icon: 'Rocket',
-    subServices: [
-      {
-        id: 'business-plan-development',
-        name: 'Business Plan Development',
-        slug: 'business-plan-development',
-        description: 'Professional business plan creation for funding and strategic growth with comprehensive market analysis.',
-        icon: 'FileText',
-        features: [
-          'Comprehensive market research and competitive analysis',
-          'Detailed financial projections and revenue modeling',
-          'Investor-ready presentation and pitch deck',
-          'Go-to-market strategy development',
-          'Risk assessment and mitigation planning',
-          'Funding strategy development and recommendations',
-          'Business model validation and optimization',
-          'Executive summary and detailed documentation'
-        ],
-      
-        popular: true,
-        rating: 4.8,
-      },
-      {
-        id: 'pitch-deck-creation',
-        name: 'Investor Pitch Deck Creation',
-        slug: 'pitch-deck-creation',
-        description: 'Compelling pitch decks that attract investors and secure funding with professional design.',
-        icon: 'Presentation',
-        features: [
-          'Professional design and compelling content creation',
-          'Compelling storytelling and narrative development',
-          'Detailed financial projections and modeling',
-          'Market opportunity analysis and sizing',
-          'Competitive landscape analysis and positioning',
-          'Funding requirements and use of funds breakdown',
-          'Team presentation and capability showcase',
-          'Multiple format delivery (PPT, PDF, interactive)'
-        ],
-     
-        rating: 4.7,
-      }
-    ]
-  },
-  {
-    id: 'virtual-cfo-advanced',
-    name: 'Virtual CFO Services',
-    slug: 'virtual-cfo-advanced',
-    description: 'Strategic financial management and CFO-level expertise for growing businesses.',
-    icon: 'TrendingUp',
-    subServices: [
-      {
-        id: 'financial-planning-analysis',
-        name: 'Financial Planning & Analysis',
-        slug: 'financial-planning-analysis',
-        description: 'Strategic financial planning, budgeting, and performance analysis with expert insights.',
-        icon: 'BarChart3',
-        features: [
-          'Financial modeling and forecasting development',
-          'Budget planning and variance analysis',
-          'Cash flow management and optimization',
-          'Investment analysis and decision support',
-          'KPI development and performance monitoring',
-          'Board reporting and executive presentations',
-          'Financial risk assessment and management',
-          'Strategic financial advisory and consultation'
-        ],
-     
-        trending: true,
-        rating: 4.9,
-      },
-      {
-        id: 'fundraising-support',
-        name: 'Fundraising & Investment Support',
-        slug: 'fundraising-support',
-        description: 'End-to-end support for raising capital and managing investor relations with expert guidance.',
-        icon: 'DollarSign',
-        features: [
-          'Comprehensive fundraising strategy development',
-          'Investor identification and targeted outreach',
-          'Due diligence preparation and documentation',
-          'Valuation support and financial modeling',
-          'Term sheet negotiation support and guidance',
-          'Legal documentation coordination and review',
-          'Investor presentation and pitch preparation',
-          'Post-funding investor relations management'
-        ],
-     
-        rating: 4.8,
-      }
-    ]
-  },
-  {
-    id: 'business-protection',
-    name: 'Business Protection & Risk Management',
-    slug: 'business-protection',
-    description: 'Comprehensive business protection and risk management solutions with expert advisory.',
-    icon: 'Shield',
-    subServices: [
-      {
-        id: 'legal-compliance-audit',
-        name: 'Legal Compliance Audit',
-        slug: 'legal-compliance-audit',
-        description: 'Comprehensive audit of legal compliance across all business areas with detailed reporting.',
-        icon: 'Search',
-        features: [
-          'Comprehensive compliance gap analysis',
-          'Risk assessment and rating methodology',
-          'Legal documentation review and verification',
-          'Regulatory requirement mapping and analysis',
-          'Detailed remediation action plan development',
-          'Ongoing monitoring system implementation',
-          'Compliance training and awareness programs',
-          'Regular compliance health check services'
-        ],
-      
-        rating: 4.7,
-      },
-      {
-        id: 'business-insurance-advisory',
-        name: 'Business Insurance Advisory',
-        slug: 'business-insurance-advisory',
-        description: 'Expert guidance on business insurance needs and comprehensive risk coverage solutions.',
-        icon: 'Umbrella',
-        features: [
-          'Comprehensive insurance needs assessment',
-          'Policy comparison and optimal selection',
-          'Claims management support and assistance',
-          'Risk management strategies development',
-          'Premium optimization and cost reduction',
-          'Annual policy review and recommendations',
-          'Insurance portfolio management',
-          'Regulatory compliance and advisory services'
-        ],
-      
-        rating: 4.6,
-      }
-    ]
-  }
-];
+
 
 
 // Enhanced search functionality
@@ -8266,25 +8122,13 @@ export const searchServices = (query: string): (SubService & { category: string 
   });
 
   // Search in more services
-  moreServices.forEach(category => {
-    category.subServices.forEach(service => {
-      if (
-        service.name.toLowerCase().includes(searchTerm) ||
-        service.description.toLowerCase().includes(searchTerm) ||
-        service.features.some(feature => feature.toLowerCase().includes(searchTerm)) ||
-        category.name.toLowerCase().includes(searchTerm)
-      ) {
-        results.push({ ...service, category: category.name });
-      }
-    });
-  });
 
   return results;
 };
 
 // Utility functions
 export const getServiceBySlug = (categorySlug: string, serviceSlug: string): SubService | null => {
-  const allServices = [...mainServiceCategories, ...moreServices];
+  const allServices = [...mainServiceCategories];
   for (const category of allServices) {
     if (category.slug === categorySlug) {
       const service = category.subServices.find(s => s.slug === serviceSlug);
@@ -8295,13 +8139,13 @@ export const getServiceBySlug = (categorySlug: string, serviceSlug: string): Sub
 };
 
 export const getCategoryBySlug = (slug: string): ServiceCategory | MoreService | null => {
-  const allCategories = [...mainServiceCategories, ...moreServices];
+  const allCategories = [...mainServiceCategories];
   return allCategories.find(category => category.slug === slug) || null;
 };
 
 export const getAllServices = (): (SubService & { category: string })[] => {
   const allServices: (SubService & { category: string })[] = [];
-  [...mainServiceCategories, ...moreServices].forEach(category => {
+  [...mainServiceCategories].forEach(category => {
     category.subServices.forEach(service => {
       allServices.push({ ...service, category: category.name });
     });
@@ -8320,7 +8164,7 @@ export const getFeaturedServices = (): (SubService & { category: string })[] => 
 
 export const getPopularServices = (): (SubService & { category: string })[] => {
   const popularServices: (SubService & { category: string })[] = [];
-  [...mainServiceCategories, ...moreServices].forEach(category => {
+  [...mainServiceCategories].forEach(category => {
     category.subServices.forEach(service => {
       if (service.popular) {
         popularServices.push({ ...service, category: category.name });
@@ -8332,7 +8176,7 @@ export const getPopularServices = (): (SubService & { category: string })[] => {
 
 export const getTrendingServices = (): (SubService & { category: string })[] => {
   const trendingServices: (SubService & { category: string })[] = [];
-  [...mainServiceCategories, ...moreServices].forEach(category => {
+  [...mainServiceCategories].forEach(category => {
     category.subServices.forEach(service => {
       if (service.trending) {
         trendingServices.push({ ...service, category: category.name });
@@ -8354,7 +8198,7 @@ export const getBusinessIncorporationServices = (): (SubService & { category: st
 };
 
 export const getServicesByCategory = (categoryId: string): (SubService & { category: string })[] => {
-  const category = [...mainServiceCategories, ...moreServices].find(cat => cat.id === categoryId);
+  const category = [...mainServiceCategories].find(cat => cat.id === categoryId);
   if (!category) return [];
   
   return category.subServices.map(service => ({

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { getBlogBySlug, getRecentBlogs } from '@/data/blogsData';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import {
   Calendar,
   User,

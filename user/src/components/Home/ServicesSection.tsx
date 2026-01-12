@@ -9,7 +9,7 @@ import {
   getPopularServices,
   getBusinessIncorporationServices
 } from '@/data/servicesData';
-import ServiceCategoryCard from './ServiceCategoryCard';
+import ServiceCategoryCard from '../ServiceCategoryCard';
 
 const ServicesSection = () => {
   const [featuredServices, setFeaturedServices] = useState<any[]>([]);
