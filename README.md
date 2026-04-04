@@ -244,3 +244,113 @@ npm run lint       # ESLint check on .ts files
 ## ⚙️ Backend Architecture
 
 ### Middleware Stack (in order)
+Request
+│ ├── helmet() → Security headers (CSP, X-Frame-Options, etc.)
+├── compression() → gzip response compression
+├── morgan() → HTTP access logging (combined/dev)
+├── cors() → Whitelist: localhost + unfoldfinlegsolutions.com
+├── generalLimiter → 100 req / 15 min per IP on /api/*
+├── contactLimiter → 3 req / 15 min per IP on /api/v1/contact
+├── express.json() → JSON body parsing (max 10mb)
+├── express.urlencoded() → URL-encoded body parsing (max 10mb)
+├── Custom Headers → nosniff, DENY framing, XSS protection
+│ └── Routes
+├── GET /api/v1 → Welcome
+├── GET /api/v1/health → Health check
+├── GET /api/v1/docs → API docs
+└── /api/v1/contact → contactRoutes
+└── POST /submit → submitContactForm controller
+
+
+### Contact Form Flow
+Client POST /api/v1/contact/submit
+│ ├── Rate limiter check (3 req/hr)
+├── Body parsed by express.json()
+│ └── submitContactForm()
+├── Validate required fields (name, email, phone, message)
+├── Call sendContactEmail()
+│ ├── Create Nodemailer transporter (Zoho SMTP, port 465)
+│ ├── Build HTML email template
+│ └── Send to ADMIN_EMAIL with replyTo set to visitor's email
+└── Return 200 { success: true }
+
+
+### Logger
+
+Winston is configured with structured log levels (`info`, `warn`, `error`) and outputs to both console and rotating log files under `./logs/`. Morgan streams HTTP logs through Winston's HTTP log stream.
+
+---
+
+## 🔒 Security Features
+
+| Feature | Implementation |
+|---------|---------------|
+| Security Headers | Helmet with full CSP, X-Frame: DENY, X-XSS-Protection |
+| Rate Limiting | express-rate-limit (general + strict contact limiter) |
+| CORS Whitelisting | Only specific origins allowed, credentials: true |
+| Input Parsing Limit | JSON and URL-encoded body max 10MB |
+| Trust Proxy | Enabled for accurate IP detection behind Render/Nginx |
+| Error Sanitization | Global error handler strips stack traces in production |
+| Graceful Shutdown | SIGTERM/SIGINT handling with 10s forced-exit fallback |
+
+---
+
+## 🌍 Deployment
+
+### Frontend → Vercel
+
+```bash
+# From /user directory
+npm run build   # Generates /dist
+
+# vercel.json handles SPA routing (rewrites /* → /index.html)
+```
+
+**Vercel Settings:**
+- Framework: Vite
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Root Directory: `user`
+- Add `VITE_API_BASE_URL` in Vercel Environment Variables
+
+---
+
+### Backend → Render
+
+**Render Settings:**
+- Environment: Node
+- Root Directory: `server`
+- Build Command: `npm install && npm run build`
+- Start Command: `npm run start` (runs `node dist/index.js`)
+- Add all required env variables from the [Environment Variables](#-environment-variables) section in Render dashboard
+
+> ⚠️ Set `CORS_ORIGIN` on Render to your Vercel deployment URL to allow cross-origin requests.
+
+---
+
+## 🤝 Contributing
+
+```bash
+# 1. Fork the repository
+# 2. Create a feature branch
+git checkout -b feature/your-feature-name
+
+# 3. Make changes, then commit
+git commit -m "feat: add your feature description"
+
+# 4. Push and open a Pull Request
+git push origin feature/your-feature-name
+```
+
+**Code Style:**
+- Backend: ESLint + Prettier (TypeScript strict mode)
+- Frontend: ESLint with react-hooks and react-refresh plugins
+- Follow existing naming conventions (PascalCase components, camelCase utils)
+
+---
+
+<div align="center">
+
+Built with ❤️ by [Vansh Sharma](https://github.com/Vansh1811)
+
+</div>
