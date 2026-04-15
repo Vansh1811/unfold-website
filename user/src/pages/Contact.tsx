@@ -1,4 +1,4 @@
-import React, { FormEvent, ChangeEvent ,useMemo } from 'react';
+import React, { FormEvent, ChangeEvent, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { mainServiceCategories } from '@/data/servicesData';
-
+import { API_BASE_URL } from '@/utils/api'; // <-- import from your api helper
 
 import {
   Mail,
@@ -97,7 +97,11 @@ const Contact = () => {
     setSubmitted(false);
 
     try {
-      const res = await fetch('http://localhost:5000/api/v1/contact/submit', {
+      if (!API_BASE_URL) {
+        throw new Error('API base URL is not configured');
+      }
+
+      const res = await fetch(`${API_BASE_URL}/contact/submit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -138,10 +142,10 @@ const Contact = () => {
   };
 
   const onInputChange =
-  (field: keyof ContactFormData) =>
-  (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleChange(field, e.target.value);
-  };
+    (field: keyof ContactFormData) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      handleChange(field, e.target.value);
+    };
 
   const onTextareaChange =
     (field: keyof ContactFormData) =>
@@ -536,7 +540,7 @@ const Contact = () => {
                     className="text-base font-bold text-white inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-navy-900 shadow-sm"
                     style={{ fontFamily: 'Nexa Bold' }}
                   >
-                    {/* Intentionally blank text pill, matches your original */}
+                    {/* Intentionally blank pill */}
                   </CardTitle>
                   <p className="text-xs text-gray-600 mt-3 max-w-sm">
                     Reach our team via email, phone, or visit us during business
@@ -600,7 +604,8 @@ const Contact = () => {
                           Trusted by 100+ businesses
                         </span>
                         <span className="text-[11px] text-gray-700">
-                          Rated 4.9/5 for responsiveness and compliance expertise.
+                          Rated 4.9/5 for responsiveness and compliance
+                          expertise.
                         </span>
                       </div>
                     </div>
@@ -639,8 +644,8 @@ const Contact = () => {
                 </div>
 
                 <p className="text-xs sm:text-sm text-blue-100 mt-3 max-w-xl">
-                  Find quick answers to what most founders and finance teams ask before
-                  getting started with Unfold Finleg.
+                  Find quick answers to what most founders and finance teams ask
+                  before getting started with Unfold Finleg.
                 </p>
               </CardHeader>
 

@@ -1,6 +1,6 @@
-// Prefer env variable, fall back to localhost for local development
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api/v1';
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.DEV ? 'http://localhost:5000/api/v1' : '');
 
 interface ApiResponse<T> {
   success: boolean;
@@ -12,7 +12,7 @@ interface ApiResponse<T> {
   };
 }
 
-class ApiError extends Error {
+export class ApiError extends Error {
   constructor(public status: number, message: string) {
     super(message);
     this.name = 'ApiError';
@@ -21,7 +21,7 @@ class ApiError extends Error {
 
 const getToken = () => localStorage.getItem('adminToken');
 
-const makeRequest = async <T>(
+export const makeRequest = async <T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> => {
@@ -60,6 +60,7 @@ const makeRequest = async <T>(
     if (error instanceof ApiError) {
       throw error;
     }
+
     throw new ApiError(
       500,
       error instanceof Error ? error.message : 'Network error'
@@ -180,5 +181,3 @@ export const serviceApi = {
       body: JSON.stringify({ services }),
     }),
 };
-
-export { ApiError };
