@@ -51,11 +51,12 @@ logger.info('🔐 Setting up CORS middleware...');
 app.use(
   cors({
     origin: [
-      'http://localhost:8080',
-      'http://localhost:5173',
-      'http://localhost:3000',
-      'https://unfoldfinlegsolutions.com',
-    ],
+  'http://localhost:8080',
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'https://unfoldfinlegsolutions.com',
+  'https://unfold-website-one.vercel.app',
+],
     credentials: true,
     optionsSuccessStatus: 200,
   })
