@@ -1,71 +1,63 @@
-import express, { Request, Response } from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
+
+import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
 import compression from 'compression';
-import dotenv from 'dotenv';
-import config, { isProduction } from './config';
-// import { connectDB } from './config/database';
-import logger, { httpLogStream } from './utils/logger';
-// import blogRoutes from './routes/blog.routes';
-import contactRoutes from './routes/contact.routes';
-// import servicesRoutes from './routes/services.routes';
 
-// Load environment variables
-dotenv.config();
+import config, { isProduction } from './config/index';
+import logger, { httpLogStream } from './utils/logger';
+import contactRoutes from './routes/contact.routes';
+import { verifyMailer } from './utils/emailService';
 
 const app = express();
 const PORT = config.port;
 
-// Trust proxy
 app.set('trust proxy', 1);
 
-logger.info('🚀 Initializing server...');
-console.log('🚀 Initializing server...');
-
-// Security middleware
 app.use(
   helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-        imgSrc: ["'self'", 'data:', 'https:'],
-        scriptSrc: ["'self'"],
-        connectSrc: ["'self'"],
-      },
-    },
     crossOriginEmbedderPolicy: false,
   })
 );
 
 app.use(compression());
 
-// HTTP request logging
-app.use(morgan(isProduction() ? 'combined' : 'dev', { stream: httpLogStream }));
-
-// CORS
-logger.info('🔐 Setting up CORS middleware...');
 app.use(
-  cors({
-    origin: [
+  morgan(isProduction() ? 'combined' : 'dev', {
+    stream: httpLogStream,
+  })
+);
+
+const allowedOrigins = [
   'http://localhost:8080',
   'http://localhost:5173',
   'http://localhost:3000',
   'https://unfoldfinlegsolutions.com',
+  'https://www.unfoldfinlegsolutions.com',
   'https://unfold-website-one.vercel.app',
-],
+];
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error('Not allowed by CORS'));
+    },
     credentials: true,
     optionsSuccessStatus: 200,
   })
 );
 
-// Rate limiters
 const generalLimiter = rateLimit({
   windowMs: config.rateLimit.windowMs,
   max: config.rateLimit.max,
+  standardHeaders: true,
+  legacyHeaders: false,
   message: {
     success: false,
     error: {
@@ -73,13 +65,13 @@ const generalLimiter = rateLimit({
       code: 429,
     },
   },
-  standardHeaders: true,
-  legacyHeaders: false,
 });
 
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 3,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
   message: {
     success: false,
     error: {
@@ -92,22 +84,10 @@ const contactLimiter = rateLimit({
 app.use('/api', generalLimiter);
 app.use('/api/v1/contact', contactLimiter);
 
-// Parsers
-app.use(express.json({ limit: '10mb', strict: true }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json({ limit: '100kb', strict: true }));
+app.use(express.urlencoded({ extended: true, limit: '100kb' }));
 
-// Security headers
-app.use((_req, res, next) => {
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'DENY');
-  res.setHeader('X-XSS-Protection', '1; mode=block');
-  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  next();
-});
-
-// Health check
 app.get('/api/v1/health', (_req: Request, res: Response) => {
-  logger.info('✅ Health check endpoint hit');
   res.status(200).json({
     success: true,
     data: {
@@ -115,15 +95,12 @@ app.get('/api/v1/health', (_req: Request, res: Response) => {
       timestamp: new Date().toISOString(),
       environment: config.nodeEnv,
       uptime: process.uptime(),
-      memory: process.memoryUsage(),
       version: config.app.version,
     },
   });
 });
 
-// API docs
 app.get('/api/v1/docs', (_req: Request, res: Response) => {
-  logger.info('📄 API docs requested');
   res.json({
     success: true,
     data: {
@@ -131,11 +108,9 @@ app.get('/api/v1/docs', (_req: Request, res: Response) => {
       version: config.app.version,
       description: config.app.description,
       endpoints: {
-        blogs: '/api/v1/blog',
         contact: '/api/v1/contact',
-        services: '/api/v1/services',
+        health: '/api/v1/health',
       },
-      authentication: 'JWT Bearer Token',
       rateLimit: `${config.rateLimit.max} requests per ${
         config.rateLimit.windowMs / 60000
       } minutes`,
@@ -143,14 +118,8 @@ app.get('/api/v1/docs', (_req: Request, res: Response) => {
   });
 });
 
-// Routes - ONLY WHAT YOU NEED
-logger.info('🔍 Loading API routes...');
-console.log('🔍 Loading API routes...');
 app.use('/api/v1/contact', contactRoutes);
-logger.info('✅ All API routes loaded');
-console.log('✅ All API routes loaded');
 
-// Welcome
 app.get('/api/v1', (_req: Request, res: Response) => {
   res.json({
     success: true,
@@ -164,74 +133,121 @@ app.get('/api/v1', (_req: Request, res: Response) => {
   });
 });
 
-// Favicon
-app.get('/favicon.ico', (_req: Request, res: Response) => res.status(204).end());
+app.get('/favicon.ico', (_req: Request, res: Response) => {
+  res.status(204).end();
+});
 
-// 404 handlers
 app.use('/api', (req: Request, res: Response) => {
-  logger.warn('404 - Route not found', { method: req.method, url: req.originalUrl });
-  res.status(404).json({
-    success: false,
-    error: { message: `API route ${req.originalUrl} not found`, code: 404 },
+  logger.warn('API route not found', {
+    method: req.method,
+    url: req.originalUrl,
   });
-});
 
-app.use((req: Request, res: Response) => {
   res.status(404).json({
-    success: false,
-    error: { message: 'Resource not found', code: 404 },
-  });
-});
-
-// Error handler middleware
-app.use((err: any, req: Request, res: Response, next: any) => {
-  logger.error('Server error:', err);
-  res.status(err.status || 500).json({
     success: false,
     error: {
-      message: err.message || 'Internal server error',
-      code: err.status || 500,
+      message: `API route ${req.originalUrl} not found`,
+      code: 404,
     },
   });
 });
 
-// Start server WITHOUT MongoDB
-const startServer = async (): Promise<void> => {
-  const server = app.listen(PORT, () => {
-    logger.info(`✅ Server started on port ${PORT} in ${config.nodeEnv} mode`);
-    console.log(`✅ Server started on port ${PORT} in ${config.nodeEnv} mode`);
+app.use((_req: Request, res: Response) => {
+  res.status(404).json({
+    success: false,
+    error: {
+      message: 'Resource not found',
+      code: 404,
+    },
   });
+});
 
-  const gracefulShutdown = (signal: string) => {
-    logger.info(`🔄 Received ${signal}, shutting down gracefully...`);
-    server.close((err) => {
-      if (err) {
-        logger.error('❌ Error during shutdown:', { error: err.message });
-        process.exit(1);
-      }
-      logger.info('✅ Server closed successfully');
-      process.exit(0);
+app.use(
+  (err: Error, _req: Request, res: Response, _next: NextFunction) => {
+    logger.error('Unhandled server error', {
+      error: err.message,
+      stack: err.stack,
     });
-    setTimeout(() => {
-      logger.error('❌ Forced shutdown after timeout');
-      process.exit(1);
-    }, 10000);
-  };
 
-  process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
-  process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+    res.status(500).json({
+      success: false,
+      error: {
+        message: 'Internal server error',
+        code: 500,
+      },
+    });
+  }
+);
+
+const startServer = async () => {
+  try {
+    logger.info('Starting server...', {
+      port: PORT,
+      environment: config.nodeEnv,
+      smtpUser: process.env.SMTP_USER || 'missing',
+      smtpHost: process.env.SMTP_HOST || 'missing',
+      smtpPort: process.env.SMTP_PORT || 'missing',
+    });
+
+    const server = app.listen(PORT, () => {
+      logger.info(`Server started on port ${PORT} in ${config.nodeEnv} mode`);
+    });
+
+    verifyMailer()
+      .then(() => {
+        logger.info('Mailer verified successfully');
+      })
+      .catch((error) => {
+        logger.error('Mailer verification failed', {
+          error: error instanceof Error ? error.message : 'Unknown error',
+        });
+      });
+
+    const gracefulShutdown = (signal: string) => {
+      logger.info(`Received ${signal}, shutting down gracefully...`);
+
+      server.close((err) => {
+        if (err) {
+          logger.error('Error during shutdown', {
+            error: err.message,
+          });
+          process.exit(1);
+        }
+
+        logger.info('Server closed successfully');
+        process.exit(0);
+      });
+
+      setTimeout(() => {
+        logger.error('Forced shutdown after timeout');
+        process.exit(1);
+      }, 10000);
+    };
+
+    process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+    process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+  } catch (error) {
+    logger.error('Failed to start server', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+    });
+    process.exit(1);
+  }
 };
 
-process.on('unhandledRejection', (err: Error) => {
-  logger.error('❌ Unhandled Rejection:', { error: err.message, stack: err.stack });
-  console.error('❌ Unhandled Rejection:', err);
+process.on('unhandledRejection', (err: unknown) => {
+  logger.error('Unhandled Rejection', {
+    error: err instanceof Error ? err.message : 'Unknown rejection',
+  });
 });
 
 process.on('uncaughtException', (err: Error) => {
-  logger.error('❌ Uncaught Exception:', { error: err.message, stack: err.stack });
-  console.error('❌ Uncaught Exception:', err);
+  logger.error('Uncaught Exception', {
+    error: err.message,
+    stack: err.stack,
+  });
+  process.exit(1);
 });
 
-startServer();
+startServer(); 
 
 export default app;
